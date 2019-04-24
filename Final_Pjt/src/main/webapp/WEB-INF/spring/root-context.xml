@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	<bean id="dataSourceSpied" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	    <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+	    <property name="url" value="jdbc:oracle:thin:@localhost:1521:xe" />
+	    <property name="username" value="hotplace" />
+	    <property name="password" value="admin2019" />
+	 </bean>
+	 
+	 <!-- JDBC Logger -->
+   	<bean id="dataSource" class="net.sf.log4jdbc.Log4jdbcProxyDataSource">
+     	<constructor-arg ref="dataSourceSpied" />
+      	<property name="logFormatter">
+        	<bean class="net.sf.log4jdbc.tools.Log4JdbcCustomFormatter">
+ 	     	    <property name="loggingType" value="MULTI_LINE" />   <!-- 개행 -->
+    	        <property name="sqlPrefix" value="SQL:::" />   <!-- 접두어처리 -->
+         	</bean>
+      	</property>
+   	</bean>
+
+	<!-- 마이바티스 수행 객체(SqLSession) -->
+	<bean id="SqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="mapperLocations" value="classpath:/com/allhotplace/www/dao/impl/**/*DaoImpl.xml"></property>
+	</bean>
+	
+	<!-- 마이바티스 인터페이스 설정(dao) -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.apllhotplace.www.dao.face"></property>
+	</bean>
+	
+</beans>
