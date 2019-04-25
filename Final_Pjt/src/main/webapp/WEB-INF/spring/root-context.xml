@@ -30,7 +30,7 @@
 	
 	<!-- 마이바티스 인터페이스 설정(dao) -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="com.apllhotplace.www.dao.face"></property>
+		<property name="basePackage" value="com.allhotplace.www.dao.face"></property>
 	</bean>
 	
 </beans>
