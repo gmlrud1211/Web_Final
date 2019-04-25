@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import com.allhotplace.www.dao.face.user.UserDao;
+import com.allhotplace.www.dto.Users;
 import com.allhotplace.www.service.face.user.UserService;
 
 @Service
@@ -22,6 +23,11 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public void logout(HttpSession session) {
 		session.invalidate();
+	}
+
+	@Override
+	public void join(Users user) {
+		userDao.insertUser(user);
 	}
 	
 	
