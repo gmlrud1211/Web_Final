@@ -10,4 +10,10 @@
 		SELECT count(*) FROM users
 		where user_id = #{user_id} and user_pw = #{user_pw}
  	</select>
+ 	
+ 	<insert parameterType="com.allhotplace.www.dto.Users" id="insertUser"> 
+		INSERT INTO users ( user_no, user_id, user_pw, user_name, user_email, user_phone, user_birth, user_regdate)
+		VALUES ( users_seq.nextval, #{user_id }, #{user_pw }, #{user_name }, #{user_email }, #{user_phone }, #{user_birth }, sysdate )
+	</insert>
+ 	
 </mapper>

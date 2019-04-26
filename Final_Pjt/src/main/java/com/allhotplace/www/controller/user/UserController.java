@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.allhotplace.www.dto.Users;
 import com.allhotplace.www.service.face.user.UserService;
 
 
@@ -56,6 +57,24 @@ public class UserController {
 		
 		return "redirect:/main";
 	}
+	
+	@RequestMapping(value="/join", method=RequestMethod.GET)
+	public String Join() {
+		
+		return "/user/join";
+	}
+	
+	@RequestMapping(value="/join", method=RequestMethod.POST)
+	public String JoinProc(Users user, Model model) {
+		
+		logger.info(user.toString());
+		
+		//전달받은 정보로 회원가입
+		userService.join(user);
+		
+		return "redirect:/login";
+	}
+	
 	
 	
 	
