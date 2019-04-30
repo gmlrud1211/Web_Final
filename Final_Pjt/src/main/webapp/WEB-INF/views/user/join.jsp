@@ -11,9 +11,13 @@
 
 <link rel="stylesheet" href="/js/bootstrap.js"/>
 <link rel="stylesheet" href="/js/bootstrap.min.js"/>
+<link rel="stylesheet" href="/js/bootstrap-datepicker.js"/>
+<link rel="stylesheet" href="/js/bootstrap-datepicker.kr.js"/>
+
 <link rel="stylesheet" href="/css/bootstrap.css"/>
 <link rel="stylesheet" href="/css/bootstrap.min.css"/>
-
+<link rel="stylesheet" href="/css/datepicker3.css"/>
+    
 
 <style>
    	 /* .help-block 일단 안보이게 설정 */
@@ -26,6 +30,7 @@
 <script type="text/javascript">
 
 	$(document).ready(function() {
+		
 		//비밀번호 재확인
 		$("#user_pw").keyup(function(){
 	        var pwd=$(this).val();
@@ -52,6 +57,12 @@
 	        }
 	    });
 			
+	    //생년월일 datepicker
+	    $('#datepicker1').datetimepicker({
+			 format: "yyyy-mm-dd",
+			 language: "kr",
+			 todayHighlight : true
+		 });
 		
 		
 		
@@ -103,7 +114,8 @@
 		                   errorState("#user_email");
 		       }
 		   });
-		 
+		
+		
 		// 성공 상태로 바꾸는 함수
 		function successState(sel){
 			$(sel)
@@ -140,23 +152,35 @@
 </script>
 
 </head>
+<style>
+	.oh{overflow: hidden !important;}
+	.fl{float:left !important;}
+	
+	.myForm123 > div{overflow: hidden !important; max-width:100% !important}
+	.myForm123 > div > label{float:left !important; width:40% !important}
+	.myForm123 > div > div{float:left !important; width:60% !important}
+	.myForm123 > div > div > input{width: 100% !important}
+	
+</style>
 <body>
 	<div class="container">
-			<h4>JOIN</h4>
+			
+			<div style="max-width: 450px; margin: 0 auto;">
+			<h4 style="text-align:center;">JOIN</h4>
 			<br><br>
-		
-			<form class="form-horizontal" id="myForm" action="/join" method="post">
+			
+			<form class="form-horizontal myForm123" id="myForm" action="/join" method="post">
 					
 				<div class="form-group has-feedback">
-					<label class="control-label" for="user_id">아이디</label>
-					<div class="col-sm-5">
+					<label class="col-sm-5 col-sm-offset-1 control-label" for="user_id">아이디</label>
+					<div class="col-sm-11">
 						<input class="form-control" type="text" name ="user_id" id="user_id" size="10" placeholder="Id" />
 					</div>
 				</div>
 
 				<div class="form-group has-feedback">
-					<label class="control-label" for="user_pw">비밀번호</label>
-					<div class="col-sm-5">
+					<label class="col-sm-5 col-sm-offset-1 control-label" for="user_pw">비밀번호</label>
+					<div class="col-sm-11">
 						<input class="form-control" type="password" id ="user_pw" name="user_pw" placeholder="Password" />
 						<span class="glyphicon glyphicon-ok form-control-feedback"></span>
 					</div>
@@ -164,8 +188,8 @@
 				<br>
 
 				<div class="form-group has-feedback">
-					<label class="control-label" for="re_user_pw">비밀번호 재확인</label>
-					<div class="col-sm-5">
+					<label class="col-sm-5 col-sm-offset-1 control-label" for="re_user_pw">비밀번호 재확인</label>
+					<div class="col-sm-11">
 						<input class="form-control" type="password" id ="re_user_pw" name="re_user_pw" placeholder="Password" />
 						<span id="rePwdErr" class="help-block">비밀번호와 일치하지 않습니다. 다시 입력해 주세요.</span>
 	            		<span class="glyphicon glyphicon-ok form-control-feedback"></span>
@@ -173,15 +197,15 @@
 				</div>	
 				
 				<div class="form-group has-feedback">
-					<label class="control-label" for="user_name">이름</label>
-					<div class="col-sm-5">
+					<label class="col-sm-5 col-sm-offset-1 control-label" for="user_name">이름</label>
+					<div class="col-sm-11">
 						<input class="form-control" type="text" id ="user_name" name="user_name" placeholder="Name" />
 					</div>
 				</div>	
 				
 				<div class="form-group has-feedback">
-					<label class="control-label" for="user_email">이메일</label>
-					<div class="col-sm-5">
+					<label class="col-sm-5 col-sm-offset-1 control-label" for="user_email">이메일</label>
+					<div class="col-sm-11">
 						<input class="form-control" type="text" id ="user_email" name="user_email" placeholder="Email" />
 						<span id="emailErr" class="help-block">올바른 이메일 형식이 아닙니다. 다시 입력해 주세요.</span>
 						<span class="glyphicon glyphicon-ok form-control-feedback"></span>
@@ -189,25 +213,30 @@
 				</div>	
 
 				<div class="form-group has-feedback">	
-					<label class="control-label" for="user_phone">휴대폰 번호</label>			
-					<div class="col-sm-5">
+					<label class="col-sm-5 col-sm-offset-1 control-label" for="user_phone">휴대폰 번호</label>			
+					<div class="col-sm-11">
 						<input class="form-control" type="text" id ="user_phone" name="user_phone" placeholder="Phone_Number" />
 					</div>
 				</div>	
 				
 				<div class="form-group has-feedback">
-					<label class="control-label" for="user_births">생년월일</label>	
-					<div class="col-sm-5">
-						<input class="form-control" type="text" id ="user_birth" name="user_birth" placeholder="Birthday" />
+					<label class="col-sm-5 col-sm-offset-1 control-label" for="user_birth">생년월일</label>	
+					<div class="input-group-date" id="datepicker1">
+						<input class="form-control" type="text" id="user_birth" name="user_birth" placeholder="Birthday" />
+						<span class="input-group-addon">
+                           <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
 					</div>
 				</div>	
 				<br>
 				
 		
-				<div class="col-sm-offset-4">		
-					<button class="btn btn-success">JOIN</button>
+				<div class="col-sm-8 col-sm-offset-4" style="text-align:center;">		
+					<button class="btn btn-success">Sign up</button>
 				</div>
 			</form>
+			
+		</div>	
 	</div>
 
 </body>
