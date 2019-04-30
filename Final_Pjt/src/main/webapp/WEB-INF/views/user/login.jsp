@@ -40,7 +40,8 @@
 				</form>
 			</div>
 		</div>
+		<jsp:include page="../user/signIn.jsp" />
 	</div>
-
+	
 </body>
 </html>
