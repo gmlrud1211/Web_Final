@@ -173,12 +173,8 @@
 			var birth_month = appendMonth();
 			var birth_day = appendDay();
 					    	
-		    
-
-
-
-
-		 // 회원가입 버튼 클릭 시 유효성 검사 후 폼전송
+	
+			// 회원가입 버튼 클릭 시 유효성 검사 후 폼전송
 			$("#btnJoin").click(function(){
 				
 				var user_id = document.getElementById('user_id');

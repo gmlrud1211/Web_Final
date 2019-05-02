@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <!DOCTYPE html>
 <html>
@@ -23,13 +24,23 @@
 		     #myForm .help-block{ display: none; }
 		      /* glyphicon 일단 안보이게 설정 */
 		     #myForm .glyphicon{ display: none;  }
-		</style>
 	
-		<style>
 			.myForm123 > div{overflow: hidden !important; max-width:100% !important}
 			.myForm123 > div > label{float:left !important; width:40% !important}
 			.myForm123 > div > div{float:left !important; width:60% !important}
 			.myForm123 > div > div > input{width: 100% !important}
+			
+				     
+		     .col-sm-2.control-div {
+			    padding-right: 3px;
+			    padding-left: 0px;
+			    margin-right: 0px;
+			}
+			.col-sm-3.control-div {
+			    padding-right: 3px;
+			    padding-left: 0px;
+			}
+			
 			
 		</style>
 		
@@ -41,9 +52,47 @@
 					alert("정보가 수정되었습니다");
 				});
 
-			});
-		</script>
+				// 생년월일 select
+				 
+			    function appendYear(){
+			    	var date = new Date();
+			    	var year = date.getFullYear();
+			    	var selectValue = document.getElementById("birth_year");
+			    	var optionIndex = 0;
 
+			    	for(var i=year-100;i<=year;i++){
+			    			selectValue.add(new Option(i+"년",i),optionIndex++);                        
+			    	}
+
+			    }
+
+			    function appendMonth(){
+			    	var selectValue = document.getElementById("birth_month"); 
+			    	var optionIndex = 0;
+
+			    	for(var i=1;i<=12;i++){
+			    			selectValue.add(new Option(i+"월",i),optionIndex++);
+			    	}
+			    }
+
+			    function appendDay(){
+			    	var selectValue = document.getElementById("birth_day");
+			    	var optionIndex = 0;
+
+			    	for(var i=1;i<=31;i++){
+			    			selectValue.add(new Option(i+"일",i),optionIndex++);
+			    	}
+			    } 
+			    
+			    
+		    	var birth_year = appendYear();
+				var birth_month = appendMonth();
+				var birth_day = appendDay();
+	
+				
+			});
+			
+		</script>
 	</head>
 
 	<body>
@@ -57,36 +106,42 @@
 					
 			<div class="form-group has-feedback">
 				<label class="col-sm-5 col-sm-offset-1 control-label" for="user_id">아이디</label>
-				<div class="col-sm-11">
-					<input class="form-control" type="text" value="${user.user_id }" readonly="readonly" />
+				<div class="col-sm-13">
+					<input class="form-control" type="text" value="${user.user_id }" name="user_id" readonly="readonly" />
 				</div>
 			</div>
 		
 			<div class="form-group has-feedback">
 				<label class="col-sm-5 col-sm-offset-1 control-label" for="user_name">이름</label>
-				<div class="col-sm-11">
-					<input class="form-control" type="text" value="${user.user_name }" />
+				<div class="col-sm-13">
+					<input class="form-control" type="text" value="${user.user_name }" name="user_name" />
 				</div>
 			</div>
 			
 			<div class="form-group has-feedback">
 				<label class="col-sm-5 col-sm-offset-1 control-label" for="user_email">이메일</label>
-				<div class="col-sm-11">
-					<input class="form-control" type="text" value="${user.user_email }" />
+				<div class="col-sm-13">
+					<input class="form-control" type="text" value="${user.user_email }" name="user_email" />
 				</div>
 			</div>
 		
 			<div class="form-group has-feedback">
 				<label class="col-sm-5 col-sm-offset-1 control-label" for="user_phone">휴대폰</label>
-				<div class="col-sm-11">
-					<input class="form-control" type="text" value="${user.user_phone }" />
+				<div class="col-sm-13">
+					<input class="form-control" type="text" value="${user.user_phone }" name="user_phone"/>
 				</div>
 			</div>
 			
 			<div class="form-group has-feedback">
 				<label class="col-sm-5 col-sm-offset-1 control-label" for="user_birth">생년월일</label>	
-				<div class="col-sm-11">
-					<input class="form-control" type="text" value="<fmt:formatDate value='${user.user_birth}' pattern='yyyy-MM-dd'/>" readonly="readonly"  />
+				<div class="col-sm-3 control-div" style="width:200px">
+					<select class="form-control" name="birth_year" id="birth_year" ></select>
+				</div>
+				<div class="col-sm-2 control-div" style="width:200px" >
+				     <select class="form-control" name="birth_month" id="birth_month"></select>
+				</div>
+				<div class="col-sm-2 control-div" style="width:200px">
+				     <select class="form-control" name="birth_day" id="birth_day"></select>
 				</div>
 			</div>	
 		
