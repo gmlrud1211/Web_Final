@@ -71,7 +71,7 @@ public class UserController {
 							@RequestParam("birth_day")String birth_day,
 							@RequestParam("birth_month")String birth_month,
 							@RequestParam("birth_year")String birth_year) {
-				
+		
 		req.getAttribute(birth_year);
 		req.getAttribute(birth_month);
 		req.getAttribute(birth_day);

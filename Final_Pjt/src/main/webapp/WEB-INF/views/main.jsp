@@ -23,7 +23,7 @@
 		<!-- 로그인 한 상태 -->
 		<c:if test="${ login }">
 			<p>${user_id}님 어서오세요~!</p>
-			<a href="/mypage/info"><button>마이페이지로</button></a>
+			<a href="/mypage/myInfo"><button>마이페이지로</button></a>
 			<a href="/logout"><button>로그아웃</button></a>
 		</c:if>
 	</div>

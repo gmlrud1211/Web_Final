@@ -86,7 +86,7 @@
 			<div class="form-group has-feedback">
 				<label class="col-sm-5 col-sm-offset-1 control-label" for="user_birth">생년월일</label>	
 				<div class="col-sm-11">
-					<input class="form-control" type="date" id="user_birth" name="user_birth" value="<fmt:formatDate value='${user.user_birth}' pattern='yyyy-MM-dd'/>"  />
+					<input class="form-control" type="text" value="<fmt:formatDate value='${user.user_birth}' pattern='yyyy-MM-dd'/>" readonly="readonly"  />
 				</div>
 			</div>	
 		
