@@ -9,5 +9,8 @@ public interface MypageDao {
 	//회원정보조회
 	public Users selectUserInfo(String user_id);
 
+	//회원정보 업데이트
+	public void updateUser(Users user);
+
 
 }

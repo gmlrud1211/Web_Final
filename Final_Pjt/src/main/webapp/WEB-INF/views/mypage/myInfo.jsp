@@ -14,12 +14,9 @@
 		
 		<link rel="stylesheet" href="/js/bootstrap.js"/>
 		<link rel="stylesheet" href="/js/bootstrap.min.js"/>
-		<link rel="stylesheet" href="/js/bootstrap-datepicker.js"/>
-		<link rel="stylesheet" href="/js/bootstrap-datepicker.kr.js"/>
 		
 		<link rel="stylesheet" href="/css/bootstrap.css"/>
 		<link rel="stylesheet" href="/css/bootstrap.min.css"/>
-		<link rel="stylesheet" href="/css/datepicker3.css"/>
 		
 		<style>
 		   	 /* .help-block 일단 안보이게 설정 */
@@ -38,16 +35,13 @@
 		
 		
 		<script type="text/javascript">
-		
 			$(document).ready(function() {
 				$("#changePw").click(function(){
-					location.href="";	
+					location.href="#";	
 				});
-			});
 			
-			$(document).ready(function() {
 				$("#infoUpdate").click(function(){
-					location.href="/mypage/infoUpdate";	
+					windows.location.href="/mypage/infoUpdate";
 				});
 			});
 			

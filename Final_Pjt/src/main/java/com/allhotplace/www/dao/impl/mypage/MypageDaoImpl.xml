@@ -11,4 +11,13 @@
 		select * from users
 		where user_id = #{user_id}
 	</select>
+	
+	<update id="updateUser" parameterType="com.allhotplace.www.dto.Users">
+		update users 
+		set user_name = #{user_name},
+			user_email = #{user_email},
+			user_phone = #{user_phone},
+			user_birth = #{user_birth}
+		where user_id = #{user_id}
+	</update>
 </mapper>

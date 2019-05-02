@@ -21,8 +21,8 @@ public class MypageController {
 	@Autowired MypageService mypageService;
 
 
-	@RequestMapping(value="/mypage/info", method=RequestMethod.GET)
-	public String MyInfo(HttpSession session, Model model) {
+	@RequestMapping(value="/mypage/myInfo")
+	public void MyInfo(HttpSession session, Model model) {
 		
 		logger.info("마이페이지 - 개인정보조회");
 		
@@ -32,11 +32,10 @@ public class MypageController {
 		Users user= mypageService.viewUserInfo(user_id);
 		model.addAttribute("user",user);
 		
-		return "mypage/myInfo";
 	}
 	
 	@RequestMapping(value="/mypage/infoUpdate", method=RequestMethod.GET)
-	public String InfoUpdateView(HttpSession session, Model model) {
+	public void InfoUpdateView(HttpSession session, Model model) {
 		logger.info("개인정보수정페이지-get");
 		
 		String user_id = (String) session.getAttribute("user_id");
@@ -45,17 +44,15 @@ public class MypageController {
 		Users user= mypageService.viewUserInfo(user_id);
 		model.addAttribute("user",user);
 		
-		
-		return "mypage/infoUpdate";
-		
 	}
 	
+	
 	@RequestMapping(value="/mypage/infoUpdate", method=RequestMethod.POST)
-	public String InfoUpdate(Model model) {
+	public String InfoUpdate(Model model, Users user) {
 		logger.info("개인정보수정페이지-post");
 		
-		
-		
+		mypageService.updateInfo(user);
+				
 		return "redirect:/mypage/info";
 	}
 	

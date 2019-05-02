@@ -19,4 +19,9 @@ public class MypageSeviceImpl implements MypageService{
 		return mypageDao.selectUserInfo(user_id);
 	}
 
+	@Override
+	public void updateInfo(Users user) {
+		mypageDao.updateUser(user);
+	}
+
 }
