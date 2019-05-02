@@ -11,8 +11,6 @@
 
 <link rel="stylesheet" href="/js/bootstrap.js"/>
 <link rel="stylesheet" href="/js/bootstrap.min.js"/>
-<link rel="stylesheet" href="/js/bootstrap-datepicker.js"/>
-<link rel="stylesheet" href="/js/bootstrap-datepicker.kr.js"/>
 
 <link rel="stylesheet" href="/css/bootstrap.css"/>
 <link rel="stylesheet" href="/css/bootstrap.min.css"/>
@@ -57,14 +55,7 @@
 	        }
 	    });
 			
-	    //생년월일 datepicker
-	    $('#datepicker1').datetimepicker({
-			 format: "yyyy-mm-dd",
-			 language: "kr",
-			 todayHighlight : true
-		 });
-		
-		
+	    
 		
 		// 휴대폰번호 자동하이픈
 		function autoHypenPhone(str){
@@ -101,7 +92,7 @@
 			this.value = autoHypenPhone(_val) ;
 		}
 			
-		//이메일
+		//이메일 정규식 표현(___@___.com)
 		$("#user_email").keyup(function(){
 		       var email=$(this).val();
 		       // 이메일 검증할 정규 표현식
@@ -221,11 +212,8 @@
 				
 				<div class="form-group has-feedback">
 					<label class="col-sm-5 col-sm-offset-1 control-label" for="user_birth">생년월일</label>	
-					<div class="input-group-date" id="datepicker1">
-						<input class="form-control" type="text" id="user_birth" name="user_birth" placeholder="Birthday" />
-						<span class="input-group-addon">
-                           <span class="glyphicon glyphicon-calendar"></span>
-                        </span>
+					<div class="col-sm-11">
+						<input class="form-control" type="date" id="user_birth" name="user_birth" placeholder="Birthday" />
 					</div>
 				</div>	
 				<br>

@@ -34,5 +34,30 @@ public class MypageController {
 		
 		return "mypage/myInfo";
 	}
-			
+	
+	@RequestMapping(value="/mypage/infoUpdate", method=RequestMethod.GET)
+	public String InfoUpdateView(HttpSession session, Model model) {
+		logger.info("개인정보수정페이지-get");
+		
+		String user_id = (String) session.getAttribute("user_id");
+		logger.info("접속중인 아이디 : "+user_id);
+		
+		Users user= mypageService.viewUserInfo(user_id);
+		model.addAttribute("user",user);
+		
+		
+		return "mypage/infoUpdate";
+		
+	}
+	
+	@RequestMapping(value="/mypage/infoUpdate", method=RequestMethod.POST)
+	public String InfoUpdate(Model model) {
+		logger.info("개인정보수정페이지-post");
+		
+		
+		
+		return "redirect:/mypage/info";
+	}
+	
+	
 }
