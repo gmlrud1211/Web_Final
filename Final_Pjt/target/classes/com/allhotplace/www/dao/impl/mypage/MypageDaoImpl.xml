@@ -20,4 +20,9 @@
 			user_birth = #{user_birth}
 		where user_id = #{user_id}
 	</update>
+	
+	<select id="selectUserCalendar" resultType="com.allhotplace.www.dto.Calendar">
+		select * from calendar
+		where user_id = #{user_id}
+	</select>
 </mapper>

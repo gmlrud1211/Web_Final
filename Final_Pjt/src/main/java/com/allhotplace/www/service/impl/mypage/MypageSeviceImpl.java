@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.allhotplace.www.dao.face.mypage.MypageDao;
+import com.allhotplace.www.dto.Calendar;
 import com.allhotplace.www.dto.Users;
 import com.allhotplace.www.service.face.mypage.MypageService;
 
@@ -22,6 +23,11 @@ public class MypageSeviceImpl implements MypageService{
 	@Override
 	public void updateInfo(Users user) {
 		mypageDao.updateUser(user);
+	}
+
+	@Override
+	public List<Calendar> viewUserCalendarList(String user_id) {
+		return mypageDao.selectUserCalendar(user_id);
 	}
 
 }

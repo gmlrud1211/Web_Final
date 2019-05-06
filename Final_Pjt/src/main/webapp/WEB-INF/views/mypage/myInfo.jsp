@@ -41,7 +41,7 @@
 				});
 			
 				$("#infoUpdate").click(function(){
-					windows.location.href="/mypage/infoUpdate";
+					$(location).attr("href", "/mypage/infoUpdate");
 				});
 			});
 			

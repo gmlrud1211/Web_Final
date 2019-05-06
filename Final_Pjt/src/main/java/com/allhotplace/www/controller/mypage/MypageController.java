@@ -1,6 +1,8 @@
 package com.allhotplace.www.controller.mypage;
 
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.allhotplace.www.dto.Calendar;
 import com.allhotplace.www.dto.Users;
 import com.allhotplace.www.service.face.mypage.MypageService;
 
@@ -72,5 +75,16 @@ public class MypageController {
 		return "redirect:/mypage/info";
 	}
 	
+	@RequestMapping(value="/mypage/calendar")
+	public void CalendarList(HttpSession session, Model model) {
+		
+		logger.info("마이페이지 - 개인정보조회");
+		
+		String user_id = (String) session.getAttribute("user_id");
+		logger.info("접속중인 아이디 : "+user_id);
+		
+		List<Calendar> calendarList = mypageService.viewUserCalendarList(user_id);
+		model.addAttribute("calendarList", calendarList);
 	
+	}
 }
