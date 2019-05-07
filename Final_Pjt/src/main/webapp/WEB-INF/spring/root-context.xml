@@ -11,6 +11,8 @@
 	    <property name="password" value="admin2019" />
 	 </bean>
 	 
+
+	 
 	 <!-- JDBC Logger -->
    	<bean id="dataSource" class="net.sf.log4jdbc.Log4jdbcProxyDataSource">
      	<constructor-arg ref="dataSourceSpied" />

@@ -26,6 +26,13 @@
 	
 	<dependencies>
 	
+		<!-- fileupload commons -->
+<dependency>
+    <groupId>commons-fileupload</groupId>
+    <artifactId>commons-fileupload</artifactId>
+    <version>1.4</version>
+</dependency>
+	
 		<!--jackson Databind (jackson Mpapper를 포함하고 있음)  -->
 		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
 		<dependency>
@@ -60,7 +67,7 @@
 			<version>5.1.6.RELEASE</version>
 		</dependency>
 	
-		<!-- ojdbc -->
+		<!-- ojdbc6 -->
 		<dependency>
 			<groupId>com.oracle</groupId>
 			<artifactId>ojdbc6</artifactId>
