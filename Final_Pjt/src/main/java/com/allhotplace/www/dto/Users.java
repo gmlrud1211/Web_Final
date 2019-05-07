@@ -10,7 +10,7 @@ public class Users {
 	private String user_name;
 	private String user_email;
 	private String user_phone;
-	private Date user_birth;
+	private String user_birth;
 	private Date user_regdate;
 	
 	public int getUser_no() {
@@ -49,10 +49,10 @@ public class Users {
 	public void setUser_phone(String user_phone) {
 		this.user_phone = user_phone;
 	}
-	public Date getUser_birth() {
+	public String getUser_birth() {
 		return user_birth;
 	}
-	public void setUser_birth(Date user_birth) {
+	public void setUser_birth(String user_birth) {
 		this.user_birth = user_birth;
 	}
 	public Date getUser_regdate() {

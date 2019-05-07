@@ -40,7 +40,8 @@
 				</form>
 			</div>
 		</div>
+		<jsp:include page="../user/kakao.jsp" />
 	</div>
-
+	
 </body>
 </html>

@@ -1,5 +1,7 @@
 package com.allhotplace.www.service.impl.user;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,10 +31,6 @@ public class UserServiceImpl implements UserService{
 	public void join(Users user) {
 		userDao.insertUser(user);
 	}
-	
-	
-	
-	
 	
 
 }
