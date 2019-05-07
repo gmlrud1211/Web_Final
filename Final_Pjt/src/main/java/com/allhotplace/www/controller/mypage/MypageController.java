@@ -86,7 +86,7 @@ public class MypageController {
 	
 	}
 	
-	@RequestMapping(value="/mypage/calAdd", method=RequestMethod.GET)
+	@RequestMapping(value="/mypage/calendar", method=RequestMethod.POST)
 	public String CalendarAdd(HttpSession session, Calendar cal, Model model) {
 		
 		logger.info("마이페이지 - 캘린더 등록");
@@ -94,9 +94,10 @@ public class MypageController {
 		String user_id = (String) session.getAttribute("user_id");
 		logger.info("접속중인 아이디 : "+user_id);
 		
-		//mypageService.addCalendar(user_id, cal);		
+		//전달받은 값으로 calendar등록
+		mypageService.addCalendar(user_id, cal);
 		
-		return  "redirect:/mypage/calendar";
+		return "redirect:/mypage/calendar";
 	
 	}
 	

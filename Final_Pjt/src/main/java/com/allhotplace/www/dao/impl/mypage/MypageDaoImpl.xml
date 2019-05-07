@@ -27,4 +27,9 @@
         				select user_no from users
         				where user_id=#{user_id})
 	</select>
+	
+	<insert id="InsertCalendar" parameterType="com.allhotplace.www.dto.Calendar" >
+		insert into CALENDAR(calendar_no, calendar_title, calendar_scheduleDate, calendar_date, user_no, calendar_yesno)
+		values (CALENDAR_SEQ.NEXTVAL, #{calendar_title}, #{calendar_scheduledate}, SYSDATE, #{user_id}, #{calendar_yesno})
+	</insert>
 </mapper>

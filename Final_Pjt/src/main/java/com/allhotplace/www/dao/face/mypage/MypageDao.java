@@ -16,5 +16,8 @@ public interface MypageDao {
 	//회원별 캘린더 리스트 조회
 	public List<Calendar> selectUserCalendar(String user_id);
 
+	//캘린더 등록
+	public void InsertCalendar(String user_id, Calendar cal);
+
 
 }

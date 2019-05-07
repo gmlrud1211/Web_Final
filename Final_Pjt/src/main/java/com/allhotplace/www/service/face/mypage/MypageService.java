@@ -17,4 +17,7 @@ public interface MypageService {
 	//로그인 한 회원의 캘린더 리스트조회
 	public List<Calendar> viewUserCalendarList(String user_id);
 
+	//캘린더 등록
+	public void addCalendar(String user_id, Calendar cal);
+
 }

@@ -30,4 +30,9 @@ public class MypageSeviceImpl implements MypageService{
 		return mypageDao.selectUserCalendar(user_id);
 	}
 
+	@Override
+	public void addCalendar(String user_id, Calendar cal) {
+		mypageDao.InsertCalendar(user_id, cal);
+	}
+
 }
