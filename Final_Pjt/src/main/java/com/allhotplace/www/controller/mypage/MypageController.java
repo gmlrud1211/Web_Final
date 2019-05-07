@@ -87,7 +87,7 @@ public class MypageController {
 	}
 	
 	@RequestMapping(value="/mypage/calendar", method=RequestMethod.POST)
-	public String CalendarAdd(HttpSession session, Calendar cal, Model model) {
+	public String CalendarAdd(HttpSession session, Calendar cal) {
 		
 		logger.info("마이페이지 - 캘린더 등록");
 		
@@ -100,5 +100,18 @@ public class MypageController {
 		return "redirect:/mypage/calendar";
 	
 	}
+
+	@RequestMapping(value="/mypage/calRemove", method=RequestMethod.GET)
+	public String CalendarRemove(HttpSession session, HttpServletRequest req,
+								@RequestParam("calendar_no") int calendar_no) {
+		
+		logger.info("마이페이지 - 캘린더 삭제");
+		mypageService.removeCalendar(calendar_no);
+		
+		return "redirect:/mypage/calendar";
+	
+	}
+
+	
 	
 }

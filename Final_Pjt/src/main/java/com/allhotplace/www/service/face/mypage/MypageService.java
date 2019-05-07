@@ -20,4 +20,7 @@ public interface MypageService {
 	//캘린더 등록
 	public void addCalendar(String user_id, Calendar cal);
 
+	//선택한 캘린더삭제
+	public void removeCalendar(int calendar_no);
+
 }

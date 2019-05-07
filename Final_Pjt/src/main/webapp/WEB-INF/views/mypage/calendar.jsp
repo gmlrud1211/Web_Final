@@ -91,7 +91,7 @@
 							<td><!-- <a href="#"> -->${cal.calendar_title }</td>
 							<td><fmt:formatDate value="${cal.calendar_scheduleDate }" pattern="yyyy-MM-dd"/></td>
 							<td>${cal.calendar_yesno }</td>
-							<td>삭제</td>
+							<td><a href="/mypage/calRemove?calendar_no=${cal.calendar_no }">삭제</a></td>
 						</tr>
 						</c:forEach>
 					</tbody>
@@ -110,14 +110,14 @@
 		</div>
 		
 		<div class="container con">
+			<br>
+			<h5 style="text-align:center;">캘린더를 만들어보세요~!_!~</h5>
+			<br>
 			<form id="calendarForm" action="/mypage/calendar" method="post">
-				<br>
-				<h5 style="text-align:center;">캘린더를 만들어보세요~!_!~</h5>
-				<br>
 				<div class="form-group">
 					<label class="col-sm-5 col-sm-offset-1 control-label" for="calendar_title">캘린더 제목</label>
 					<div class="col-sm-13">
-						<input class="form-control" type="text" id ="calendar_title" name="calendar_title" placeholder="캘린더 제목을 입력해주세요" />
+						<input class="form-control" type="text" id ="calendar_title" name="calendar_title" placeholder="캘린더 제목을 입력해주세요"/>
 					</div>
 				</div>	
 				<div class="form-group">
@@ -128,13 +128,13 @@
 				</div>
 				<div class="form-group">
 					<label class="col-sm-4 col-sm-offset-1 control-label" for="calendar_yesno">캘린더 공개여부</label>
-					<input type ="radio" name="calendar_yesno" value="YES" checked="checked">YES
+					<input type ="radio" name="calendar_yesno" value="YES" checked="checked">YES &nbsp;
       				<input type ="radio" name="calendar_yesno" value="NO">NO
 				</div>
 				
 				
 				<div class="text-center">
-					<button id="calAdd" class="btn btn-success" style="float:right">등록</button>
+					<button id="calAdd" class="btn btn-success" style="float:right">등록</button> &nbsp;&nbsp;
 					<button type="button" id="calclose" class="btn btn-danger" style="float:right">취소</button>
 				</div>
 			

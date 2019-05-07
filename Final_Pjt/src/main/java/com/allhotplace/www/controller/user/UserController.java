@@ -67,7 +67,7 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/join", method=RequestMethod.POST)
-	public String JoinProc( Users user, Model model, HttpServletRequest req,
+	public String JoinProc( Users user, HttpServletRequest req,
 							@RequestParam("birth_day")String birth_day,
 							@RequestParam("birth_month")String birth_month,
 							@RequestParam("birth_year")String birth_year) {
@@ -83,8 +83,6 @@ public class UserController {
 		
 		//전달받은 정보로 회원가입
 		userService.join(user);
-		
-		
 		
 		return "redirect:/login";
 	}
