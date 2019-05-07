@@ -51,7 +51,6 @@ public class MypageController {
 		
 	}
 	
-	
 	@RequestMapping(value="/mypage/infoUpdate", method=RequestMethod.POST)
 	public String InfoUpdate(Model model, Users user, HttpServletRequest req,
 							@RequestParam("birth_day")String birth_day,
@@ -68,7 +67,6 @@ public class MypageController {
 		
 		user.setUser_birth(user_birth);
 		System.out.println(user_birth);
-			
 		
 		mypageService.updateInfo(user);
 				
@@ -78,7 +76,7 @@ public class MypageController {
 	@RequestMapping(value="/mypage/calendar")
 	public void CalendarList(HttpSession session, Model model) {
 		
-		logger.info("마이페이지 - 개인정보조회");
+		logger.info("마이페이지 - 캘린더 조회");
 		
 		String user_id = (String) session.getAttribute("user_id");
 		logger.info("접속중인 아이디 : "+user_id);
@@ -87,4 +85,19 @@ public class MypageController {
 		model.addAttribute("calendarList", calendarList);
 	
 	}
+	
+	@RequestMapping(value="/mypage/calAdd", method=RequestMethod.GET)
+	public String CalendarAdd(HttpSession session, Calendar cal, Model model) {
+		
+		logger.info("마이페이지 - 캘린더 등록");
+		
+		String user_id = (String) session.getAttribute("user_id");
+		logger.info("접속중인 아이디 : "+user_id);
+		
+		//mypageService.addCalendar(user_id, cal);		
+		
+		return  "redirect:/mypage/calendar";
+	
+	}
+	
 }

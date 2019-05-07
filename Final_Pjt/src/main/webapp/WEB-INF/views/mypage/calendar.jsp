@@ -19,7 +19,15 @@
 		<link rel="stylesheet" href="/css/bootstrap.css"/>
 		<link rel="stylesheet" href="/css/bootstrap.min.css"/>
 		
-
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$("#btnAdd").click(function(){
+					$(location).attr("href", "/mypage/caladd");
+				});
+			});
+			
+		</script>
+		
 	</head>
 
 	<body>
@@ -30,7 +38,7 @@
 				<table class="table table-striped table-hover"> 
 					<thead>
 						<tr>
-							<th style="width: 10%">캘린더 번호</th>
+							<th style="width: 10%">번호</th>
 							<th style="width: 45%">캘린더 제목</th>
 							<th style="width: 20%">캘린더 진행일</th>
 							<th style="width: 15%">공개여부</th>
@@ -53,9 +61,13 @@
 			
 			</form>
 		
+			<div class="text-center">
+				<button id="btnAdd" class="btn btn-success" style="float:right">캘린더 등록</button>
+			</div>
+		
+		
 		</div>
-
-
-	
+		
+		
 	</body>
 </html>
