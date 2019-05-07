@@ -148,7 +148,7 @@
 			<br><br>
 		
 			<div class="col-sm-8 col-sm-offset-4" style="text-align:right;">		
-				<button class="btn btn-primary">정보 수정 완료</button>
+				<button class="btn btn-primary" id="btnChange">정보 수정 완료</button>
 			</div>
 		
 		</form>

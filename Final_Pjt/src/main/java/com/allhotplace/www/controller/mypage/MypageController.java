@@ -26,7 +26,7 @@ public class MypageController {
 	@Autowired MypageService mypageService;
 
 
-	@RequestMapping(value="/mypage/myInfo")
+	@RequestMapping(value="/mypage/myInfo", method=RequestMethod.GET)
 	public void MyInfo(HttpSession session, Model model) {
 		
 		logger.info("마이페이지 - 개인정보조회");
@@ -70,7 +70,7 @@ public class MypageController {
 		
 		mypageService.updateInfo(user);
 				
-		return "redirect:/mypage/info";
+		return "redirect:/mypage/myInfo";
 	}
 	
 	@RequestMapping(value="/mypage/calendar")

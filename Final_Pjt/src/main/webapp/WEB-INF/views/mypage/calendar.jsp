@@ -24,6 +24,8 @@
 				$("#btnAdd").click(function(){
 					$(location).attr("href", "/mypage/caladd");
 				});
+				
+								
 			});
 			
 		</script>
@@ -64,9 +66,35 @@
 			<div class="text-center">
 				<button id="btnAdd" class="btn btn-success" style="float:right">캘린더 등록</button>
 			</div>
-		
-		
+			
 		</div>
+		
+		
+		<div class="container" id="addCal">
+			<form id="addCal">
+				<div class="form-group">
+					<label class="col-sm-5 col-sm-offset-1 control-label" for="calendar_title">캘린더 제목</label>
+					<div class="col-sm-13">
+						<input class="form-control" type="text" id ="calendar_title" name="calendar_title" placeholder="캘린더 제목을 입력해주세요" />
+					</div>
+				</div>	
+				<div class="form-group">
+					<label class="col-sm-5 col-sm-offset-1 control-label" for="calendar_scheduleDate">캘린더 진행날짜</label>
+					<div class="col-sm-13">
+						<input class="form-control" type="date" id ="calendar_scheduleDate" name="calendar_scheduleDate"/>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-3 col-sm-offset-1 control-label" for="calendar_yesno">캘린더 공개여부</label>
+					<input type ="radio" name="calendar_yesno" value="YES" checked="checked">YES
+      				<input type ="radio" name="calendar_yesno" value="NO">NO
+				</div>
+				
+			</form>
+		</div>
+		
+		
+		
 		
 		
 	</body>

@@ -97,13 +97,13 @@
 			</div>
 		
 			<br><br>
-		
-			<div class="col-sm-8 col-sm-offset-4" style="text-align:right;">		
-				<button class="btn btn-success" id="changePw">비밀번호 변경</button>
-				<button class="btn btn-primary" id="infoUpdate">정보 수정</button>
-			</div>
-		
 		</form>
+		
+		<div class="col-sm-8 col-sm-offset-4" style="text-align:right;">		
+			<button class="btn btn-success" id="changePw">비밀번호 변경</button>
+			<button class="btn btn-primary" id="infoUpdate">정보 수정</button>
+		</div>
+		
 		</div>
 	</div>
 	</body>
