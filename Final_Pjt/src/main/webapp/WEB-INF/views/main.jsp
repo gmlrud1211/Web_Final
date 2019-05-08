@@ -298,6 +298,8 @@ div.hashtag {
 
 <jsp:include page="../views/common/footer.jsp" />
 </body>
+<jsp:include page="/WEB-INF/views/chat/chatbot.jsp" />
+
 <script>
 	$(document).ready(function() {
 		/*메인슬라이더 px*/
