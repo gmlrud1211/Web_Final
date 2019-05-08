@@ -22,9 +22,8 @@
 		</repository>
 	</repositories>
 	
-	
-	
 	<dependencies>
+
 		  <!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpcore -->
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
@@ -38,15 +37,15 @@
             <artifactId>httpclient</artifactId>
             <version>4.5.2</version>
         </dependency>
+	
+			<!-- fileupload commons -->
+	    <dependency>
+	        <groupId>commons-fileupload</groupId>
+	        <artifactId>commons-fileupload</artifactId>
+	        <version>1.4</version>
+	    </dependency>
 
-		<!-- fileupload commons -->
-    <dependency>
-        <groupId>commons-fileupload</groupId>
-        <artifactId>commons-fileupload</artifactId>
-        <version>1.4</version>
-    </dependency>
-
-    <!-- JSON PARSER (김수정 추가) -->
+		<!-- JSON PARSER (김수정 추가) -->
 		<dependency>
 			<groupId>com.googlecode.json-simple</groupId>
 			<artifactId>json-simple</artifactId>
@@ -100,8 +99,6 @@
 		    <artifactId>log4jdbc-remix</artifactId>
 		    <version>0.2.7</version>
 		</dependency>
-	
-	
 	
 		<!-- Spring -->
 		<dependency>
