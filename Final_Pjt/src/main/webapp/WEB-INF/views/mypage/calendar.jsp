@@ -4,8 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<!DOCTYPE html>
-<html>
+
 	<head>
 		<meta charset="UTF-8">
 		<title>calendar List</title>
@@ -70,7 +69,10 @@
 	</head>
 
 	<body>
+	<jsp:include page="/WEB-INF/views/common/header.jsp" />
+	
 		<div class="container">
+		<hr style="color:#ccc;">
 			<h3>calendarList</h3>
 			
 			<form id="calendarForm">
@@ -142,4 +144,3 @@
 		</div>
 				
 	</body>
-</html>
