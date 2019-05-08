@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 마이바티스 3 Mapper DOCTYPE -->
+
+<!-- <!DOCTYPE mapper "http://mybatis.org/dtd/mybatis-3-mapper.dtd" PUBLIC 
+	"-//mybatis.org//DTD Mapper 3.0//EN"> -->
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 매퍼 설정 -->
+<mapper namespace="com.allhotplace.www.dao.face.admin.NoticeboardDao">
+
+
+	<!-- 총 게시글 수 반환 -->
+	<select id="selectCntNboard" parameterType="string" resultType="int">
+		SELECT count(*) FROM noticeboard
+		where 1 = 1
+		and notice_title Like '%' || #{search} || '%'
+	</select>
+
+	<!-- 페이징 처리 게시글 반환 -->
+	<select id="selectPaginglist" parameterType="com.allhotplace.www.util.Paging"
+		resultType="com.allhotplace.www.dto.Noticeboard">
+		SELECT * FROM (
+		SELECT rownum rnum, B.* FROM (
+		SELECT * FROM noticeboard
+		WHERE notice_title Like '%' || #{search} || '%'
+		ORDER BY notice_no desc
+		) B
+		ORDER BY rnum
+		) R
+		WHERE rnum BETWEEN #{startNo } AND #{endNo }
+
+	</select>
+
+
+	<select id="selectNboard" parameterType="com.allhotplace.www.dto.Noticeboard" resultType="com.allhotplace.www.dto.Noticeboard">
+		SELECT * FROM noticeboard
+		WHERE notice_no = #{notice_no }
+	</select>
+
+	<update id="countup" parameterType="com.allhotplace.www.dto.Noticeboard">
+		UPDATE noticeboard
+		SET notice_count = notice_count+1
+		WHERE notice_no = #{notice_no }
+
+	</update>
+
+
+	<insert  id="writeNboard" parameterType="com.allhotplace.www.dto.Noticeboard">
+
+		<selectKey keyProperty="notice_no" resultType="int"
+			order="BEFORE">
+			SELECT noticeboard_seq.nextval FROM dual
+		</selectKey>
+
+		INSERT INTO board (notice_no, notice_title, notice_content, notice_date, notice_count)
+		VALUES ( #{notice_no } ,#{notice_title }, #{notice_content }, sysdate, 0  )
+
+	</insert>
+
+
+	<update id="updateNboard" parameterType="com.allhotplace.www.dto.Noticeboard">
+		update noticeboard
+		set notice_title = #{notice_title }, notice_content = #{notice_content }
+		WHERE notice_no = #{notice_no }
+	</update>
+
+	<delete id="deleteNboard" parameterType="com.allhotplace.www.dto.Noticeboard">
+		delete from noticeboard
+		where notice_no = #{notice_no }
+	</delete>
+
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
