@@ -46,6 +46,7 @@
 		</c:if>
 	</div>
 	
+<!-- 챗봇기능 jsp include -->
 <jsp:include page="/WEB-INF/views/chat/chatbot.jsp"/>
 
 </body>
