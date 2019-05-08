@@ -33,13 +33,13 @@ public class UserController {
 		model.addAttribute("user_id", user_id);
 		model.addAttribute("user_pw",user_pw);
 		
+		
 		int login = userService.login(model);
 		
 		if(login == 1 ) {//로그인성공
 			session.setAttribute("login", true);
 			session.setAttribute("user_id", user_id);
 			logger.info("로그인 성공");
-			
 			return "redirect:/main";
 		}
 		
