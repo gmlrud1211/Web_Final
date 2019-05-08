@@ -20,6 +20,7 @@
 		<link rel="stylesheet" href="/css/bootstrap.min.css"/>
 		
 		<script type="text/javascript">
+		
 			$(document).ready(function() {
 				$("#btnAdd").click(function(){
 					$(".con").fadeIn();

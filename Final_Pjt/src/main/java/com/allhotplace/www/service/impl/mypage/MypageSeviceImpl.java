@@ -1,5 +1,6 @@
 package com.allhotplace.www.service.impl.mypage;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +34,12 @@ public class MypageSeviceImpl implements MypageService{
 	@Override
 	public void addCalendar(String user_id, Calendar cal) {
 		int user_no = mypageDao.selectUserNo(user_id);
-		mypageDao.insertCalendar(user_no, cal);
+		
+		HashMap map = new HashMap();
+		map.put("user_no", user_no);
+		map.put("cal", cal);
+		
+		mypageDao.insertCalendar(map);
 	}
 
 	@Override
