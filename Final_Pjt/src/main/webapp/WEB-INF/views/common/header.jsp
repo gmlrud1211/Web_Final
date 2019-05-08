@@ -23,7 +23,7 @@ a:hover{color:blue; text-decoration:underline;}
 	<!-- 로그인 안한 상태 -->
 	<c:if test="${ not login }">
 	<ul>
-		<li><a href="/join"><button>회원가입</button></a></li>
+		<li><a href="/join"><button>회원가입&nbsp;&nbsp;&nbsp;&nbsp;</button></a></li>
 		<li><a href="/login"><button>로그인</button></a></li>
 	</ul>
 		
@@ -32,8 +32,8 @@ a:hover{color:blue; text-decoration:underline;}
 	<!-- 로그인 한 상태 -->
 	<c:if test="${ login }">
 		<ul>
-			<li><a href="/logout"><button>로그아웃</button></a></li>
-			<li>${user_id}님 환영합니다</li>
+			<li>${user_id}님 환영합니다&nbsp;&nbsp;&nbsp;&nbsp;</li>
+			<li><a href="/logout"><button>로그아웃</bu	tton></a></li>
 		</ul>
 	</c:if>
 	<ul class="righttop">

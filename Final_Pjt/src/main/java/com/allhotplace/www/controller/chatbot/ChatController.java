@@ -25,8 +25,7 @@ public class ChatController {
 	@Autowired ChatBotService chatBotService;
 	@Autowired ChatBotDao chatBotDao;
 	
-	private static final Logger logger
-	= LoggerFactory.getLogger(ChatController.class);
+	private static final Logger logger = LoggerFactory.getLogger(ChatController.class);
 	
 
 	//채팅ajax
