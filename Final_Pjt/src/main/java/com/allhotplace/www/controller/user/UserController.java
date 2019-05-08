@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -23,17 +24,38 @@ public class UserController {
 		
 		return "/user/login";
 	}
+	
 	@RequestMapping(value="/login", method=RequestMethod.POST)
-	public String LoginProc() {
+	public String LoginProc(HttpSession session, 
+							String user_id, String user_pw, 
+							Model model) {
 		
-		return "/user/login";
+		model.addAttribute("user_id", user_id);
+		model.addAttribute("user_pw",user_pw);
+		
+		int login = userService.login(model);
+		System.out.println(login);
+		
+		if(login == 1 ) {//로그인성공
+			session.setAttribute("login", true);
+			session.setAttribute("user_id", user_id);
+			logger.info("로그인 성공");
+			
+			return "redirect:/main";
+		}
+		
+		else { //로그인 실패 
+			logger.info("로그인 실패");
+			
+			return "redirect:/main";
+		}
 	}
 
-	@RequestMapping(value="/member/logout", method=RequestMethod.GET)
+	@RequestMapping(value="/logout", method=RequestMethod.GET)
 	public String logout(HttpSession session) {
-		//userService.logout(session);
+		userService.logout(session);
 		
-		return "redirect:/member/main";
+		return "redirect:/main";
 	}
 	
 	
