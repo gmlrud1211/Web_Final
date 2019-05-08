@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 마이바티스 3 Mapper DOCTYPE -->
+
+<!-- <!DOCTYPE mapper "http://mybatis.org/dtd/mybatis-3-mapper.dtd" PUBLIC 
+	"-//mybatis.org//DTD Mapper 3.0//EN"> -->
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 매퍼 설정 -->
+<mapper namespace="com.allhotplace.www.dao.face.admin.ChatbotDao">
+
+	<!-- 챗봇 리스트 조회 -->
+	<select id="selectXchat"
+		resultType="com.allhotplace.www.dto.XChatbot">
+		select * from xchatbot
+		order by xchat_no
+	</select>
+
+	<select id="selectMchat"
+		resultType="com.allhotplace.www.dto.MChatbot">
+		select * from mchatbot
+		order by mchat_no
+	</select>
+
+	<select id="selectSchat"
+		resultType="com.allhotplace.www.dto.SChatbot">
+		select * from schatbot
+		order by schat_no
+	</select>
+	
+	<select id="viewSchat"
+		parameterType="com.allhotplace.www.dto.SChatbot" resultType="com.allhotplace.www.dto.SChatbot">
+		select * from schatbot
+		WHERE sChat_no = #{sChat_no }
+	</select>
+
+	<insert  id="InsertSchat" parameterType="com.allhotplace.www.dto.SChatbot">
+
+<!-- selectKey keyProperty="notice_no" resultType="int" --> 
+<!-- 		order="BEFORE"> --> 
+<!-- 			SELECT noticeboard_seq.nextval FROM dual --> 
+<!-- 		</selectKey> --> 
+
+		INSERT INTO schatbot (xchat_no, mchat_no, schat_no, schat_name, schat_answer)
+		VALUES ( #{xChat_no } ,#{mChat_no }, #{sChat_no }, #{sChat_name}, #{sChat_answer} )
+
+	</insert>
+
+
+	<update id="updateSchat" parameterType="com.allhotplace.www.dto.SChatbot">
+		update schatbot
+		set schat_name = #{sChat_name }, schat_answer = #{sChat_answer }
+		WHERE schat_no = #{sChat_no }
+	</update>
+
+	<delete id="delectSchat" parameterType="com.allhotplace.www.dto.SChatbot">
+		delete from schatbot
+		where sChat_no = #{sChat_no }
+	</delete>
+
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
