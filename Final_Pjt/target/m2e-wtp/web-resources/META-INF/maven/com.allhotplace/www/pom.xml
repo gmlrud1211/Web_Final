@@ -25,14 +25,23 @@
 	
 	
 	<dependencies>
-	
+
 		<!-- fileupload commons -->
-<dependency>
-    <groupId>commons-fileupload</groupId>
-    <artifactId>commons-fileupload</artifactId>
-    <version>1.4</version>
-</dependency>
+    <dependency>
+        <groupId>commons-fileupload</groupId>
+        <artifactId>commons-fileupload</artifactId>
+        <version>1.4</version>
+    </dependency>
 	
+
+		<!-- JSON PARSER (김수정 추가) -->
+		<dependency>
+			<groupId>com.googlecode.json-simple</groupId>
+			<artifactId>json-simple</artifactId>
+			<version>1.1</version>
+		</dependency>
+
+
 		<!--jackson Databind (jackson Mpapper를 포함하고 있음)  -->
 		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
 		<dependency>
@@ -41,7 +50,6 @@
 		    <version>2.9.8</version>
 		</dependency>
 					
-	
 	
 		<!--스프링 마이바티스 -->
 		<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis-spring -->
