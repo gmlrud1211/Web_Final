@@ -42,4 +42,6 @@
 		delete from calendar
 		where calendar_no = #{calendar_no}
 	</delete>
+	
+	
 </mapper>

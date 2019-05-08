@@ -111,6 +111,21 @@ public class MypageController {
 		return "redirect:/mypage/calendar";
 	
 	}
+	
+	
+	@RequestMapping(value="/mypage/calUpdate", method=RequestMethod.POST)
+	public String CalendarUpdate(HttpSession session, Calendar cal,
+								HttpServletRequest req,
+								@RequestParam("calendar_no") int calendar_no) {
+		
+		logger.info("마이페이지 - 캘린더 수정");
+		
+		//mypageService.updateCalendar(cal);
+		
+		return "redirect:/mypage/calendar";
+	
+	}
+	
 
 	
 	
