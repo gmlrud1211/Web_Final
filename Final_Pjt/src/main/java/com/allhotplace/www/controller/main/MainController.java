@@ -17,24 +17,24 @@ import com.allhotplace.www.dto.Noticeboard;
 import com.allhotplace.www.service.face.main.MainService;
 import com.allhotplace.www.util.Paging;
 
+import dto.board.ban.Ban;
+import util.Serachword;
+
 
 @Controller
 public class MainController {
 	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
 	@Autowired MainService mainservice;
 	
-	@RequestMapping(value="/main", method=RequestMethod.GET)
+	@RequestMapping("/main")
 	public String Main() {
 		
 		return "/main";
 		
 	}
 
-	@RequestMapping(value="/mainsearch", method=RequestMethod.GET)
-	public void Mainsearch() { 
-		
+	@RequestMapping("/mainsearch")
+	public void Mainsearch(@RequestParam(defaultValue="title")) { 
 
-	   }
-	
-
+	}
 }
