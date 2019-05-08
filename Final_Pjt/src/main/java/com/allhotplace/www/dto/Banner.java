@@ -8,6 +8,15 @@ public class Banner {
 	private int file_no;
 	private Date banner_date;
 	
+	private String file_storedName;
+	
+	
+	public String getFile_storedName() {
+		return file_storedName;
+	}
+	public void setFile_storedName(String file_storedName) {
+		this.file_storedName = file_storedName;
+	}
 	public int getBanner_no() {
 		return banner_no;
 	}
@@ -35,6 +44,6 @@ public class Banner {
 	@Override
 	public String toString() {
 		return "Banner [banner_no=" + banner_no + ", banner_name=" + banner_name + ", file_no=" + file_no
-				+ ", banner_date=" + banner_date + "]";
+				+ ", banner_date=" + banner_date + ", file_storedName=" + file_storedName + "]";
 	}
 }

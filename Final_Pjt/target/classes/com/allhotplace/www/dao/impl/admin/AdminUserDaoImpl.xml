@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- 마이바티스 3 Mapper DOCTYPE -->
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.allhotplace.www.dao.face.admin.AdminUserDao">
+
+	<!-- 페이징 처리 배너 반환 -->
+	<select id="selectPaginglist"
+		parameterType="com.allhotplace.www.util.Paging"
+		resultType="com.allhotplace.www.dto.Users">
+
+		SELECT * FROM (
+		SELECT rownum rnum, B.* 
+<!-- 		, f.file_storedname -->
+		FROM (
+		SELECT * FROM users
+		ORDER BY user_no desc
+		) B
+
+<!-- 		INNER JOIN -->
+<!-- 		fileupload f -->
+<!-- 		ON B.file_no = f.file_no -->
+
+		ORDER BY rnum
+		) R
+		WHERE rnum BETWEEN
+		#{startNo } AND #{endNo }
+
+	</select>
+
+	<!-- 총 회원 수 반환 -->
+	<select id="selectCntUser" resultType="int">
+		SELECT count(*) FROM Users
+	</select>
+
+	
+	<!-- 회원 조회 -->
+    <select id="selectUser" parameterType="com.allhotplace.www.dto.Users" resultType="com.allhotplace.www.dto.Users">
+		SELECT * FROM users
+		WHERE user_no = #{user_no }
+	</select>
+
+
+     <!-- 회원 삭제 -->
+	<delete id="deleteUser" parameterType="com.allhotplace.www.dto.Users">
+		delete from users
+		where user_no = #{user_no }
+	</delete>
+
+
+</mapper>
