@@ -52,6 +52,12 @@ public class UserController {
 			return "redirect:/main";
 		}
 	}
+	
+	@RequestMapping(value="/kakaologin", method=RequestMethod.GET)
+	public void KakaoLogin() {
+		
+		//return "/user/login";
+	}
 
 	@RequestMapping(value="/logout", method=RequestMethod.GET)
 	public String logout(HttpSession session) {

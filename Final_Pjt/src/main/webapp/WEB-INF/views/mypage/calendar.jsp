@@ -20,6 +20,7 @@
 		<link rel="stylesheet" href="/css/bootstrap.min.css"/>
 		
 		<script type="text/javascript">
+		
 			$(document).ready(function() {
 				$("#btnAdd").click(function(){
 					$(".con").fadeIn();
@@ -105,11 +106,10 @@
 			
 		</div>
 		
-		<div class="addCalbg">
-			
+		<!-- 캘린더 등록하는 form 띄우는 창 -->
+		<div class="addCalbg"> 
 		</div>
-		
-		<div class="container con">
+		<div class="container con" >
 			<br>
 			<h5 style="text-align:center;">캘린더를 만들어보세요~!_!~</h5>
 			<br>
@@ -140,6 +140,6 @@
 			
 			</form>
 		</div>
-		
+				
 	</body>
 </html>

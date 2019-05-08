@@ -1,6 +1,7 @@
 package com.allhotplace.www.controller.mypage;
 
 
+import java.sql.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -73,7 +74,7 @@ public class MypageController {
 		return "redirect:/mypage/myInfo";
 	}
 	
-	@RequestMapping(value="/mypage/calendar")
+	@RequestMapping(value="/mypage/calendar", method=RequestMethod.GET)
 	public void CalendarList(HttpSession session, Model model) {
 		
 		logger.info("마이페이지 - 캘린더 조회");
@@ -87,14 +88,13 @@ public class MypageController {
 	}
 	
 	@RequestMapping(value="/mypage/calendar", method=RequestMethod.POST)
-	public String CalendarAdd(HttpSession session, Calendar cal) {
+	public String CalendarAdd(HttpSession session, Calendar cal	) {
 		
 		logger.info("마이페이지 - 캘린더 등록");
 		
 		String user_id = (String) session.getAttribute("user_id");
-		logger.info("접속중인 아이디 : "+user_id);
 		
-		//전달받은 값으로 calendar등록
+		//calendar등록
 		mypageService.addCalendar(user_id, cal);
 		
 		return "redirect:/mypage/calendar";
@@ -111,6 +111,21 @@ public class MypageController {
 		return "redirect:/mypage/calendar";
 	
 	}
+	
+	
+	@RequestMapping(value="/mypage/calUpdate", method=RequestMethod.POST)
+	public String CalendarUpdate(HttpSession session, Calendar cal,
+								HttpServletRequest req,
+								@RequestParam("calendar_no") int calendar_no) {
+		
+		logger.info("마이페이지 - 캘린더 수정");
+		
+		//mypageService.updateCalendar(cal);
+		
+		return "redirect:/mypage/calendar";
+	
+	}
+	
 
 	
 	

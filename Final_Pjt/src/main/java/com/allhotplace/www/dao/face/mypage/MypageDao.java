@@ -1,5 +1,6 @@
 package com.allhotplace.www.dao.face.mypage;
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.allhotplace.www.dto.Calendar;
@@ -20,7 +21,7 @@ public interface MypageDao {
 	public int selectUserNo(String user_id);
 	
 	//캘린더 등록
-	public void insertCalendar(int user_no,Calendar cal);
+	public void insertCalendar(HashMap map);
 
 	//캘린더 삭제
 	public void deleteCalendar(int calendar_no);
