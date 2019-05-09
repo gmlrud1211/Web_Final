@@ -85,7 +85,8 @@ a:hover{color:#827ffe;}
 					</a>
 				</div>
 			</div>
-			
+			   
+			   
 			<div class="bar" >
 				<div class="searchwrap">
 					<a href="#">
