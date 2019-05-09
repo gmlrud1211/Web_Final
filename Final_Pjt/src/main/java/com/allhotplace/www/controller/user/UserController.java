@@ -1,6 +1,9 @@
 package com.allhotplace.www.controller.user;
 
+import java.io.IOException;
+
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -14,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.allhotplace.www.dto.Users;
 import com.allhotplace.www.service.face.user.UserService;
+import com.fasterxml.jackson.databind.JsonNode;
 
 
 @Controller
@@ -53,10 +57,25 @@ public class UserController {
 		}
 	}
 	
-	@RequestMapping(value="/kakaologin", method=RequestMethod.GET)
-	public void KakaoLogin() {
+	@RequestMapping(value="/kakaologin", produces = "application/json",method = {RequestMethod.GET, RequestMethod.POST})
+	public String KakaoLogin(@RequestParam("code") String code , 
+							HttpServletRequest request, HttpServletResponse response, 
+							HttpSession session,
+							Users user) throws IOException{
 		
-		//return "/user/login";
+		  JsonNode token = KakaoLogin.getAccessToken(code);
+
+		  JsonNode profile = KakaoLogin.getKakaoUserInfo(token.path("access_token").toString());
+		  System.out.println(profile);
+		  Users vo = KakaoLogin.changeData(profile);
+		  vo.setUser_id("k"+vo.getUser_id());
+
+		  System.out.println(session);
+		  session.setAttribute("login", true);
+		  System.out.println(vo.toString());
+		  session.setAttribute("user_id", vo.getUser_name());
+			
+		return "/user/kakaoLogin";
 	}
 
 	@RequestMapping(value="/logout", method=RequestMethod.GET)
