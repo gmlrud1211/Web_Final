@@ -109,7 +109,7 @@ public class SearchController {
       JSONArray rowData = new JSONArray();
       List placeList = new ArrayList();
    
-      try {
+      try { 
          String urlstr = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList?ServiceKey="
                + APP_KEY   // 인증키 
                + "&_type=json&"
