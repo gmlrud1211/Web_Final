@@ -320,7 +320,7 @@
             </tbody>
          </table>
          </div>
-         
+          
          <div id="btnArea" style="text-align:center;">
             <button type="button" id="btnSearch" class="btn btn-primary btn-mm">검색하기</button>
             <button type="button" id="btnClear" class="btn btn-warning btn-mm">필터 초기화</button>
