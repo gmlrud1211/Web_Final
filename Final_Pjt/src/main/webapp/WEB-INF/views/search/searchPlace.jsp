@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,15 +17,15 @@
 	function typeChange(obj) {
 		
 		$("#category1").empty();
-		$("#category1").append("<option value='default' selected='selected'>대분류</option>")
+		$("#category1").append("<option value='' selected='selected'>대분류</option>")
 		
 		
 		$("#category2").empty();
-		$("#category2").append("<option value='default' selected='selected'>중분류</option>")
+		$("#category2").append("<option value='' selected='selected'>중분류</option>")
 		
 		
 		$("#category3").empty();
-		$("#category3").append("<option value='default' selected='selected'>소분류</option>")
+		$("#category3").append("<option value='' selected='selected'>소분류</option>")
 		
 		var selectedType = $("#contentType option:selected").val();
 		
@@ -50,11 +51,11 @@
 	function cate1Change(obj) {
 		
 		$("#category2").empty();
-		$("#category2").append("<option value='default' selected='selected'>중분류</option>")
+		$("#category2").append("<option value='' selected='selected'>중분류</option>")
 		
 		
 		$("#category3").empty();
-		$("#category3").append("<option value='default' selected='selected'>중분류</option>")
+		$("#category3").append("<option value='' selected='selected'>소분류</option>")
 		
 		var selectedType = $("#contentType option:selected").val();
 		var cateNum = $("#category1 option:selected").val();
@@ -82,7 +83,7 @@
 	function cate2Change(obj) {
 		
 		$("#category3").empty();
-		$("#category3").append("<option value='default' selected='selected'>소분류</option>")
+		$("#category3").append("<option value='' selected='selected'>소분류</option>")
 		
 		var cateNum = $("#category1 option:selected").val();
 		var subCateNum = $("#category2 option:selected").val();
@@ -110,7 +111,7 @@
 	function areaChange(obj) {
 		
 		$("#Municipality").empty();
-		$("#Municipality").append("<option value='default' selected='selected'>시군구선택</option>")
+		$("#Municipality").append("<option value='' selected='selected'>시군구선택</option>")
 		
 		var areaSelect = $("#areaSelect option:selected").val();
 		
@@ -136,23 +137,101 @@
 		
 		$("#btnSearch").click(function() {
 			
-			/* 
-				폼 전송시 select box value 에 default 값 없는지 확인하고 전송하기!!!
-			*/
+			var contentType = $("#contentType option:selected").val();
+			var category1 = $("#category1 option:selected").val();
+			var category2 = $("#category2 option:selected").val();
+			var category3 = $("#category3 option:selected").val();
+			var areaSelect = $("#areaSelect option:selected").val();
+			var municipality = $("#Municipality option:selected").val();
 			
-			$("form").submit();
+			$.ajax({
+				type: "post"
+				, url: "/searchPlaceResult"
+				, data: {
+					"contentType":contentType, 
+					"category1":category1, 
+					"category2":category2, 
+					"category3":category3, 
+					"areaSelect":areaSelect, 
+					"municipality":municipality, 
+					}
+				, dataType: "json"
+				, success: function(placeList){
+					
+					console.log('ajax success!');
+					console.log("placeList : " + placeList);
+					
+					
+					$(placeList).each(function(i){
+						$("#resultPlace").append("<br><br>");
+						
+						var place = JSON.parse(this);
+						//console.log(place.title);
+/* http://api.visitkorea.or.kr/static/images/common/noImage.gif */
+
+
+
+						console.log("========================");
+						console.log(place.hasOwnProperty("place.firstimage"));
+						console.log("========================");
+						
+						if( (place.firstimage) == "undefined"){
+							// 이미지를 표시할 수 없습니다  --> 이미지로 대체
+							
+							
+							
+							place.firstimage = "http://api.visitkorea.or.kr/static/images/common/noImage.gif";
+						} else if (place.title == "undefined" || place.title == null) {
+							place.title = "";
+						} else if (place.contentid == "undefined" || place.contentid == null ) {
+							place.title = "";
+						} else if (place.addr1 == "undefined" || place.addr1 == null ) {
+							place.addr1 = "";
+						} else if (place.addr2 == "undefined" || place.addr2 == null ) {
+							place.addr2 = "";
+						}
+
+
+						var innerHtml = "";
+						
+						innerHtml += "<ul class='list_thumType flnon'>"; 
+						innerHtml += 	"<li>";
+						innerHtml += "	<div>";
+						innerHtml += "		<div class='div1'>";
+						innerHtml += "			<img src='" + place.firstimage + "' alt='대표이미지' style='width:300px; height:200px'>";
+						innerHtml += "			<hr>";
+						innerHtml += "		</div>";
+						innerHtml += "	</div>";
+						innerHtml += "	<div class='area_txt'>";
+						innerHtml += "		<div class='" + place.contentid + "'>";
+						innerHtml += "			<a href='" + place.contentid +  "'>" + place.title + "</a>";
+						innerHtml += "		</div>";
+						innerHtml += "		<div class='addr'>";
+						innerHtml += "			<p> " + place.addr1 + place.addr2 + " </p>";
+						innerHtml += "		</div>";
+						innerHtml += "	</div>";
+						innerHtml += "</li>";
+						innerHtml += "</ul>";
+						
+						$("#resultPlace").append(innerHtml);
+					});
+					
+				}
+				, error: function(e) {
+					console.log('error!');
+					console.log(e);
+				}
+			});
 		});
 		
 		$("#category1").click(function() {
 			
 			var content_num = $("#contentType option:selected").val();
-			if( content_num == "default" ){
+			if( content_num == "" ){
 				alert("관광지타입을 먼저 선택해주세요");
 		    	$("#contentType").focus();
 			}
 		});
-		
-		
 	});
 	
 </script>
@@ -172,7 +251,7 @@
 <body>
 	<div id="filter" style="padding: 40px 300px 0px 300px">
 	<h2 style="font-weight: 700; line-height: 2.5;">지역별 관광정보</h2>
-		<form name="searchPlace" id="search" method="post" action="/searchPlace">
+		<form name="searchPlace" id="search" method="get" action="/searchPlace">
 			<div class="form-group">
 			<table class="table">
 				<tbody>
@@ -180,8 +259,8 @@
 						<th scope="row">관광타입</th>
 						<td>
 							<div class="col-xs-4">
-							<select id="contentType" class="form-control" onchange="typeChange(this)">
-									<option value="default" selected="selected">타입선택</option>
+							<select id="contentType" name="contentType" class="form-control" onchange="typeChange(this)">
+									<option value="" selected="selected">타입선택</option>
 								<c:forEach var="contentType" items="${contentType}" varStatus="i">
 									<option value="${contentType.CONTENT_TYPE}">${contentType.CONTENT_TYPE_NAME}</option>
 								</c:forEach>
@@ -195,17 +274,17 @@
 						<td >
 							<div class="col-sm-2 col-sm-offset-3 control-div" style="width: 190px; margin-left:0px">
 								<select class="form-control" name="category1" id="category1" onchange="cate1Change(this)">
-									<option value="default" selected="selected">대분류</option>
+									<option value="" selected="selected">대분류</option>
 								</select>
 							</div>
 							<div class="col-sm-2 col-sm-offset-3 control-div" style="width: 190px; margin-left:0px">
 								<select class="form-control" name="category2" id="category2" onchange="cate2Change(this)">
-									<option value="default" selected="selected">중분류</option>
+									<option value="" selected="selected">중분류</option>
 								</select>
 							</div>
 							<div class="col-sm-2 col-sm-offset-3 control-div" style="width: 190px; margin-left:0px">
 								<select class="form-control" name="category3" id="category3">
-									<option value="default" selected="selected">소분류</option>
+									<option value="" selected="selected">소분류</option>
 								</select>
 							</div>
 						</td>				
@@ -215,8 +294,8 @@
 						<th scope="row">지역</th>
 						<td>
 							<div class="col-sm-2 col-sm-offset-3 control-div" style="width: 190px; margin-left:0px">
-								<select id="areaSelect" class="form-control" onchange="areaChange(this)">
-										<option value="default" selected="selected">지역선택</option>
+								<select id="areaSelect" name="areaSelect" class="form-control" onchange="areaChange(this)">
+										<option value="" selected="selected">지역선택</option>
 									<c:forEach var="areaList" items="${areaList}" varStatus="i">
 										<option value="${areaList.AREA1}">${areaList.AREA1_NAME}</option>
 									</c:forEach>
@@ -224,7 +303,7 @@
 							</div>
 							<div class="col-sm-2 col-sm-offset-3 control-div" style="width: 190px; margin-left:0px">
 								<select class="form-control" name="Municipality" id="Municipality">
-									<option value="default" selected="selected">시군구선택</option>
+									<option value="" selected="selected">시군구선택</option>
 								</select>
 							</div>
 						</td>
@@ -240,38 +319,13 @@
 		</form>
 	</div>
 	
-	${result }
-	
-	<br><br><br><br><br><br>
-	
-	${rowData}
-	
 	<div id="content" style="padding: 40px 300px 0px 300px">
 		<div class="box_leftType1">
 			<div class="total_check">
 				<strong>총<span>1,730</span>건 </strong>
 			</div>
-			<c:forEach items="${rowData }" var="result">
-			<ul class="list_thumType flnon">
-				<li>
-					<div>
-						<div class="div1">
-							<img src="${rowData.firstimage}" alt="대표이미지" style="width:300px; height:200px">
-							<hr>
-						</div>
-					</div>
-					<div class="area_txt">
-						<div class="title">
-							<a href="">${rowData.title}</a>
-						</div>
-						<div class="addr">
-							<p>${rowData.addr1} ${rowData.addr2}</p>
-						</div>
-						
-					</div>
-				</li>
-			</ul>
-			</c:forEach>
+			<div id="resultPlace">
+			</div>
 		</div>
 	</div>
 </body>

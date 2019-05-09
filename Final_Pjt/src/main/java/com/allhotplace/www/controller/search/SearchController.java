@@ -35,20 +35,17 @@ public class SearchController {
 	@RequestMapping(value="/searchPlace", method=RequestMethod.GET)
 	public String searchPlaceView(Model model) {
 		
-		logger.info("Filter Page View");
+		logger.info("im here!");
+		List contentTypeLis = new ArrayList();
+		contentTypeLis = searchService.getContentType();
 		
-		// 관광타입 DB 조회하여 전달
-		List contentType = new ArrayList();
-		contentType = searchService.getContentType();
-		
-		model.addAttribute("contentType", contentType);
+		model.addAttribute("contentType", contentTypeLis);
 		
 		// 지역 DB 조회하여 전달
 		List areaList = new ArrayList();
 		areaList = searchService.getAreaList();
 		
 		model.addAttribute("areaList", areaList);
-		
 		return "search/searchPlace";
 	}
 	
@@ -100,67 +97,51 @@ public class SearchController {
 		return Municipality;
 	}
 	
-	@RequestMapping(value="/searchPlace", method=RequestMethod.POST)
-	public String searchPlace(
-			Model model
-			// String contentType, String category1, String category2, String category3, String areaSelect, String Municipality
+	// 검색 결과 조회 
+	@RequestMapping(value="/searchPlaceResult")
+	@ResponseBody
+	public List searchPlace(
+			Model model, String contentType, String category1, String category2, String category3, String areaSelect, String municipality
 			) {
-		
-/*		System.out.println("searchPlace!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		
 		System.out.println("contentType : " + contentType);
 		System.out.println("category1 : " + category1);
 		System.out.println("category2 : " + category2);
 		System.out.println("category3 : " + category3);
-		System.out.println("Municipality : " + Municipality);
 		System.out.println("areaSelect : " + areaSelect);
-		System.out.println("Municipality : " + Municipality);*/
+		System.out.println("municipality : " + municipality);
 		
-		logger.info("FORM SUBMIT OK");
-
 		String result = "";
 		BufferedReader br = null;
-		
-		/*  API 테스트 URL
-			http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList
-			?ServiceKey=APP_KEY
-			&_type=json&contentTypeId=12
-			&areaCode=1
-			&sigunguCode=1
-			&cat1=A02
-			&cat2=A0203
-			&cat3=A02030400
-			&listYN=Y
-			&MobileOS=ETC
-			&MobileApp=TourAPI3.0_Guide
-			&arrange=A
-			&numOfRows=12
-			&pageNo=1
-		*/
-		
+		JSONArray rowData = new JSONArray();
+		List placeList = new ArrayList();
+	
 		try {
 			String urlstr = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList?ServiceKey="
 					+ APP_KEY	// 인증키 
 					+ "&_type=json&"
 					+ "contentTypeId="
-					+ "12" // 관광지 타입코드
+					+ contentType // 관광지 타입코드
 					+ "&areaCode="
-					+ "1" // 지역 도시코드
+					+ areaSelect // 지역 도시코드
 					+ "&sigunguCode="
-					+ "1"	// 지역 시군구 코드
+					+ municipality	// 지역 시군구 코드
 					+ "&cat1="
-					+ "A02"	// 서비스 대분류 코드
+					+ category1	// 서비스 대분류 코드
 					+ "&cat2="
-					+ "A0203"	//서비스 중분류 코드
+					+ category2	//서비스 중분류 코드
 					+ "&cat3="
-					+ "A02030400"	// 서비스 소분류 코드 
+					+ category3	// 서비스 소분류 코드 
 					+ "&listYN=Y"	// 목록 구분 :: 목록 구분 (Y=목록, N=개수)
 					+ "&MobileOS=ETC"	// OS 구분 :: IOS (아이폰), AND (안드로이드), WIN (윈도우폰), ETC
 					+ "&MobileApp=KH_Hotplace"	// 서비스 명
-					+ "&arrange=A"	// 정렬구분 (A=제목순, B=조회순, C=수정일순, D=생성일순) 대표이미지가 반드시 있는 정렬 (O=제목순, P=조회순, Q=수정일순, R=생성일순)
-					+ "&numOfRows=15"	// 한 페이지 결과 수 
+					+ "&arrange=C"	// 정렬구분 (A=제목순, B=조회순, C=수정일순, D=생성일순) 대표이미지가 반드시 있는 정렬 (O=제목순, P=조회순, Q=수정일순, R=생성일순)
+					+ "&numOfRows=30"	// 한 페이지 결과 수 
 					+ "&pageNo=1";		// 현재페이지번호
 			
+			
+			System.out.println("urlstr ::: " + urlstr );
+
 			URL url = new URL(urlstr);
 			HttpURLConnection urlconnection = (HttpURLConnection) url.openConnection();
 			urlconnection.setRequestMethod("GET");
@@ -178,23 +159,25 @@ public class SearchController {
 			JSONObject jsonBody = (JSONObject)jsonResonse.get("body");
 			JSONObject jsonItems = (JSONObject)jsonBody.get("items");
 			JSONArray jsonItemArray = (JSONArray)jsonItems.get("item");
-			
+
 			String resultCode = (String) jsonHeader.get("resultCode");
-			
+			System.out.println("resultCode : " +resultCode);
 			// API 수신상태 정상(0000) 인 경우에 데이터 가져오기 
 			
 			if ("0000".equals(resultCode)) {
 				for(int i=0; i<jsonItemArray.size(); i++) {
-					JSONObject rowData = (JSONObject)jsonItemArray.get(i);
-					model.addAttribute("rowData", rowData);
+					JSONObject obj = (JSONObject)jsonItemArray.get(i);
+					System.out.println("obj  : " + obj); // 여기까지 옴
+					String str = String.valueOf(obj);
+					placeList.add(str);
+					System.out.println("placeList 11 : " + placeList);
 				}
 			}
 			
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
-		model.addAttribute("result", result);
-		return "search/searchPlace";
+		System.out.println("placeList 22 : " + placeList);
+		return placeList;
 	}
-	
 }
