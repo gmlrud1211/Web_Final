@@ -67,6 +67,7 @@ public class UserController {
 
 		  JsonNode profile = KakaoLogin.getKakaoUserInfo(token.path("access_token").toString());
 		  System.out.println(profile);
+		  
 		  Users vo = KakaoLogin.changeData(profile);
 		  vo.setUser_id("k"+vo.getUser_id());
 
