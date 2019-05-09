@@ -24,6 +24,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.allhotplace.www.service.face.search.SearchService;
 
+
+// 테스트!
 @Controller
 public class SearchController {
 	private static final Logger logger = LoggerFactory.getLogger(SearchController.class);
@@ -32,7 +34,7 @@ public class SearchController {
 
 	@Autowired SearchService searchService;
 
-
+ 
 	@RequestMapping(value="/searchPlace", method=RequestMethod.GET)
 	public String searchPlaceView(Model model) {
 		
