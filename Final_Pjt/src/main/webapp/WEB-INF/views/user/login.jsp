@@ -3,17 +3,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>login</title>
-
-<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-
-<link rel="stylesheet" href="/js/bootstrap.js">
-<link rel="stylesheet" href="/js/bootstrap.min.js">
-<link rel="stylesheet" href="/js/login.js">
-<link rel="stylesheet" href="/css/main.css">
-
-</head>
+	<meta charset="UTF-8">
+	<title>login</title>
+	
+	<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+	
+	<link rel="stylesheet" href="/js/bootstrap.js">
+	<link rel="stylesheet" href="/js/bootstrap.min.js">
+	<link rel="stylesheet" href="/js/login.js">
+	<link rel="stylesheet" href="/css/main.css">
+	
+	<script type="text/javascript">
+			
+		$(document).ready(function() {
+					
+			$("#btnKakao").click(function(){
+				$(location).attr("href", "https://kauth.kakao.com/oauth/authorize?client_id=b2d0f5ffdef0d889457c5a8978048650&redirect_uri=http://localhost:8088/kakaologin&response_type=code");
+			});
+					
+		});
+				
+	</script>
+	
+	
+	</head>
 <body>
 
 	<div class="limiter">
@@ -37,10 +50,13 @@
 					<div class="container-login100-form-btn m-t-17">		
 						<button class="login100-form-btn">LOGIN</button>
 					</div>
+					<br>
 				</form>
+					<div>
+						<img alt="kakao" src="/img/kakao_login.png" id="btnKakao"/>
+					</div>
 			</div>
 		</div>
-		<jsp:include page="../user/kakao.jsp" />
 	</div>
 	
 </body>

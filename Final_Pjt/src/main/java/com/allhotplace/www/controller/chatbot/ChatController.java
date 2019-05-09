@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.allhotplace.www.dao.face.chatbot.ChatBotDao;
 import com.allhotplace.www.dto.JChatbot;
@@ -19,6 +20,7 @@ import com.allhotplace.www.dto.SChatbot;
 import com.allhotplace.www.dto.XChatbot;
 import com.allhotplace.www.service.face.chatbot.ChatBotService;
 
+@ResponseBody
 @Controller
 public class ChatController {
 	
@@ -30,17 +32,17 @@ public class ChatController {
 
 	//채팅ajax
 	@RequestMapping(value="/chatAjax", method=RequestMethod.POST)
-	public String chatAjax(Model model, String content, HttpSession session) {
+	public String chatAjax(Model model, String content1, HttpSession session) {
 		
-		logger.info(content);
+		logger.info(content1);
 		
 		//채팅입력값으로 질문목록 불러오기
-		List<JChatbot> replyContent = chatBotService.reply(content);
+		List<JChatbot> replyContent = chatBotService.reply(content1);
 		logger.info(replyContent.toString());
 		
-		if(content.isEmpty()) {
+		if(content1.isEmpty()) {
 			model.addAttribute("reply", "올바른 메시지를 보내주세요!");
-		} else if(!content.isEmpty()){
+		} else if(!content1.isEmpty()){
 			
 			if(replyContent.isEmpty()) {
 				model.addAttribute("reply", "조회된 결과가 없습니다.");
@@ -57,7 +59,7 @@ public class ChatController {
 		//로그인했을때
 		if(!userid.equals(null)) {
 			model.addAttribute("userid", session.getAttribute("user_id"));
-			model.addAttribute("content", content);
+			model.addAttribute("content1", content1);
 			
 		//로그인 안했을떄
 		}else {
