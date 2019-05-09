@@ -226,7 +226,7 @@ public class SearchController {
             
              JSONParser jsonParser = new JSONParser();
             JSONObject jsonObj = (JSONObject)jsonParser.parse(result2);
-            
+             
          } catch (Exception e) {
             System.out.println(e.getMessage());
          }
