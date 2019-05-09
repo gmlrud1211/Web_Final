@@ -105,6 +105,7 @@ public class UserController {
 				
 		String user_birth = birth_year+"/"+birth_month+"/"+birth_day;
 		
+		
 		user.setUser_birth(user_birth);
 		System.out.println(user_birth);
 		

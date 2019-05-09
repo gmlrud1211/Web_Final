@@ -125,3 +125,4 @@ $RECYCLE.BIN/
 # End of https://www.gitignore.io/api/java,windows,eclipse
 Final_Pjt/target/m2e-wtp/web-resources/META-INF/MANIFEST.MF
 Final_Pjt/target/classes/*
+Final_Pjt/target/m2e-wtp/web-resources/META-INF/maven/com.allhotplace/www/pom.properties

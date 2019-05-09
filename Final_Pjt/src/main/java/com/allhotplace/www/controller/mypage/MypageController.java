@@ -20,12 +20,12 @@ import com.allhotplace.www.dto.Calendar;
 import com.allhotplace.www.dto.Users;
 import com.allhotplace.www.service.face.mypage.MypageService;
 
+
 @Controller
 public class MypageController {
 	private static final Logger logger = LoggerFactory.getLogger(MypageController.class);
 	
 	@Autowired MypageService mypageService;
-
 
 	@RequestMapping(value="/mypage/myInfo", method=RequestMethod.GET)
 	public void MyInfo(HttpSession session, Model model) {
