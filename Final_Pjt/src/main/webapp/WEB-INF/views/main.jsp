@@ -59,7 +59,7 @@ div.hashtag {
 .noticelist {
 	width: 100%;
 	border-collapse: collapse;
-	border-top: 2px solid #ff5252
+	border-top: 2px solid #827ffe;
 }
 
 .noticelist thead {
