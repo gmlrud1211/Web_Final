@@ -28,38 +28,38 @@ public class ChatController {
 	private static final Logger logger = LoggerFactory.getLogger(ChatController.class);
 	
 
-	//채팅ajax
+	//梨꾪똿ajax
 	@RequestMapping(value="/chatAjax", method=RequestMethod.POST)
-	public String chatAjax(Model model, String content, HttpSession session) {
+	public String chatAjax(Model model, String content1, HttpSession session) {
 		
-		logger.info(content);
+		logger.info(content1);
 		
-		//채팅입력값으로 질문목록 불러오기
-		List<JChatbot> replyContent = chatBotService.reply(content);
+		//梨꾪똿?낅젰媛믪쑝濡?吏덈Ц紐⑸줉 遺덈윭?ㅺ린
+		List<JChatbot> replyContent = chatBotService.reply(content1);
 		logger.info(replyContent.toString());
 		
-		if(content.isEmpty()) {
-			model.addAttribute("reply", "올바른 메시지를 보내주세요!");
-		} else if(!content.isEmpty()){
+		if(content1.isEmpty()) {
+			model.addAttribute("reply", "?щ컮瑜?硫붿떆吏瑜?蹂대궡二쇱꽭??");
+		} else if(!content1.isEmpty()){
 			
 			if(replyContent.isEmpty()) {
-				model.addAttribute("reply", "조회된 결과가 없습니다.");
+				model.addAttribute("reply", "議고쉶??寃곌낵媛 ?놁뒿?덈떎.");
 			} else {
 				model.addAttribute("reply", replyContent);
 			}
 		}
 		
 		
-		//세션으로 로그인한 아이디 가져옴
+		//?몄뀡?쇰줈 濡쒓렇?명븳 ?꾩씠??媛?몄샂
 		String userid = (String) session.getAttribute("user_id");
 		model.addAttribute("login", !userid.equals(null));
 		
-		//로그인했을때
+		//濡쒓렇?명뻽?꾨븣
 		if(!userid.equals(null)) {
 			model.addAttribute("userid", session.getAttribute("user_id"));
-			model.addAttribute("content", content);
+			model.addAttribute("content1", content1);
 			
-		//로그인 안했을떄
+		//濡쒓렇???덊뻽?꾨뻹
 		}else {
 			return "jsonView";
 		}
@@ -70,11 +70,11 @@ public class ChatController {
 		return "jsonView";
 	}
 	
-	//질문리스트(대분류)ajax
+	//吏덈Ц由ъ뒪???遺꾨쪟)ajax
 	@RequestMapping(value="/chatAjax_ansList")
 	public String chatAjax_ansList(Model model) {
 		
-		logger.info("AJAX 질문리스트 불러오기");
+		logger.info("AJAX 吏덈Ц由ъ뒪??遺덈윭?ㅺ린");
 		
 		
 		List<XChatbot> xlist = chatBotDao.selectAnswerListAll();
@@ -85,11 +85,11 @@ public class ChatController {
 		return "jsonView";
 	}
 	
-	//질문입력(대분류) -> 하위질문출력(중분류) ajax
+	//吏덈Ц?낅젰(?遺꾨쪟) -> ?섏쐞吏덈Ц異쒕젰(以묐텇瑜? ajax
 	@RequestMapping(value="/chatAjax_XChatList", method=RequestMethod.POST)
 	public String chatAjax_XChatList(Model model, HttpSession session, int a) {
 		
-		logger.info("AJAX 대분류 버튼 클릭");
+		logger.info("AJAX ?遺꾨쪟 踰꾪듉 ?대┃");
 		
 		model.addAttribute("userid", session.getAttribute("user_id"));
 		
@@ -108,11 +108,11 @@ public class ChatController {
 		return "jsonView";
 	}
 	
-	//질문입력(중분류) -> 하위질문출력(소분류) ajax
+	//吏덈Ц?낅젰(以묐텇瑜? -> ?섏쐞吏덈Ц異쒕젰(?뚮텇瑜? ajax
 	@RequestMapping(value="/chatAjax_MChatList", method=RequestMethod.POST)
 	public String chatAjax_MChatList(Model model, HttpSession session, int a) {
 		
-		logger.info("AJAX 중분류 버튼 클릭");
+		logger.info("AJAX 以묐텇瑜?踰꾪듉 ?대┃");
 		
 		model.addAttribute("userid", session.getAttribute("user_id"));
 		
@@ -131,11 +131,11 @@ public class ChatController {
 		return "jsonView";
 	}
 	
-	//질문입력(소분류) -> 하위질문출력(소분류 답변) ajax
+	//吏덈Ц?낅젰(?뚮텇瑜? -> ?섏쐞吏덈Ц異쒕젰(?뚮텇瑜??듬?) ajax
 	@RequestMapping(value="/chatAjax_SChatList", method=RequestMethod.POST)
 	public String chatAjax_SChatList(Model model, HttpSession session, int a) {
 		
-		logger.info("AJAX 소분류 버튼 클릭");
+		logger.info("AJAX ?뚮텇瑜?踰꾪듉 ?대┃");
 		
 		model.addAttribute("userid", session.getAttribute("user_id"));
 		

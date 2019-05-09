@@ -9,7 +9,7 @@
 <head>
 <meta charset="UTF-8">
 <title>배너관리</title>
-<%--  <jsp:include page="/views/layout/header.jsp" /> --%>
+ <jsp:include page="/WEB-INF/views/common/header.jsp" />
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-2.2.4.min.js"></script>    
 <style>
@@ -130,7 +130,7 @@ li {
 
 
 <div style="clear:both;">
-<%-- <jsp:include page="/view/layout/footer.jsp" /> --%>
+<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 </div>
 
 

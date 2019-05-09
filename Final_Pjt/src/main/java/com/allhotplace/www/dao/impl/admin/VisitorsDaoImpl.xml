@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- 마이바티스 3 Mapper DOCTYPE -->
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.allhotplace.www.dao.face.admin.VisitorsDao">
+
+<!-- 방문자 insert -->
+	<insert id="setVisitTotalCount"  >
+		INSERT INTO visitors (visit_date)
+		VALUES (sysdate)
+	</insert>
+
+
+	<!-- 오늘 방문자수  반환 -->
+	<select id="getVisitTodayCount"  resultType="int" >
+		SELECT COUNT(*)  from visitors
+        WHERE to_date(visit_date, 'YYYY-MM-DD') = to_date(sysdate, 'YYYY-MM-DD')
+	</select>
+
+	
+	<!-- 총 방문자수  조회 -->
+    <select id="getVisitTotalCount"  resultType="int">
+		SELECT COUNT(*) from visitors
+	</select>
+
+
+ 
+
+</mapper>

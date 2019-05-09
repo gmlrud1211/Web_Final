@@ -7,27 +7,20 @@
 
 <mapper namespace="com.allhotplace.www.dao.face.admin.AdminUserDao">
 
-	<!-- 페이징 처리 배너 반환 -->
+	<!-- 페이징 처리 회원  반환 -->
 	<select id="selectPaginglist"
 		parameterType="com.allhotplace.www.util.Paging"
 		resultType="com.allhotplace.www.dto.Users">
 
 		SELECT * FROM (
-		SELECT rownum rnum, B.* 
-<!-- 		, f.file_storedname -->
-		FROM (
+		SELECT rownum rnum, B.* FROM (
 		SELECT * FROM users
+		WHERE user_no Like '%' || #{search} || '%'
 		ORDER BY user_no desc
 		) B
-
-<!-- 		INNER JOIN -->
-<!-- 		fileupload f -->
-<!-- 		ON B.file_no = f.file_no -->
-
 		ORDER BY rnum
 		) R
-		WHERE rnum BETWEEN
-		#{startNo } AND #{endNo }
+		WHERE rnum BETWEEN #{startNo } AND #{endNo }
 
 	</select>
 

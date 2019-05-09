@@ -31,6 +31,12 @@
 		<param-value>/WEB-INF/spring/root-context.xml</param-value>
 	</context-param>
 	
+	<!-- 방문자수 체크를 위한 세션 리스너 -->
+	<listener>
+	   <listener-class>com.allhotplace.www.controller.admin.SessionListenerController</listener-class>
+    </listener>
+    
+	
 	<!-- Creates the Spring Container shared by all Servlets and Filters -->
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
