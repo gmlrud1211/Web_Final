@@ -42,7 +42,7 @@ a:hover{color:#827ffe;}
 </style>
 
 
-<body>
+<body>  
 <div class="wrap">
 	<div class="sub_wrap">
 		<div class="searchdiv" style="margin-top: 56px;">
