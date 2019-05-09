@@ -14,7 +14,7 @@ local.properties
 .settings/
 .loadpath
 .recommenders
-MANIFEST.MF
+target/
 
 # External tool builders
 .externalToolBuilders/
