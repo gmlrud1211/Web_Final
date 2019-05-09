@@ -224,6 +224,7 @@ public class SearchController {
                result2 = result2 + line;
             }
             
+            
             JSONParser jsonParser = new JSONParser();
             JSONObject jsonObj = (JSONObject)jsonParser.parse(result2);
             
