@@ -19,7 +19,7 @@
 <style type="text/css">
 a:link{color:black; text-decoration:none;}
 a:visited{color:black; text-decoration:none;}
-a:hover{color:blue; text-decoration:underline;}
+a:hover{color:#827ffe;}
 </style>
 
 
@@ -40,6 +40,7 @@ a:hover{color:blue; text-decoration:underline;}
 	<!-- 로그인 한 상태 -->
 	<c:if test="${ login }">
 		<ul>
+			<li><a href="mypage/myInfo">마이페이지&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
 			<li>${user_id}님 환영합니다&nbsp;&nbsp;&nbsp;&nbsp;</li>
 			<li><a href="/logout"><button>로그아웃</button></a></li>
 		</ul>

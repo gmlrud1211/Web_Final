@@ -65,15 +65,37 @@
 		}
 		</style>
 		
+		<script type="text/javascript">
+			function delAlert(){
+				if(confirm("삭제하시겠습니까?")){
+					
+				} else{
+					return false;
+				}
+			}
+		</script>
 		
 	</head>
 
 	<body>
-	<jsp:include page="/WEB-INF/views/common/header.jsp" />
+	<jsp:include page="../common/header.jsp" />
 	
 		<div class="container">
 		<hr style="color:#ccc;">
-			<h3>calendarList</h3>
+			
+			<div class="row row-offcanvas row-offcanvas-right">
+			
+			<jsp:include page="../layout/mypage.jsp"/>
+			
+			<div class="col-xs-12 col-sm-9">
+			
+			<div class="jumbotron" style="padding: 5px; background-color: #eee0; border-bottom: 1px solid #403866; border-radius: 0;" >
+				<h3>calendarList</h3>
+	            <p style="font-size: 16px">나만의 일정을 만들어 보세요~!</p>
+	        </div>
+			
+		
+				
 			
 			<form id="calendarForm">
 				<table class="table table-striped table-hover"> 
@@ -94,7 +116,7 @@
 							<td><!-- <a href="#"> -->${cal.calendar_title }</td>
 							<td><fmt:formatDate value="${cal.calendar_scheduleDate }" pattern="yyyy-MM-dd"/></td>
 							<td>${cal.calendar_yesno }</td>
-							<td><a href="/mypage/calRemove?calendar_no=${cal.calendar_no }">삭제</a></td>
+							<td><a onclick="delAlert();" href="/mypage/calRemove?calendar_no=${cal.calendar_no }" >삭제</a></td>
 						</tr>
 						</c:forEach>
 					</tbody>
@@ -103,9 +125,13 @@
 			</form>
 		
 			<div class="text-center">
-				<button id="btnAdd" class="btn btn-primary" style="float:right">캘린더 등록</button>
+				<button id="btnAdd" class="btn" style="background-color:#827ffe; color:white; float:right">캘린더 등록</button>
 			</div>
 			
+			
+			</div>
+		</div>
+		
 		</div>
 		
 		<!-- 캘린더 등록하는 form 띄우는 창 -->

@@ -4,8 +4,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-<!DOCTYPE html>
-<html>
 	<head>
 		<meta charset="UTF-8">
 		<title>개인정보수정</title>
@@ -95,13 +93,25 @@
 		</script>
 	</head>
 
+	<jsp:include page="../common/header.jsp" />
+
 	<body>
 	
 		<div class="container">
-		<div style="max-width: 450px; margin: 0 auto;" >
-		<h4 style="text-align:center;">개인정보 수정<--이부분 ui 헤더맞춰서 나중에 수정할거임</h4>
-		<br><br>
-				
+		<hr style="color:#ccc;">
+			
+		
+		<div class="row row-offcanvas row-offcanvas-right">
+		<jsp:include page="../layout/mypage.jsp"/>
+		
+		<div class="col-xs-12 col-sm-9">
+			
+			<div class="jumbotron" style="padding: 5px; background-color: #eee0; border-bottom: 1px solid #403866; border-radius: 0;" >
+				<h3>마이페이지-개인정보</h3>
+	            <p style="font-size: 16px">개인정보 수정</p>
+	        </div>
+		<div style="max-width: 500px; margin: 0 auto;" >
+		
 		<form class="form-horizontal myForm123" id="myForm" action="/mypage/infoUpdate" method="post">
 					
 			<div class="form-group has-feedback">
@@ -143,7 +153,7 @@
 				<div class="col-sm-2 control-div" style="width:200px">
 				     <select class="form-control" name="birth_day" id="birth_day"></select>
 				</div>
-			</div>	
+			</div>
 		
 			<br><br>
 		
@@ -153,8 +163,7 @@
 		
 		</form>
 		</div>
+		</div>
 	</div>
-	
-	
+	</div>
 	</body>
-</html>

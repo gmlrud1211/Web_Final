@@ -297,8 +297,8 @@ div.hashtag {
 </div>
 
 <jsp:include page="../views/common/footer.jsp" />
-</body>
 <jsp:include page="/WEB-INF/views/chat/chatbot.jsp" />
+</body>
 
 <script>
 	$(document).ready(function() {

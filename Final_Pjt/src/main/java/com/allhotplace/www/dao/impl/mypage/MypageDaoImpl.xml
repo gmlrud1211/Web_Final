@@ -26,6 +26,7 @@
 		where user_no = (
         				select user_no from users
         				where user_id=#{user_id})
+        order by calendar_scheduleDate
 	</select>
 	
 	<select id="selectUserNo" resultType="int">
