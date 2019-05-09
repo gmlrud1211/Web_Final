@@ -6,6 +6,14 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
+<!-- <!-- jQuery 2.2.4 --> -->
+<!-- <script type="text/javascript" src="http://code.jquery.com/jquery-2.2.4.min.js"></script> -->
+
+<!-- <!-- 부트스트랩 3.3.2 --> -->
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"> -->
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css"> -->
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script> -->
+
 <style type="text/css">
 
 #resultChatBot1.ul.li{
@@ -29,6 +37,22 @@
 
 <script type="text/javascript">
 
+$(document).ready(function(){
+	
+	var floatPosition = parseInt($("#floatChat").css('top'));
+	
+	$(window).scroll(function(){
+		var scrollTop = $(window).scrollTop()
+		var newPosition = scrollTop + floatPosition + "px";
+		
+		$("#floatChat").css('top',newPosition);
+		
+		$("#floatChat").stop().animate({
+			
+		})
+		
+	})
+})
 
 
 /* 챗봇창 띄우기 */
@@ -162,7 +186,7 @@ $(document).ready(function(){
 	$("#refresh1").click(function(){
 		
 		$("#resultChatBot1").empty().animate(0,500);
-		$("#resultChatBot1").append("<div class=\"text-center \"style=\"margin:0 auto;\"><h1><strong>삭제완료</strong></h1></div>");
+		$("#resultChatBot1").append("<div class=\"text-center \"style=\"margin:0 auto;\"><h1>삭제완료</h1></div>");
 		setTimeout(function(){$("#resultChatBot1").empty();},1000);
 	});
 	
@@ -3214,13 +3238,12 @@ function clickS60201(){
 
 
 	<!------------------- 챗봇 구현부분 ------------------->
-	<div style="float:right; margin:100px;">
+	<div id="floatChat" style="float:right; margin:100px; top:700px; right:50px; position:absolute;">
 		<form style="zoom:3; cursor:pointer;" data-toggle="modal" data-target="#modalChatBot">
 			<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
 		</form>
 	</div>
 	
-<!-- 모달에 fade 기능 삭제해놓음 -->
 	<div class="modal fade" id="modalChatBot" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
 	  <div class="modal-dialog modal-lg">
 	  <h2 style="color:white;">[Chat Bot]
@@ -3258,7 +3281,7 @@ function clickS60201(){
 	        </div>
 	  </div><hr>
 	    
-	    <form id="chatBot1" name="chatBot1">
+	    <form id="chatBot1" name="chatBot1" style="width:1828px;">
 			<div class="row">
 			  <div class="col-lg-6">
 			    <div class="input-group">

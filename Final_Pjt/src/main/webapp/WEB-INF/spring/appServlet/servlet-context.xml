@@ -34,15 +34,20 @@
 	            class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 	            <beans:property name="maxUploadSize" value="10485760"/>     <!-- 10메가  -->
 	            <beans:property name="maxInMemorySize" value="10485760"/>   <!-- 11메가  -->
+	            
+	    
+	            
    </beans:bean>
    
    	<!-- 스프링 빈 기반의 ViewResolver -->
 	<beans:bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
 		<beans:property name="order" value="0"/>
+	
 	</beans:bean>
 	
 	<!-- JSON 응답을 위한 jsonView 빈 등록 -->
-	<beans:bean id="jsonView" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView">
+	<beans:bean id="jsonView"
+	 class="org.springframework.web.servlet.view.json.MappingJackson2JsonView">
 		<beans:property name="contentType" value="application.json;charset=utf-8"/>
 	</beans:bean>
 	
