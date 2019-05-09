@@ -7,8 +7,8 @@
 	<bean id="dataSourceSpied" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 	    <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
 	    <property name="url" value="jdbc:oracle:thin:@localhost:1521:xe" />
-	    <property name="username" value="scott" />
-	    <property name="password" value="tigerR" />
+	    <property name="username" value="hotplace" />
+	    <property name="password" value="admin2019" />
 	 </bean>
 	 
 
