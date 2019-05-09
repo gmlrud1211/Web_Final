@@ -73,10 +73,8 @@ public class UserController {
 		  System.out.println(session);
 		  session.setAttribute("login", true);
 		  
-		  
 		  System.out.println(vo.toString());
 		  session.setAttribute("user_id", vo.getUser_name());
-			
 		  
 		return "/user/kakaoLogin";
 	}
