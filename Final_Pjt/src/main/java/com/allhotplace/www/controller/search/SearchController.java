@@ -223,7 +223,7 @@ public class SearchController {
             while ((line = br2.readLine()) != null) {
                result2 = result2 + line;
              }
-            
+             
              JSONParser jsonParser = new JSONParser();
             JSONObject jsonObj = (JSONObject)jsonParser.parse(result2);
              
