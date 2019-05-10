@@ -31,26 +31,21 @@ $(document).ready(function() {
 
 <div class="container">
 
-<h3>FAQ 수정</h3>
+<h3>챗봇 수정</h3>
 <hr>
-<form action="/faq/modify" method="post">
+<form action="/admin/chatbot/modify" method="post">
 <div>
 
 <table class="table table-bordered">
 
 <tr><td class="info">아이디</td><td>관리자</td></tr>
 
-<tr>
-	<td class="info">카테고리 입력</td>
-	<td><input type="text" name="cate" style="width:100%;" 
-	     value="${faqview.faq_cate}"/></td>
-</tr>
 
 <tr><td class="info" colspan="2">질문</td></tr>
-<tr><td colspan="2"><textarea id="quse" name="quse">${faqview.faq_qusetion }</textarea></td></tr>
+<tr><td colspan="2"><textarea id="quse" name="quse">${view.faq_qusetion }</textarea></td></tr>
 
 <tr><td class="info" colspan="2">답</td></tr>
-<tr><td style="width:100%;" colspan="2"><textarea id="ans" name="ans">${faqview.faq_answer }</textarea></td></tr>
+<tr><td style="width:100%;" colspan="2"><textarea id="ans" name="ans">${view.faq_answer }</textarea></td></tr>
 
 </table>
 

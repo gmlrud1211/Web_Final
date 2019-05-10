@@ -9,9 +9,9 @@
 
 <script type="text/javascript">
 $(document).ready(function() {
-	$("#btnWrite").click(function() {
-		//스마트에디터 내용을 <textarea>에 적용하기
-		submitContents($("#btnWrite"));
+// 	$("#btnWrite").click(function() {
+// 		//스마트에디터 내용을 <textarea>에 적용하기
+// 		submitContents($("#btnWrite"));
 		
 		$("form").submit();
 	});
@@ -87,19 +87,19 @@ $(document).ready(function() {
 </tr>
 <tr>
 <td class="info">답</td>
-<td><textarea id="sChat_name" name="sChat_name"></textarea></td>
+<td><textarea id="sChat_answer" name="sChat_answer"></textarea></td> 
 </tr>
 
 
 
 </table>
-</form>
-</div>
-
 <div class="text-center">	
 	<button id="btnWrite" class="btn btn-primary">작성</button>
 	<button type="button" id="btnCancel" class="btn btn-danger">취소</button>
 </div>
+</form>
+</div>
+
 </div>
 
 

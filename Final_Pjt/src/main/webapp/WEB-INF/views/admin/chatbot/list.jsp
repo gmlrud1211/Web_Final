@@ -81,6 +81,7 @@ ul.tab li.current {
 ul.tab li {
 	border : 1px solid grey;
 	    border-collapse: collapse;
+	    width: 170;
 }
 
 ul.subtab li.current {
@@ -104,7 +105,19 @@ ul.subtab li.current {
 	display: block;
 }
 
+table.table tr{
+ width : 170;
+ height: 50;
+}
 
+table.table tr.answer{
+background-color : #eceaea;
+}
+
+table.table tbody{
+width : 100%
+
+}
 </style>
 <style>
 tr.question{
@@ -145,7 +158,8 @@ tr.question{
 	<h1>챗봇관리</h1>
 	<hr>
 	
-	<div id="container" style="padding:10px; width:1000px; margin: 0 auto; border-left: 1px solid #D8D8D8; height:100%; float:left; ">
+	<div id="container" style="
+	padding:10px; width:1000%; margin: 0 auto; border-left: 1px solid #D8D8D8; height:100%; max-width: 1110px; float:left; ">
 		<ul class="tab">
 			<li class="current" data-tab="tab1"><a href="#">회원관련</a></li>
 			<li data-tab="tab2"><a href="#">사이트관련</a></li>
@@ -181,8 +195,8 @@ tr.question{
 							<c:if test="${slist.mChat_no == mno}">
 								<colgroup>
 									<col width="*">
-									<col width="20%">
-									<col width="20%">
+									<col width="10%">
+									<col width="10%">
 								</colgroup>
 
 								<tr class="question">
@@ -194,7 +208,7 @@ tr.question{
 								</tr>
 
 								<tr class="answer">
-									<td colspan="3" style="text-align: left; padding-left: 20px">${slist.sChat_answer }</td>
+									<td colspan="3" style="text-align: left; padding-left: 20px">  ${slist.sChat_answer }</td>
 								</tr>
 							</c:if>
 						</c:forEach>
@@ -444,7 +458,6 @@ tr.question{
 								<tr class="answer">
 									<td colspan="3" style="text-align: left; padding-left: 20px">${slist.sChat_answer }</td>
 								</tr>
-
 					</c:if>
 				</c:forEach>
 
