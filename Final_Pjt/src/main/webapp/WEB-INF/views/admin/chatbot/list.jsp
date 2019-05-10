@@ -4,7 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
-<%-- <jsp:include page="/WEB-INF/views/layout/header.jsp" /> --%>
+<jsp:include page="/WEB-INF/views/common/header.jsp" />
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -71,10 +71,20 @@
 }
 
 ul.tab li.current {
-	background-color:;
+	background-color: #827ffe;
 	border-top: 1px solid grey;
 	border-left: 1px solid grey;
 	border-right: 1px solid grey;
+	border-bottom: 1px solid grey;
+}
+
+ul.tab li {
+	border : 1px solid grey;
+	    border-collapse: collapse;
+}
+
+ul.subtab li.current {
+	border-bottom: 1px solid grey;
 }
 
 
@@ -97,6 +107,10 @@ ul.tab li.current {
 
 </style>
 <style>
+tr.question{
+ border-bottom :1px solid grey;
+}
+
 #container>div {
 	border: none;
 }
@@ -112,9 +126,9 @@ ul.tab li.current {
 }
 
 .cb {
+   border-top : 2px solid gray;
    position : absolute;
-   top : 50px;
-   margin-left : 60px;
+   top : 70px;
 }
 
 .cd{
@@ -128,9 +142,10 @@ ul.tab li.current {
 		<jsp:include page="/WEB-INF/views/layout/sidebar.jsp" />
 	</div>
 	<br>
-	<h3>챗봇관리</h3>
+	<h1>챗봇관리</h1>
 	<hr>
-	<div id="container" style="padding: 20px; min-height: 400px;">
+	
+	<div id="container" style="padding:10px; width:1000px; margin: 0 auto; border-left: 1px solid #D8D8D8; height:100%; float:left; ">
 		<ul class="tab">
 			<li class="current" data-tab="tab1"><a href="#">회원관련</a></li>
 			<li data-tab="tab2"><a href="#">사이트관련</a></li>
@@ -160,17 +175,18 @@ ul.tab li.current {
 					<%
 						mno++;
 					%>
+					
 					<table class="table table-hover table-striped table-condensed cd" >
 						<c:forEach items="${schatlist }" var="slist">
 							<c:if test="${slist.mChat_no == mno}">
 								<colgroup>
 									<col width="*">
-									<col width="10%">
-									<col width="10%">
+									<col width="20%">
+									<col width="20%">
 								</colgroup>
 
 								<tr class="question">
-									<td style="text-align: left; padding-left: 20px">${slist.sChat_name }</td>
+									<td style="height: 20px;text-align: left; padding-left: 20px">${slist.sChat_name }</td>
 									<td id="modify"><a
 										href="/admin/chatbot/modify?sChat_no=${slist.sChat_no } ">수정</a></td>
 									<td id="delete"><a
@@ -436,12 +452,12 @@ ul.tab li.current {
 			</div>
 			</c:forEach>
 		</div>
-	</div>
-
 	<div>
 		<button id="btnWrite" class="btn btn-primary"
 			style="text-align: center; float: right; margin-right: 20%;">등록</button>
 	</div>
+	</div>
+
 
 	<script>
 		$(function() {

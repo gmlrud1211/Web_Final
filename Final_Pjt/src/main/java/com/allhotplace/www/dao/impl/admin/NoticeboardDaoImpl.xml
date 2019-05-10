@@ -56,7 +56,7 @@
 			SELECT noticeboard_seq.nextval FROM dual
 		</selectKey>
 
-		INSERT INTO board (notice_no, notice_title, notice_content, notice_date, notice_count)
+		INSERT INTO noticeboard (notice_no, notice_title, notice_content, notice_date, notice_count)
 		VALUES ( #{notice_no } ,#{notice_title }, #{notice_content }, sysdate, 0  )
 
 	</insert>

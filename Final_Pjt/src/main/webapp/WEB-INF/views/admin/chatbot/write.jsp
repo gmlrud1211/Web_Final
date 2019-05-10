@@ -41,35 +41,53 @@ $(document).ready(function() {
 
 <tr>
 	<td class="info">대분류 번호 입력</td>
-	<td>   
-	  <SELECT name='type'> <!-- 검색 컬럼 -->
-        <OPTION id="title" value='title'>제목</OPTION>
-        <OPTION id="content" value='content'>내용</OPTION>
-        <OPTION id="writer_id" value='writer_id'>작성자아이디</OPTION>
-        <OPTION id="write_nick" value='write_nick'>작성자닉네임</OPTION>
+	  
+	<td ><textarea id="xChat_no" name="xChat_no"></textarea></td>
+<!-- 	  <SELECT name='type'> 검색 컬럼 -->
+<!--         <OPTION id="title" value='title'>제목</OPTION> -->
+<!--         <OPTION id="content" value='content'>내용</OPTION> -->
+<!--         <OPTION id="writer_id" value='writer_id'>작성자아이디</OPTION> -->
+<!--         <OPTION id="write_nick" value='write_nick'>작성자닉네임</OPTION> -->
       
-      </SELECT></td>
+<!--       </SELECT> -->
+     
 </tr>
 
 <tr>
 	<td class="info">중분류 번호 입력</td>
-	<td>
-	 <SELECT name='type'> <!-- 검색 컬럼 -->
-        <OPTION id="title" value='title'>제목</OPTION>
-        <OPTION id="content" value='content'>내용</OPTION>
-        <OPTION id="writer_id" value='writer_id'>작성자아이디</OPTION>
-        <OPTION id="write_nick" value='write_nick'>작성자닉네임</OPTION>
+
+	<td ><textarea id="mChat_no" name="mChat_no"></textarea></td>
+<!-- 	 <SELECT name='type'> 검색 컬럼 -->
+<!--         <OPTION id="title" value='title'>제목</OPTION> -->
+<!--         <OPTION id="content" value='content'>내용</OPTION> -->
+<!--         <OPTION id="writer_id" value='writer_id'>작성자아이디</OPTION> -->
+<!--         <OPTION id="write_nick" value='write_nick'>작성자닉네임</OPTION> -->
       
-      </SELECT></td>
+<!--       </SELECT> -->
+      
+</tr>
+
+<tr>
+	<td class="info">소분류 번호 입력</td>
+	
+	<td ><textarea id="mChat_no" name="mChat_no"></textarea></td>
+<!-- 	 <SELECT name='type'> 검색 컬럼 -->
+<!--         <OPTION id="title" value='title'>제목</OPTION> -->
+<!--         <OPTION id="content" value='content'>내용</OPTION> -->
+<!--         <OPTION id="writer_id" value='writer_id'>작성자아이디</OPTION> -->
+<!--         <OPTION id="write_nick" value='write_nick'>작성자닉네임</OPTION> -->
+      
+<!--       </SELECT> -->
+      
 </tr>
 
 <tr>
 <td class="info">질문</td>
-<td ><textarea id="quse" name="quse"></textarea></td>
+<td ><textarea id="sChat_name" name="sChat_name"></textarea></td>
 </tr>
 <tr>
 <td class="info">답</td>
-<td><textarea id="ans" name="ans"></textarea></td>
+<td><textarea id="sChat_name" name="sChat_name"></textarea></td>
 </tr>
 
 
@@ -79,7 +97,7 @@ $(document).ready(function() {
 </div>
 
 <div class="text-center">	
-	<button type="button" id="btnWrite" class="btn btn-primary">작성</button>
+	<button id="btnWrite" class="btn btn-primary">작성</button>
 	<button type="button" id="btnCancel" class="btn btn-danger">취소</button>
 </div>
 </div>

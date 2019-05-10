@@ -4,6 +4,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
+<jsp:include page="/WEB-INF/views/common/header.jsp" />
+
+
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
 
@@ -98,7 +101,8 @@ ul.pagination li {
 <jsp:include page="/WEB-INF/views/layout/sidebar.jsp" /> </div>
 
 
-<div id="content" style="padding:10px; width:1000px; margin: 0 auto; border-left: 1px solid #D8D8D8; height:100%; float:left; " >
+<div id="content" 
+style="padding:10px; width:1000px; margin: 0 auto; border-left: 1px solid #D8D8D8; height:100%; float:left; " >
 
 	<h3>게시글 목록</h3>
 	<hr>
@@ -134,10 +138,6 @@ ul.pagination li {
 		     onclick="location.href='/admin/noticeboard/write';">글쓰기</button>
 	</div>
 	
-	<div id="btnBox">
-		<button id="btnDel" class="btn btn-primary"
-		     onclick="AlldeleteAction();">삭제</button>
-	</div>
 	
 	<div class='text-center' style="clear:both;">
   <FORM method='get' action='/admin/noticeboard/list'>
