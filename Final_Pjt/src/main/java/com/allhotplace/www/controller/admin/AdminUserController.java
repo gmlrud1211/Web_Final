@@ -20,7 +20,6 @@ import com.allhotplace.www.util.Paging;
 
 @Controller
 public class AdminUserController {
-
 	
 	@Autowired
 	ServletContext context;
