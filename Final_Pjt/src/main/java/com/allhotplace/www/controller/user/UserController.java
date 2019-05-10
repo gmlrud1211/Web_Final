@@ -52,7 +52,6 @@ public class UserController {
 			
 			return "redirect:/admin/user/list";
 		}
-
 		
 		if(login == 1 ) {//로그인성공
 			session.setAttribute("login", true);
