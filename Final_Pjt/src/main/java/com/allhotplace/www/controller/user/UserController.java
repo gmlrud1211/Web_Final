@@ -54,7 +54,6 @@ public class UserController {
 		}
 
 		
-		
 		if(login == 1 ) {//로그인성공
 			session.setAttribute("login", true);
 			session.setAttribute("user_id", user_id);
