@@ -57,12 +57,12 @@ td {
 	text-align: right;
 }
 
-ul {
+ul.pagination{
 	list-style: none;
 	text-align: center
 }
 
-li {
+ul.pagination li { 
 	display: inline-block;
 }
 </style>
@@ -120,11 +120,10 @@ li {
 		<div class='text-center' style="clear: both;">
 			<FORM name='search' method='get' action='/admin/user/list'>
 
-				<SELECT name='type'>
+				<SELECT name='search'>
 					<!-- 검색 컬럼 -->
-
 					<OPTION id='user_no' value='user_no'>회원번호</OPTION>
-<!-- 					<OPTION id='name' value='name'>이름</OPTION> -->
+					<OPTION id='user_name' value='user_name'>이름</OPTION>
 				</SELECT> 
 				<input type='text' name='word' placeholder="특수문자는 사용할수 없습니다.">
 				<button id="searBtn">검색</button>

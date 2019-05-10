@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-
 <!-- 마이바티스 3 Mapper DOCTYPE -->
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
@@ -7,20 +6,32 @@
 
 <mapper namespace="com.allhotplace.www.dao.face.admin.AdminUserDao">
 
-	<!-- 페이징 처리 회원  반환 -->
+	<!-- 페이징 처리 회원 반환 -->
 	<select id="selectPaginglist"
-		parameterType="com.allhotplace.www.util.Paging"
+		
 		resultType="com.allhotplace.www.dto.Users">
 
 		SELECT * FROM (
 		SELECT rownum rnum, B.* FROM (
 		SELECT * FROM users
-		WHERE user_no Like '%' || #{search} || '%'
+		where 1 = 1 
+<!--         WHERE user_no Like '%' || #{search} || '%'  -->
+		<choose>
+			<when test="search == 'user_no'">
+				and user_no Like '%' || #{word} || '%'
+			</when>
+			<when test="search == 'user_name'">
+				AND user_name Like '%' || #{word} || '%'
+			</when>
+			
+		</choose>
+
 		ORDER BY user_no desc
 		) B
 		ORDER BY rnum
 		) R
-		WHERE rnum BETWEEN #{startNo } AND #{endNo }
+		WHERE rnum BETWEEN #{paging.startNo }
+		AND #{paging.endNo }
 
 	</select>
 

@@ -15,7 +15,7 @@ public interface AdminUserService {
 	public int selectCntUser();
 	
 	// 배너 페이징 해서 전체 조회
-	public List<Users> selectPaginglist(Paging paging);
+	public List<Users> selectPaginglist(Paging paging, String search, String word);
 	
 	// 배너 삭제
 	public void deleteUser(Users user);

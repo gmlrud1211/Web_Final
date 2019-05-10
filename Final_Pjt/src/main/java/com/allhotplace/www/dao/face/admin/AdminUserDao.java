@@ -2,6 +2,8 @@ package com.allhotplace.www.dao.face.admin;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.allhotplace.www.dto.Banner;
 import com.allhotplace.www.dto.Fileupload;
 import com.allhotplace.www.dto.Users;
@@ -9,9 +11,10 @@ import com.allhotplace.www.util.Paging;
 
 
 public interface AdminUserDao {
-
+	
+//	@Param("search") String search,  @Param("word") String word
 	// 회원 페이징 처리 게시글 반환
-	public List<Users> selectPaginglist(Paging paging);
+	public List<Users> selectPaginglist(@Param("paging")Paging paging, @Param("search") String search,  @Param("word") String word);
 	// 총 회원 수 반환
 	public int selectCntUser();
 	

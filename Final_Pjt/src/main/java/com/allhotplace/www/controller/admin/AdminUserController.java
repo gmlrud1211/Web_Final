@@ -31,13 +31,14 @@ public class AdminUserController {
 	private static final Logger logger = LoggerFactory.getLogger(AdminUserController.class);
 
 	@RequestMapping(value = "/admin/user/list", method = RequestMethod.GET)
-	public void userlistForm(String curPage1, Model model, String word) {
+	public void userlistForm(String curPage1, Model model, String word, String search) {
 		// 요청파라미터 curPage 받기
 		String param = curPage1;
 		int curPage = 0;
 
 		// 검색요청파라미터 받기
 		String param1 = word;
+		String param2 = search;
 
 //			null이나 ""이 아니면 int로 리턴
 		if (param != null && !"".equals(param)) {
@@ -50,6 +51,7 @@ public class AdminUserController {
 			param1 = "";
 		}
 
+
 		// 총 회원 수 얻기
 		int totalCount = aduserService.selectCntUser();
 
@@ -57,7 +59,7 @@ public class AdminUserController {
 		Paging paging = new Paging(totalCount, curPage);
 		paging.setSearch(param1);
 
-		List<Users> userlist = aduserService.selectPaginglist(paging);
+		List<Users> userlist = aduserService.selectPaginglist(paging,search, param1);
 		System.out.println("값" + totalCount);
 
 		model.addAttribute("search", param1);

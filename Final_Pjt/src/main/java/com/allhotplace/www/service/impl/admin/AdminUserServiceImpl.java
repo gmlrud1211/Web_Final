@@ -21,8 +21,8 @@ public class AdminUserServiceImpl implements AdminUserService {
 	}
 
 	@Override
-	public List<Users> selectPaginglist(Paging paging) {
-		return aduserDao.selectPaginglist(paging);
+	public List<Users> selectPaginglist(Paging paging, String search, String word) {
+		return aduserDao.selectPaginglist(paging, search, word);
 	}
 
 	@Override
