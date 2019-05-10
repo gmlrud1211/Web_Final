@@ -9,7 +9,7 @@
 <head>
 <meta charset="UTF-8">
 <title>배너관리</title>
-<%--  <jsp:include page="/views/layout/header.jsp" /> --%>
+<jsp:include page="/WEB-INF/views/common/header.jsp" />
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-2.2.4.min.js"></script>    
 <style>
@@ -31,7 +31,9 @@ $(document).ready(function() {
 </script>
 
 <style type="text/css">
-
+table {
+ width : 100%;
+}
 th{
 text-align: center !important;
 }
@@ -69,14 +71,13 @@ ul.pagination li {
 <div id="content" style="height:100%;width:78%;float:left;">
 
 <div id="btnBox" style=" float:right; margin:30px; " >
-	<button id="btnWrite" class="btn btn-primary" style="color:#ffffff; background:#F67280;">등록</button>
+	<button id="btnWrite" class="btn btn-primary" style="color:#ffffff; background:#827ffe;">등록</button>
 </div>
 
 <div style="margin:30px; ">
-<h3>배너관리</h3>
+<h2>배너관리</h2>
 </div>
 
-<hr>
 
 <div class="container" style="max-width:1063px;">
 
@@ -90,7 +91,7 @@ ul.pagination li {
 	<col width="10%">
 </colgroup>
  <thead>
- <tr align="center"  style="color:white; background:#F67280; ">
+ <tr align="center"  style="color:white; background:#827ffe; ">
   <th> 순서 </th>
   <th> 배너명</th>
   <th> 미리보기</th>
@@ -107,8 +108,8 @@ ul.pagination li {
 <td><a href="/admin/banner/write"><img src="/upload/${list.file_storedName }" style="width:30%; height:30%"></a></td>
 <!-- <td id="link"><a href="#">링크</a></td> -->
 
-<td id="modify"><a href="/admin/banner/modify?banner_no=${list.banner_no }"  
-                  style="color:blue; ">수정</a><br><br>
+<td id="modify">
+<%-- <a href="/admin/banner/modify?banner_no=${list.banner_no }"style="color:blue; ">수정</a><br><br> --%>
 <a href="/admin/banner/delete?banner_no=${list.banner_no } " style="color:red;">삭제</a></td>
 </tr>
 </c:forEach>

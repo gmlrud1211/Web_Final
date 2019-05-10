@@ -106,11 +106,11 @@
 <!-- 	</div> -->
 	
 	<div class="form-group">
-		<label for="number" class="col-sm-3 col-sm-offset-1 control-label">순서</label>
-		<div class="col-sm-5">
-		<input type="text" id="" name="number" value=""
-			class="form-control"/>
-		</div>
+<!-- 		<label for="number" class="col-sm-3 col-sm-offset-1 control-label">순서</label> -->
+<!-- 		<div class="col-sm-5"> -->
+<!-- 		<input type="text" id="" name="number" value="" -->
+<!-- 			class="form-control"/> -->
+<!-- 		</div> -->
 	</div>
 
   <div class="col-sm-offset-4">

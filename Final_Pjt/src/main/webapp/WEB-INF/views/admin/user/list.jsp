@@ -40,15 +40,19 @@
 
 
 <style type="text/css">
+table {
+ width : 100%;
+}
 th {
 	text-align: center !important;
 }
 
-th, td:not (:nth-child(2) ) {
+th, td:not (:nth-child(2)) {
 	text-align: center;
 }
 
 td {
+text-align : center;
 	border-left: 1px solid white;
 	border-right: 1px solid white;
 }
@@ -70,14 +74,12 @@ ul.pagination li {
 
 <body>
 
-
-
-
 	<div id="menu" style="height: 100%; width: 20%; float: left;">
 		<jsp:include page="/WEB-INF/views/layout/sidebar.jsp" />
 	</div>
 
-	<div id="content" style="height: 100%; width: 77%; float: left;">
+	<div id="content" 
+	style="padding:10px; width:1000px; margin: 0 auto; border-left: 1px solid #D8D8D8; height:100%; float:left; ">
 
 		<h3>회원관리</h3>
 		<hr>
@@ -136,7 +138,7 @@ ul.pagination li {
 	</div>
 
 	<div style="clear: both;">
-		<%-- <jsp:include page="/view/layout/footer.jsp" /> --%>
+		<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 	</div>
 
 

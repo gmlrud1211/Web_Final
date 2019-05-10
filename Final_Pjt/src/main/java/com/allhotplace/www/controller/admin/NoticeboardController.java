@@ -130,7 +130,7 @@ public class NoticeboardController {
 	public String write(Noticeboard nboard, Model model, HttpSession session) {
 
 //		Member mem = nboardDao.selectByUserid(String.valueOf(session.getAttribute("id")));
-
+//
 //		nboard.setWriter_id(mem.getId());		
 //		nboard.setWriter_nick(mem.getNick());
 
