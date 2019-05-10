@@ -45,20 +45,30 @@ $(document).ready(function(){
 		var scrollTop = $(window).scrollTop()
 		var newPosition = scrollTop + floatPosition + "px";
 		
-		$("#floatChat").css('top',newPosition);
+// 		$("#floatChat").css('top',newPosition);
 		
 		$("#floatChat").stop().animate({
-			
-		})
+			"top" : newPosition
+		}, 500);
 		
-	})
-})
+	}).scroll();
+});
 
 
 /* 챗봇창 띄우기 */
 $(document).ready(function(){
 	
-	
+// 	$("#floatChat").mouseenter(function(){
+// 		$("#floatChat").append(
+// 				"<ul class=\"nav nav-pills\">"
+// 				+"<li role=\"presentation\" class=\"panel panel-default\" style=\"margin:5px;\">"
+// 				+"챗봇 클릭!"
+// 				+"</li>"
+// 				+"</ul>"
+// 		);
+// 	}).mouseleave(function(){
+// 		$("#floatChat.ul").empty();
+// 	})
 	
 	
 	/* 메시지 전송,답변 */
@@ -73,16 +83,17 @@ $(document).ready(function(){
 				
 				console.log("채팅글 전송 성공!")
 				console.log(data);
+				console.log(data.login);
 				console.log(data.content1);
 				console.log(data.userid);
 				console.log(data.reply);
 				console.log(data.reply.length);
-				console.log(scroll());
+				console.log(scrollMessage());
 				
 				var html = "";
 				var beforeChat = $("#resultChatBot1").html();
 				
-				if(data.login){
+				if(true){
 					
 					html =
 						beforeChat
@@ -91,7 +102,7 @@ $(document).ready(function(){
 						+"<div style=\"text-align:right; margin:5px; width:auto;\">"
 						+data.userid+" : "
 						+data.content1
-						+"</div><br>"
+						+"</div>"
 						+"</li>"
 						+"</ul>"
 						+"<ul class=\"nav nav-pills\">"
@@ -132,7 +143,7 @@ $(document).ready(function(){
 					
 					$("#resultChatBot1").html(html)
 					
-					scroll();
+					scrollMessage();
 					
 				} else{
 					$("#resultChatBot1").html(
@@ -156,8 +167,8 @@ $(document).ready(function(){
 // 				location.href="#chatBottom";
 				//기본으로 789값 받고 그뒤로 왔다갔다해서 그냥 안함
 // 				var scrollPosition = $("#chatBottom").offset().top;
-				//scrollPosition값을 큰 수로 지정해놓으면 id가 scrolltest인 div의 scrollPosition y축까지 계속 스크롤됨
-				scroll();
+				//scrollMessagePosition값을 큰 수로 지정해놓으면 id가 scrollMessagetest인 div의 scrollMessagePosition y축까지 계속 스크롤됨
+				scrollMessage();
 				
 				//전송버튼 클릭 시 남아있는 input태그 글 삭제
 // 				$("#content1").remove();
@@ -341,16 +352,16 @@ $(document).ready(function(){
 });
 
 
-/* -----------------------------메시지 추가 시 자동scroll기능-------------------------- */
+/* -----------------------------메시지 추가 시 자동scrollMessage기능-------------------------- */
 
-//메시지 추가 시 자동 scroll을 위한 scrollPosition 초기값
+//메시지 추가 시 자동 scrollMessage을 위한 scrollMessagePosition 초기값
 var i = 10000;
 
-function scroll(){
+function scrollMessage(){
 // 	초기값 100으로 설정, ajax동작시마다 +100됨
 	var scrollPosition = i; 
 	console.log(scrollPosition)
-	$("#scrolltest1").stop().animate({
+	$("#scrollMessagetest1").stop().animate({
 		scrollTop: scrollPosition
 	}, 2500);
 	i+=10000;
@@ -423,7 +434,7 @@ function clickX1(){
 			)
 			//버튼 클릭 시 제일 하단 메시지로 이동
 // 			location.href="#chatBottom";
-			scroll();
+			scrollMessage();
 			
 		}
 		, error: function(e){
@@ -498,7 +509,7 @@ function clickX2(){
 			
 			//버튼 클릭 시 제일 하단 메시지로 이동
 // 			location.href="#chatBottom";
-			scroll();
+			scrollMessage();
 		}
 	})
 }
@@ -553,7 +564,7 @@ function clickX3(){
 			
 			//버튼 클릭 시 제일 하단 메시지로 이동
 // 			location.href="#chatBottom";
-			scroll();
+			scrollMessage();
 		}
 	})
 }
@@ -607,7 +618,7 @@ function clickX4(){
 			
 			//버튼 클릭 시 제일 하단 메시지로 이동
 // 			location.href="#chatBottom";
-			scroll();
+			scrollMessage();
 		}
 	})
 }
@@ -661,7 +672,7 @@ function clickX5(){
 			
 			//버튼 클릭 시 제일 하단 메시지로 이동
 // 			location.href="#chatBottom";
-			scroll();
+			scrollMessage();
 		}
 	})
 }
@@ -719,7 +730,7 @@ function clickX6(){
 			
 			//버튼 클릭 시 제일 하단 메시지로 이동
 // 			location.href="#chatBottom";
-			scroll();
+			scrollMessage();
 		}
 	})
 }
@@ -783,7 +794,7 @@ function clickM101(){
 			)
 			//버튼 클릭 시 제일 하단 메시지로 이동
 // 			location.href="#chatBottom";
-			scroll();
+			scrollMessage();
 		}
 	})
 }
@@ -838,7 +849,7 @@ function clickM102(){
 			)
 			//버튼 클릭 시 제일 하단 메시지로 이동
 // 			location.href="#chatBottom";
-			scroll();
+			scrollMessage();
 		}
 		
 	})
@@ -890,7 +901,7 @@ function clickM103(){
 			)
 			//버튼 클릭 시 제일 하단 메시지로 이동
 // 			location.href="#chatBottom";
-			scroll();
+			scrollMessage();
 		}
 		
 	})
@@ -954,7 +965,7 @@ function clickM201(){
 			)
 			//버튼 클릭 시 제일 하단 메시지로 이동
 // 			location.href="#chatBottom";
-			scroll();
+			scrollMessage();
 		}
 	})
 }
@@ -1021,7 +1032,7 @@ function clickM202(){
 			)
 			//버튼 클릭 시 제일 하단 메시지로 이동
 // 			location.href="#chatBottom";
-			scroll();
+			scrollMessage();
 		}
 	})
 }
@@ -1080,7 +1091,7 @@ function clickM203(){
 			)
 			//버튼 클릭 시 제일 하단 메시지로 이동
 // 			location.href="#chatBottom";
-			scroll();
+			scrollMessage();
 		}
 	})
 }
@@ -1143,7 +1154,7 @@ function clickM301(){
 			)
 			//버튼 클릭 시 제일 하단 메시지로 이동
 // 			location.href="#chatBottom";
-			scroll();
+			scrollMessage();
 		}
 	})
 }
@@ -1202,7 +1213,7 @@ function clickM401(){
 			)
 			//버튼 클릭 시 제일 하단 메시지로 이동
 // 			location.href="#chatBottom";
-			scroll();
+			scrollMessage();
 		}
 	})
 }
@@ -1261,7 +1272,7 @@ function clickM501(){
 			)
 			//버튼 클릭 시 제일 하단 메시지로 이동
 // 			location.href="#chatBottom";
-			scroll();
+			scrollMessage();
 		}
 	})
 }
@@ -1316,7 +1327,7 @@ function clickM601(){
 			)
 			//버튼 클릭 시 제일 하단 메시지로 이동
 // 			location.href="#chatBottom";
-			scroll();
+			scrollMessage();
 		}
 	})
 }
@@ -1367,7 +1378,7 @@ function clickM602(){
 			)
 			//버튼 클릭 시 제일 하단 메시지로 이동
 // 			location.href="#chatBottom";
-			scroll();
+			scrollMessage();
 		}
 	})
 }
@@ -1427,7 +1438,7 @@ function clickS10101(){
 			)
 			//버튼 클릭 시 제일 하단 메시지로 이동
 // 			location.href="#chatBottom";
-			scroll();
+			scrollMessage();
 		}
 	})
 }
@@ -1485,7 +1496,7 @@ function clickS10102(){
 			)
 			//버튼 클릭 시 제일 하단 메시지로 이동
 // 			location.href="#chatBottom";
-			scroll();
+			scrollMessage();
 		}
 	})
 }
@@ -1543,7 +1554,7 @@ function clickS10103(){
 			)
 			//버튼 클릭 시 제일 하단 메시지로 이동
 // 			location.href="#chatBottom";
-			scroll();
+			scrollMessage();
 		}
 	})
 }
@@ -1601,7 +1612,7 @@ function clickS10104(){
 			)
 			//버튼 클릭 시 제일 하단 메시지로 이동
 // 			location.href="#chatBottom";
-			scroll();
+			scrollMessage();
 		}
 	})
 }
@@ -1659,7 +1670,7 @@ function clickS10201(){
 			)
 			//버튼 클릭 시 제일 하단 메시지로 이동
 // 			location.href="#chatBottom";
-			scroll();
+			scrollMessage();
 		}
 	})
 }
@@ -1717,7 +1728,7 @@ function clickS10202(){
 			)
 			//버튼 클릭 시 제일 하단 메시지로 이동
 // 			location.href="#chatBottom";
-			scroll();
+			scrollMessage();
 		}
 	})
 }
@@ -1775,7 +1786,7 @@ function clickS10301(){
 			)
 			//버튼 클릭 시 제일 하단 메시지로 이동
 // 			location.href="#chatBottom";
-			scroll();
+			scrollMessage();
 		}
 	})
 }
@@ -1833,7 +1844,7 @@ function clickS20101(){
 			)
 			//버튼 클릭 시 제일 하단 메시지로 이동
 // 			location.href="#chatBottom";
-			scroll();
+			scrollMessage();
 		}
 	})
 }
@@ -1891,7 +1902,7 @@ function clickS20102(){
 			)
 			//버튼 클릭 시 제일 하단 메시지로 이동
 // 			location.href="#chatBottom";
-			scroll();
+			scrollMessage();
 		}
 	})
 }
@@ -1949,7 +1960,7 @@ function clickS20103(){
 			)
 			//버튼 클릭 시 제일 하단 메시지로 이동
 // 			location.href="#chatBottom";
-			scroll();
+			scrollMessage();
 		}
 	})
 }
@@ -2007,7 +2018,7 @@ function clickS20104(){
 			)
 			//버튼 클릭 시 제일 하단 메시지로 이동
 // 			location.href="#chatBottom";
-			scroll();
+			scrollMessage();
 		}
 	})
 }
@@ -2065,7 +2076,7 @@ function clickS20201(){
 			)
 			//버튼 클릭 시 제일 하단 메시지로 이동
 // 			location.href="#chatBottom";
-			scroll();
+			scrollMessage();
 		}
 	})
 }
@@ -2123,7 +2134,7 @@ function clickS20202(){
 			)
 			//버튼 클릭 시 제일 하단 메시지로 이동
 // 			location.href="#chatBottom";
-			scroll();
+			scrollMessage();
 		}
 	})
 }
@@ -2181,7 +2192,7 @@ function clickS20203(){
 			)
 			//버튼 클릭 시 제일 하단 메시지로 이동
 // 			location.href="#chatBottom";
-			scroll();
+			scrollMessage();
 		}
 	})
 }
@@ -2239,7 +2250,7 @@ function clickS20204(){
 			)
 			//버튼 클릭 시 제일 하단 메시지로 이동
 // 			location.href="#chatBottom";
-			scroll();
+			scrollMessage();
 		}
 	})
 }
@@ -2297,7 +2308,7 @@ function clickS20205(){
 			)
 			//버튼 클릭 시 제일 하단 메시지로 이동
 // 			location.href="#chatBottom";
-			scroll();
+			scrollMessage();
 		}
 	})
 }
@@ -2355,7 +2366,7 @@ function clickS20301(){
 			)
 			//버튼 클릭 시 제일 하단 메시지로 이동
 // 			location.href="#chatBottom";
-			scroll();
+			scrollMessage();
 		}
 	})
 }
@@ -2413,7 +2424,7 @@ function clickS20302(){
 			)
 			//버튼 클릭 시 제일 하단 메시지로 이동
 // 			location.href="#chatBottom";
-			scroll();
+			scrollMessage();
 		}
 	})
 }
@@ -2471,7 +2482,7 @@ function clickS20303(){
 			)
 			//버튼 클릭 시 제일 하단 메시지로 이동
 // 			location.href="#chatBottom";
-			scroll();
+			scrollMessage();
 		}
 	})
 }
@@ -2529,7 +2540,7 @@ function clickS30101(){
 			)
 			//버튼 클릭 시 제일 하단 메시지로 이동
 // 			location.href="#chatBottom";
-			scroll();
+			scrollMessage();
 		}
 	})
 }
@@ -2587,7 +2598,7 @@ function clickS30102(){
 			)
 			//버튼 클릭 시 제일 하단 메시지로 이동
 // 			location.href="#chatBottom";
-			scroll();
+			scrollMessage();
 		}
 	})
 }
@@ -2645,7 +2656,7 @@ function clickS30103(){
 			)
 			//버튼 클릭 시 제일 하단 메시지로 이동
 // 			location.href="#chatBottom";
-			scroll();
+			scrollMessage();
 		}
 	})
 }
@@ -2703,7 +2714,7 @@ function clickS30104(){
 			)
 			//버튼 클릭 시 제일 하단 메시지로 이동
 // 			location.href="#chatBottom";
-			scroll();
+			scrollMessage();
 		}
 	})
 }
@@ -2761,7 +2772,7 @@ function clickS40101(){
 			)
 			//버튼 클릭 시 제일 하단 메시지로 이동
 // 			location.href="#chatBottom";
-			scroll();
+			scrollMessage();
 		}
 	})
 }
@@ -2819,7 +2830,7 @@ function clickS40102(){
 			)
 			//버튼 클릭 시 제일 하단 메시지로 이동
 // 			location.href="#chatBottom";
-			scroll();
+			scrollMessage();
 		}
 	})
 }
@@ -2877,7 +2888,7 @@ function clickS40103(){
 			)
 			//버튼 클릭 시 제일 하단 메시지로 이동
 // 			location.href="#chatBottom";
-			scroll();
+			scrollMessage();
 		}
 	})
 }
@@ -2935,7 +2946,7 @@ function clickS50101(){
 			)
 			//버튼 클릭 시 제일 하단 메시지로 이동
 // 			location.href="#chatBottom";
-			scroll();
+			scrollMessage();
 		}
 	})
 }
@@ -2993,7 +3004,7 @@ function clickS50102(){
 			)
 			//버튼 클릭 시 제일 하단 메시지로 이동
 // 			location.href="#chatBottom";
-			scroll();
+			scrollMessage();
 		}
 	})
 }
@@ -3051,7 +3062,7 @@ function clickS50103(){
 			)
 			//버튼 클릭 시 제일 하단 메시지로 이동
 // 			location.href="#chatBottom";
-			scroll();
+			scrollMessage();
 		}
 	})
 }
@@ -3109,7 +3120,7 @@ function clickS60101(){
 			)
 			//버튼 클릭 시 제일 하단 메시지로 이동
 // 			location.href="#chatBottom";
-			scroll();
+			scrollMessage();
 		}
 	})
 }
@@ -3167,7 +3178,7 @@ function clickS60102(){
 			)
 			//버튼 클릭 시 제일 하단 메시지로 이동
 // 			location.href="#chatBottom";
-			scroll();
+			scrollMessage();
 		}
 	})
 }
@@ -3225,7 +3236,7 @@ function clickS60201(){
 			)
 			//버튼 클릭 시 제일 하단 메시지로 이동
 // 			location.href="#chatBottom";
-			scroll();
+			scrollMessage();
 		}
 	})
 }
@@ -3238,8 +3249,8 @@ function clickS60201(){
 
 
 	<!------------------- 챗봇 구현부분 ------------------->
-	<div id="floatChat" style="float:right; margin:100px; top:700px; right:50px; position:absolute;">
-		<form style="zoom:3; cursor:pointer;" data-toggle="modal" data-target="#modalChatBot">
+	<div id="floatChat" style="float:right; margin:5%; top:700px; right:50px; position:absolute;" data-toggle="tooltip" data-placement="left" title="클릭하면 챗봇이 열립니다">
+		<form style="zoom:5; cursor:pointer;" data-toggle="modal" data-target="#modalChatBot">
 			<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
 		</form>
 	</div>
@@ -3255,7 +3266,7 @@ function clickS60201(){
 	    <div class="modal-content" style="height:650px; background:#F7F2E0;">
 	    	
 	    	
-		    <div id="scrolltest1" style="position:relative; overflow:auto; height:600px; margin:10px;">
+		    <div id="scrollMessagetest1" style="position:relative; overflow:auto; height:600px; margin:10px;">
 		    
 
 		    	<!-- 질문목록 띄우기 -->

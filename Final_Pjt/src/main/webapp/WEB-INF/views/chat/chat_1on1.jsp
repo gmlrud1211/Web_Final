@@ -38,7 +38,7 @@
 	        </div>
 	  </div><hr>
 	    
-	    <form id="chatBot2" name="chatBot2">
+	    <form id="chatBot2" name="chatBot2" style="width:1828px;">
 			<div class="row">
 			  <div class="col-lg-6">
 			    <div class="input-group">
