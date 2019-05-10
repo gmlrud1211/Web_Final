@@ -23,24 +23,9 @@ ul.bxslider li img {
 	height: auto;
 }
 
-.searchdiv {
-	width: 500px;
-	height: 50px;
-	margin: 0 auto;
-	text-align: center;
-	position: relative;
-}
-
-.searchdiv input {
-	width: 100%;
-	height: 50px;
-}
-
-.searchdiv button {
-	position: absolute;
-	top: 10px;
-	right: 5px;
-}
+ .searchdiv {width: 100%; height: 50px; margin:0 auto; text-align: center; position: relative;}
+ .searchdiv input {width: 100%; 	height: 50px; border: 2px solid #827ffe;  padding-left:20px;}
+ .searchdiv button {position: absolute; top: 0px; right: 0px; width:50px; height:50px; background: #827ffe; border:1px solid #827ffe;}
 
 .searchdiv button i {
 	font-size: 30px;
