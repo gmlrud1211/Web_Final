@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<jsp:include page="/WEB-INF/views/layout/header.jsp" />
+<jsp:include page="/WEB-INF/views/common/header.jsp" />
 
 <script type="text/javascript"
  src="/resources/smarteditor2/js/service/HuskyEZCreator.js"
@@ -98,7 +98,7 @@ function submitContents(elClickedObj) {
 
 
 
-<jsp:include page="/WEB-INF/views/layout/footer.jsp" />
+<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
 
 

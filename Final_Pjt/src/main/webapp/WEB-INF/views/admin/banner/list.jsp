@@ -118,7 +118,6 @@ li {
 </div>
 </div>
 
-<jsp:include page="/WEB-INF/views/layout/bannerpaging.jsp" />
       
 <br>
 

@@ -4,7 +4,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
-<jsp:include page="/WEB-INF/views/layout/header.jsp" />
 
 <script type="text/javascript">
 
@@ -14,7 +13,6 @@ location.href="/faq/list";
 </script>
 
 
-<jsp:include page="/WEB-INF/views/layout/footer.jsp" />
 
 
 
