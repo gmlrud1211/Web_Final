@@ -53,8 +53,19 @@
 		<beans:property name="contentType" value="application.json;charset=utf-8"/>
 	</beans:bean>
 	
+	
+	<!-- Websocket Handler 등록 -->
+	<beans:bean class="com.allhotplace.www.controller.chatbot.handler.ReplyEchoHandler" id="replyEchochoHandler"/>
+	
+	
+	<websocket:handlers>
+		<websocket:mapping handler="replyEchochoHandler" path="/replyEcho"/>
+		
+		<websocket:handshake-interceptors>
+			<beans:bean class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor"/>
+		</websocket:handshake-interceptors>
+	</websocket:handlers>
+		
 	<context:component-scan base-package="com.allhotplace.www" />
-	
-	
-	
+
 </beans:beans>
