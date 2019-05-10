@@ -32,6 +32,7 @@ public class UserController {
 		return "/user/login";
 	}
 	
+	
 	@RequestMapping(value="/login", method=RequestMethod.POST)
 	public String LoginProc(HttpSession session, 
 							String user_id, String user_pw, 
