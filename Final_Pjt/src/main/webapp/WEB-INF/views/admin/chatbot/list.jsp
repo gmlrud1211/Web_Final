@@ -93,6 +93,8 @@ ul.tab li.current {
 .tabcon.current {
 	display: block;
 }
+
+
 </style>
 <style>
 #container>div {
@@ -104,9 +106,19 @@ ul.tab li.current {
 }
 
 #container>div>table {
-	position: relative;
+	position: absolute;
 	top: 70px;
 	left: 0;
+}
+
+.cb {
+   position : absolute;
+   top : 50px;
+   margin-left : 60px;
+}
+
+.cd{
+  clear: both;
 }
 </style>
 
@@ -141,14 +153,14 @@ ul.tab li.current {
 
 			 <c:forEach var="i" begin="1" end="3">
 				<c:set value="<%=mno%>" var="mno"></c:set>
-				<div id="mtab<%=i%>" class="tabcon mmmtab<%=i%>">
+				<div id="mtab<%=i%>" class="tabcon mmmtab<%=i%> cb">
 					<%
 						i++;
 					%>
 					<%
 						mno++;
 					%>
-					<table class="table table-hover table-striped table-condensed" style="clear:both;">
+					<table class="table table-hover table-striped table-condensed cd" >
 						<c:forEach items="${schatlist }" var="slist">
 							<c:if test="${slist.mChat_no == mno}">
 								<colgroup>
@@ -191,7 +203,7 @@ ul.tab li.current {
 			<c:forEach var="j" begin="1" end="3">
 				<c:set value="<%=mno2%>" var="mno2">
 				</c:set>
-				<div id="mtab<%=j%>" class="tabcon mmmtab<%=j%>">
+				<div id="mtab<%=j%>" class="tabcon mmmtab<%=j%> cb">
 					<%
 						j++;
 					%>
@@ -199,7 +211,7 @@ ul.tab li.current {
 						mno2++;
 					%>
 
-					<table class="table table-hover table-striped table-condensed">
+					<table class="table table-hover table-striped table-condensed cd">
 						<c:forEach items="${schatlist }" var="slist">
 							<c:if test="${slist.mChat_no == mno2}">
 								<colgroup>
@@ -239,14 +251,14 @@ ul.tab li.current {
 
 			<c:forEach var="r" begin="1" end="3">
 				<c:set value="<%=mno3%>" var="mno3"></c:set>
-				<div id="mtab<%=r%>" class="tabcon mmmtab<%=r%>">
+				<div id="mtab<%=r%>" class="tabcon mmmtab<%=r%> cb">
 					<%
 						r++;
 					%>
 					<%
 						mno3++;
 					%>
-			<table class="table table-hover table-striped table-condensed">
+			<table class="table table-hover table-striped table-condensed cd">
 				<c:forEach items="${schatlist }" var="slist">
 					<c:if test="${slist.mChat_no == mno3}">
 						<colgroup>
@@ -288,7 +300,7 @@ ul.tab li.current {
 			<c:forEach var="q" begin="1" end="3">
 				<c:set value="<%=mno4%>" var="mno4">
 				</c:set>
-				<div id="mtab<%=q%>" class="tabcon mmmtab<%=q%>">
+				<div id="mtab<%=q%>" class="tabcon mmmtab<%=q%> cb">
 					<%
 						q++;
 					%>
@@ -296,7 +308,7 @@ ul.tab li.current {
 						mno4++;
 					%>
 			
-			<table class="table table-hover table-striped table-condensed">
+			<table class="table table-hover table-striped table-condensed cd">
 				<c:forEach items="${schatlist }" var="slist">
 					<c:if test="${slist.mChat_no == mno4}">
 						<colgroup>
@@ -338,7 +350,7 @@ ul.tab li.current {
 			<c:forEach var="w" begin="1" end="3">
 				<c:set value="<%=mno5%>" var="mno5">
 				</c:set>
-				<div id="mtab<%=w%>" class="tabcon mmmtab<%=w%>">
+				<div id="mtab<%=w%>" class="tabcon mmmtab<%=w%> cb">
 					<%
 						w++;
 					%>
@@ -346,7 +358,7 @@ ul.tab li.current {
 						mno5++;
 					%>
 
-			<table class="table table-hover table-striped table-condensed">
+			<table class="table table-hover table-striped table-condensed cd">
 				<c:forEach items="${schatlist }" var="slist">
 					<c:if test="${slist.mChat_no == mno5}">
 						<colgroup>
@@ -389,14 +401,14 @@ ul.tab li.current {
 			<c:forEach var="t" begin="1" end="2">
 				<c:set value="<%=mno6%>" var="mno6">
 				</c:set>
-				<div id="mtab<%=t%>" class="tabcon mmmtab<%=t%>">
+				<div id="mtab<%=t%>" class="tabcon mmmtab<%=t%> cb">
 					<%
 						t++;
 					%>
 					<%
 						mno6++;
 					%>
-			<table class="table table-hover table-striped table-condensed">
+			<table class="table table-hover table-striped table-condensed cd">
 				<c:forEach items="${schatlist }" var="slist">
 					<c:if test="${slist.mChat_no == mno6}">
 						<colgroup>

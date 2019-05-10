@@ -84,12 +84,12 @@ td {
 	text-align: right;
 }
 
-ul {
+ul.pagination{
 	list-style: none;
 	text-align: center
 }
 
-li {
+ul.pagination li { 
 	display: inline-block;
 }
 </style>
