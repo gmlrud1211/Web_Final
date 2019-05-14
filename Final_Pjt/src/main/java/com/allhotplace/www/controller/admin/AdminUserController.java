@@ -38,9 +38,8 @@ public class AdminUserController {
 
 		// 검색요청파라미터 받기
 		String param1 = word;
-		String param2 = search;
-
-//			null이나 ""이 아니면 int로 리턴
+ 
+        //null이나 ""이 아니면 int로 리턴
 		if (param != null && !"".equals(param)) {
 			curPage = Integer.parseInt(param);
 		}
@@ -51,9 +50,8 @@ public class AdminUserController {
 			param1 = "";
 		}
 
-
 		// 총 회원 수 얻기
-		int totalCount = aduserService.selectCntUser();
+		int totalCount = aduserService.selectCntUser(param1);
 
 		// 페이지 객체 생성
 		Paging paging = new Paging(totalCount, curPage);
@@ -63,7 +61,6 @@ public class AdminUserController {
 		System.out.println("값" + totalCount);
 
 		model.addAttribute("search", param1);
-		System.out.println(userlist);
 
 		model.addAttribute("paging", paging);
 		model.addAttribute("userlist", userlist);

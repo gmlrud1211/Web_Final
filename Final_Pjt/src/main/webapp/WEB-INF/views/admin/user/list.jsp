@@ -41,32 +41,51 @@
 
 <style type="text/css">
 table {
- width : 100%;
+	border-collapse: collapse;
+	width: 100%;
 }
+
 th {
 	text-align: center !important;
+	border-bottom: 2px solid grey;
+	border-top: 2px solid grey;
+	height: 40px;
 }
 
-th, td:not (:nth-child(2)) {
-	text-align: center;
-}
+th
+,
+td
+:not
+ 
+(
+:nth-child(2)
+ 
+)
+{
+text-align
+:
+ 
+center
+;
 
+
+}
 td {
-text-align : center;
-	border-left: 1px solid white;
-	border-right: 1px solid white;
+	text-align: center;
+	height: 40px;
+	border-bottom: 1px solid #D8D8D8;
 }
 
 #btnBox {
 	text-align: right;
 }
 
-ul.pagination{
+ul.pagination {
 	list-style: none;
 	text-align: center
 }
 
-ul.pagination li { 
+ul.pagination li {
 	display: inline-block;
 }
 </style>
@@ -78,11 +97,10 @@ ul.pagination li {
 		<jsp:include page="/WEB-INF/views/layout/sidebar.jsp" />
 	</div>
 
-	<div id="content" 
-	style="padding:10px; width:1000px; margin: 0 auto; border-left: 1px solid #D8D8D8; height:100%; float:left; ">
+	<div id="content"
+		style="padding: 10px; width: 1000px; margin: 0 auto; border-left: 1px solid #D8D8D8; height: 100%; float: left;">
 
-		<h3>회원관리</h3>
-		<hr>
+		<h5>회원관리</h5>
 
 		<table class="table table-hover table-striped table-condensed">
 			<thead>
@@ -115,22 +133,25 @@ ul.pagination li {
 			</tbody>
 		</table>
 
+<div style="padding: 20px;">
 		<jsp:include page="/WEB-INF/views/layout/userpaging.jsp" />
-
+</div>
 		<br>
+		<div
+			style="height: 20px; width: 100%; padding: 10px 350px; claer: both;">
+			<div class='text-center'
+				style="height: 20px; width: 100%; margin: 0 atuo;">
+				<FORM name='search' method='get' action='/admin/user/list'>
 
-		<div class='text-center' style="clear: both;">
-			<FORM name='search' method='get' action='/admin/user/list'>
+					<SELECT name='search'>
+						<!-- 검색 컬럼 -->
+						<OPTION id='user_no' value='user_no'>회원번호</OPTION>
+						<OPTION id='user_name' value='user_name'>이름</OPTION>
+					</SELECT> <input type='text' name='word' placeholder="특수문자는 사용할수 없습니다.">
+					<button id="searBtn">검색</button>
 
-				<SELECT name='search'>
-					<!-- 검색 컬럼 -->
-					<OPTION id='user_no' value='user_no'>회원번호</OPTION>
-					<OPTION id='user_name' value='user_name'>이름</OPTION>
-				</SELECT> 
-				<input type='text' name='word' placeholder="특수문자는 사용할수 없습니다.">
-				<button id="searBtn">검색</button>
-
-			</FORM>
+				</FORM>
+			</div>
 			<DIV class='menu_line' style='clear: both;'></DIV>
 
 		</DIV>

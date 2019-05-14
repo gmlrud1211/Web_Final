@@ -12,11 +12,10 @@ import com.allhotplace.www.util.Paging;
 
 public interface AdminUserDao {
 	
-//	@Param("search") String search,  @Param("word") String word
 	// 회원 페이징 처리 게시글 반환
 	public List<Users> selectPaginglist(@Param("paging")Paging paging, @Param("search") String search,  @Param("word") String word);
 	// 총 회원 수 반환
-	public int selectCntUser();
+	public int selectCntUser(String word);
 	
 	// 회원 조회 
 	public Users selectUser(Users user); 

@@ -1,5 +1,6 @@
 package com.allhotplace.www.controller.admin;
 
+import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Member;
 import java.util.List;
 import java.util.Map;
@@ -31,8 +32,15 @@ public class NoticeboardController {
 	private static final Logger logger = LoggerFactory.getLogger(NoticeboardController.class);
 
 	@RequestMapping(value = "/admin/noticeboard/list", method = RequestMethod.GET)
-	public void boardList(Model model, HttpServletRequest req, String curPage1, HttpSession session, String word) {
+	public void boardList(Model model, HttpServletRequest req, String curPage1, HttpSession session, String word
+			                ,String search) {
 
+        try {
+			req.setCharacterEncoding("utf-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		
 		// 요청파라미터 curPage 받기
 		String param = curPage1;
 		int curPage = 0;
@@ -44,7 +52,6 @@ public class NoticeboardController {
 		if (param != null && !"".equals(param)) {
 			curPage = Integer.parseInt(param);
 		}
-
 		if (param1 != null && !"".equals(param1)) {
 			param1 = word;
 		} else {
@@ -57,7 +64,7 @@ public class NoticeboardController {
 		Paging paging = new Paging(totalCount, curPage);
 		paging.setSearch(param1);
 
-		List<Noticeboard> nboardlist = nboardService.getPagingList(paging);
+		List<Noticeboard> nboardlist = nboardService.getPagingList(paging,search, param1);
 		System.out.println("값" + totalCount);
 
 		model.addAttribute("search", param1);

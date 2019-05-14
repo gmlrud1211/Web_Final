@@ -31,8 +31,6 @@ $(document).ready(function(){
                 $(this).slideUp("fast");
             }
         });
-        
-
         //현재 요소의 다음 요소를 보이게 합니다.
         //$(this).next("ul").css({display:"block"});
         //$(this).next("ul").show();
@@ -40,13 +38,12 @@ $(document).ready(function(){
 
     })
 });
-
-
 </script>
 
 <style>
 *{margin:0; paddding:0; font-size:14px;}
 body {
+
 	margin: px auto;
 	padding: px auto;
 	font-family: "맑은 고딕";
@@ -76,7 +73,8 @@ li.group {
 }
 
 li.group div.title a {
-	color: grey;
+font-size : 20px;
+	color: black;
 	text-decoration: none;
 }
 
@@ -120,8 +118,52 @@ ul.sub {
 </style>
 </head>
 <body>
+<!-- <ul> -->
+<!-- 	<li data-info-normprc="62100" data-info-saleprc="52790" -->
+<!-- 		data-info-cpnyn="Y" data-info-cpnaplyrtamtsctcd="20" -->
+<!-- 		data-info-cpnrtamtval="15"> -->
+		
+<!-- 		이미지 및 상품 정보  -->
+<!-- 		<a class="pic new" href="javascript:;"align="center">  -->
+<!-- 		<img data-original="http://image.oliveyoung.co.kr/uploads/images/goods/10/0000/0011/A00000011106908ko.png?l=ko" -->
+<!-- 			alt="[온라인단독] 셀라피 에이리페어 크림 100ml" -->
+<!-- 			data-ref-link-url="http://www.oliveyoung.co.kr/store/" -->
+<!-- 			class="completed-scroll-lazyload" -->
+<!-- 			src="http://image.oliveyoung.co.kr/uploads/images/goods/10/0000/0011/A00000011106908ko.png?l=ko"> -->
 
-	<ul id="navi" style="border-left: 1px solid black;">
+<!-- 	     </a> -->
+	
+<!-- 		<p class="phr">오직 온라인몰에서만 단.독.특.가 찬스~♥</p> -->
+<!-- 		<div class="area"> -->
+<!-- 			<a class="tit goodsList" href="javascript:;" -->
+<!-- 				data-ref-goodsno="A000000111069" data-ref-dispcatno="" -->
+<!-- 				data-ref-itemno="001">셀라피</a><a class="txt goodsList" -->
+<!-- 				href="javascript:;" data-ref-goodsno="A000000111069" -->
+<!-- 				data-ref-dispcatno="" data-ref-itemno="001">[온라인단독] 셀라피 에이리페어 크림 -->
+<!-- 				100ml</a> -->
+<!-- 			<div class="price"> -->
+<!-- 				<div class="tx_org"> -->
+<!-- 					<i class="tx_num">69,000</i>원 -->
+<!-- 				</div> -->
+<!-- 				<span>오늘특가</span>52,790<em>원</em> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
+		
+<!-- 		<div class="prd_flag"> -->
+<!-- 			<span class="icon_flag sale">세일</span><span class="icon_flag coupon">쿠폰</span> -->
+<!-- 		</div> 할인&세일 -->
+		
+<!-- 		<div class="ico"> -->
+<!-- 			<span class="sale">10%<em>할인</em></span> <span class="coupon">15%<em>쿠폰</em></span> -->
+
+<!-- 		</div> -->
+<!-- 	</li> -->
+
+<!-- </ul> -->
+
+
+	<div style="">
+	<ul id="navi" style="">
 		<li class="group">
 			<div class="title">
 				<a href="/admin/dashboard/list" role="button" aria-expanded="false">대시보드</a>
@@ -161,6 +203,6 @@ ul.sub {
 
 		</li>
 	</ul>
-
+</div>
 </body>
 </html>

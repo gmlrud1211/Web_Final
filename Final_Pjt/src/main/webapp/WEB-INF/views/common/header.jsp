@@ -28,23 +28,50 @@ a:hover{color:#827ffe;}
 	<img alt="logo" src="/img/dance.png" id="img">&nbsp; 
 	<span style="color:#403866; font-size:1.4em;"> All That Hot Place ^__^</span>
 	
-	<!-- 로그인 안한 상태 -->
-	<c:if test="${ not login }">
-	<ul>
-		<li><a href="/join"><button>회원가입&nbsp;&nbsp;&nbsp;&nbsp;</button></a></li>
-		<li><a href="/login"><button>로그인</button></a></li>
-	</ul>
-		
-	</c:if>
-		
-	<!-- 로그인 한 상태 -->
-	<c:if test="${ login }">
-		<ul>
+	<c:choose>
+	
+	  <c:when test="${ not login }"> 
+	    <ul>
+		  <li><a href="/join"><button>회원가입&nbsp;&nbsp;&nbsp;&nbsp;</button></a></li>
+		  <li><a href="/login"><button>로그인</button></a></li>
+	    </ul>
+	   </c:when>
+	
+	
+	  <c:when test="${ login and user_id eq 'admin'}"> 
+	     <ul> 
+			<li><a href="/admin/dashboard/list">관리자 홈 &nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+			<li>${user_id}님 환영합니다&nbsp;&nbsp;&nbsp;&nbsp;</li>
+			<li><a href="/logout"><button>로그아웃</button></a></li>
+		 </ul>
+	   </c:when>
+	 
+	   <c:otherwise>
+          <ul> 
 			<li><a href="mypage/myInfo">마이페이지&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
 			<li>${user_id}님 환영합니다&nbsp;&nbsp;&nbsp;&nbsp;</li>
 			<li><a href="/logout"><button>로그아웃</button></a></li>
-		</ul>
-	</c:if>
+		 </ul>
+        
+</c:otherwise>
+	</c:choose>
+	
+	<%-- 	<c:if test="${ not login }"> --%>
+<!-- 	<ul> -->
+<!-- 		<li><a href="/join"><button>회원가입&nbsp;&nbsp;&nbsp;&nbsp;</button></a></li> -->
+<!-- 		<li><a href="/login"><button>로그인</button></a></li> -->
+<!-- 	</ul> -->
+		
+<%-- 	</c:if> --%>
+<%-- 	<c:if test="${ login }"> --%>
+<!-- 		<ul> -->
+<!-- 			<li><a href="mypage/myInfo">마이페이지&nbsp;&nbsp;&nbsp;&nbsp;</a></li> -->
+<%-- 			<li>${user_id}님 환영합니다&nbsp;&nbsp;&nbsp;&nbsp;</li> --%>
+<!-- 			<li><a href="/logout"><button>로그아웃</button></a></li> -->
+<!-- 		</ul> -->
+<%-- 	</c:if> --%>
+	
+
 	<ul class="righttop">
 		<li><a href="#">일정공유 게시판</a></li>
 		<li>/</li>
