@@ -60,7 +60,7 @@ public class MypageSeviceImpl implements MypageService{
 	}
 
 	@Override
-	public Schedule viewSchedule(int calendar_no) {
+	public List<Schedule> viewSchedule(int calendar_no) {
 		return mypageDao.selectSchedule(calendar_no);
 	}
 

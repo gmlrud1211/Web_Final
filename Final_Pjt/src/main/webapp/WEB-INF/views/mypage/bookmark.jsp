@@ -25,6 +25,7 @@
 			location.href="/mypage/bookmark/delete?bookmark_no="+bookmark_no;
 		}
 	}
+	
 </script>
 
 

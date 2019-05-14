@@ -32,6 +32,6 @@ public interface MypageService {
 	public void deleteBookmark(int bookmark_no);
 
 	//선택한 캘린더-일정조회하기  
-	public Schedule viewSchedule(int calendar_no);
+	public List<Schedule> viewSchedule(int calendar_no);
 
 }

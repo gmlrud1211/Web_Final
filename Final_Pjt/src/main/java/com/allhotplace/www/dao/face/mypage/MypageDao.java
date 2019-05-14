@@ -35,6 +35,6 @@ public interface MypageDao {
 	public void deleteBookmark(int bookmark_no);
 
 	//선택한 캘린더의 일정들 조회
-	public Schedule selectSchedule(int calendar_no);
+	public List<Schedule> selectSchedule(int calendar_no);
 
 }
