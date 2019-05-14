@@ -42,16 +42,18 @@ $(document).ready(function() {
 
 
 <tr><td class="info" colspan="2">질문</td></tr>
-<tr><td colspan="2"><textarea id="quse" name="quse">${view.sChat_name }</textarea></td></tr>
+<tr><td colspan="2">
+<textarea style="height: 100px; width: 500px;"id="sChat_name" name="sChat_name">${view.sChat_name }</textarea></td></tr>
 
 <tr><td class="info" colspan="2">답</td></tr>
-<tr><td style="width:100%;" colspan="2"><textarea id="ans" name="ans">${view.sChat_answer }</textarea></td></tr>
+<tr><td colspan="2">
+<textarea style="height: 100px; width: 500px;" id="sChat_answer" name="sChat_answer">${view.sChat_answer }</textarea></td></tr>
 
 </table>
 
 </div>
 
-<input type="hidden" name="faq_no" id="faq_no" value="${view.sChat_no }">
+<input type="hidden" name="sChat_no" id="sChat_no" value="${view.sChat_no }">
 
 <div class="text-center">	
 	<button id="btnWrite" class="btn btn-primary">수정완료</button>

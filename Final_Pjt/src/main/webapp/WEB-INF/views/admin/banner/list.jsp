@@ -32,6 +32,7 @@ $(document).ready(function() {
 
 <style type="text/css">
 table {
+ border-collapse : collapse;
  width : 100%;
 }
 th{
@@ -60,6 +61,14 @@ ul.pagination{
 ul.pagination li { 
 	display: inline-block;
 }
+
+.bt{
+background-color : #827ffe;
+color : white;
+font-size : 20px;
+border-style :none;
+   border-radius: 5px;
+}
 </style></head>
 
 <body>
@@ -71,7 +80,7 @@ ul.pagination li {
 <div id="content" style="height:100%;width:78%;float:left;">
 
 <div id="btnBox" style=" float:right; margin:30px; " >
-	<button id="btnWrite" class="btn btn-primary" style="color:#ffffff; background:#827ffe;">등록</button>
+	<button id="btnWrite" class="btn btn-primary bt" style="color:#ffffff; background:#827ffe;">등록</button>
 </div>
 
 <div style="margin:30px; ">

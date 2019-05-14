@@ -12,7 +12,7 @@ import com.allhotplace.www.util.Paging;
 public interface AdminUserService {
 
 	// 총 회원 수 얻기
-	public int selectCntUser();
+	public int selectCntUser(String word);
 	
 	// 배너 페이징 해서 전체 조회
 	public List<Users> selectPaginglist(Paging paging, String search, String word);

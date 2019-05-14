@@ -11,13 +11,9 @@
 
 <!-- 매퍼 설정 -->
 <mapper namespace="com.allhotplace.www.dao.face.admin.NoticeboardDao">
-
-
 	<!-- 총 게시글 수 반환 -->
 	<select id="selectCntNboard" parameterType="string" resultType="int">
 		SELECT count(*) FROM noticeboard
-		where 1 = 1
-		and notice_title Like '%' || #{search} || '%'
 	</select>
 
 	<!-- 페이징 처리 게시글 반환 -->
@@ -26,13 +22,20 @@
 		SELECT * FROM (
 		SELECT rownum rnum, B.* FROM (
 		SELECT * FROM noticeboard
-		WHERE notice_title Like '%' || #{search} || '%'
+	    where 1 = 1 
+		<choose>
+			<when test="search == 'notice_title'">
+				and notice_title Like '%' || #{word} || '%'
+			</when>
+			<when test="search == 'notice_content'">
+				AND notice_content Like '%' || #{word} || '%'
+			</when>
+		</choose>
 		ORDER BY notice_no desc
 		) B
 		ORDER BY rnum
 		) R
-		WHERE rnum BETWEEN #{startNo } AND #{endNo }
-
+		WHERE rnum BETWEEN #{paging.startNo } AND #{paging.endNo }
 	</select>
 
 

@@ -26,8 +26,8 @@ public class NoticeboardServiceImpl implements NoticeboardService {
 
 	// 게시글 페이징 리스트 처리 반환
 	@Override
-	public List<Noticeboard> getPagingList(Paging paging) {
-		return boardDao.selectPaginglist(paging);
+	public List<Noticeboard> getPagingList(Paging paging, String search, String word) {
+		return boardDao.selectPaginglist(paging,search,word);
 	}
 
 	@Override

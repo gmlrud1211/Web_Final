@@ -68,6 +68,7 @@
 .tabcon {
 	display: none;
 	padding: 6px 12px;
+	width : 90%;
 }
 
 ul.tab li.current {
@@ -78,6 +79,10 @@ ul.tab li.current {
 	border-bottom: 1px solid grey;
 }
 
+ul.tab li.current a{
+   color : white;
+}
+
 ul.tab li {
 	border : 1px solid grey;
 	    border-collapse: collapse;
@@ -85,7 +90,11 @@ ul.tab li {
 }
 
 ul.subtab li.current {
-	border-bottom: 1px solid grey;
+	background-color: #dfdfe5; 
+}
+
+ul.subtab li {
+	color : gray;
 }
 
 

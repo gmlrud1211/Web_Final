@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
+<jsp:include page="/WEB-INF/views/common/header.jsp" />
+
 
 <script type="text/javascript"
  src="/resources/smarteditor2/js/service/HuskyEZCreator.js"
@@ -25,6 +27,7 @@ $(document).ready(function() {
 <style type="text/css">
 #content {
 	width: 100%;
+	margin : 0 auto;
 }
 </style>
 
@@ -83,11 +86,11 @@ $(document).ready(function() {
 
 <tr>
 <td class="info">질문</td>
-<td ><textarea id="sChat_name" name="sChat_name"></textarea></td>
+<td ><textarea style="height: 100px; width: 500px;" id="sChat_name" name="sChat_name"></textarea></td>
 </tr>
 <tr>
 <td class="info">답</td>
-<td><textarea id="sChat_answer" name="sChat_answer"></textarea></td> 
+<td><textarea style="height: 100px; width: 500px;" id="sChat_answer" name="sChat_answer"></textarea></td> 
 </tr>
 
 

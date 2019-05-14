@@ -6,7 +6,23 @@
 
 <%-- <jsp:include page="/view/layout/header.jsp" /> --%>
 <style>
-nav{display: none}
+table {
+border : 1px solid grey;
+border-collapse : collapse;
+}
+
+td{
+border : 1px solid grey;
+padding: 10px 5px;
+}
+td.info{
+color:white;
+
+background-color : #827ffe;
+
+}
+
+
 </style>
 
 
@@ -28,16 +44,13 @@ $(document).ready(function() {
 });
 </script>
 
+<div class="container" >
+<h3 style="width: 100px; margin: 0 auto; padding: 20px;">회원 정보</h3>
 
-<div class="container">
-<h3>회원 정보</h3>
-<hr>
-
-<div>
+<div style="width:320px; margin: 0 auto;">
  
 <table class="table table-bordered">
-<tr><td class="info">회원번호</td><td>${usersview.user_no }</td></tr>
- 
+<tr><td class="info">회원번호</td><td>${userview.user_no }</td></tr> 
 <tr><td class="info">아이디</td><td>${userview.user_id}</td></tr>
 <tr><td class="info">패스워드</td><td>${userview.user_pw }</td></tr>
 <tr><td class="info">이름</td><td>${userview.user_name }</td></tr>
@@ -47,7 +60,8 @@ $(document).ready(function() {
 <tr><td class="info">가입일</td><td>${userview.user_regdate }</td></tr>
 </table>
 
-	<button id="btnBack" onclick="window.close()" style="margin-left: 42%;" > 닫기 </button>
+	<button id="btnBack" onclick="window.close()" 
+	         style="margin-left: 42%;background:#827ffe; border-style:none; margin : 30px 20px; color:white;" > 닫기 </button>
 
 </div>
 </div>
