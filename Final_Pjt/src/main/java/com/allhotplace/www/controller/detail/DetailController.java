@@ -445,6 +445,7 @@ private static final Logger logger = LoggerFactory.getLogger(DetailController.cl
 		model.addAttribute("shoppingIntro", shoppingIntro);
 		model.addAttribute("restaurantIntro", restaurantIntro);
 		
+		
 		return "detail/detail";
 	}
 }
