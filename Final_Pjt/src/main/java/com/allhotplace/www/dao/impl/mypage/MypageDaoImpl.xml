@@ -57,5 +57,10 @@
 		where bookmark_no = #{bookmark_no}
 	</delete>
 	
+	<select id="selectSchedule" resultType="com.allhotplace.www.dto.Schedule">
+		select * from schedule
+		where calendar_no= #{calendar_no}
+	</select>
+	
 	
 </mapper>

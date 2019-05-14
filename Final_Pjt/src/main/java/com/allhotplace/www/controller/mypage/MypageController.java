@@ -114,7 +114,6 @@ public class MypageController {
 	
 	}
 	
-	
 	@RequestMapping(value="/mypage/calUpdate", method=RequestMethod.POST)
 	public String CalendarUpdate(HttpSession session, Calendar cal,
 								HttpServletRequest req,
@@ -156,10 +155,9 @@ public class MypageController {
 		logger.info("마이페이지-[캘린더 > 일정조회]");
 		logger.info("선택한 캘린더의 calendar_no"+calendar_no);
 
-		Schedule schedule = mypageService.viewSchedule(calendar_no);
-		model.addAttribute("schedule",schedule);
+		List<Schedule> schedule_list = mypageService.viewSchedule(calendar_no);
+		model.addAttribute("schedule_list",schedule_list);
 		
 	}
-
 	
 }
