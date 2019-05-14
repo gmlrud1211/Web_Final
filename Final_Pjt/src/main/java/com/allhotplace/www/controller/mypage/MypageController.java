@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.allhotplace.www.dto.Bookmark;
 import com.allhotplace.www.dto.Calendar;
+import com.allhotplace.www.dto.Schedule;
 import com.allhotplace.www.dto.Users;
 import com.allhotplace.www.service.face.mypage.MypageService;
 
@@ -146,6 +147,18 @@ public class MypageController {
 		mypageService.deleteBookmark(bookmark_no);
 		
 		return "redirect:/mypage/bookmark";
+	}
+	
+	@RequestMapping(value="/mypage/schedule", method=RequestMethod.GET)
+	public void ScheduleList(HttpServletRequest req, Model model,
+							@RequestParam("calendar_no") int calendar_no) {
+		
+		logger.info("마이페이지-[캘린더 > 일정조회]");
+		logger.info("선택한 캘린더의 calendar_no"+calendar_no);
+
+		Schedule schedule = mypageService.viewSchedule(calendar_no);
+		model.addAttribute("schedule",schedule);
+		
 	}
 
 	

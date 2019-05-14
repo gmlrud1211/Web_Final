@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.allhotplace.www.dao.face.mypage.MypageDao;
 import com.allhotplace.www.dto.Bookmark;
 import com.allhotplace.www.dto.Calendar;
+import com.allhotplace.www.dto.Schedule;
 import com.allhotplace.www.dto.Users;
 import com.allhotplace.www.service.face.mypage.MypageService;
 
@@ -56,6 +57,11 @@ public class MypageSeviceImpl implements MypageService{
 	@Override
 	public void deleteBookmark(int bookmark_no) {
 		mypageDao.deleteBookmark(bookmark_no);
+	}
+
+	@Override
+	public Schedule viewSchedule(int calendar_no) {
+		return mypageDao.selectSchedule(calendar_no);
 	}
 
 }

@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.allhotplace.www.dto.Bookmark;
 import com.allhotplace.www.dto.Calendar;
+import com.allhotplace.www.dto.Schedule;
 import com.allhotplace.www.dto.Users;
 
 public interface MypageService {
@@ -29,5 +30,8 @@ public interface MypageService {
 
 	//찜한 일정 삭제
 	public void deleteBookmark(int bookmark_no);
+
+	//선택한 캘린더-일정조회하기  
+	public Schedule viewSchedule(int calendar_no);
 
 }
