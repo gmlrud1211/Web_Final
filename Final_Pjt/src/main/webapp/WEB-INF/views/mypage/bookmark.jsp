@@ -49,8 +49,8 @@
 			<c:if test="${bookmark_list.size()>0}"> 
 			<c:forEach var="i" begin="0" end="${bookmark_list.size()-1}">
 				<div class="col-xs-6 col-lg-4">
-					<input type="button" value="X" onclick="bookmark_del(${bookmark_list.get(i).bookmark_no});"/>
-					<div><a href="#"><img src="default.jpg" onerror="this.src='noimage.png'" style="width:250px; height:200px"></a></div>
+					<div style="width:25px; height:25px; float:right; "><img src="/../img/cancel.png" onclick="bookmark_del(${bookmark_list.get(i).bookmark_no});"></div>
+					<div><a href="#"><img src="/../img/image.png" onerror="'/../img/noimage.png';" style="width:250px; height:200px; border:0px"></a></div>
 				</div>
 			</c:forEach>
 			</c:if>
