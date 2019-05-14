@@ -99,9 +99,9 @@ $(document).ready(function() {
 			<c:forEach var="list" items="${commonList }" varStatus="i">
 				<span style="color:#827ffe; font-size:27px;">${list.title }</span>
 				<span style="text-align:right; margin-left: 820px;">
-					<img src="/../../../img/like_nonclick.png" class="" style="width:30px; height: 30px;"/>&nbsp;
-					<img src="/../../../img/like_click.png" class="" style="width:30px; height: 30px;"/>&nbsp;
-					<img src="/../../../img/add_event.png" class="" style="width:30px; height: 30px;"/>&nbsp;
+					<img name="likebefore" src="/../../../img/like_nonclick.png" class="" style="width:30px; height: 30px;"/>&nbsp;
+					<img name="likeafter"src="/../../../img/like_click.png" class="" style="width:30px; height: 30px;"/>&nbsp;
+					<img name="addcalendar"src="/../../../img/add_event.png" class="" style="width:30px; height: 30px;"/>&nbsp;
 				</span>
 			</c:forEach>
 			<ul>
