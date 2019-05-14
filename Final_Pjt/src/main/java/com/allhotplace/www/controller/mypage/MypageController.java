@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.allhotplace.www.dto.Bookmark;
 import com.allhotplace.www.dto.Calendar;
 import com.allhotplace.www.dto.Users;
 import com.allhotplace.www.service.face.mypage.MypageService;
@@ -126,7 +127,26 @@ public class MypageController {
 	
 	}
 	
-
+	@RequestMapping(value="/mypage/bookmark", method=RequestMethod.GET)
+	public void BookmarkList(HttpSession session, Model model) {
+		logger.info("마이페이지 - 찜목록 조회");
+		
+		String user_id = (String) session.getAttribute("user_id");
+		
+		List<Bookmark> bookmark_list = mypageService.getBookmarkList(user_id);
+		
+		model.addAttribute("bookmark_list", bookmark_list);
+	}
 	
+	@RequestMapping(value="/mypage/bookmark/delete", method=RequestMethod.GET)
+	public String BookmarkDelete(HttpServletRequest req,
+								@RequestParam("bookmark_no") int bookmark_no) {
+		
+		logger.info("마이페이지 - 찜목록 삭제");
+		mypageService.deleteBookmark(bookmark_no);
+		
+		return "redirect:/mypage/bookmark";
+	}
+
 	
 }

@@ -3,6 +3,7 @@ package com.allhotplace.www.dao.face.mypage;
 import java.util.HashMap;
 import java.util.List;
 
+import com.allhotplace.www.dto.Bookmark;
 import com.allhotplace.www.dto.Calendar;
 import com.allhotplace.www.dto.Users;
 
@@ -26,5 +27,10 @@ public interface MypageDao {
 	//캘린더 삭제
 	public void deleteCalendar(int calendar_no);
 
+	//회원별 찜 목록 조회
+	public List<Bookmark> selectUserBookmark(String user_id);
+
+	//찜목록 삭제
+	public void deleteBookmark(int bookmark_no);
 
 }
