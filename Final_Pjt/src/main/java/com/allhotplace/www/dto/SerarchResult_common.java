@@ -15,6 +15,12 @@ public class SerarchResult_common {
 	private int totalCnt;
 	private int contenttypeid;
 	
+	@Override
+	public String toString() {
+		return "SerarchResult_common [contentid=" + contentid + ", title=" + title + ", firstimage=" + firstimage
+				+ ", firstimage1=" + firstimage1 + ", firstimage2=" + firstimage2 + ", addr1=" + addr1 + ", addr2="
+				+ addr2 + ", totalCnt=" + totalCnt + ", contenttypeid=" + contenttypeid + "]";
+	}
 	public String getContentid() {
 		return contentid;
 	}
@@ -69,12 +75,7 @@ public class SerarchResult_common {
 	public void setContenttypeid(int contenttypeid) {
 		this.contenttypeid = contenttypeid;
 	}
-	@Override
-	public String toString() {
-		return "DetailResult [contentid=" + contentid + ", title=" + title + ", firstimage=" + firstimage
-				+ ", firstimage1=" + firstimage1 + ", firstimage2=" + firstimage2 + ", addr1=" + addr1 + ", addr2="
-				+ addr2 + ", totalCnt=" + totalCnt + ", contenttypeid=" + contenttypeid + "]";
-	}
+	
 	
 	
 }

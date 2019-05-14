@@ -53,10 +53,10 @@
 			<td style="padding:20px;">
 				<c:choose>
 					<c:when test="${empty list.firstimage or list.firstimage eq 'null'}">
-						<img src="http://api.visitkorea.or.kr/static/images/common/noImage.gif" onclick="goPage('${list.contentid}','${list.contenttypeid }' );" alt="${list.title}" style="width: 300px; height: 200px; cursor:pointer;">
+						<img src="http://api.visitkorea.or.kr/static/images/common/noImage.gif" onclick="goPage('${list.contentid}','${list.contenttypeid }' );" alt="${list.title}" style="width: 300px; height: 270px; cursor:pointer;">
 					</c:when>
 					<c:otherwise>
-						<img src="${list.firstimage}" onclick="goPage('${list.contentid}','${list.contenttypeid }' );" alt="${list.title }" style="width: 300px; height: 200px; cursor:pointer;">
+						<img src="${list.firstimage}" onclick="goPage('${list.contentid}','${list.contenttypeid }' );" alt="${list.title }" style="width: 300px; height: 270px; cursor:pointer;">
 					</c:otherwise>
 				</c:choose>
 				<br />
