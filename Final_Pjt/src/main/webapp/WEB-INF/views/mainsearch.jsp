@@ -69,56 +69,75 @@ a:hover{color:#827ffe;}
 		
 		<div class="bar_wrap">
 		
+		
+<%-- 		            <!-- 기본 시작 -->
+            <c:if test="${basic }">
+               <c:forEach items="${boardList }" var="list">
+                  <tr>
+                     <td style="text-align: center;">${list.report_no }</td>
+                     <td style="text-align: center;"><c:if
+                           test="${list.report_div.equals('Y') }">처리완료</c:if> <c:if
+                           test="${list.report_div.equals('N') }">처리중</c:if></td>
+                     <td><a href="/ban/banView?report_no=${list.report_no }">${list.report_title }</a></td>
+                     <td style="text-align: center;"><fmt:formatDate
+                           value="${list.report_date }" pattern="yyyy-MM-dd" /></td>
+                     <td style="text-align: center;">${list.report_conn }</td>
+                  </tr>
+               </c:forEach>
+               <!-- 게시물 없을 때 -->
+               <c:if test="${nolist eq 0 }">
+                  <tr>
+                     <td colspan="6" style="text-align: center;">등록된 게시물이 없습니다.</td>
+                  </tr>
+               </c:if>
+            </c:if>
+ --%>            
+            <c:forEach items="${searchList }" var="list">
 			<div class="bar" >
 				<div class="searchwrap">
-					<a href="#">
 						<div class="photo">
-							<img alt="" src="/img/img1.jpg">
+							<a href="#"><img alt="" src="/img/img1.jpg"></a>
 						</div>
 					
 						<div class="textarea">
 							<h3>
-								벚꽃이 만발했다
+								<a href="#">${list.title}</a>
 							</h3>
 							<p class="tag">이번 봄에는 벚꽃이 피었다.</p>
 						</div>
-					</a>
 				</div>
 			</div>
-			   
+			</c:forEach>   
 			   
 			<div class="bar" >
 				<div class="searchwrap">
-					<a href="#">
 						<div class="photo">
-							<img alt="" src="/img/img1.jpg">
+							<a href="#"><img alt="" src="/img/img1.jpg"></a>
 						</div>
 					
 						<div class="textarea">
 							<h3>
-								벚꽃이 만발했다
+								<a href="#">벚꽃이 만발했다</a>
 							</h3>
 							<p class="tag">이번 봄에는 벚꽃이 피었다.</p>
 						</div>
-					</a>
+					
 				</div>
 			</div>
 		
 		
 			<div class="bar" >
 				<div class="searchwrap">
-					<a href="#">
 						<div class="photo">
-							<img alt="" src="/img/img1.jpg">
+							<a href="#"><img alt="" src="/img/img1.jpg"></a>
 						</div>
 					
 						<div class="textarea">
 							<h3>
-								벚꽃이 만발했다
+								<a href="#">벚꽃이 만발했다</a>
 							</h3>
 							<p class="tag">이번 봄에는 벚꽃이 피었다.</p>
 						</div>
-					</a>
 				</div>
 			</div>
 		</div>
@@ -126,6 +145,51 @@ a:hover{color:#827ffe;}
 	
 	</div>
 </div>
+
+   <!-- 페이징 리스트  시작 -->
+   <div class="paging_wrap">
+      <!-- 기본 시작 -->
+
+      <c:if test="${basic==true }">
+         <c:if test="${nolist ne 0 }">
+
+
+            <ul>
+               <%-- 이전 페이지 --%>
+               <c:if test="${paging.curPage eq 1 }">
+               </c:if>
+               <c:if test="${paging.curPage ne 1 }">
+               <li><a
+                     href="/board/bansearch?curPage=${paging.curPage-1}&search=${search}&word=${word}"><i
+                        class="xi-arrow-left"></i></a></li>
+               </c:if>
+               <%-- 페이징 리스트 --%>
+               <c:forEach begin="${paging.startPage }" end="${paging.endPage }"
+                  var="i">
+                  <c:if test="${paging.curPage eq i}">
+                     <li class="on"><a
+                        href="/board/bansearch?curPage=${i }&search=${search}&word=${word}">${i }</a></li>
+                  </c:if>
+                  <c:if test="${paging.curPage ne i}">
+                     <li><a
+                        href="/board/bansearch?curPage=${i }&search=${search}&word=${word}">${i }</a></li>
+                  </c:if>
+               </c:forEach>
+               <%-- 다음 페이지 --%>
+               <c:if test="${paging.curPage eq paging.totalPage }">
+               </c:if>
+               <c:if test="${paging.curPage ne paging.totalPage }">
+                  <li><a
+                     href="/board/bansearch?curPage=${paging.curPage+1}&search=${search}&word=${word}"><i
+                        class="xi-arrow-right"></i></a></li>
+               </c:if>
+            </ul>
+         </c:if>
+      </c:if>
+      <c:if test="${nolist eq 0 }">
+      </c:if>
+      <!-- 기본 끝 -->
+   </div>
 	
 </body>
 </html>

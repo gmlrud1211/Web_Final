@@ -23,7 +23,6 @@ ul.bxslider li img {
 	height: auto;
 }
 
- .searchdiv {width: 100%; height: 50px; margin:0 auto; text-align: center; position: relative;}
  .searchdiv input {width: 100%; 	height: 50px; border: 2px solid #827ffe;  padding-left:20px;}
  .searchdiv button {position: absolute; top: 0px; right: 0px; width:50px; height:50px; background: #827ffe; border:1px solid #827ffe;}
 
@@ -208,11 +207,9 @@ div.hashtag {
 
 
 <div class="searchdiv">
-	<form action="/main/search" method="get">
+	<form action="/main" method="post">
 		<input type="text" name="search" placeholder="검색어 입력">
-		<button type="submit">
-			<i class=xi-search></i>
-		</button>
+		<button type="submit"><i class=xi-search></i></button>
 
 	</form>
 </div>

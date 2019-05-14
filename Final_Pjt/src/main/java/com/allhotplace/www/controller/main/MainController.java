@@ -5,6 +5,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
 import com.allhotplace.www.service.face.main.MainService;
 
 
@@ -14,15 +16,26 @@ public class MainController {
 	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
 	@Autowired MainService mainservice;
 	
-	@RequestMapping("/main")
+	@RequestMapping(value="/main", method=RequestMethod.GET)
 	public void Main() {
 		
 		
 		
 	}
-
-	@RequestMapping("/mainsearch")
-	public void Mainsearch() { 
-
+	@RequestMapping(value="/main", method=RequestMethod.POST)
+	public String Mainpost() {
+		
+		
+		return "redirect:/mainsearch";
 	}
+
+	
+	@RequestMapping(value="/mainsearch", method=RequestMethod.GET)
+	public void mainSearch() {
+	
+		
+	}
+	
+	
 }
+
