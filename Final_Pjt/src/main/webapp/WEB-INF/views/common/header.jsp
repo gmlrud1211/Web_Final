@@ -88,8 +88,7 @@ a:hover {
 
 		<c:when test="${ login and user_id eq 'admin'}">
 			<ul>
-				<li><a href="/admin/dashboard/list">관리자 홈
-						&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+				<li><a href="/admin/dashboard/list">관리자 홈&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
 				<li>${user_id}님환영합니다&nbsp;&nbsp;&nbsp;&nbsp;</li>
 				<li><a href="/logout"><button>로그아웃</button></a></li>
 			</ul>
