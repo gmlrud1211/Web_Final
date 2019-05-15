@@ -32,33 +32,67 @@
 	document.addEventListener('DOMContentLoaded', function() {
     var calendarEl = document.getElementById('calendar');
 
+    var sch = ${s_list};
+    
+    console.log(sch);
+    console.log(Object.keys(sch).length);
+    
+    for(var i=0; i<Object.keys(sch).length; i++){
+    	sch[i];
+    	console.log(sch[i]);
+    }
+    console.log("============");
+ 
+    var t = 
+  	  [
+  	  
+     	 { id: '2', resourceId: 'schedule', start: "2019-05-20 17:00:00", end: '2019-05-20 18:00:00', title: 'event 2' },
+     	 { id: '1', resourceId: 'schedule', start: "2019-05-20 15:00:00", end: '2019-05-20 16:00:00', title: 'event 1' }
+];
+
+    
     var calendar = new FullCalendar.Calendar(calendarEl, {
       plugins: [ 'interaction', 'resourceDayGrid', 'resourceTimeGrid' ],
       defaultView: 'resourceTimeGridDay',
-      defaultDate: '2019-04-07',
+      defaultDate: '2019-05-20',
       editable: true,
       selectable: true,
       eventLimit: true, // allow "more" link when too many events
-      events : ${s_list},
+ 
       views: {
         resourceTimeGridTwoDay: {
           type: 'resourceTimeGrid',
          
         }
       },
-      resources: [
-        { id: 'schedule', title: '하루일정', eventColer: '#827ffe'}
-      ],
-      /* events: [
-        { id: '1', resourceId: 'schedule', start: '2019-04-06', end: '2019-04-08', title: 'event 1' },
-        { id: '2', resourceId: 'schedule', start: '2019-04-07T09:00:00', end: '2019-04-07T14:00:00', title: 'event 2' },
-      ], */
-	 
       
-    });
+      resources:[
+    	        {id: 'schedule', title: '하루일정', eventColer: '#827ffe'},
+      ],
+      
+      events:t
+    	  
+//     	  [
+//     	  {no: "1", resourceId: 'schedule', start: "13:30:00.0", end: "14:30:00.0", title: "플레이케이팝"}
+//     	  , {no: "2", resourceId: 'schedule', start: "16:00:00.0", end: "17:30:00.0", title: "마노르블랑 수국축제"}
+//     	  , {no: "3", resourceId: 'schedule', start: "18:00:00.0", end: "19:30:00.0", title: "저녁-흑돼지"}
+//     	  , {no: "5", resourceId: 'schedule', start: "20:00:00.0", end: "23:59:00.0", title: "숙소로"}
+//       ]
+    	  
+    	  
+// 	  [
+	  
+//    	 { id: '2', resourceId: 'schedule', start: "2019-05-20 17:00:00", end: '2019-05-20 18:00:00', title: 'event 2' },
+//    	 { id: '1', resourceId: 'schedule', start: "2019-05-20 15:00:00", end: '2019-05-20 16:00:00', title: 'event 1' }
+//]
 
+	       
+    });
+    
+	console.log(sch)
     calendar.render();
   });
+	
 </script>
 <style>
 	.fc-time-grid-container{height:700px !important}
@@ -82,7 +116,9 @@
 		        <div id="calendar" class="fc fc-unthemd" style="max-width:450px;" >
 					
 				</div>
-				
+				<div>
+					공개여부 설정<!--  <button></button> -->
+				</div>
 			</div>
 		</div>
 	</div>

@@ -157,25 +157,33 @@ public class MypageController {
 							@RequestParam("calendar_no") int calendar_no) {
 		
 		logger.info("마이페이지-[캘린더 > 일정조회]");
-		logger.info("선택한 캘린더의 calendar_no"+calendar_no);
+		logger.info("선택한 캘린더의 calendar_no="+calendar_no);
 
 		List<Schedule> schedule_list = mypageService.viewSchedule(calendar_no);
 		model.addAttribute("schedule_list",schedule_list);
 		System.out.println(schedule_list);
 		
 		List s_list = new ArrayList();
+		
 		for(Schedule s : schedule_list) {
 			Map map = new HashMap();
-			map.put("schedule_title", s.getSchedule_title());
-			map.put("schedule_startTime", s.getSchedule_startTime());
-			map.put("schedule_endTime", s.getSchedule_endTime());
+			
+			
+			map.put("title", s.getSchedule_title());
+			map.put("start", s.getSchedule_startTime());
+			map.put("end", s.getSchedule_endTime());
+			map.put("no", String.valueOf(s.getSchedule_no()));
 			
 			s_list.add(map);
+			
+			System.out.println(s.getSchedule_startTime());
 		}
-
+		
 		Gson gson = new Gson();
 		req.setAttribute("s_list", gson.toJson(s_list));
 		System.out.println(s_list);
+		
+		
 		
 		
 	}
