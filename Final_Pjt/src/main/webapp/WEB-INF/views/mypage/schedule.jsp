@@ -39,39 +39,22 @@
       editable: true,
       selectable: true,
       eventLimit: true, // allow "more" link when too many events
+      events : ${s_list},
       views: {
         resourceTimeGridTwoDay: {
           type: 'resourceTimeGrid',
          
         }
       },
-
-      //// uncomment this line to hide the all-day slot
-      //allDaySlot: false,
-
       resources: [
-        { id: 'a', title: '하루일정', eventColer: '#827ffe'}
+        { id: 'schedule', title: '하루일정', eventColer: '#827ffe'}
       ],
-      events: [
-        { id: '1', resourceId: 'a', start: '2019-04-06', end: '2019-04-08', title: 'event 1' },
-        { id: '2', resourceId: 'a', start: '2019-04-07T09:00:00', end: '2019-04-07T14:00:00', title: 'event 2' },
-      ],
-
-      select: function(arg) {
-        console.log(
-          'select',
-          arg.startStr,
-          arg.endStr,
-          arg.resource ? arg.resource.id : '(no resource)'
-        );
-      },
-      dateClick: function(arg) {
-        console.log(
-          'dateClick',
-          arg.date,
-          arg.resource ? arg.resource.id : '(no resource)'
-        );
-      }
+      /* events: [
+        { id: '1', resourceId: 'schedule', start: '2019-04-06', end: '2019-04-08', title: 'event 1' },
+        { id: '2', resourceId: 'schedule', start: '2019-04-07T09:00:00', end: '2019-04-07T14:00:00', title: 'event 2' },
+      ], */
+	 
+      
     });
 
     calendar.render();
@@ -95,14 +78,11 @@
 				<h3>ScheduleList<h3>
 	            <p style="font-size: 16px">나만의 일정을 만들어 보세요~!</p>
 	        </div>
-	        <div style="max-width:450px;">
-		        <div id="calendar" class="fc fc-unthemd"  >
-					<!-- <div class=fc-view-container>
-						<div class="fc-view fc-resourceTimeGridDay-view fc-timeGrid-view">
-						
-						</div>
-					</div> -->
+	        <div>
+		        <div id="calendar" class="fc fc-unthemd" style="max-width:450px;" >
+					
 				</div>
+				
 			</div>
 		</div>
 	</div>

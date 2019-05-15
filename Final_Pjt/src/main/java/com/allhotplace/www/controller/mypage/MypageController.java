@@ -2,7 +2,10 @@ package com.allhotplace.www.controller.mypage;
 
 
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -21,6 +24,7 @@ import com.allhotplace.www.dto.Calendar;
 import com.allhotplace.www.dto.Schedule;
 import com.allhotplace.www.dto.Users;
 import com.allhotplace.www.service.face.mypage.MypageService;
+import com.google.gson.Gson;
 
 @Controller
 public class MypageController {
@@ -157,6 +161,22 @@ public class MypageController {
 
 		List<Schedule> schedule_list = mypageService.viewSchedule(calendar_no);
 		model.addAttribute("schedule_list",schedule_list);
+		System.out.println(schedule_list);
+		
+		List s_list = new ArrayList();
+		for(Schedule s : schedule_list) {
+			Map map = new HashMap();
+			map.put("schedule_title", s.getSchedule_title());
+			map.put("schedule_startTime", s.getSchedule_startTime());
+			map.put("schedule_endTime", s.getSchedule_endTime());
+			
+			s_list.add(map);
+		}
+
+		Gson gson = new Gson();
+		req.setAttribute("s_list", gson.toJson(s_list));
+		System.out.println(s_list);
+		
 		
 	}
 	
