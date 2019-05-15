@@ -15,6 +15,72 @@
 <link rel="stylesheet" href="/css/bootstrap.css"/>
 <link rel="stylesheet" href="/css/bootstrap.min.css"/>
 
+<!-- fullcalendar 관련 -->
+
+<link rel="stylesheet" href="/css/scheduler/core/main.css"/>
+<link rel="stylesheet" href="/css/scheduler/timegrid/main.css"/>
+<link rel="stylesheet" href="/css/scheduler/daygrid/main.css"/>
+<script src="/js/scheduler/core/main.js"></script>
+<script src="/js/scheduler/interaction/main.js"></script>
+<script src="/js/scheduler/daygrid/main.js"></script>
+<script src="/js/scheduler/timegrid/main.js"></script>
+<script src="/js/scheduler/resource-common/main.js"></script>
+<script src="/js/scheduler/resource-daygrid/main.js"></script>
+<script src="/js/scheduler/resource-timegrid/main.js"></script>
+
+<script>
+	document.addEventListener('DOMContentLoaded', function() {
+    var calendarEl = document.getElementById('calendar');
+
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+      plugins: [ 'interaction', 'resourceDayGrid', 'resourceTimeGrid' ],
+      defaultView: 'resourceTimeGridDay',
+      defaultDate: '2019-04-07',
+      editable: true,
+      selectable: true,
+      eventLimit: true, // allow "more" link when too many events
+      views: {
+        resourceTimeGridTwoDay: {
+          type: 'resourceTimeGrid',
+         
+        }
+      },
+
+      //// uncomment this line to hide the all-day slot
+      //allDaySlot: false,
+
+      resources: [
+        { id: 'a', title: '하루일정', eventColer: '#827ffe'}
+      ],
+      events: [
+        { id: '1', resourceId: 'a', start: '2019-04-06', end: '2019-04-08', title: 'event 1' },
+        { id: '2', resourceId: 'a', start: '2019-04-07T09:00:00', end: '2019-04-07T14:00:00', title: 'event 2' },
+      ],
+
+      select: function(arg) {
+        console.log(
+          'select',
+          arg.startStr,
+          arg.endStr,
+          arg.resource ? arg.resource.id : '(no resource)'
+        );
+      },
+      dateClick: function(arg) {
+        console.log(
+          'dateClick',
+          arg.date,
+          arg.resource ? arg.resource.id : '(no resource)'
+        );
+      }
+    });
+
+    calendar.render();
+  });
+</script>
+<style>
+	.fc-time-grid-container{height:700px !important}
+</style>
+
 <body>
 <jsp:include page="../common/header.jsp" />
 
@@ -26,12 +92,18 @@
 
 		<div class="col-xs-12 col-sm-9">
 			<div class="jumbotron" style="padding: 5px; background-color: #eee0; border-bottom: 1px solid #403866; border-radius: 0;" >
-				<h3>ScheduleList<h3><br>
+				<h3>ScheduleList<h3>
 	            <p style="font-size: 16px">나만의 일정을 만들어 보세요~!</p>
 	        </div>
-			
-		
-
+	        <div style="max-width:450px;">
+		        <div id="calendar" class="fc fc-unthemd"  >
+					<!-- <div class=fc-view-container>
+						<div class="fc-view fc-resourceTimeGridDay-view fc-timeGrid-view">
+						
+						</div>
+					</div> -->
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
