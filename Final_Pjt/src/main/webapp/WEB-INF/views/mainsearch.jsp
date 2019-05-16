@@ -5,6 +5,75 @@
 <jsp:include page="../views/common/meta.jsp" />
 
 
+<script>
+$(document).ready(function(){
+	$("#btnSearch").click(function() {
+		 var word = $("#word").val();
+        
+        $.ajax({
+           type: "post"
+           , url: "/mainsearch"
+           , data: {"word":word,}
+           , dataType: "List"
+           , success: function(placeList){
+              
+              console.log('ajax success!');
+              console.log("placeList : " + placeList);
+              
+              
+              $(placeList).each(function(i){
+                 $("#resultPlace").append("<br><br>");
+                 
+                 var place = JSON.parse(this);
+                 //console.log(place.title);
+                 /* http://api.visitkorea.or.kr/static/images/common/noImage.gif */
+                 
+                 if( (place.firstimage) == undefined){
+                    // 이미지를 표시할 수 없습니다  --> 이미지로 대체
+                    place.firstimage = "http://api.visitkorea.or.kr/static/images/common/noImage.gif";
+                 } else if (place.title == undefined || place.title == null) {
+                    place.title = "";
+                 } else if (place.contentid == undefined || place.contentid == null ) {
+                    place.title = "";
+                 } else if (place.addr1 == undefined || place.addr1 == null ) {
+                    place.addr1 = "";
+                 } else if (place.addr2 == undefined || place.addr2 == null ) {
+                    place.addr2 = "";
+                 }
+
+                 var innerHtml = "";
+                 
+                 innerHtml += "<ul class='list_thumType flnon'>"; 
+                 innerHtml +=    "<li>";
+                 innerHtml += "   <div>";
+                 innerHtml += "      <div class='div1'>";
+                 innerHtml += "         <img src='" + place.firstimage + "' alt='대표이미지' style='width:300px; height:200px'>";
+                 innerHtml += "         <hr>";
+                 innerHtml += "      </div>";
+                 innerHtml += "   </div>";
+                 innerHtml += "   <div class='area_txt'>";
+                 innerHtml += "      <div class='" + place.contentid + "'>";
+                 innerHtml += "         <a href='" + place.contentid +  "'>" + place.title + "</a>";
+                 innerHtml += "      </div>";
+                 innerHtml += "      <div class='addr'>";
+                 innerHtml += "         <p> " + place.addr1 + place.addr2 + " </p>";
+                 innerHtml += "      </div>";
+                 innerHtml += "   </div>";
+                 innerHtml += "</li>";
+                 innerHtml += "</ul>";
+                 
+                 $("#resultPlace").append(innerHtml);
+              });
+              
+           }
+           , error: function(e) {
+              console.log('error!');
+              console.log(e);
+           }
+        });
+     });
+})
+</script>
 <style>
 /*  .searchcontext{display:inline; min-width:600px; border-top:1px;} */
  .searchwrap{height: 100%; width: 100%;	margin:0px auto; overflow: hidden; padding:10px 0; box-sizing: border-box;}
@@ -46,14 +115,15 @@ a:hover{color:#827ffe;}
 <div class="wrap">
 	<div class="sub_wrap">
 		<div class="searchdiv" style="margin-top: 56px;">
-			<form action="/main/search" method="get">
-				<input type="text" name="search" placeholder="검색어 입력">
-				<button type="submit">
+			<form action="/mainsearch" method="post">
+				<input type="text" name="word" id="word" placeholder="검색어 입력">
+				<button type="button" id="btnSearch">
 					<i class=xi-search></i>
 				</button>
 	
 			</form>
 		</div>
+	
 	
 		<ul class="tagbox">
 			<li><a href="#">전체</a></li>
@@ -66,48 +136,11 @@ a:hover{color:#827ffe;}
 		</ul>
 		
 		<p class="totalsearch">총 <span>3</span> 건</p>
-		
+		<div id="resultPlace">
+         </div>
 		<div class="bar_wrap">
 		
-		
-<%-- 		            <!-- 기본 시작 -->
-            <c:if test="${basic }">
-               <c:forEach items="${boardList }" var="list">
-                  <tr>
-                     <td style="text-align: center;">${list.report_no }</td>
-                     <td style="text-align: center;"><c:if
-                           test="${list.report_div.equals('Y') }">처리완료</c:if> <c:if
-                           test="${list.report_div.equals('N') }">처리중</c:if></td>
-                     <td><a href="/ban/banView?report_no=${list.report_no }">${list.report_title }</a></td>
-                     <td style="text-align: center;"><fmt:formatDate
-                           value="${list.report_date }" pattern="yyyy-MM-dd" /></td>
-                     <td style="text-align: center;">${list.report_conn }</td>
-                  </tr>
-               </c:forEach>
-               <!-- 게시물 없을 때 -->
-               <c:if test="${nolist eq 0 }">
-                  <tr>
-                     <td colspan="6" style="text-align: center;">등록된 게시물이 없습니다.</td>
-                  </tr>
-               </c:if>
-            </c:if>
- --%>            
-            <c:forEach items="${searchList }" var="list">
-			<div class="bar" >
-				<div class="searchwrap">
-						<div class="photo">
-							<a href="#"><img alt="" src="/img/img1.jpg"></a>
-						</div>
-					
-						<div class="textarea">
-							<h3>
-								<a href="#">${list.title}</a>
-							</h3>
-							<p class="tag">이번 봄에는 벚꽃이 피었다.</p>
-						</div>
-				</div>
-			</div>
-			</c:forEach>   
+			
 			   
 			<div class="bar" >
 				<div class="searchwrap">
@@ -146,7 +179,7 @@ a:hover{color:#827ffe;}
 	</div>
 </div>
 
-   <!-- 페이징 리스트  시작 -->
+<%--    <!-- 페이징 리스트  시작 -->
    <div class="paging_wrap">
       <!-- 기본 시작 -->
 
@@ -155,7 +188,7 @@ a:hover{color:#827ffe;}
 
 
             <ul>
-               <%-- 이전 페이지 --%>
+               이전 페이지
                <c:if test="${paging.curPage eq 1 }">
                </c:if>
                <c:if test="${paging.curPage ne 1 }">
@@ -163,7 +196,7 @@ a:hover{color:#827ffe;}
                      href="/board/bansearch?curPage=${paging.curPage-1}&search=${search}&word=${word}"><i
                         class="xi-arrow-left"></i></a></li>
                </c:if>
-               <%-- 페이징 리스트 --%>
+               페이징 리스트
                <c:forEach begin="${paging.startPage }" end="${paging.endPage }"
                   var="i">
                   <c:if test="${paging.curPage eq i}">
@@ -175,7 +208,7 @@ a:hover{color:#827ffe;}
                         href="/board/bansearch?curPage=${i }&search=${search}&word=${word}">${i }</a></li>
                   </c:if>
                </c:forEach>
-               <%-- 다음 페이지 --%>
+               다음 페이지
                <c:if test="${paging.curPage eq paging.totalPage }">
                </c:if>
                <c:if test="${paging.curPage ne paging.totalPage }">
@@ -189,7 +222,7 @@ a:hover{color:#827ffe;}
       <c:if test="${nolist eq 0 }">
       </c:if>
       <!-- 기본 끝 -->
-   </div>
+   </div> --%>
 	
 </body>
 </html>
