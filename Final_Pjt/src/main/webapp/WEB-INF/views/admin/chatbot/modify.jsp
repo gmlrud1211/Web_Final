@@ -31,32 +31,29 @@ $(document).ready(function() {
 
 <div class="container">
 
-<h3>FAQ 수정</h3>
+<h3 style="font-size:25px">챗봇 수정</h3>
 <hr>
-<form action="/faq/modify" method="post">
+<form action="/admin/chatbot/modify" method="post">
 <div>
 
 <table class="table table-bordered">
 
 <tr><td class="info">아이디</td><td>관리자</td></tr>
 
-<tr>
-	<td class="info">카테고리 입력</td>
-	<td><input type="text" name="cate" style="width:100%;" 
-	     value="${faqview.faq_cate}"/></td>
-</tr>
 
 <tr><td class="info" colspan="2">질문</td></tr>
-<tr><td colspan="2"><textarea id="quse" name="quse">${faqview.faq_qusetion }</textarea></td></tr>
+<tr><td colspan="2">
+<textarea style="height: 100px; width: 500px;"id="sChat_name" name="sChat_name">${view.sChat_name }</textarea></td></tr>
 
 <tr><td class="info" colspan="2">답</td></tr>
-<tr><td style="width:100%;" colspan="2"><textarea id="ans" name="ans">${faqview.faq_answer }</textarea></td></tr>
+<tr><td colspan="2">
+<textarea style="height: 100px; width: 500px;" id="sChat_answer" name="sChat_answer">${view.sChat_answer }</textarea></td></tr>
 
 </table>
 
 </div>
 
-<input type="hidden" name="faq_no" id="faq_no" value="${faqview.faq_no }">
+<input type="hidden" name="sChat_no" id="sChat_no" value="${view.sChat_no }">
 
 <div class="text-center">	
 	<button id="btnWrite" class="btn btn-primary">수정완료</button>

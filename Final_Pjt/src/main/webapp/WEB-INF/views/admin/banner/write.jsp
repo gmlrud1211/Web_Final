@@ -1,10 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 
-<%--  <jsp:include page="/view/layout/header.jsp" /> --%>
 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <!DOCTYPE html>
 <html>
@@ -12,14 +11,15 @@
 <meta charset="UTF-8">
 <title>AllThatHotPlace</title>
 
-<script type="text/javascript" src="http://code.jquery.com/jquery-2.2.4.min.js"></script>    
+<script type="text/javascript"
+	src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
 
 <script type="text/javascript">
 
 		$(document).ready(function() {
 			$("#btnSub").click(function() {
 				$("form").submit();
-			})
+			});
 			
 			$("#btnCancel").click(function() {
 				history.go(-1);
@@ -47,94 +47,95 @@
 				popup.location = "/admin/banner/fileup";
 			});
 		});
-		
 		function sendData(no, name) {
 			$("#file_no").val(no); //파일번호넣기
 			$("#upResult").html(name); //파일이름 넣기
 		}
-		
 	</script>
+
+<style type="text/css">
+.bt {
+	background-color: #827ffe;
+	color: white;
+	font-size: 20px;
+	border-style: none;
+	border-radius: 5px;
+}
+
+.bs {
+	height: 40px;
+}
+</style>
 </head>
 
 <body>
-<!-- <div id="menu" style="height:100%;width:20%;float:left;"> -->
-
-<%--   <jsp:include page="/view/layout/sidebar.jsp" /> </div> --%>
-
-
-<div id="content" style="backgound-color:#EEEEEE;height:100%;width:77%;float:left;">
-
-
-<div style="margin-left:70px; margin-bottom:40px; margin-top:30px">
-<h3>배너등록</h3>
+<div style="border-bottom: 1px solid grey; height: 95px; padding-top: 5px;">
+<jsp:include page="/WEB-INF/views/common/header.jsp" /> 
 </div>
 
+	<div id="menu" style="background-color: #d7d3d447; border-right:#D8D8D8; height: 2260px; width: 20%; float: left;">
+		<jsp:include page="/WEB-INF/views/layout/sidebar.jsp" />
+	</div>
 
-<div class="container">
-
-<div>
-<form action="/admin/banner/write" method="post"
- class="form-horizontal">
-	<div class="form-group">
-		<label for="banner_name" class="col-sm-3 col-sm-offset-1 control-label"
-		>배너명</label>
-		<div class="col-sm-5">
-		<input type="text" id="title" name="title" placeholder="특수문자는 사용할수 없습니다" 
-			class="form-control"/>
+	<div id="content"
+		style="backgound-color: #EEEEEE; height: 100%; width: 50%; float: left;  margin-left: 400px; margin-top: 70px;">
+		<div style="margin-left: 70px; margin-bottom: 40px; margin-top: 30px">
+			<h3 style="font-size:25px">배너등록</h3>
 		</div>
-	</div>
-	
-	<div class="form-group">
-      
-		<label for="image" class="col-sm-3 col-sm-offset-1 control-label">이미지</label>
-		
-		<div class="col-sm-5">
-		
-		<input type="hidden" id="file_no" name="file_no" />
-		<button type="button" id="btnFile" class="btn btn-default" >파일 첨부</button>
-		<span id="upResult"></span>
+
+		<div class="container">
+			<div>
+				<form action="/admin/banner/write" method="post"
+					class="form-horizontal">
+					<div class="form-group">
+						<strong><label for="banner_name"
+							class="col-sm-3 col-sm-offset-1 control-label bs">배너명</label></strong>
+						<div class="col-sm-5">
+							<input type="text" id="title" name="title"
+								placeholder="특수문자는 사용할수 없습니다" class="form-control" 
+								style="border: 1px solid #aea8a8; width:300px;margin-bottom: 20px; height: 30px;" />
+						</div>
+					</div>
+                     
+					<div class="form-group">
+						<strong> <label for="image"
+							class="col-sm-3 col-sm-offset-1 control-label bs">이미지</label>
+						</strong>
+						<div class="col-sm-5" style="border: 1px solid #aea8a8; width:300px; margin-bottom: 40px; height: 30px;">
+
+							<input type="hidden" id="file_no" name="file_no" />
+							<button type="button" id="btnFile" class="btn btn-default" style="margin : 2.4 auto;">파일첨부</button>
+							<span id="upResult"></span>
+						</div>
+
+					</div>
+
+					<div class="form-group" style="height: 20px"></div>
+
+					<div class="col-sm-offset-4">
+						<button type="button" id="btnSub" class="btn btn-sm bt"
+							style="color: #ffffff;">등록</button>
+						<button type="button" id="btnCancel" class="btn btn-sm bt"
+							style="color: #ffffff;">취소</button>
+					</div>
+
+				</form>
+			</div>
 		</div>
-	  
-	</div>
-	
-<!-- 	<div class="form-group"> -->
-<!-- 		<label for="link" class="col-sm-3 col-sm-offset-1 control-label">연결링크</label> -->
-<!-- 		<div class="col-sm-5"> -->
-<!-- 		<input type="text" id="link" name="link"  -->
-<!-- 			class="form-control"/> -->
-<!-- 		</div> -->
-<!-- 	</div> -->
-	
-	<div class="form-group">
-		<label for="number" class="col-sm-3 col-sm-offset-1 control-label">순서</label>
-		<div class="col-sm-5">
-		<input type="text" id="" name="number" value=""
-			class="form-control"/>
-		</div>
+
 	</div>
 
-  <div class="col-sm-offset-4">
-	<button type="button" id="btnSub" class="btn btn-sm" style="color:#ffffff; background:#F67280">등록</button>
-	<button type="button" id="btnCancel" class="btn btn-sm" style="color:#ffffff; background:#FA4C64">취소</button>
+
+	<br>
+
+
+
+
+
+
+	<div style="clear: both;">
+		<%-- <jsp:include page="/view/layout/footer.jsp" /> --%>
 	</div>
-	
-</form>
-</div>
-</div>
-
-</div>
-
-
-<br>
-
-
-
-	
-
-
-<div style="clear:both;">
-<%-- <jsp:include page="/view/layout/footer.jsp" /> --%>
-</div>
 
 
 
@@ -147,28 +148,26 @@
 
 
 
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>

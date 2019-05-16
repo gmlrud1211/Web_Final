@@ -3,7 +3,9 @@ package com.allhotplace.www.service.face.mypage;
 
 import java.util.List;
 
+import com.allhotplace.www.dto.Bookmark;
 import com.allhotplace.www.dto.Calendar;
+import com.allhotplace.www.dto.Schedule;
 import com.allhotplace.www.dto.Users;
 
 public interface MypageService {
@@ -22,5 +24,14 @@ public interface MypageService {
 
 	//선택한 캘린더삭제
 	public void removeCalendar(int calendar_no);
+
+	//로그인 한 회원의 찜 리스트조회
+	public List<Bookmark> getBookmarkList(String user_id);
+
+	//찜한 일정 삭제
+	public void deleteBookmark(int bookmark_no);
+
+	//선택한 캘린더-일정조회하기  
+	public List<Schedule> viewSchedule(int calendar_no);
 
 }

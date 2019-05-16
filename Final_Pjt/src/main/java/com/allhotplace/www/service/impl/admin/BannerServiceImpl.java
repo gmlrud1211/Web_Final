@@ -15,6 +15,11 @@ import com.allhotplace.www.util.Paging;
 public class BannerServiceImpl implements BannerService {
 
 	@Autowired BannerDao banDao;
+	
+	@Override
+	public List<Banner> selectBanerlist() {
+		return banDao.selectBanerlist();
+	}
 
 	@Override
 	public int selectCntBanner() {
@@ -51,11 +56,6 @@ public class BannerServiceImpl implements BannerService {
 		return null;
 	}
 
-
-
-	
-	
-	
 	
 }
 

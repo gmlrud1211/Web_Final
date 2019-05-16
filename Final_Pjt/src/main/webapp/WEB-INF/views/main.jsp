@@ -23,7 +23,7 @@ ul.bxslider li img {
 	height: auto;
 }
 
- .searchdiv {width: 100%; height: 50px; margin:0 auto; text-align: center; position: relative;}
+ .searchdiv {width: 500px; height: 50px; margin:0 auto; text-align: center; position: relative;}
  .searchdiv input {width: 100%; 	height: 50px; border: 2px solid #827ffe;  padding-left:20px;}
  .searchdiv button {position: absolute; top: 0px; right: 0px; width:50px; height:50px; background: #827ffe; border:1px solid #827ffe;}
 
@@ -199,20 +199,33 @@ div.hashtag {
 	left: 0;
 }
 </style>
-세션확인:${user_id }
-<ul class="bxslider">
-	<li><img alt="성규 친구" src="/img/img1.jpg"></li>
-	<li><img alt="성규 친구" src="/img/img2.jpg"></li>
-	<li><img alt="성규 친구" src="/img/img3.jpg"></li>
-</ul>
+
+  <div class="contents">
+		 
+		<div class="banner">
+			<ul>
+			<c:forEach items="${banlist }" var="bannerslist">
+			
+				<li><img src="/upload/${banlist.file_storedname }" ></li>
+				
+			</c:forEach>
+			</ul>
+		</div>
+		 
+	</div>
+
+
+<!-- <ul class="bxslider"> -->
+<!-- 	<li><img alt="성규 친구" src="/img/img1.jpg"></li> -->
+<!-- 	<li><img alt="성규 친구" src="/img/img2.jpg"></li> -->
+<!-- 	<li><img alt="성규 친구" src="/img/img3.jpg"></li> -->
+<!-- </ul> -->
 
 
 <div class="searchdiv">
-	<form action="/main/search" method="get">
+	<form action="/main" method="post">
 		<input type="text" name="search" placeholder="검색어 입력">
-		<button type="submit">
-			<i class=xi-search></i>
-		</button>
+		<button type="submit"><i class=xi-search></i></button>
 
 	</form>
 </div>

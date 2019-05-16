@@ -8,8 +8,10 @@ public class Schedule {
 	private int schedule_no;
 	private int schedule_id;
 	private String schedule_title;
-	private Date schedule_startTime;
-	private Date schedule_endTime;
+	private String schedule_startTime;
+	private String schedule_endTime;
+	
+	
 	@Override
 	public String toString() {
 		return "Schedule [calendar_no=" + calendar_no + ", schedule_no=" + schedule_no + ", schedule_id=" + schedule_id
@@ -40,19 +42,19 @@ public class Schedule {
 	public void setSchedule_title(String schedule_title) {
 		this.schedule_title = schedule_title;
 	}
-	public Date getSchedule_startTime() {
+	public String getSchedule_startTime() {
 		return schedule_startTime;
 	}
-	public void setSchedule_startTime(Date schedule_startTime) {
+	public void setSchedule_startTime(String schedule_startTime) {
 		this.schedule_startTime = schedule_startTime;
 	}
-	public Date getSchedule_endTime() {
+	public String getSchedule_endTime() {
 		return schedule_endTime;
 	}
-	public void setSchedule_endTime(Date schedule_endTime) {
+	public void setSchedule_endTime(String schedule_endTime) {
 		this.schedule_endTime = schedule_endTime;
 	}
-	
+
 	
 	
 }

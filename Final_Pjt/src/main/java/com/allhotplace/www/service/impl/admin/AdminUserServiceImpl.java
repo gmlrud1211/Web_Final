@@ -16,8 +16,8 @@ public class AdminUserServiceImpl implements AdminUserService {
 	@Autowired AdminUserDao aduserDao;
 
 	@Override
-	public int selectCntUser() {
-		return aduserDao.selectCntUser();
+	public int selectCntUser(String word) {
+		return aduserDao.selectCntUser(word);
 	}
 
 	@Override

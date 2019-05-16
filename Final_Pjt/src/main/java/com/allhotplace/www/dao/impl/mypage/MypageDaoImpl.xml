@@ -44,5 +44,23 @@
 		where calendar_no = #{calendar_no}
 	</delete>
 	
+	<select id="selectUserBookmark" resultType="com.allhotplace.www.dto.Bookmark">
+		select * from bookmark
+		where user_no = (
+        				select user_no from users
+        				where user_id=#{user_id})
+	</select>
+	
+	
+	<delete id="deleteBookmark" parameterType="int">
+		delete from bookmark
+		where bookmark_no = #{bookmark_no}
+	</delete>
+	
+	<select id="selectSchedule" resultType="com.allhotplace.www.dto.Schedule">
+		select * from schedule
+		where calendar_no= #{calendar_no}
+	</select>
+	
 	
 </mapper>
