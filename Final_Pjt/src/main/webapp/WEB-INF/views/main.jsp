@@ -200,11 +200,26 @@ div.hashtag {
 }
 </style>
 
-<ul class="bxslider">
-	<li><img alt="성규 친구" src="/img/img1.jpg"></li>
-	<li><img alt="성규 친구" src="/img/img2.jpg"></li>
-	<li><img alt="성규 친구" src="/img/img3.jpg"></li>
-</ul>
+  <div class="contents">
+		 
+		<div class="banner">
+			<ul>
+			<c:forEach items="${banlist }" var="bannerslist">
+			
+				<li><img src="/upload/${banlist.file_storedname }" ></li>
+				
+			</c:forEach>
+			</ul>
+		</div>
+		 
+	</div>
+
+
+<!-- <ul class="bxslider"> -->
+<!-- 	<li><img alt="성규 친구" src="/img/img1.jpg"></li> -->
+<!-- 	<li><img alt="성규 친구" src="/img/img2.jpg"></li> -->
+<!-- 	<li><img alt="성규 친구" src="/img/img3.jpg"></li> -->
+<!-- </ul> -->
 
 
 <div class="searchdiv">

@@ -11,6 +11,9 @@ import com.allhotplace.www.util.Paging;
 
 public interface BannerService {
 
+	// 배너리스트  반환
+	public List<Banner> selectBanerlist();
+	
 	// 총 게시글 수 얻기
 	public int selectCntBanner();
 	

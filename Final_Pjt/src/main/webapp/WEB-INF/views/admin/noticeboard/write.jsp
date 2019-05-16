@@ -3,7 +3,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 
-<jsp:include page="/WEB-INF/views/common/header.jsp" />
 
 
 <script type="text/javascript"
@@ -59,13 +58,17 @@ td.info {
 }
 </style>
 
-<div class="container">
-
-	<div id="leftside" style="height: 100%; width: 30%; float: left;">
+<div style="border-bottom: 1px solid grey; height: 95px; padding-top: 5px;">
+<jsp:include page="/WEB-INF/views/common/header.jsp" /> 
+</div>
+	<div id="menu" style="background-color: #d7d3d447; border-right:#D8D8D8; height: 2260px; width: 20%; float: left;">
 		<jsp:include page="/WEB-INF/views/layout/sidebar.jsp" />
 	</div>
+<div class="container">
 
-		<h5 style="font-size: 40px;">공지사항 등록</h5>
+
+
+		<h5 style="font-size: 25px;">공지사항 등록</h5>
 	<div style="width: 70%; float: left;">
 		
         
