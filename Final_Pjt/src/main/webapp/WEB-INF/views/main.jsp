@@ -204,9 +204,9 @@ div.hashtag {
 		 
 		<div class="banner">
 			<ul>
-			<c:forEach items="${ }" var="bannerslist">
+			<c:forEach items="${banlist }" var="bannerslist">
 			
-				<li><img src="/upload/${.file_storedname }" ></li>
+				<li><img src="/upload/${banlist.file_storedname }" ></li>
 				
 			</c:forEach>
 			</ul>
