@@ -207,16 +207,6 @@ div.hashtag {
 		</c:forEach>
 	</ul>
 	
-		 
-
-
-<!-- <ul class="bxslider"> -->
-<!-- 	<li><img alt="성규 친구" src="/img/img1.jpg"></li> -->
-<!-- 	<li><img alt="성규 친구" src="/img/img2.jpg"></li> -->
-<!-- 	<li><img alt="성규 친구" src="/img/img3.jpg"></li> -->
-<!-- </ul> -->
-
-
 <div class="searchdiv">
 	<form action="/main/search" method="get">
 		<input type="text" name="search" placeholder="검색어 입력">
@@ -310,7 +300,7 @@ div.hashtag {
 
 		$(".bxslider").bxSlider({
 			mode : "horizontal",
-			slideWidth : 1920,
+			slideWidth : 1950,
 			slideMargin : 0,
 			minSlides : 1,
 			maxSlides : 1,
