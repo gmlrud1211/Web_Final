@@ -10,12 +10,6 @@
 <meta charset="UTF-8">
 <title>회원관리 페이지</title>
 
-<jsp:include page="/WEB-INF/views/common/header.jsp" />
-
-
-<style>
-</style>
-
 <script type="text/javascript">
 	$(document).ready(function() {
 		$("table").on("click", "tr", function() {
@@ -93,14 +87,18 @@ ul.pagination li {
 
 <body>
 
-	<div id="menu" style="height: 100%; width: 20%; float: left;">
+<div style="border-bottom: 1px solid grey; height: 95px; padding-top: 5px;">
+<jsp:include page="/WEB-INF/views/common/header.jsp" /> 
+</div>
+
+	<div id="menu" style="background-color: #d7d3d447; border-right:#D8D8D8; height: 2260px; width: 20%; float: left;">
 		<jsp:include page="/WEB-INF/views/layout/sidebar.jsp" />
 	</div>
 
 	<div id="content"
 		style="padding: 10px; width: 1000px; margin: 0 auto; border-left: 1px solid #D8D8D8; height: 100%; float: left;">
 
-		<h5>회원관리</h5>
+		<h5 style="font-size:25px">회원관리</h5>
 
 		<table class="table table-hover table-striped table-condensed">
 			<thead>

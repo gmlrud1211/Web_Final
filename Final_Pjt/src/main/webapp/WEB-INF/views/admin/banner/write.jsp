@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<jsp:include page="/WEB-INF/views/common/header.jsp" />
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
@@ -70,14 +69,18 @@
 </head>
 
 <body>
-	<div id="leftside" style="height: 100%; width: 40%; float: left;">
-	<jsp:include page="/WEB-INF/views/layout/sidebar.jsp" />
+<div style="border-bottom: 1px solid grey; height: 95px; padding-top: 5px;">
+<jsp:include page="/WEB-INF/views/common/header.jsp" /> 
+</div>
+
+	<div id="menu" style="background-color: #d7d3d447; border-right:#D8D8D8; height: 2260px; width: 20%; float: left;">
+		<jsp:include page="/WEB-INF/views/layout/sidebar.jsp" />
 	</div>
 
 	<div id="content"
-		style="backgound-color: #EEEEEE; height: 100%; width: 50%; float: left;">
+		style="backgound-color: #EEEEEE; height: 100%; width: 50%; float: left;  margin-left: 400px; margin-top: 70px;">
 		<div style="margin-left: 70px; margin-bottom: 40px; margin-top: 30px">
-			<h3>배너등록</h3>
+			<h3 style="font-size:25px">배너등록</h3>
 		</div>
 
 		<div class="container">

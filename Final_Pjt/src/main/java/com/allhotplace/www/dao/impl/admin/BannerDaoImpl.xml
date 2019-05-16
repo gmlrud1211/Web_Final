@@ -7,6 +7,21 @@
 
 <mapper namespace="com.allhotplace.www.dao.face.admin.BannerDao">
 
+     <!-- 페이징 처리 배너 반환 -->
+	<select id="selectBanerlist" resultType="com.allhotplace.www.dto.Banner">
+
+		SELECT  B.* , f.file_storedname
+		FROM (
+		SELECT * FROM banner
+		ORDER BY banner_no desc
+		) B
+
+		INNER JOIN
+		fileupload f
+		ON B.file_no = f.file_no
+	</select>
+
+
 	<!-- 페이징 처리 배너 반환 -->
 	<select id="selectPaginglist"
 		parameterType="com.allhotplace.www.util.Paging"

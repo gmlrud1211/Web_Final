@@ -17,9 +17,7 @@ padding: 10px 5px;
 }
 td.info{
 color:white;
-
 background-color : #827ffe;
-
 }
 
 
