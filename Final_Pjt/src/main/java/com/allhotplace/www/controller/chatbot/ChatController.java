@@ -152,7 +152,10 @@ public class ChatController {
 		return "jsonView";
 	}
 	
-	
+	@RequestMapping(value="/chat/read")
+	public void chat1on1() {
+		logger.info("1대1채팅");
+	}
 	
 	
 	
