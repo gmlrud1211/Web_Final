@@ -186,12 +186,12 @@ $(document).ready(function(){
 		
 	});
 	
-	/* 엔터키 */
-	$("#btnChatBotSend1").keypress(function(event){
-		if(event.which==13){
-			$("#btnChatBotSend1").click();
-		}
-	});
+// 	/* 엔터키 */
+// 	$("#btnChatBotSend1").keypress(function(event){
+// 		if(event.which==13){
+// 			$("#btnChatBotSend1").click();
+// 		}
+// 	});
 	
 	/* 채팅기록 전체삭제 */
 	$("#refresh1").click(function(){
