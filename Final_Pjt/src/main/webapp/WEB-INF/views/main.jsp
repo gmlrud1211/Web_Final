@@ -15,7 +15,6 @@ ul.bxslider {
 }
 
 ul.bxslider li {
-	
 }
 
 ul.bxslider li img {
@@ -199,20 +198,16 @@ div.hashtag {
 	left: 0;
 }
 </style>
-
-  <div class="contents">
-		 
-		<div class="banner">
-			<ul>
-			<c:forEach items="${banlist }" var="bannerslist">
+	
+	<ul class="bxslider">
+		<c:forEach items="${banlist }" var="banlist">
 			
-				<li><img src="/upload/${banlist.file_storedname }" ></li>
+			<li><img src="/upload/${banlist.file_storedName }" ></li>
 				
-			</c:forEach>
-			</ul>
-		</div>
+		</c:forEach>
+	</ul>
+	
 		 
-	</div>
 
 
 <!-- <ul class="bxslider"> -->
