@@ -31,7 +31,7 @@ $(document).ready(function() {
 
 <div class="container">
 
-<h3>챗봇 수정</h3>
+<h3 style="font-size:25px">챗봇 수정</h3>
 <hr>
 <form action="/admin/chatbot/modify" method="post">
 <div>

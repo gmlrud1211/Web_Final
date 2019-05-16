@@ -9,7 +9,6 @@
 <head>
 <meta charset="UTF-8">
 <title>배너관리</title>
-<jsp:include page="/WEB-INF/views/common/header.jsp" />
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-2.2.4.min.js"></script>    
 <style>
@@ -37,6 +36,7 @@ table {
 }
 th{
 text-align: center !important;
+font-size:17px;
 }
 
 th, td:not(:nth-child(2)) {
@@ -67,15 +67,19 @@ background-color : #827ffe;
 color : white;
 font-size : 20px;
 border-style :none;
-   border-radius: 5px;
+border-radius: 5px;
 }
 </style></head>
 
 <body>
 
-<div id="menu" style="height:100%;width:20%;float:left;">
-<jsp:include page="/WEB-INF/views/layout/sidebar.jsp" /> </div>
+<div style="border-bottom: 1px solid grey; height: 95px; padding-top: 5px;">
+<jsp:include page="/WEB-INF/views/common/header.jsp" /> 
+</div>
 
+	<div id="menu" style="background-color: #d7d3d447; border-right:#D8D8D8; height: 2260px; width: 20%; float: left;">
+		<jsp:include page="/WEB-INF/views/layout/sidebar.jsp" />
+	</div>
 
 <div id="content" style="height:100%;width:78%;float:left;">
 
@@ -84,11 +88,11 @@ border-style :none;
 </div>
 
 <div style="margin:30px; ">
-<h2>배너관리</h2>
+<h2 style="font-size:25px">배너관리</h2>
 </div>
 
 
-<div class="container" style="max-width:1063px;">
+<div class="container" style="max-width:1063px; padding:10px;">
 
 <div>
 <table class="table table-bordered">

@@ -64,7 +64,7 @@ td.info {
 		<jsp:include page="/WEB-INF/views/layout/sidebar.jsp" />
 	</div>
 
-		<h5 style="font-size: 40px;">공지사항 수정</h5>
+		<h5 style="font-size: 25px;">공지사항 수정</h5>
 
  <br><br>
          <br><br>
