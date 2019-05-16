@@ -173,6 +173,8 @@ public class MypageController {
 			map.put("start", s.getSchedule_startTime());
 			map.put("end", s.getSchedule_endTime());
 			map.put("no", String.valueOf(s.getSchedule_no()));
+//			map.put("id", );
+			map.put("resourceId", "schedule");
 			
 			s_list.add(map);
 			

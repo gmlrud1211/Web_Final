@@ -42,13 +42,6 @@
     	console.log(sch[i]);
     }
     console.log("============");
- 
-    var t = 
-  	  [
-  	  
-     	 { id: '2', resourceId: 'schedule', start: "2019-05-20 17:00:00", end: '2019-05-20 18:00:00', title: 'event 2' },
-     	 { id: '1', resourceId: 'schedule', start: "2019-05-20 15:00:00", end: '2019-05-20 16:00:00', title: 'event 1' }
-];
 
     
     var calendar = new FullCalendar.Calendar(calendarEl, {
@@ -70,7 +63,8 @@
     	        {id: 'schedule', title: '하루일정', eventColer: '#827ffe'},
       ],
       
-      events:t
+      events:sch
+      
     	  
 //     	  [
 //     	  {no: "1", resourceId: 'schedule', start: "13:30:00.0", end: "14:30:00.0", title: "플레이케이팝"}
