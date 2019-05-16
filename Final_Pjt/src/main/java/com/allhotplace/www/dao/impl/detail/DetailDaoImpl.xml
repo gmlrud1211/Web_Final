@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 마이바티스 3 Mapper DOCTYPE -->
+
+<!-- <!DOCTYPE mapper "http://mybatis.org/dtd/mybatis-3-mapper.dtd" PUBLIC 
+	"-//mybatis.org//DTD Mapper 3.0//EN"> -->
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 매퍼 설정 -->
+<mapper namespace="com.allhotplace.www.dao.face.detail.DetailDao">
+
+
+	<select id="getCalendar" parameterType="String" resultType="com.allhotplace.www.dto.DetailCalendar">
+		select * from calendar
+		where user_no = (
+        				select user_no from users
+        				where user_id=#{user_id})
+        order by calendar_scheduleDate
+	</select>
+
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

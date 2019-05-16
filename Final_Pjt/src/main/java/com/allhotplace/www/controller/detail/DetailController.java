@@ -12,11 +12,15 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.allhotplace.www.dto.Calendar;
+import com.allhotplace.www.dto.DetailCalendar;
 import com.allhotplace.www.dto.DetailResult_common;
 import com.allhotplace.www.dto.DetailResult_image;
 import com.allhotplace.www.dto.DetailResult_intro_course;
@@ -27,6 +31,7 @@ import com.allhotplace.www.dto.DetailResult_intro_report;
 import com.allhotplace.www.dto.DetailResult_intro_restaurant;
 import com.allhotplace.www.dto.DetailResult_intro_shopping;
 import com.allhotplace.www.dto.DetailResult_intro_tour;
+import com.allhotplace.www.service.face.detail.DetailService;
 
 @Controller
 public class DetailController {
@@ -35,7 +40,7 @@ private static final Logger logger = LoggerFactory.getLogger(DetailController.cl
 	
 	public static final String APP_KEY = "8q31GAJwwNMz571K7eTL7BPpMIsivagfYAbl3xJeUqGhpmGE1V5Md5czX9eJ1aXXsHLMLRiB8XNtcyGLDst5xA%3D%3D";
 
-	//@Autowired DetailService detailService;
+	@Autowired DetailService detailService;
 	@RequestMapping(value="/detail", method=RequestMethod.GET)
 	
 	public String placeInfoAPI(Model model, String contentId, String contentTypeId) {
@@ -447,5 +452,18 @@ private static final Logger logger = LoggerFactory.getLogger(DetailController.cl
 		
 		
 		return "detail/detail";
+	}
+	
+
+	@RequestMapping(value="/getCalendar")
+	@ResponseBody
+	public List<DetailCalendar> getCalendar(Model model, String user_id) {
+		
+		System.out.println(user_id);
+		List<DetailCalendar> calList = new ArrayList<DetailCalendar>();
+		calList	= detailService.getCalendar(user_id);
+		model.addAttribute("calList", calList);
+		System.out.println("calList : " + calList);
+		return calList;
 	}
 }

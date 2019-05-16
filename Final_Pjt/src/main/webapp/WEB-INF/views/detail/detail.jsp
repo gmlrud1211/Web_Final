@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="f"%>
 <jsp:include page="../../views/common/meta.jsp" />
 
 
@@ -9,6 +8,9 @@
 <html>
 <head>
 <style type="text/css">	
+
+body { font-family: 'Noto Sans Kannada', sans-serif; }
+
 
 .detailimg {
     width: 500px;
@@ -52,20 +54,48 @@ li{
     box-sizing: border-box;
 }
 
+.addCalbg {
+	position : fixed;
+	top: 0px;
+	left : 0px;
+	width : 100%;
+	height : 100%;
+	display : block;
+	background : RGBA(0,0,0,0.5);
+	display : none;
+}
+.con {
+	position :absolute;
+	top : 50%;
+	left : 50%;
+	width : auto;
+	height : auto;
+	background : #FFF;
+	transform : translateX(-50%) translateY(-50%);
+	z-index : 10000;
+	display : none;
+	padding: 20px;
+	    
+}
+
 </style>
 
 <script type="text/javascript">
+
 $(document).ready(function() {
-	/*메인슬라이더 px*/
+	
+	/* 이미지슬라이더 px */
 	$(".bxslider li img").css({
 		height : $(window).height() + "px"
-	})
+	});
+	
 	$(window).resize(function() {
 		$(".bxslider li img").css({
 			height : $(window).height() + "px"
-		})
-	})
-	/*메인슬라이더 px*/
+		});
+	});
+	
+	/* 이미지슬라이더 px*/
 	$(".bxslider").bxSlider({
 		mode : "fade",
 		slideWidth : 500,
@@ -85,9 +115,61 @@ $(document).ready(function() {
 		easing : "easeInOutCirc",
 		controls : true,
 	});
+
 	
+	$("#addCalBtn").click(function () {
+
+		var user_id = "<%=(String)session.getAttribute("user_id")%>"
+	    var oneClick = true; //중복호출 방지용 상태변수
+
+		console.log('user_id : ' + user_id);
+		$.ajax({
+			type: "post"
+			, url: "/getCalendar"
+			, data: {
+				"user_id":user_id
+			}
+			, dataType: "json"
+			, success: function(result){
+				$(result).each(function(i){
+					
+					console.log('result :  ' +  result);
+					
+					var innerHTML = "<tr>";
+					innerHTML += "<td>" + result[i].calendar_no  + "</td>";
+				  	innerHTML += "<td><a href='/mypage/schedule?calendar_no="+ result[i].calendar_no + "'> " + result[i].calendar_title + "</a></td>";
+				    innerHTML += "<td>" + (result[i].calendar_scheduleDate).substr(0,10) +"</td>";   
+				 	innerHTML += "</tr>"
+				 	console.log("innerHTML : " + innerHTML);
+					$("#calTbl tbody").append(innerHTML);
+				});
+				
+				$(".con").fadeIn();
+				$(".addCalbg").fadeIn();
+	               
+	         }
+			, error: function(e) { 
+				console.log(e);
+			}
+		});
 	
-}); 
+		$("#addCalendar").click(function () {
+			
+		});
+		
+		$("#close").click(function(){
+			$(".con").fadeOut();
+			$(".addCalbg").fadeOut();
+		});
+		
+		$("#addSchedule").click(function(){
+			$("#calendarForm").submit();
+			$(".con").fadeOut();
+			$(".addCalbg").fadeOut();
+			alert("일정이 등록되었습니다!");
+		});
+	});
+});
 
 </script>
 <meta charset="UTF-8"> 
@@ -98,10 +180,22 @@ $(document).ready(function() {
 		<div class="infoHeader">
 			<c:forEach var="list" items="${commonList }" varStatus="i">
 				<span style="color:#827ffe; font-size:27px;">${list.title }</span>
-				<span style="text-align:right; margin-left: 820px;">
-					<img name="likebefore" src="/../../../img/like_nonclick.png" class="" style="width:30px; height: 30px;"/>&nbsp;
-					<img name="likeafter"src="/../../../img/like_click.png" class="" style="width:30px; height: 30px;"/>&nbsp;
-					<img name="addcalendar"src="/../../../img/add_event.png" class="" style="width:30px; height: 30px;"/>&nbsp;
+				<span style="text-align:right; margin-left: 750px;">
+					<img name="likebefore" src="/../../../img/like_nonclick.png" class="" style="width:30px; height: 30px; cursor:pointer;"/>&nbsp;
+					<!--  찜
+					contentId=1556203&contentTypeId=15
+					firstimage
+					 -->
+					 
+					<!-- 일정
+					contentId=1556203&contentTypeId=15
+					firstimage, title
+					 -->
+					 
+					<img name="likeafter"src="/../../../img/like_click.png" class="" style="width:30px; height: 30px; cursor:pointer;"/>&nbsp;
+					<button id="addCalBtn" style="border:none; background-color:white;">
+						<img src="/../../../img/add_event.png" class="" style="width:30px; height: 30px; cursor:pointer;"/>
+					</button>&nbsp;
 				</span>
 			</c:forEach>
 			<ul>
@@ -1020,6 +1114,7 @@ $(document).ready(function() {
 				
 				</ul>
 			</div>
+			<jsp:include page="../../views/detail/addCalendar.jsp" />
 		</div>
 	</div>
 </body>

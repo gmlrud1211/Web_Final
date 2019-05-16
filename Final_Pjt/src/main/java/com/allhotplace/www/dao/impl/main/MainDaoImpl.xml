@@ -6,5 +6,6 @@
   
 <!-- 매퍼 설정 -->
 <mapper namespace="com.allhotplace.www.dao.face.main.MainDao">
-	
+	<select id="totalsearch" resultType="Hashmap">
+	</select>
 </mapper>
