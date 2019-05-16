@@ -74,6 +74,7 @@ public class ChatbotListController {
 	@RequestMapping(value = "/admin/chatbot/delete", method = RequestMethod.GET)
 	public void delete(SChatbot schat, Model model) {
 		chatbotService.delectSchat(schat);
+		
 	}
 
 }

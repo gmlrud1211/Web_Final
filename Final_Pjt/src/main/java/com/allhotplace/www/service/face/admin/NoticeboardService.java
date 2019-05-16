@@ -16,7 +16,7 @@ public interface NoticeboardService {
 	public int selectCntNboard(String word);
 
 	// 페이징 리스트 얻기
-	public List<Noticeboard> getPagingList(Paging paging);
+	public List<Noticeboard> getPagingList(Paging paging, String search, String word);
 	
 	// 게시글 상세보기 
 	// 조회수 함께 업데이트

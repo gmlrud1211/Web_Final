@@ -4,16 +4,18 @@ package com.allhotplace.www.dao.face.admin;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.allhotplace.www.dto.Noticeboard;
 import com.allhotplace.www.util.Paging;
 
 public interface NoticeboardDao {
 
 	// 총 게시글 수 반환
-	public int selectCntNboard( String word);
+	public int selectCntNboard(String word);
 
 	// 페이징 처리 게시글 반환
-	public List<Noticeboard> selectPaginglist(Paging paging);
+	public List<Noticeboard> selectPaginglist(@Param("paging")Paging paging, @Param("search") String search,  @Param("word") String word);
 	
 	// 게시글 상세보기 
 	public Noticeboard selectNboard(Noticeboard board);

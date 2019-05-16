@@ -108,12 +108,12 @@
 							<th style="width: 10%">삭제</th>
 						</tr>
 					</thead>
-					
+					${calendarList }
 					<tbody>
 						<c:forEach items="${calendarList }" var="cal">
 						<tr>
 							<td>${cal.calendar_no }</td>
-							<td><!-- <a href="#"> -->${cal.calendar_title }</td>
+							<td><a href="/mypage/schedule?calendar_no=${cal.calendar_no }">${cal.calendar_title }</a></td>
 							<td><fmt:formatDate value="${cal.calendar_scheduleDate }" pattern="yyyy-MM-dd"/></td>
 							<td>${cal.calendar_yesno }</td>
 							<td><a onclick="delAlert();" href="/mypage/calRemove?calendar_no=${cal.calendar_no }" >삭제</a></td>
