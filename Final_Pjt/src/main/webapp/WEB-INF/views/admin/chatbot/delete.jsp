@@ -8,7 +8,7 @@
 <script type="text/javascript">
 
 confirm("삭제되었습니다.");
-location.href="/faq/list";  
+location.href="/admin/chatbot/list";  
 
 </script>
 

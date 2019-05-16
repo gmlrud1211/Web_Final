@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- 마이바티스 3 Mapper DOCTYPE -->
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.allhotplace.www.dao.face.admin.DashboardDao">
+
+	<insert id="setTotalCount">
+	INSERT INTO visitors (visit_date) VALUES (sysdate)"
+	</insert>
+
+
+	<!-- 총 방문자수 반환 -->
+	<select id="getTotalCount" resultType="int">
+		SELECT count(*) FROM visitors
+	</select>
+
+	<!-- 오늘 방문자수 반환 -->
+	<select id="getTodayCount" resultType="int">
+		SELECT count(*) FROM visitors
+		 WHERE TO_DATE(visit_date, 'YYYY-MM-DD') = TO_DATE(sysdate, 'YYYY-MM-DD')
+	</select>
+
+
+       <!-- 일정 카운트  공개-->
+<select id="getCalendarYes" resultType="int">
+         SELECT count(*) FROM CALENDAR
+		 WHERE CALENDAR_yesno = 'YES'
+</select>
+
+       <!-- 일정 카운트  비공개-->
+<select id="getCalendarNo" resultType="int">
+         SELECT count(*) FROM CALENDAR
+		 WHERE CALENDAR_yesno = 'NO'
+</select>
+
+
+ <!-- 일주일동안 새로운 가입자 수  -->
+ <select id="getNewUser" resultType="int">
+SELECT count(*) FROM users 
+WHERE user_regdate >= to_char(sysdate-7,'yyyy-mm-dd')
+</select>
+ 
+
+</mapper>

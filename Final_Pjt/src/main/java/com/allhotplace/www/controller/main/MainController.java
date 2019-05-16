@@ -5,11 +5,12 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.List;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.allhotplace.www.dto.Banner;
+import com.allhotplace.www.service.face.admin.BannerService;
 import com.allhotplace.www.service.face.main.MainService;
 
 
@@ -27,12 +30,16 @@ public class MainController {
 	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
 	
 	public static final String APP_KEY = "xjgpEu7EyCrud6P0thfB9ktQ22Sfu8%2B12aVpSAOau8gHvdLeIP79PSvVvZMPxcOqBe1nNS2LBhVQCFrDJ144LA%3D%3D";
+
 	@Autowired MainService mainservice;
+	@Autowired BannerService banservice;
 	
-	@RequestMapping(value="/main", method=RequestMethod.GET)
-	public void Main() {
+	@RequestMapping(value = "/main", method = RequestMethod.GET)
+	public void Main(Model model) {
 		
+		List<Banner> banlist =  banservice.selectBanerlist();
 		
+		model.addAttribute("banlist", banlist);
 		
 	}
 	@RequestMapping(value="/main", method=RequestMethod.POST)

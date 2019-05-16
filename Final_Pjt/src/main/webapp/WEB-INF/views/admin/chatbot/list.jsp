@@ -4,7 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
-<%-- <jsp:include page="/WEB-INF/views/layout/header.jsp" /> --%>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -68,23 +68,38 @@
 .tabcon {
 	display: none;
 	padding: 6px 12px;
+	width : 90%;
 }
 
 ul.tab li.current {
-	background-color:;
-	border-top: 1px solid grey;
-	border-left: 1px solid grey;
-	border-right: 1px solid grey;
+	background-color: #827ffe;
+
 }
 
+ul.tab li.current a{
+   color : white;
+}
 
+ul.tab li {
+	border : 1px solid grey;
+	    width: 170px;
+	    height: 40px;
+	    padding: 5px;
+	    
+}
+
+ul.subtab li.current {
+	background-color: #dfdfe5; 
+}
+
+ul.subtab li {
+	color : gray;
+}
 
 .tabcontent.current {
 	display: block;
 	border: 1px solid grey;
 }
-
-
 
 .tabcon {
 	display: none;
@@ -93,8 +108,29 @@ ul.tab li.current {
 .tabcon.current {
 	display: block;
 }
+
+table.table tr{
+ width : 170px;
+ height: 50px;
+}
+
+table.table tr.answer{
+background-color : #eceaea;
+}
+
+table.table tbody{
+width : 100%
+
+}
 </style>
 <style>
+ul{
+width : 900px; 
+}
+tr.question{
+ border-bottom :1px solid grey;
+}
+
 #container>div {
 	border: none;
 }
@@ -104,22 +140,52 @@ ul.tab li.current {
 }
 
 #container>div>table {
-	position: relative;
+	position: absolute;
 	top: 70px;
 	left: 0;
+}
+
+.cb {
+   border-top : 2px solid gray;
+   position : absolute;
+   top : 70px;
+}
+
+.cd{
+  clear: both;
+}
+
+td.ss{
+width : 1500px; 
+height: 35px;
+}
+.bt{
+background-color : #827ffe;
+color : white;
+font-size : 35px;
+border-style :none;
+border-radius: 5px;
 }
 </style>
 
 </head>
 <body>
-	<div id="menu" style="height: 100%; width: 20%; float: left;">
+
+<div style="border-bottom: 1px solid grey; height: 95px; padding-top: 5px;">
+<jsp:include page="/WEB-INF/views/common/header.jsp" /> 
+</div>
+
+	<div id="menu" style="background-color: #d7d3d447; border-right:#D8D8D8; height: 2260px; width: 20%; float: left;">
 		<jsp:include page="/WEB-INF/views/layout/sidebar.jsp" />
 	</div>
-	<br>
-	<h3>챗봇관리</h3>
-	<hr>
-	<div id="container" style="padding: 20px; min-height: 400px;">
-		<ul class="tab">
+	
+	<div id="container" style="
+	padding:10px; width:1000%; margin: 40px; height:100%; max-width: 1110px; float:left; ">
+ 
+	<h5 style="font-size: 25px; text-align: start;">챗봇관리</h5>	
+ 
+       <br>
+		<ul class="tab" style="width:100%;">
 			<li class="current" data-tab="tab1"><a href="#">회원관련</a></li>
 			<li data-tab="tab2"><a href="#">사이트관련</a></li>
 			<li data-tab="tab3"><a href="#">캘린더관련</a></li>
@@ -141,14 +207,15 @@ ul.tab li.current {
 
 			 <c:forEach var="i" begin="1" end="3">
 				<c:set value="<%=mno%>" var="mno"></c:set>
-				<div id="mtab<%=i%>" class="tabcon mmmtab<%=i%>">
+				<div id="mtab<%=i%>" class="tabcon mmmtab<%=i%> cb">
 					<%
 						i++;
 					%>
 					<%
 						mno++;
 					%>
-					<table class="table table-hover table-striped table-condensed" style="clear:both;">
+					
+					<table class="table table-hover table-striped table-condensed cd" >
 						<c:forEach items="${schatlist }" var="slist">
 							<c:if test="${slist.mChat_no == mno}">
 								<colgroup>
@@ -158,7 +225,7 @@ ul.tab li.current {
 								</colgroup>
 
 								<tr class="question">
-									<td style="text-align: left; padding-left: 20px">${slist.sChat_name }</td>
+									<td class="ss" style="height: 20px;text-align: left; padding-left: 20px">${slist.sChat_name }</td>
 									<td id="modify"><a
 										href="/admin/chatbot/modify?sChat_no=${slist.sChat_no } ">수정</a></td>
 									<td id="delete"><a
@@ -166,7 +233,7 @@ ul.tab li.current {
 								</tr>
 
 								<tr class="answer">
-									<td colspan="3" style="text-align: left; padding-left: 20px">${slist.sChat_answer }</td>
+									<td colspan="3" style="text-align: left; padding-left: 20px">  ${slist.sChat_answer }</td>
 								</tr>
 							</c:if>
 						</c:forEach>
@@ -191,7 +258,7 @@ ul.tab li.current {
 			<c:forEach var="j" begin="1" end="3">
 				<c:set value="<%=mno2%>" var="mno2">
 				</c:set>
-				<div id="mtab<%=j%>" class="tabcon mmmtab<%=j%>">
+				<div id="mtab<%=j%>" class="tabcon mmmtab<%=j%> cb">
 					<%
 						j++;
 					%>
@@ -199,7 +266,7 @@ ul.tab li.current {
 						mno2++;
 					%>
 
-					<table class="table table-hover table-striped table-condensed">
+					<table class="table table-hover table-striped table-condensed cd">
 						<c:forEach items="${schatlist }" var="slist">
 							<c:if test="${slist.mChat_no == mno2}">
 								<colgroup>
@@ -209,7 +276,7 @@ ul.tab li.current {
 								</colgroup>
 
 							<tr class="question">
-									<td style="text-align: left; padding-left: 20px">${slist.sChat_name }</td>
+									<td class="ss" style="text-align: left; padding-left: 20px">${slist.sChat_name }</td>
 									<td id="modify"><a
 										href="/admin/chatbot/modify?sChat_no=${slist.sChat_no } ">수정</a></td>
 									<td id="delete"><a
@@ -239,14 +306,14 @@ ul.tab li.current {
 
 			<c:forEach var="r" begin="1" end="3">
 				<c:set value="<%=mno3%>" var="mno3"></c:set>
-				<div id="mtab<%=r%>" class="tabcon mmmtab<%=r%>">
+				<div id="mtab<%=r%>" class="tabcon mmmtab<%=r%> cb">
 					<%
 						r++;
 					%>
 					<%
 						mno3++;
 					%>
-			<table class="table table-hover table-striped table-condensed">
+			<table class="table table-hover table-striped table-condensed cd">
 				<c:forEach items="${schatlist }" var="slist">
 					<c:if test="${slist.mChat_no == mno3}">
 						<colgroup>
@@ -256,7 +323,7 @@ ul.tab li.current {
 						</colgroup>
 
 						<tr class="question">
-									<td style="text-align: left; padding-left: 20px">${slist.sChat_name }</td>
+									<td class="ss" style="text-align: left; padding-left: 20px">${slist.sChat_name }</td>
 									<td id="modify"><a
 										href="/admin/chatbot/modify?sChat_no=${slist.sChat_no } ">수정</a></td>
 									<td id="delete"><a
@@ -288,7 +355,7 @@ ul.tab li.current {
 			<c:forEach var="q" begin="1" end="3">
 				<c:set value="<%=mno4%>" var="mno4">
 				</c:set>
-				<div id="mtab<%=q%>" class="tabcon mmmtab<%=q%>">
+				<div id="mtab<%=q%>" class="tabcon mmmtab<%=q%> cb">
 					<%
 						q++;
 					%>
@@ -296,7 +363,7 @@ ul.tab li.current {
 						mno4++;
 					%>
 			
-			<table class="table table-hover table-striped table-condensed">
+			<table class="table table-hover table-striped table-condensed cd">
 				<c:forEach items="${schatlist }" var="slist">
 					<c:if test="${slist.mChat_no == mno4}">
 						<colgroup>
@@ -306,7 +373,7 @@ ul.tab li.current {
 						</colgroup>
 
 						<tr class="question">
-									<td style="text-align: left; padding-left: 20px">${slist.sChat_name }</td>
+									<td class="ss" style="text-align: left; padding-left: 20px">${slist.sChat_name }</td>
 									<td id="modify"><a
 										href="/admin/chatbot/modify?sChat_no=${slist.sChat_no } ">수정</a></td>
 									<td id="delete"><a
@@ -338,7 +405,7 @@ ul.tab li.current {
 			<c:forEach var="w" begin="1" end="3">
 				<c:set value="<%=mno5%>" var="mno5">
 				</c:set>
-				<div id="mtab<%=w%>" class="tabcon mmmtab<%=w%>">
+				<div id="mtab<%=w%>" class="tabcon mmmtab<%=w%> cb">
 					<%
 						w++;
 					%>
@@ -346,7 +413,7 @@ ul.tab li.current {
 						mno5++;
 					%>
 
-			<table class="table table-hover table-striped table-condensed">
+			<table class="table table-hover table-striped table-condensed cd">
 				<c:forEach items="${schatlist }" var="slist">
 					<c:if test="${slist.mChat_no == mno5}">
 						<colgroup>
@@ -356,7 +423,7 @@ ul.tab li.current {
 						</colgroup>
 
 						<tr class="question">
-									<td style="text-align: left; padding-left: 20px">${slist.sChat_name }</td>
+									<td class="ss" style="text-align: left; padding-left: 20px">${slist.sChat_name }</td>
 									<td id="modify"><a
 										href="/admin/chatbot/modify?sChat_no=${slist.sChat_no } ">수정</a></td>
 									<td id="delete"><a
@@ -389,14 +456,14 @@ ul.tab li.current {
 			<c:forEach var="t" begin="1" end="2">
 				<c:set value="<%=mno6%>" var="mno6">
 				</c:set>
-				<div id="mtab<%=t%>" class="tabcon mmmtab<%=t%>">
+				<div id="mtab<%=t%>" class="tabcon mmmtab<%=t%> cb">
 					<%
 						t++;
 					%>
 					<%
 						mno6++;
 					%>
-			<table class="table table-hover table-striped table-condensed">
+			<table class="table table-hover table-striped table-condensed cd">
 				<c:forEach items="${schatlist }" var="slist">
 					<c:if test="${slist.mChat_no == mno6}">
 						<colgroup>
@@ -406,7 +473,7 @@ ul.tab li.current {
 						</colgroup>
 
 						<tr class="question">
-									<td style="text-align: left; padding-left: 20px">${slist.sChat_name }</td>
+									<td class="ss" style="text-align: left; padding-left: 20px">${slist.sChat_name }</td>
 									<td id="modify"><a
 										href="/admin/chatbot/modify?sChat_no=${slist.sChat_no } ">수정</a></td>
 									<td id="delete"><a
@@ -414,9 +481,8 @@ ul.tab li.current {
 								</tr>
 
 								<tr class="answer">
-									<td colspan="3" style="text-align: left; padding-left: 20px">${slist.sChat_answer }</td>
+									<td class="sss" colspan="3" style="text-align: left; padding-left: 20px">${slist.sChat_answer }</td>
 								</tr>
-
 					</c:if>
 				</c:forEach>
 
@@ -424,12 +490,12 @@ ul.tab li.current {
 			</div>
 			</c:forEach>
 		</div>
+	<div>
+		<button id="btnWrite" class="btn btn-primary bt"
+			style="text-align: center; margin-top: 240px; margin-right: 150px;">등록</button>
+	</div>
 	</div>
 
-	<div>
-		<button id="btnWrite" class="btn btn-primary"
-			style="text-align: center; float: right; margin-right: 20%;">등록</button>
-	</div>
 
 	<script>
 		$(function() {

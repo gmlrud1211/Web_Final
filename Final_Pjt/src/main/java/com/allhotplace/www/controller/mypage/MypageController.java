@@ -2,7 +2,10 @@ package com.allhotplace.www.controller.mypage;
 
 
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -16,9 +19,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.allhotplace.www.dto.Bookmark;
 import com.allhotplace.www.dto.Calendar;
+import com.allhotplace.www.dto.Schedule;
 import com.allhotplace.www.dto.Users;
 import com.allhotplace.www.service.face.mypage.MypageService;
+import com.google.gson.Gson;
 
 @Controller
 public class MypageController {
@@ -112,7 +118,6 @@ public class MypageController {
 	
 	}
 	
-	
 	@RequestMapping(value="/mypage/calUpdate", method=RequestMethod.POST)
 	public String CalendarUpdate(HttpSession session, Calendar cal,
 								HttpServletRequest req,
@@ -126,7 +131,63 @@ public class MypageController {
 	
 	}
 	
-
+	@RequestMapping(value="/mypage/bookmark", method=RequestMethod.GET)
+	public void BookmarkList(HttpSession session, Model model) {
+		logger.info("마이페이지 - 찜목록 조회");
+		
+		String user_id = (String) session.getAttribute("user_id");
+		
+		List<Bookmark> bookmark_list = mypageService.getBookmarkList(user_id);
+		
+		model.addAttribute("bookmark_list", bookmark_list);
+	}
 	
+	@RequestMapping(value="/mypage/bookmark/delete", method=RequestMethod.GET)
+	public String BookmarkDelete(HttpServletRequest req,
+								@RequestParam("bookmark_no") int bookmark_no) {
+		
+		logger.info("마이페이지 - 찜목록 삭제");
+		mypageService.deleteBookmark(bookmark_no);
+		
+		return "redirect:/mypage/bookmark";
+	}
+	
+	@RequestMapping(value="/mypage/schedule", method=RequestMethod.GET)
+	public void ScheduleList(HttpServletRequest req, Model model,
+							@RequestParam("calendar_no") int calendar_no) {
+		
+		logger.info("마이페이지-[캘린더 > 일정조회]");
+		logger.info("선택한 캘린더의 calendar_no="+calendar_no);
+
+		List<Schedule> schedule_list = mypageService.viewSchedule(calendar_no);
+		model.addAttribute("schedule_list",schedule_list);
+		System.out.println(schedule_list);
+		
+		List s_list = new ArrayList();
+		
+		for(Schedule s : schedule_list) {
+			Map map = new HashMap();
+			
+			
+			map.put("title", s.getSchedule_title());
+			map.put("start", s.getSchedule_startTime());
+			map.put("end", s.getSchedule_endTime());
+			map.put("no", String.valueOf(s.getSchedule_no()));
+//			map.put("id", );
+			map.put("resourceId", "schedule");
+			
+			s_list.add(map);
+			
+			System.out.println(s.getSchedule_startTime());
+		}
+		
+		Gson gson = new Gson();
+		req.setAttribute("s_list", gson.toJson(s_list));
+		System.out.println(s_list);
+		
+		
+		
+		
+	}
 	
 }

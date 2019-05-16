@@ -43,16 +43,15 @@ public class UserController {
 		
 		int login = userService.login(model);
 		
-		if(login == 1 && user_id.equals("admin")) { //관리자로그인성공
+		if(login == 1 && user_id.equals("admin")) {//관리자로그인성공
 			session.setAttribute("login", true);
 			session.setAttribute("user_id", user_id);
 			
 			model.addAttribute("user_id", user_id);
 			logger.info("로그인 성공");
 			
-			return "redirect:/admin/user/list";
+			return "redirect:/admin/dashboard/list";
 		}
-
 		
 		if(login == 1 ) {//로그인성공
 			session.setAttribute("login", true);
