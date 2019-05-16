@@ -199,7 +199,7 @@ div.hashtag {
 	left: 0;
 }
 </style>
-
+세션확인:${user_id }
 <ul class="bxslider">
 	<li><img alt="성규 친구" src="/img/img1.jpg"></li>
 	<li><img alt="성규 친구" src="/img/img2.jpg"></li>
