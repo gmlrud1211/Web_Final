@@ -11,4 +11,6 @@ public interface MainService {
 
 	List<Noticeboard> selectAll(Paging paging);
 
+	List mainsearch();
+
 }
