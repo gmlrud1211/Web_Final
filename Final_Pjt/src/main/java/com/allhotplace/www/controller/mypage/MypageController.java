@@ -160,8 +160,8 @@ public class MypageController {
 		logger.info("선택한 캘린더의 calendar_no="+calendar_no);
 
 		List<Schedule> schedule_list = mypageService.viewSchedule(calendar_no);
+		model.addAttribute("calendar_no", calendar_no);
 		model.addAttribute("schedule_list",schedule_list);
-		System.out.println(schedule_list);
 		
 		List s_list = new ArrayList();
 		
@@ -207,6 +207,12 @@ public class MypageController {
 		System.out.println(result);
 		
 		return "jsonView";
+	}
+	
+	@RequestMapping(value="/mypage/calendarYes", method=RequestMethod.POST)
+	public void CalendarOpen() {
+		
+		
 	}
 	
 	

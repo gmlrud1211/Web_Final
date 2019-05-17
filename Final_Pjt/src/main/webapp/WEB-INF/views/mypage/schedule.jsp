@@ -102,8 +102,10 @@
 <script type="text/javascript">
 	//공개여부 설정
 	$(document).ready(function() {
-		var isOpen = ${isOpen};
 		
+		//공개여부따라서 공개/비공개 설정 버튼 다르게 띄움
+		var isOpen = ${isOpen};
+
 		if(isOpen == 1) {
 			$("#btnOpen").hide();
 			$("#btnNotOpen").show();
@@ -113,6 +115,35 @@
 			$("#btnNotOpen").hide();
 		}
 	
+			
+		var calendar_no = ${calendar_no};
+
+		//공개로 설정 버튼 클릭시 
+		$("#btnOpen").click(function() {
+			
+			var type = "YES";
+
+			$.ajax({
+				type : "post",
+				url : "/mypage/calendarYes",
+				data : {"calendar_no":calendar_no, "type":type},
+				dataType : "text",
+				success : function(data){
+					$("#btnOpen").hide();
+					$("#btnNotOpen").show();
+				}
+					
+			});
+			
+		})
+		
+		//비공개로 설정 버튼 클릭시 
+		$("#btnNotOpen").click(function() {
+			
+			
+		})
+		
+		
 	});
 
 </script>
