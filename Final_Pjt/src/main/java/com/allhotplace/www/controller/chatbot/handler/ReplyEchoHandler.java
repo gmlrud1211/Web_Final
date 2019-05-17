@@ -74,8 +74,5 @@ public class ReplyEchoHandler extends TextWebSocketHandler{
 		userSessions.remove(getId(session));
 		System.out.println("[TEST]userSessions에서 session정보 지웠는지 확인:"+userSessions);
 		
-		
 	};
-	
-	
 }
