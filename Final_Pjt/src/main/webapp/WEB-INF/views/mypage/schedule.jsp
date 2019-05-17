@@ -102,7 +102,16 @@
 <script type="text/javascript">
 	//공개여부 설정
 	$(document).ready(function() {
-		var isOpen = ${};
+		var isOpen = ${isOpen};
+		
+		if(isOpen == 1) {
+			$("#btnOpen").hide();
+			$("#btnNotOpen").show();
+			
+		} else {
+			$("#btnOpen").show();
+			$("#btnNotOpen").hide();
+		}
 	
 	});
 
@@ -132,8 +141,8 @@
 				</div>
 				<div style="max-width:250px;">
 					공개여부 설정
-					<button type="button" id="btnNotOpen" class="btn btn-warning-outline btn-sm">비공개</button>
-					<button type="button" id="btnOpen" class="btn btn-warning btn-sm">공개</button>
+					<button type="button" id="btnNotOpen" class="btn btn-warning-outline btn-sm">비공개로 변경</button>
+					<button type="button" id="btnOpen" class="btn btn-warning btn-sm">공개로 변경</button>
 				</div>
 			</div>
 		</div>

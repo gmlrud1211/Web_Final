@@ -185,9 +185,10 @@ public class MypageController {
 		req.setAttribute("s_list", gson.toJson(s_list));
 		System.out.println(s_list);
 		
+		//캘린더 공개여부 체크 
 		int isOpen = mypageService.isOpenCheck(calendar_no);
+		System.out.println(isOpen); //1이면 공개 2면 비공개
 		req.setAttribute("isOpen", isOpen);
-		
 		
 	}
 	
