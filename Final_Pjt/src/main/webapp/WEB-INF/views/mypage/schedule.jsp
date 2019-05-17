@@ -59,7 +59,7 @@
       },
       
       resources:[
-    	        {id: 'schedule', title: '하루일정', eventColor: '#827ffe'},
+    	        {id: 'schedule', title: '하루일정', eventColor: '#827ffe', eventTextColor : 'white' },
       ],
       
       events:sch,
@@ -81,11 +81,12 @@
     		data : {schedule_no : calEvent.event._def.extendedProps.no},
     		cache : false,
     		async : false,
+    		dataType: "json",
     		success : function(result){
-    			location.reload();
-        		if(result == 1 ){
+        		if(result.result == 1 ){
         			alert("삭제되었습니다.");
         		}
+    			location.reload();
     		}
     	})
     	
@@ -121,6 +122,7 @@
 					<!-- 캘린더 영역 -->
 				</div>
 				<div style="max-width:250px;">
+					공개여부 설정
 					
 				</div>
 			</div>

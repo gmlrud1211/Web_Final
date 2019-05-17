@@ -1,7 +1,7 @@
 package com.allhotplace.www.controller.mypage;
 
 
-import java.sql.Date;
+import java.io.Writer;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -187,7 +187,7 @@ public class MypageController {
 	}
 	
 	@RequestMapping(value="/mypage/schedule/delete", method=RequestMethod.POST)
-	public void ScheduleDelete(HttpServletRequest req,
+	public String ScheduleDelete(HttpServletRequest req,
 								@RequestParam("schedule_no") int schedule_no) {
 		
 		logger.info("마이페이지-[캘린더 > 일정조회]");
@@ -197,9 +197,12 @@ public class MypageController {
 		int result = mypageService.deleteSchedule(schedule_no);
 		
 		Gson gson = new Gson();
-		req.setAttribute("result", gson.toJson(result));
+		req.setAttribute("result",1);
 		System.out.println(result);
+		
+		return "jsonView";
 	}
+	
 	
 	
 	
