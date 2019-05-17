@@ -37,4 +37,7 @@ public interface MypageService {
 	//선택한 일정 삭제
 	public int deleteSchedule(int schedule_no);
 
+	//캘린더 공개여부 체크
+	public int isOpenCheck(int calendar_no);
+
 }

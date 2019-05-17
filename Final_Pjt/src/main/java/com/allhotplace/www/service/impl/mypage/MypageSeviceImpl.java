@@ -69,4 +69,9 @@ public class MypageSeviceImpl implements MypageService{
 		return mypageDao.deleteSchedule(schedule_no);
 	}
 
+	@Override
+	public int isOpenCheck(int calendar_no) {
+		return mypageDao.isOpenCheck(calendar_no);
+	}
+
 }

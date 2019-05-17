@@ -99,6 +99,15 @@
 	
 </script>
 
+<script type="text/javascript">
+	//공개여부 설정
+	$(document).ready(function() {
+		var isOpen = ${};
+	
+	});
+
+</script>
+
 <style>
 	.fc-time-grid-container{height:700px !important}
 </style>
@@ -123,7 +132,8 @@
 				</div>
 				<div style="max-width:250px;">
 					공개여부 설정
-					
+					<button type="button" id="btnNotOpen" class="btn btn-warning-outline btn-sm">비공개</button>
+					<button type="button" id="btnOpen" class="btn btn-warning btn-sm">공개</button>
 				</div>
 			</div>
 		</div>

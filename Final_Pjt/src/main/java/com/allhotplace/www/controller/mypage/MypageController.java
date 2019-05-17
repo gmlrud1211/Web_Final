@@ -184,13 +184,18 @@ public class MypageController {
 		Gson gson = new Gson();
 		req.setAttribute("s_list", gson.toJson(s_list));
 		System.out.println(s_list);
+		
+		int isOpen = mypageService.isOpenCheck(calendar_no);
+		req.setAttribute("isOpen", isOpen);
+		
+		
 	}
 	
 	@RequestMapping(value="/mypage/schedule/delete", method=RequestMethod.POST)
 	public String ScheduleDelete(HttpServletRequest req,
 								@RequestParam("schedule_no") int schedule_no) {
 		
-		logger.info("마이페이지-[캘린더 > 일정조회]");
+		logger.info("마이페이지-[캘린더 > 일정조회 > 일정삭제]");
 		logger.info("삭제할 schedule_no="+schedule_no);
 		
 		

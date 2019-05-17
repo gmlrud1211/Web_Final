@@ -66,5 +66,9 @@
 		where schedule_no = #{schedule_no}
 	</delete>
 	
+	<select id="isOpenCheck" resultType="int">
+		select count(*) from calendar
+		where calendar_no = #{calendar_no} and calendar_yesno ='YES'
+	</select>
 	
 </mapper>
