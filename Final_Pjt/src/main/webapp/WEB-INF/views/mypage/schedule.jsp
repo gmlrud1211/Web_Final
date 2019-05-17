@@ -35,7 +35,6 @@
     var sch = ${s_list};
     
     console.log(sch);
-    console.log(Object.keys(sch).length);
     
     for(var i=0; i<Object.keys(sch).length; i++){
     	sch[i];
@@ -60,27 +59,37 @@
       },
       
       resources:[
-    	        {id: 'schedule', title: '하루일정', eventColer: '#827ffe'},
+    	        {id: 'schedule', title: '하루일정', eventColor: '#827ffe'},
       ],
       
-      events:sch
-      
-    	  
+      events:sch,
 //     	  [
 //     	  {no: "1", resourceId: 'schedule', start: "13:30:00.0", end: "14:30:00.0", title: "플레이케이팝"}
 //     	  , {no: "2", resourceId: 'schedule', start: "16:00:00.0", end: "17:30:00.0", title: "마노르블랑 수국축제"}
 //     	  , {no: "3", resourceId: 'schedule', start: "18:00:00.0", end: "19:30:00.0", title: "저녁-흑돼지"}
 //     	  , {no: "5", resourceId: 'schedule', start: "20:00:00.0", end: "23:59:00.0", title: "숙소로"}
 //       ]
-    	  
-    	  
-// 	  [
-	  
-//    	 { id: '2', resourceId: 'schedule', start: "2019-05-20 17:00:00", end: '2019-05-20 18:00:00', title: 'event 2' },
-//    	 { id: '1', resourceId: 'schedule', start: "2019-05-20 15:00:00", end: '2019-05-20 16:00:00', title: 'event 1' }
-//]
-
-	       
+    
+      eventClick : function(calEvent){
+    	console.log(calEvent.event._def.extendedProps.no);
+    	if(!confirm("일정["+calEvent.event._def.title+"]를 정말로 삭제하시겠습니까?"))
+    		{	return false;	}
+    	
+    	$.ajax({
+    		type : 'post',
+    		url : "/mypage/schedule/delete",
+    		data : {schedule_no : calEvent.event._def.extendedProps.no},
+    		cache : false,
+    		async : false,
+    		success : function(result){
+    			location.reload();
+        		if(result == 1 ){
+        			alert("삭제되었습니다.");
+        		}
+    		}
+    	})
+    	
+   	 }
     });
     
 	console.log(sch)
@@ -88,6 +97,7 @@
   });
 	
 </script>
+
 <style>
 	.fc-time-grid-container{height:700px !important}
 </style>
@@ -108,10 +118,10 @@
 	        </div>
 	        <div>
 		        <div id="calendar" class="fc fc-unthemd" style="max-width:450px;" >
-					
+					<!-- 캘린더 영역 -->
 				</div>
-				<div>
-					공개여부 설정<!--  <button></button> -->
+				<div style="max-width:250px;">
+					
 				</div>
 			</div>
 		</div>

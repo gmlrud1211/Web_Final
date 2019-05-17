@@ -51,7 +51,6 @@
         				where user_id=#{user_id})
 	</select>
 	
-	
 	<delete id="deleteBookmark" parameterType="int">
 		delete from bookmark
 		where bookmark_no = #{bookmark_no}
@@ -61,6 +60,11 @@
 		select * from schedule
 		where calendar_no= #{calendar_no}
 	</select>
+	
+	<delete id="deleteSchedule" parameterType="int">
+		delete from Schedule
+		where schedule_no = #{schedule_no}
+	</delete>
 	
 	
 </mapper>

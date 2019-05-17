@@ -34,4 +34,7 @@ public interface MypageService {
 	//선택한 캘린더-일정조회하기  
 	public List<Schedule> viewSchedule(int calendar_no);
 
+	//선택한 일정 삭제
+	public int deleteSchedule(int schedule_no);
+
 }

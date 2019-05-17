@@ -64,4 +64,9 @@ public class MypageSeviceImpl implements MypageService{
 		return mypageDao.selectSchedule(calendar_no);
 	}
 
+	@Override
+	public int deleteSchedule(int schedule_no) {
+		return mypageDao.deleteSchedule(schedule_no);
+	}
+
 }

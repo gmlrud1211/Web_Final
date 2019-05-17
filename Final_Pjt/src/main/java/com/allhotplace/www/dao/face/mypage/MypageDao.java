@@ -37,4 +37,7 @@ public interface MypageDao {
 	//선택한 캘린더의 일정들 조회
 	public List<Schedule> selectSchedule(int calendar_no);
 
+	//선택한 일정삭제
+	public int deleteSchedule(int schedule_no);
+
 }

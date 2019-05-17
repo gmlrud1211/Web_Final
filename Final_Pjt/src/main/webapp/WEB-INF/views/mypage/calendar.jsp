@@ -21,6 +21,7 @@
 		<script type="text/javascript">
 		
 			$(document).ready(function() {
+				//캘린더 등록
 				$("#btnAdd").click(function(){
 					$(".con").fadeIn();
 					$(".addCalbg").fadeIn();
@@ -37,6 +38,15 @@
 					$(".addCalbg").fadeOut();
 					alert("캘린더가 등록되었습니다~!");
 				});
+				
+				//캘린더 수정
+				$("#btnUpdate").click(function(){
+					$(".upCon").fadeIn();
+					$(".upCalbg").fadeIn();
+				});
+				
+				
+				
 			});
 			
 		</script>
@@ -108,7 +118,6 @@
 							<th style="width: 10%">삭제</th>
 						</tr>
 					</thead>
-					${calendarList }
 					<tbody>
 						<c:forEach items="${calendarList }" var="cal">
 						<tr>
@@ -160,13 +169,13 @@
       				<input type ="radio" name="calendar_yesno" value="NO">NO
 				</div>
 				
-				
 				<div class="text-center">
 					<button id="calAdd" class="btn btn-success" style="float:right">등록</button> &nbsp;&nbsp;
 					<button type="button" id="calclose" class="btn btn-danger" style="float:right">취소</button>
 				</div>
 			
+			
 			</form>
 		</div>
-				
+		
 	</body>
