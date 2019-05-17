@@ -34,20 +34,28 @@ public class UserController {
 	
 	
 	@RequestMapping(value="/login", method=RequestMethod.POST)
-	public String LoginProc(HttpSession session, 
-							String user_id, String user_pw, 
+	public String LoginProc(HttpSession session, HttpServletRequest req,
+							@RequestParam("user_id") String user_id, 
+							@RequestParam("user_pw") String user_pw, 
 							Model model) {
 		
-		model.addAttribute("user_id", user_id);
-		model.addAttribute("user_pw",user_pw);
 		
-		int login = userService.login(model);
+		req.setAttribute("user_id", user_id);
+		req.setAttribute("user_pw", user_pw);
+		
+		System.out.println(user_id);
+		System.out.println(user_pw);
+		
+		//model.addAttribute("user_id", user_id);
+		//model.addAttribute("user_pw",user_pw);
+		
+		int login = userService.login(user_id, user_pw);
 		
 		if(login == 1 && user_id.equals("admin")) {//관리자로그인성공
 			session.setAttribute("login", true);
 			session.setAttribute("user_id", user_id);
 			
-			model.addAttribute("user_id", user_id);
+			//model.addAttribute("user_id", user_id);
 			logger.info("로그인 성공");
 			
 			return "redirect:/admin/dashboard/list";

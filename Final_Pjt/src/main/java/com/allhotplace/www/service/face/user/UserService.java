@@ -11,7 +11,7 @@ import com.allhotplace.www.dto.Users;
 public interface UserService {
 
 	//로그인처리
-	public int login(Model model);
+	public int login(String user_id, String user_pw);
 
 	//로그아웃
 	public void logout(HttpSession session);

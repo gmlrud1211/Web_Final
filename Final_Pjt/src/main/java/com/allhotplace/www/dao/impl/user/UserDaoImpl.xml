@@ -6,7 +6,7 @@
   
 <!-- 매퍼 설정 -->
 <mapper namespace="com.allhotplace.www.dao.face.user.UserDao">
-	<select id="login" resultType="int">
+	<select id="login" resultType="int" parameterType="hashmap">
 		SELECT count(*) FROM users
 		where user_id = #{user_id} and user_pw = #{user_pw}
  	</select>
