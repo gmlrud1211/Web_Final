@@ -74,4 +74,14 @@ public class MypageSeviceImpl implements MypageService{
 		return mypageDao.isOpenCheck(calendar_no);
 	}
 
+	@Override
+	public void calChangeYes(int calendar_no) {
+		mypageDao.calendarYes(calendar_no);
+	}
+
+	@Override
+	public void calChangeNo(int calendar_no) {
+		mypageDao.calendarNo(calendar_no);
+	}
+
 }

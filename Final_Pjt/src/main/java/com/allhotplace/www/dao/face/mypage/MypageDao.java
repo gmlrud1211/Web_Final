@@ -43,4 +43,10 @@ public interface MypageDao {
 	//선택한 캘린더 공개여부 체크
 	public int isOpenCheck(int calendar_no);
 
+	//캘린더 공개여부 설정 - 공개로 변경
+	public void calendarYes(int calendar_no);
+
+	//캘린더 공개여부 설정 - 비공개로 변경
+	public void calendarNo(int calendar_no);
+
 }

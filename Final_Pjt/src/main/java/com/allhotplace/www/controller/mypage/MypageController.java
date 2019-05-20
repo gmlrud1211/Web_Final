@@ -209,10 +209,22 @@ public class MypageController {
 		return "jsonView";
 	}
 	
-	@RequestMapping(value="/mypage/calendarYes", method=RequestMethod.POST)
-	public void CalendarOpen() {
+	@RequestMapping(value="/mypage/calendarChange", method=RequestMethod.POST)
+	public String CalendarOpen(HttpServletRequest req,
+							@RequestParam("calendar_no") int calendar_no,
+							@RequestParam("type") String type) {
 		
+		logger.info("마이페이지-[캘린더 > 일정조회 > 일정-공개로변경]");
+		logger.info("공개할 calendar_no="+calendar_no);
+		logger.info("타입? "+ type);
 		
+		if(type.equals("YES")) { //공개로 변경하는 버튼 클릭
+			mypageService.calChangeYes(calendar_no);
+		} else if(type.equals("NO")) { //비공개로 변경하는 버튼 클릭
+			mypageService.calChangeNo(calendar_no);
+		}
+
+		return "jsonView";
 	}
 	
 	

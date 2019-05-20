@@ -125,12 +125,17 @@
 
 			$.ajax({
 				type : "post",
-				url : "/mypage/calendarYes",
+				url : "/mypage/calendarChange",
 				data : {"calendar_no":calendar_no, "type":type},
-				dataType : "text",
+				dataType : "json",
 				success : function(data){
 					$("#btnOpen").hide();
 					$("#btnNotOpen").show();
+					alert("공개여부가 변경 되었습니다.");
+					location.reload();
+				},
+				error : function(e){
+					console.log(e);
 				}
 					
 			});
@@ -140,9 +145,26 @@
 		//비공개로 설정 버튼 클릭시 
 		$("#btnNotOpen").click(function() {
 			
+			var type = "NO";
+
+			$.ajax({
+				type : "post",
+				url : "/mypage/calendarChange",
+				data : {"calendar_no":calendar_no, "type":type},
+				dataType : "json",
+				success : function(data){
+					$("#btnOpen").show();
+					$("#btnNotOpen").hide();
+					alert("공개여부가 변경 되었습니다.");
+					location.reload();
+				},
+				error : function(e){
+					console.log(e);
+				}
+					
+			});
 			
 		})
-		
 		
 	});
 

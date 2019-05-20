@@ -40,4 +40,10 @@ public interface MypageService {
 	//캘린더 공개여부 체크
 	public int isOpenCheck(int calendar_no);
 
+	//캘린더 공개여부 설정 - 공개로 변경
+	public void calChangeYes(int calendar_no);
+
+	//캘린더 공개여부 설정 - 비공개로 변경
+	public void calChangeNo(int calendar_no);
+
 }

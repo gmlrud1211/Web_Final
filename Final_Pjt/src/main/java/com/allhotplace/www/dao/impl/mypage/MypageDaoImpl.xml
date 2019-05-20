@@ -71,4 +71,15 @@
 		where calendar_no = #{calendar_no} and calendar_yesno ='YES'
 	</select>
 	
+	<update id="calendarYes">
+		update calendar set calendar_yesno = 'YES'
+		where calendar_no = #{calendar_no}
+	</update>
+	
+	<update id="calendarNo">
+		update calendar set calendar_yesno = 'NO'
+		where calendar_no = #{calendar_no}
+	</update>
+	
+	
 </mapper>
