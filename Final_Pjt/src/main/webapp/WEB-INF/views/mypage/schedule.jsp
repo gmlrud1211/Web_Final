@@ -188,14 +188,19 @@
 				<h3>ScheduleList<h3>
 	            <p style="font-size: 16px">나만의 일정을 만들어 보세요~!</p>
 	        </div>
+	        
+	        
 	        <div>
-		        <div id="calendar" class="fc fc-unthemd" style="max-width:450px;" >
-					<!-- 캘린더 영역 -->
+				<div style="max-width:650px;">
+					캘린더 제목 : ${calendar_title } &nbsp;&nbsp;&nbsp;&nbsp;
+					캘린더 진행날짜 : <fmt:formatDate value="${calendar_date }" pattern="yyyy-MM-dd"/><br><br>
+					공개여부 설정 : 
+					<button type="button" id="btnNotOpen" class="btn btn-sm" style="background-color:#827ffe; color: white;">비공개로 변경</button>
+					<button type="button" id="btnOpen" class="btn btn-sm" style="background-color:#827ffe; color: white;">공개로 변경</button>
 				</div>
-				<div style="max-width:250px;">
-					공개여부 설정
-					<button type="button" id="btnNotOpen" class="btn btn-warning-outline btn-sm">비공개로 변경</button>
-					<button type="button" id="btnOpen" class="btn btn-warning btn-sm">공개로 변경</button>
+				<br><br>
+		        <div id="calendar" class="fc fc-unthemd" style="max-width:600px;" >
+					<!-- 캘린더 영역 -->
 				</div>
 			</div>
 		</div>

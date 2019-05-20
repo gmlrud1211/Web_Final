@@ -162,20 +162,21 @@ public class MypageController {
 		List<Schedule> schedule_list = mypageService.viewSchedule(calendar_no);
 		model.addAttribute("calendar_no", calendar_no);
 		model.addAttribute("schedule_list",schedule_list);
+		model.addAttribute("calendar_title", schedule_list.get(0).getCalendar_title()); //캘린더 제목
+		model.addAttribute("calendar_date", schedule_list.get(0).getCalendar_date()); //캘린더 진행 날짜
 		
+
 		List s_list = new ArrayList();
 		
 		for(Schedule s : schedule_list) {
 			Map map = new HashMap();
 			
-			
 			map.put("title", s.getSchedule_title());
 			map.put("start", s.getSchedule_startTime());
 			map.put("end", s.getSchedule_endTime());
 			map.put("no", String.valueOf(s.getSchedule_no()));
-//			map.put("id", );
 			map.put("resourceId", "schedule");
-			
+						
 			s_list.add(map);
 			
 			System.out.println(s.getSchedule_startTime());
