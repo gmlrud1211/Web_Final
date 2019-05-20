@@ -73,6 +73,7 @@
 //     	  , {no: "5", resourceId: 'schedule', start: "20:00:00.0", end: "23:59:00.0", title: "숙소로"}
 //       ]
     
+      //일정 삭제시 이벤트
       eventClick : function(calEvent){
     	console.log(calEvent.event._def.extendedProps.no);
     	if(!confirm("일정["+calEvent.event._def.title+"]를 정말로 삭제하시겠습니까?"))
@@ -92,8 +93,13 @@
     			location.reload();
     		}
     	})
-    	
-   	 }
+   	 }//,
+   	 
+   	 //일정 수정시 이벤트
+   	 
+   	 
+   	 
+   	 
     });
     
 	console.log(sch)
@@ -134,7 +140,7 @@
 				success : function(data){
 					$("#btnOpen").hide();
 					$("#btnNotOpen").show();
-					alert("공개여부가 변경 되었습니다.");
+					alert("공개로 변경 되었습니다.");
 					location.reload();
 				},
 				error : function(e){
@@ -158,7 +164,7 @@
 				success : function(data){
 					$("#btnOpen").show();
 					$("#btnNotOpen").hide();
-					alert("공개여부가 변경 되었습니다.");
+					alert("비공개로 변경 되었습니다.");
 					location.reload();
 				},
 				error : function(e){
@@ -200,8 +206,11 @@
 					공개여부 설정 : 
 					<button type="button" id="btnNotOpen" class="btn btn-sm" style="background-color:#827ffe; color: white;">비공개로 변경</button>
 					<button type="button" id="btnOpen" class="btn btn-sm" style="background-color:#827ffe; color: white;">공개로 변경</button>
+					<br><br>
+					! 삭제를 원하시면 일정을 한번 클릭해주세요<br>
+					! 수정을 원하시면 <a href="#" style="border:0px; background-color:white;">여기</a>를 클릭해주세요
 				</div>
-				<br><br>
+				<br>
 		        <div id="calendar" class="fc fc-unthemd" style="max-width:600px;" >
 					<!-- 캘린더 영역 -->
 				</div>

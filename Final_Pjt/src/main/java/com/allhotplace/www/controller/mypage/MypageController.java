@@ -156,6 +156,7 @@ public class MypageController {
 	public void ScheduleList(HttpServletRequest req, Model model,
 							@RequestParam("calendar_no") int calendar_no) {
 		
+		
 		logger.info("마이페이지-[캘린더 > 일정조회]");
 		logger.info("선택한 캘린더의 calendar_no="+calendar_no);
 
@@ -164,7 +165,7 @@ public class MypageController {
 		model.addAttribute("schedule_list",schedule_list);
 		
 		if(schedule_list.isEmpty()) {
-			model.addAttribute("calendar_title", "일정을 등록해주세요");
+			model.addAttribute("calendar_title", "일정을추가해주세요!!");
 		} else {
 			model.addAttribute("calendar_title", schedule_list.get(0).getCalendar_title()); //캘린더 제목
 			model.addAttribute("calendar_date", schedule_list.get(0).getCalendar_date()); //캘린더 진행 날짜
