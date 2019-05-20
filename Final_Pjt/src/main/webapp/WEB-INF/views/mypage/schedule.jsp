@@ -41,12 +41,15 @@
     	console.log(sch[i]);
     }
     console.log("============");
+       
+	console.log(sch[0].start);    
 
+   
     
     var calendar = new FullCalendar.Calendar(calendarEl, {
       plugins: [ 'interaction', 'resourceDayGrid', 'resourceTimeGrid' ],
       defaultView: 'resourceTimeGridDay',
-      defaultDate: '2019-05-20',
+      defaultDate: sch[0].start ,
       editable: true,
       selectable: true,
       eventLimit: true, // allow "more" link when too many events

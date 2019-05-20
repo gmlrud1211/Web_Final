@@ -162,9 +162,13 @@ public class MypageController {
 		List<Schedule> schedule_list = mypageService.viewSchedule(calendar_no);
 		model.addAttribute("calendar_no", calendar_no);
 		model.addAttribute("schedule_list",schedule_list);
-		model.addAttribute("calendar_title", schedule_list.get(0).getCalendar_title()); //캘린더 제목
-		model.addAttribute("calendar_date", schedule_list.get(0).getCalendar_date()); //캘린더 진행 날짜
 		
+		if(schedule_list.isEmpty()) {
+			model.addAttribute("calendar_title", "일정을 등록해주세요");
+		} else {
+			model.addAttribute("calendar_title", schedule_list.get(0).getCalendar_title()); //캘린더 제목
+			model.addAttribute("calendar_date", schedule_list.get(0).getCalendar_date()); //캘린더 진행 날짜
+		}
 
 		List s_list = new ArrayList();
 		
