@@ -11,7 +11,9 @@
 <meta charset="UTF-8">
 <title>챗봇관리</title>
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+
 <style>
 #container {
 	width: 1100px;

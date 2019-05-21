@@ -23,29 +23,9 @@
 		});
 	});
 
-	$(document).ready(function() {
-		//최상단 체크박스 클릭
-		$("#checkall").click(function() {
-			//클릭되었으면
-			if ($("#checkall").prop("checked")) {
-				//input태그의 name이 chk인 태그들을 찾아서 checked옵션을 true로 정의
-				$("input[name=chk]").prop("checked", true);
-				//클릭이 안되있으면
-			} else {
-				//input태그의 name이 chk인 태그들을 찾아서 checked옵션을 false로 정의
-				$("input[name=chk]").prop("checked", false);
-			}
-		})
-	});
 
 
-
-		if (confirm("게시글을 삭제하겠습니까?")) {
-			//삭제처리 후 다시 불러올 리스트 url      
-			var url = document.location.href;
-
-			location.href = "/board/deleteCheck?board_no=" + checkRow;
-		}
+	
 	}
 </script>
 
@@ -105,7 +85,7 @@ ul.pagination li {
 <div id="content"
 	style="padding: 10px; width: 1000px; margin: 0 auto; border-left: 1px solid #D8D8D8; height: 100%; float: left;">
 
-	<h3 style="font-size:25px">공지사항 목록</h3>
+	<h3 style="font-size:25px">1:1 문의 관리</h3>
 
 
 	<table class="table table-hover table-striped table-condensed">
@@ -113,21 +93,21 @@ ul.pagination li {
 		<thead>
 			<tr style="border-top: 2px solid grey;">
 				<th style="width: 10%; border-top: 2px solid grey;">번호</th>
-				<th style="width: 25%; border-top: 2px solid grey;">제목</th>
-				<th style="width: 10%; border-top: 2px solid grey;">조회수</th>
-				<th style="width: 10%; border-top: 2px solid grey;">작성일</th>
+				<th style="width: 25%; border-top: 2px solid grey;">회원명</th>
+				<th style="width: 25%; border-top: 2px solid grey;">IP</th>
+				<th style="width: 10%; border-top: 2px solid grey;">채팅방 개설 시각</th>
+				<th style="width: 10%; border-top: 2px solid grey;">채팅하기</th>
 			</tr>
 		</thead>
 
 		<tbody>
-			<c:forEach items="${nboardlist }" var="list">
+			<c:forEach items="${chatonelist }" var="list">
 				<tr>
-					<td>${list.notice_no }</td>
-					<td><a
-						href="/admin/noticeboard/view?notice_no=${list.notice_no }">${list.notice_title }</a></td>
-					<td>${list.notice_count }</td>
-					<td><fmt:formatDate value="${list.notice_date }"
-							pattern="yyyy-MM-dd" /></td>
+					<td>${list.chatroom_idx }</td>
+					<td>${list.user_name }</td>
+					<td>${list.chatroom_userIp }</td>
+					<td><fmt:formatDate value="${list.chatroom_date }" pattern="yyyy-MM-dd" /></td> 
+					<td><a href="/admin/chatone/view?chatroom_idx=${list.chatroom_idx }">채팅방 열기</a></td>
 				</tr>
 			</c:forEach>
 		</tbody>
@@ -135,18 +115,14 @@ ul.pagination li {
 	</table>
 
 	<div style="margin: 20px;">
-		<jsp:include page="/WEB-INF/views/layout/noticeboardpaging.jsp" />
+		<jsp:include page="/WEB-INF/views/layout/chatonepaging.jsp" />
 	</div>
 
-	<div id="btnBox">
-		<button id="btnWrite" class="btn btn-primary bt"
-			onclick="location.href='/admin/noticeboard/write';">글쓰기</button>
-	</div>
 
 	<div style="height: 20px; width: 100%; padding: 10px 350px; claer: both;">
 		<div class='text-center'
 			style="height: 20px; width: 100%; margin: 0 atuo;">
-			<FORM method='get' action='/admin/noticeboard/list'>
+			<FORM method='get' action='/admin/chatone/list'>
 				<SELECT name='search'>
 					<!-- 검색 컬럼 -->
 					<OPTION id="notice_title" value='notice_title'>제목</OPTION>

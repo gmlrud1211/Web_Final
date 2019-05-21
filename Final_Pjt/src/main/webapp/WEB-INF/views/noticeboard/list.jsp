@@ -13,40 +13,11 @@
 			//클릭이벤트가 발생한 <tr>의 첫번째 <td>자식의 텍스트
 			var boardno = $(this).children("td").eq(0).text();
 
-			$(location).attr("href", "/board/view?board_no=" + board_no);
-
-			// 			글쓰기 버튼 이벤트
-			// 			$("#btnWrite").click(function() {
-			// 				location.href = "/board/write";
-			// 			});
+			$(location).attr("href", "/noticeboard/view?notice_no=" + notice_no);
 
 		});
 	});
 
-	$(document).ready(function() {
-		//최상단 체크박스 클릭
-		$("#checkall").click(function() {
-			//클릭되었으면
-			if ($("#checkall").prop("checked")) {
-				//input태그의 name이 chk인 태그들을 찾아서 checked옵션을 true로 정의
-				$("input[name=chk]").prop("checked", true);
-				//클릭이 안되있으면
-			} else {
-				//input태그의 name이 chk인 태그들을 찾아서 checked옵션을 false로 정의
-				$("input[name=chk]").prop("checked", false);
-			}
-		})
-	});
-
-
-
-		if (confirm("게시글을 삭제하겠습니까?")) {
-			//삭제처리 후 다시 불러올 리스트 url      
-			var url = document.location.href;
-
-			location.href = "/board/deleteCheck?board_no=" + checkRow;
-		}
-	}
 </script>
 
 <style type="text/css">
@@ -105,7 +76,7 @@ ul.pagination li {
 <div id="content"
 	style="padding: 10px; width: 1000px; margin: 0 auto; border-left: 1px solid #D8D8D8; height: 100%; float: left;">
 
-	<h3 style="font-size:25px">공지사항 목록</h3>
+	<h3 style="font-size:25px">공지사항 </h3>
 
 
 	<table class="table table-hover table-striped table-condensed">
@@ -120,14 +91,18 @@ ul.pagination li {
 		</thead>
 
 		<tbody>
+		  <c:set var="pageCnt" value="${pageCnt }"/>
+		    <%
+		    String p = pageContext.getAttribute("pageCnt").toString();
+		    int pa = Integer.parseInt(p);
+		    %>
 			<c:forEach items="${nboardlist }" var="list">
 				<tr>
-					<td>${list.notice_no }</td>
-					<td><a
-						href="/admin/noticeboard/view?notice_no=${list.notice_no }">${list.notice_title }</a></td>
+					<td><%=pa-- %></td>
+					
+					<td><a href="/noticeboard/view?notice_no=${list.notice_no }">${list.notice_title }</a></td>
 					<td>${list.notice_count }</td>
-					<td><fmt:formatDate value="${list.notice_date }"
-							pattern="yyyy-MM-dd" /></td>
+					<td><fmt:formatDate value="${list.notice_date }" pattern="yyyy-MM-dd" /></td>
 				</tr>
 			</c:forEach>
 		</tbody>
@@ -135,18 +110,17 @@ ul.pagination li {
 	</table>
 
 	<div style="margin: 20px;">
-		<jsp:include page="/WEB-INF/views/layout/noticeboardpaging.jsp" />
+		<jsp:include page="/WEB-INF/views/layout/usernoticeboardpaging.jsp" />
 	</div>
 
-	<div id="btnBox">
-		<button id="btnWrite" class="btn btn-primary bt"
-			onclick="location.href='/admin/noticeboard/write';">글쓰기</button>
-	</div>
+
 
 	<div style="height: 20px; width: 100%; padding: 10px 350px; claer: both;">
 		<div class='text-center'
 			style="height: 20px; width: 100%; margin: 0 atuo;">
 			<FORM method='get' action='/admin/noticeboard/list'>
+			
+			
 				<SELECT name='search'>
 					<!-- 검색 컬럼 -->
 					<OPTION id="notice_title" value='notice_title'>제목</OPTION>

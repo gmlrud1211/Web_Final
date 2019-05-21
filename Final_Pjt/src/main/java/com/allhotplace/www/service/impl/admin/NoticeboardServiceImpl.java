@@ -17,6 +17,15 @@ public class NoticeboardServiceImpl implements NoticeboardService {
 	@Autowired
 	NoticeboardDao boardDao;
 
+	// 작은 것중 제일 큰 값
+	public Noticeboard getMinNo(int boardno) {
+		return boardDao.getMinNo(boardno);
+	}
+
+	// 큰 것중 제일 작은 값
+	public Noticeboard getMaxNo(int boardno) {
+		return boardDao.getMaxNo(boardno);
+	}
 	
 	// 총 게시글 수 얻기
 	@Override

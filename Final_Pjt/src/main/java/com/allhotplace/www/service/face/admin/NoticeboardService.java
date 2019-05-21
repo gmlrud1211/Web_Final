@@ -7,7 +7,11 @@ import com.allhotplace.www.dto.Noticeboard;
 import com.allhotplace.www.util.Paging;
 
 public interface NoticeboardService {
-
+	// 작은 것중 제일 큰 값
+		public Noticeboard getMinNo (int boardno);
+		
+		// 큰 것중 제일 작은 값 
+		public Noticeboard getMaxNo(int boardno);
 
 	// 요청파라미터에서 curPage 반환
 //	public int getCurPage(HttpServletRequest req);
