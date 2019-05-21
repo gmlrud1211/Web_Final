@@ -281,14 +281,14 @@
 		        
 		        <div>
 					<div style="max-width:650px;">
-						캘린더 제목 : ${calendar_title } &nbsp;&nbsp;&nbsp;&nbsp;
-						캘린더 진행날짜 : <fmt:formatDate value="${calendar_date }" pattern="yyyy-MM-dd"/><br><br>
-						공개여부 설정 : 
+						<b>캘린더 제목</b> : ${calendar_title } &nbsp;&nbsp;&nbsp;&nbsp;
+						<b>캘린더 진행날짜</b> : <fmt:formatDate value="${calendar_date }" pattern="yyyy-MM-dd"/><br><br>
+						<b>공개여부 설정</b> : 
 						<button type="button" id="btnNotOpen" class="btn btn-sm" style="background-color:#827ffe; color: white;">비공개로 변경</button>
 						<button type="button" id="btnOpen" class="btn btn-sm" style="background-color:#827ffe; color: white;">공개로 변경</button>
 						<br><br>
-						! 삭제를 원하시면 일정을 한번 클릭해주세요<br>
-						! 수정을 원하시면 <a href="#" style="border:0px; background-color:white;">여기</a>를 클릭해주세요
+						<img src="/img/exclamation2.png"/> 삭제를 원하시면 일정을 한번 클릭해주세요<br><br>
+						<img src="/img/exclamation2.png"/> 시간 수정을 원하시면 위아래로 이동하거나 칸을 조절해보세요<br>
 					</div>
 					<br>
 			        <div id="calendar" class="fc fc-unthemd" style="max-width:600px;" >
