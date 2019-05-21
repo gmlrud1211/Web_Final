@@ -107,7 +107,7 @@
 		<div class="col-xs-12 col-sm-9">
 			
 			<div class="jumbotron" style="padding: 5px; background-color: #eee0; border-bottom: 1px solid #403866; border-radius: 0;" >
-				<h3>마이페이지-개인정보</h3>
+				<h3>MyPage-개인정보</h3>
 	            <p style="font-size: 16px">개인정보 수정</p>
 	        </div>
 		<div style="max-width: 500px; margin: 0 auto;" >

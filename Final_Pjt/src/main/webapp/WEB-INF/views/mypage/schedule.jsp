@@ -275,27 +275,27 @@
 	
 			<div class="col-xs-12 col-sm-9">
 				<div class="jumbotron" style="padding: 5px; background-color: #eee0; border-bottom: 1px solid #403866; border-radius: 0;" >
-					<h3>ScheduleList<h3>
+					<h3>MyPage-ScheduleList<h3>
 		            <p style="font-size: 16px">나만의 일정을 만들어 보세요~!</p>
 		        </div>
 		        
-		        <div>
-					<div style="max-width:650px;">
+		        <div style="padding-left:5%;">
+					<div style="max-width:800px;">
 						<b>캘린더 제목</b> : ${calendar_title } &nbsp;&nbsp;&nbsp;&nbsp;
-						<b>캘린더 진행날짜</b> : <fmt:formatDate value="${calendar_date }" pattern="yyyy-MM-dd"/><br><br>
-						<b>공개여부 설정</b> : 
+						<b>캘린더 날짜</b> : <fmt:formatDate value="${calendar_date }" pattern="yyyy-MM-dd"/>  &nbsp;&nbsp;&nbsp;&nbsp;
+						<b>공개 설정</b> : 
 						<button type="button" id="btnNotOpen" class="btn btn-sm" style="background-color:#827ffe; color: white;">비공개로 변경</button>
 						<button type="button" id="btnOpen" class="btn btn-sm" style="background-color:#827ffe; color: white;">공개로 변경</button>
-						<br><br>
+						<br><br><br>
 						<img src="/img/exclamation2.png"/> 삭제를 원하시면 일정을 한번 클릭해주세요<br><br>
 						<img src="/img/exclamation2.png"/> 시간 수정을 원하시면 위아래로 이동하거나 칸을 조절해보세요<br>
 					</div>
 					<br>
-			        <div id="calendar" class="fc fc-unthemd" style="max-width:600px;" >
+			        <div id="calendar" class="fc fc-unthemd" style="max-width:630px;" >
 						<!-- 캘린더 영역 -->
 					</div>
+					
 				</div>
-				
 			</div>
 		</div>
 	</div>

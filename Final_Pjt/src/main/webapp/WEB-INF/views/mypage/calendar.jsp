@@ -103,10 +103,7 @@
 				<h3>calendarList</h3>
 	            <p style="font-size: 16px">나만의 일정을 만들어 보세요~!</p>
 	        </div>
-			
-		
 				
-			
 			<form id="calendarForm">
 				<table class="table table-striped table-hover"> 
 					<thead>

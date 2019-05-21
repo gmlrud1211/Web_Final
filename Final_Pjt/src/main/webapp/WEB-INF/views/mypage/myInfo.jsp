@@ -34,10 +34,6 @@
 		
 		<script type="text/javascript">
 			$(document).ready(function() {
-				$("#changePw").click(function(){
-					location.href="#";	
-				});
-			
 				$("#infoUpdate").click(function(){
 					$(location).attr("href", "/mypage/infoUpdate");
 				});
@@ -58,60 +54,60 @@
 		<div class="col-xs-12 col-sm-9">
 			
 			<div class="jumbotron" style="padding: 5px; background-color: #eee0; border-bottom: 1px solid #403866; border-radius: 0;" >
-				<h3>마이페이지-개인정보</h3>
+				<h3>MyPage-개인정보</h3>
 	            <p style="font-size: 16px">개인정보 조회</p>
 	        </div>
-		<div style="max-width: 450px; margin: 0 auto;" >
-							
-		<form class="form-horizontal myForm123" id="myForm">
-					
-			<div class="form-group has-feedback">
-				<label class="col-sm-5 col-sm-offset-1 control-label" for="user_id">아이디</label>
-				<div class="col-sm-11">
-					<input class="form-control" type="text" value="${user.user_id }" readonly="readonly"  />
+	        
+			<div style="max-width: 450px; margin: 0 auto;" >
+								
+			<form class="form-horizontal myForm123" id="myForm">
+						
+				<div class="form-group has-feedback">
+					<label class="col-sm-5 col-sm-offset-1 control-label" for="user_id">아이디</label>
+					<div class="col-sm-11">
+						<input class="form-control" type="text" value="${user.user_id }" readonly="readonly"  />
+					</div>
 				</div>
-			</div>
-		
-			<div class="form-group has-feedback">
-				<label class="col-sm-5 col-sm-offset-1 control-label" for="user_name">이름</label>
-				<div class="col-sm-11">
-					<input class="form-control" type="text" value="${user.user_name }" readonly="readonly"  />
-				</div>
-			</div>
 			
-			<div class="form-group has-feedback">
-				<label class="col-sm-5 col-sm-offset-1 control-label" for="user_email">이메일</label>
-				<div class="col-sm-11">
-					<input class="form-control" type="text" value="${user.user_email }" readonly="readonly"  />
+				<div class="form-group has-feedback">
+					<label class="col-sm-5 col-sm-offset-1 control-label" for="user_name">이름</label>
+					<div class="col-sm-11">
+						<input class="form-control" type="text" value="${user.user_name }" readonly="readonly"  />
+					</div>
 				</div>
-			</div>
-		
-			<div class="form-group has-feedback">
-				<label class="col-sm-5 col-sm-offset-1 control-label" for="user_phone">휴대폰</label>
-				<div class="col-sm-11">
-					<input class="form-control" type="text" value="${user.user_phone }" readonly="readonly"  />
+				
+				<div class="form-group has-feedback">
+					<label class="col-sm-5 col-sm-offset-1 control-label" for="user_email">이메일</label>
+					<div class="col-sm-11">
+						<input class="form-control" type="text" value="${user.user_email }" readonly="readonly"  />
+					</div>
 				</div>
-			</div>
 			
-			<div class="form-group has-feedback">
-				<label class="col-sm-5 col-sm-offset-1 control-label" for="user_birth">생년월일</label>
-				<div class="col-sm-11">
-					<input class="form-control" type="text" 
-					value="<fmt:parseDate value="${user.user_birth}" var="dataFmt" pattern='yyyy-MM-dd HH:mm:ss'/><fmt:formatDate value="${dataFmt}" pattern='yyyy-MM-dd'/>" 
-					readonly="readonly" />
-					
+				<div class="form-group has-feedback">
+					<label class="col-sm-5 col-sm-offset-1 control-label" for="user_phone">휴대폰</label>
+					<div class="col-sm-11">
+						<input class="form-control" type="text" value="${user.user_phone }" readonly="readonly"  />
+					</div>
 				</div>
+				
+				<div class="form-group has-feedback">
+					<label class="col-sm-5 col-sm-offset-1 control-label" for="user_birth">생년월일</label>
+					<div class="col-sm-11">
+						<input class="form-control" type="text" 
+						value="<fmt:parseDate value="${user.user_birth}" var="dataFmt" pattern='yyyy-MM-dd HH:mm:ss'/><fmt:formatDate value="${dataFmt}" pattern='yyyy-MM-dd'/>" 
+						readonly="readonly" />
+						
+					</div>
+				</div>
+			
+				<br><br>
+			</form>
+			
 			</div>
 		
-			<br><br>
-		</form>
-		
-		
-		</div>
-		<div class="col-sm-8 col-sm-offset-4" style="text-align:right;">		
-			<!-- <button class="btn btn-success" id="changePw">비밀번호 변경</button> -->
-			<button class="btn btn-primary" id="infoUpdate">정보 수정</button>
-		</div>
+			<div class="col-sm-7 col-sm-offset-4" style="text-align:right;">		
+				<button class="btn btn-primary" id="infoUpdate">정보 수정</button>
+			</div>
 		
 		</div>
 	</div>

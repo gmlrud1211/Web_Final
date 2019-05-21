@@ -72,8 +72,7 @@ a:hover {
 
 <div class="header">
 
-	<img alt="logo" src="/img/dance.png" id="img">&nbsp; <span
-		style="color: #403866; font-size: 1.4em;"> <b>All That Hot Place ^__^</b></span>
+	<a href="/main"><img alt="logo" src="/img/dance.png" id="img">&nbsp; <span style="color: #403866; font-size: 1.4em;"> <b>All That Hot Place ^__^</b></span></a>
 
 	<c:choose>
 
