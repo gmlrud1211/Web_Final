@@ -54,7 +54,7 @@
 		<div class="col-xs-12 col-sm-9">
 			
 			<div class="jumbotron" style="padding: 5px; background-color: #eee0; border-bottom: 1px solid #403866; border-radius: 0;" >
-				<h3>MyPage-개인정보</h3>
+				<h3>Profile</h3>
 	            <p style="font-size: 16px">개인정보 조회</p>
 	        </div>
 	        
@@ -63,35 +63,35 @@
 			<form class="form-horizontal myForm123" id="myForm">
 						
 				<div class="form-group has-feedback">
-					<label class="col-sm-5 col-sm-offset-1 control-label" for="user_id">아이디</label>
+					<label class="col-sm-5 col-sm-offset-1 control-label" for="user_id"><img src="/img/mypage/user.png"/> &nbsp;&nbsp;아이디</label>
 					<div class="col-sm-11">
 						<input class="form-control" type="text" value="${user.user_id }" readonly="readonly"  />
 					</div>
 				</div>
 			
 				<div class="form-group has-feedback">
-					<label class="col-sm-5 col-sm-offset-1 control-label" for="user_name">이름</label>
+					<label class="col-sm-5 col-sm-offset-1 control-label" for="user_name"><img src="/img/mypage/card.png"/> &nbsp;&nbsp;이름</label>
 					<div class="col-sm-11">
 						<input class="form-control" type="text" value="${user.user_name }" readonly="readonly"  />
 					</div>
 				</div>
 				
 				<div class="form-group has-feedback">
-					<label class="col-sm-5 col-sm-offset-1 control-label" for="user_email">이메일</label>
+					<label class="col-sm-5 col-sm-offset-1 control-label" for="user_email"><img src="/img/mypage/email.png"/> &nbsp;&nbsp;이메일</label>
 					<div class="col-sm-11">
 						<input class="form-control" type="text" value="${user.user_email }" readonly="readonly"  />
 					</div>
 				</div>
 			
 				<div class="form-group has-feedback">
-					<label class="col-sm-5 col-sm-offset-1 control-label" for="user_phone">휴대폰</label>
+					<label class="col-sm-5 col-sm-offset-1 control-label" for="user_phone"><img src="/img/mypage/telephone.png"/> &nbsp;&nbsp;휴대폰</label>
 					<div class="col-sm-11">
 						<input class="form-control" type="text" value="${user.user_phone }" readonly="readonly"  />
 					</div>
 				</div>
 				
 				<div class="form-group has-feedback">
-					<label class="col-sm-5 col-sm-offset-1 control-label" for="user_birth">생년월일</label>
+					<label class="col-sm-5 col-sm-offset-1 control-label" for="user_birth"><img src="/img/mypage/birthday.png"/> &nbsp;&nbsp;생년월일</label>
 					<div class="col-sm-11">
 						<input class="form-control" type="text" 
 						value="<fmt:parseDate value="${user.user_birth}" var="dataFmt" pattern='yyyy-MM-dd HH:mm:ss'/><fmt:formatDate value="${dataFmt}" pattern='yyyy-MM-dd'/>" 

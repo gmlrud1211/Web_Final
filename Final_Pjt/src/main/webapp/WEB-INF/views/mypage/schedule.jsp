@@ -275,7 +275,7 @@
 	
 			<div class="col-xs-12 col-sm-9">
 				<div class="jumbotron" style="padding: 5px; background-color: #eee0; border-bottom: 1px solid #403866; border-radius: 0;" >
-					<h3>MyPage-ScheduleList<h3>
+					<h3>ScheduleList<h3>
 		            <p style="font-size: 16px">나만의 일정을 만들어 보세요~!</p>
 		        </div>
 		        

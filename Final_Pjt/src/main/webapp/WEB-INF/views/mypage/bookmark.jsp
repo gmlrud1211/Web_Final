@@ -42,7 +42,7 @@
 	<div class="col-xs-12 col-sm-9">
 			
 		<div class="jumbotron" style="padding: 5px; background-color: #eee0; border-bottom: 1px solid #403866; border-radius: 0;" >
-			<h3>MyPage-Bookmark</h3>
+			<h3>Bookmark</h3>
 	        <p style="font-size: 16px">찜한일정 조회</p>
 	    </div>
 	    

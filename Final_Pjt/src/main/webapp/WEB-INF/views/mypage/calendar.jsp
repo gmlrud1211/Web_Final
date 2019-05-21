@@ -7,7 +7,7 @@
 
 	<head>
 		<meta charset="UTF-8">
-		<title>calendar List</title>
+		<title>Calendar List</title>
 
 		<!-- jQuery 2.2.4 -->
 		<script type="text/javascript" src="http://code.jquery.com/jquery-2.2.4.min.js"></script>

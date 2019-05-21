@@ -107,7 +107,7 @@
 		<div class="col-xs-12 col-sm-9">
 			
 			<div class="jumbotron" style="padding: 5px; background-color: #eee0; border-bottom: 1px solid #403866; border-radius: 0;" >
-				<h3>MyPage-개인정보</h3>
+				<h3>Profile</h3>
 	            <p style="font-size: 16px">개인정보 수정</p>
 	        </div>
 		<div style="max-width: 500px; margin: 0 auto;" >
@@ -115,35 +115,35 @@
 		<form class="form-horizontal myForm123" id="myForm" action="/mypage/infoUpdate" method="post">
 					
 			<div class="form-group has-feedback">
-				<label class="col-sm-5 col-sm-offset-1 control-label" for="user_id">아이디</label>
+				<label class="col-sm-5 col-sm-offset-1 control-label" for="user_id"><img src="/img/mypage/user.png"/> &nbsp;&nbsp;아이디</label>
 				<div class="col-sm-13">
 					<input class="form-control" type="text" value="${user.user_id }" name="user_id" readonly="readonly" />
 				</div>
 			</div>
 		
 			<div class="form-group has-feedback">
-				<label class="col-sm-5 col-sm-offset-1 control-label" for="user_name">이름</label>
+				<label class="col-sm-5 col-sm-offset-1 control-label" for="user_name"><img src="/img/mypage/card.png"/> &nbsp;&nbsp;이름</label>
 				<div class="col-sm-13">
 					<input class="form-control" type="text" value="${user.user_name }" name="user_name" />
 				</div>
 			</div>
 			
 			<div class="form-group has-feedback">
-				<label class="col-sm-5 col-sm-offset-1 control-label" for="user_email">이메일</label>
+				<label class="col-sm-5 col-sm-offset-1 control-label" for="user_email"><img src="/img/mypage/email.png"/> &nbsp;&nbsp;이메일</label>
 				<div class="col-sm-13">
 					<input class="form-control" type="text" value="${user.user_email }" name="user_email" />
 				</div>
 			</div>
 		
 			<div class="form-group has-feedback">
-				<label class="col-sm-5 col-sm-offset-1 control-label" for="user_phone">휴대폰</label>
+				<label class="col-sm-5 col-sm-offset-1 control-label" for="user_phone"><img src="/img/mypage/telephone.png"/> &nbsp;&nbsp;휴대폰</label>
 				<div class="col-sm-13">
 					<input class="form-control" type="text" value="${user.user_phone }" name="user_phone"/>
 				</div>
 			</div>
 			
 			<div class="form-group has-feedback">
-				<label class="col-sm-5 col-sm-offset-1 control-label" for="user_birth">생년월일</label>	
+				<label class="col-sm-5 col-sm-offset-1 control-label" for="user_birth"><img src="/img/mypage/birthday.png"/> &nbsp;&nbsp;생년월일</label>	
 				<div class="col-sm-3 control-div" style="width:200px">
 					<select class="form-control" name="birth_year" id="birth_year" ></select>
 				</div>

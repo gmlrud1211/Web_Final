@@ -29,6 +29,8 @@
 	</head>
 <body>
 
+	<jsp:include page="../common/header.jsp" />
+
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100 p-t-50 p-t-90">
@@ -47,7 +49,7 @@
 					</div>	
 					<br>
 					
-					<div class="container-login100-form-btn m-t-17">		
+					<div class="container-login100-form-btn m-t-17" >		
 						<button class="login100-form-btn">LOGIN</button>
 					</div>
 					<br>
