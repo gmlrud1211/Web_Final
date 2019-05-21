@@ -35,8 +35,8 @@
 	</select>
 	
 	<insert id="insertCalendar" parameterType="hashmap" >
-		insert into CALENDAR(calendar_no, calendar_title, calendar_scheduleDate, calendar_date, user_no, calendar_yesno)
-		values (CALENDAR_SEQ.NEXTVAL, #{cal.calendar_title}, #{cal.calendar_scheduleDate}, SYSDATE, #{user_no}, #{cal.calendar_yesno})
+		insert into CALENDAR(calendar_no, calendar_title, calendar_scheduleDate, calendar_date, user_no, calendar_yesno, up_count, view_count)
+		values (CALENDAR_SEQ.NEXTVAL, #{cal.calendar_title}, #{cal.calendar_scheduleDate}, SYSDATE, #{user_no}, #{cal.calendar_yesno}, 0, 0)
 	</insert>
 	
 	<delete id="deleteCalendar" parameterType="int">
