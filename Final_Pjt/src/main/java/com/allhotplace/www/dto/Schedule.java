@@ -10,7 +10,6 @@ public class Schedule {
 	private String schedule_title;
 	private String schedule_startTime;
 	private String schedule_endTime;
-	
 	private String calendar_title;
 	private String calendar_yesno;
 	private Date calendar_date;

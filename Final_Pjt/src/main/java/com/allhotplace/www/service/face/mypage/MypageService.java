@@ -46,4 +46,7 @@ public interface MypageService {
 	//캘린더 공개여부 설정 - 비공개로 변경
 	public void calChangeNo(int calendar_no);
 
+	//캘린더 시간수정 업데이트
+	public void scheduleUpdate(int schedule_no, String schedule_startTime, String schedule_endTime);
+
 }

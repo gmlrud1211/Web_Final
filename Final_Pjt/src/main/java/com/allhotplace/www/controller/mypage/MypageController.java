@@ -2,7 +2,10 @@ package com.allhotplace.www.controller.mypage;
 
 
 import java.io.Writer;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -229,6 +232,22 @@ public class MypageController {
 		} else if(type.equals("NO")) { //비공개로 변경하는 버튼 클릭
 			mypageService.calChangeNo(calendar_no);
 		}
+
+		return "jsonView";
+	}
+	
+	@RequestMapping(value="/mypage/schedule/update", method=RequestMethod.POST)
+	public String ScheduleUpdate(HttpServletRequest req,
+							@RequestParam("schedule_no") int schedule_no,
+							@RequestParam("schedule_startTime") String schedule_startTime,
+							@RequestParam("schedule_endTime") String schedule_endTime) {
+		
+		logger.info("마이페이지-[캘린더 > 일정조회 > 일정 시간수정]");
+		logger.info(schedule_startTime);
+		logger.info(schedule_endTime);
+		
+		
+		mypageService.scheduleUpdate(schedule_no,schedule_startTime,schedule_endTime);
 
 		return "jsonView";
 	}

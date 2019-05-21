@@ -84,4 +84,20 @@ public class MypageSeviceImpl implements MypageService{
 		mypageDao.calendarNo(calendar_no);
 	}
 
+	@Override
+	public void scheduleUpdate(int schedule_no, String schedule_startTime, String schedule_endTime) {
+		
+		HashMap map = new HashMap();
+		map.put("schedule_no", schedule_no);
+		map.put("schedule_startTime", schedule_startTime);
+		map.put("schedule_endTime", schedule_endTime);
+		
+		System.out.println("service");
+		System.out.println("sch_no"+schedule_no);
+		System.out.println("start"+schedule_startTime);
+		System.out.println("end"+schedule_endTime);
+			
+		mypageDao.updateSchedule(map);
+	}
+
 }

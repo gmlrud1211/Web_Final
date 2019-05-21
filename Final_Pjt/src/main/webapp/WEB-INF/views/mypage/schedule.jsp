@@ -21,6 +21,7 @@
 <link rel="stylesheet" href="/css/scheduler/timegrid/main.css"/>
 <link rel="stylesheet" href="/css/scheduler/daygrid/main.css"/>
 <script src="/js/scheduler/core/main.js"></script>
+<script src="/js/scheduler/core/ko.js"></script>
 <script src="/js/scheduler/interaction/main.js"></script>
 <script src="/js/scheduler/daygrid/main.js"></script>
 <script src="/js/scheduler/timegrid/main.js"></script>
@@ -49,7 +50,8 @@
     var calendar = new FullCalendar.Calendar(calendarEl, {
       plugins: [ 'interaction', 'resourceDayGrid', 'resourceTimeGrid' ],
       defaultView: 'resourceTimeGridDay',
-      defaultDate: sch[0].start ,
+      defaultDate: sch[0].start,
+      lang : 'ko',
       editable: true,
       selectable: true,
       eventLimit: true, // allow "more" link when too many events
@@ -76,7 +78,7 @@
       //일정 삭제시 이벤트
       eventClick : function(calEvent){
     	console.log(calEvent.event._def.extendedProps.no);
-    	if(!confirm("일정["+calEvent.event._def.title+"]를 정말로 삭제하시겠습니까?"))
+    	if(!confirm("일정["+calEvent.event.title+"]를 정말로 삭제하시겠습니까?"))
     		{	return false;	}
     	
     	$.ajax({
@@ -93,20 +95,69 @@
     			location.reload();
     		}
     	})
-   	 }//,
+   	 },
    	 
-   	 //일정 수정시 이벤트
-   	 
-   	 
-   	 
+   	 //일정 시간수정 이벤트
+   	 eventResize : function(calEvent){
+   		console.log(calEvent);
+   		
+   		var no = calEvent.event._def.extendedProps.no;
+   		var start = (new Date(calEvent.event.start).format("yyyy-MM-dd hh:mm:ss"));
+   		var end = (new Date(calEvent.event.end).format("yyyy-MM-dd hh:mm:ss"));
+   		
+   		console.log(start);
+   		console.log(end);
+
+   		
+   		$.ajax({
+   			type: "post",
+   			url : "/mypage/schedule/update",
+   			data : {schedule_no: no ,schedule_startTime: start, schedule_endTime : end },
+   			dataType : "json",
+   			success : function(data){
+				location.reload();
+   			}
+   		})
+   		
+   	 }
    	 
     });
     
-	console.log(sch)
+    //캘린더 그려줌
     calendar.render();
   });
+
+
+	//날짜 변환함수
+	Date.prototype.format = function(f) {
+    if (!this.valueOf()) return " ";
+ 
+    var d = this;
+     
+    return f.replace(/(yyyy|yy|MM|dd|E|hh|mm|ss|a\/p)/gi, function($1) {
+        switch ($1) {
+	            case "yyyy": return d.getFullYear();
+	            case "yy": return (d.getFullYear() % 1000).zf(2);
+	            case "MM": return (d.getMonth() + 1).zf(2);
+	            case "dd": return d.getDate().zf(2);
+	            case "E": return weekName[d.getDay()];
+	            case "HH": return d.getHours().zf(2);
+	            case "hh": return ((h = d.getHours() % 24) ? h : 24).zf(2);
+	            case "mm": return d.getMinutes().zf(2);
+	            case "ss": return d.getSeconds().zf(2);
+	            default: return $1;
+	        }
+	    });
+	};
+	 
+	String.prototype.string = function(len){var s = '', i = 0; while (i++ < len) { s += this; } return s;};
+	String.prototype.zf = function(len){return "0".string(len - this.length) + this;};
+	Number.prototype.zf = function(len){return this.toString().zf(len);};
+	
 	
 </script>
+
+
 
 <script type="text/javascript">
 	//공개여부 설정
@@ -183,39 +234,70 @@
 	.fc-time-grid-container{height:700px !important}
 </style>
 
-<body>
-<jsp:include page="../common/header.jsp" />
-
-<div class="container">
-<hr style="color:#ccc;">
+<script type="text/javascript">
 		
-	<div class="row row-offcanvas row-offcanvas-right">
-	<jsp:include page="../layout/mypage.jsp"/>
+	$(document).ready(function() {
+		//캘린더 등록
+		$("#btnAdd").click(function() {
+			$(".con").fadeIn();
+			$(".addCalbg").fadeIn();
+		});
 
-		<div class="col-xs-12 col-sm-9">
-			<div class="jumbotron" style="padding: 5px; background-color: #eee0; border-bottom: 1px solid #403866; border-radius: 0;" >
-				<h3>ScheduleList<h3>
-	            <p style="font-size: 16px">나만의 일정을 만들어 보세요~!</p>
-	        </div>
-	        
-	        
-	        <div>
-				<div style="max-width:650px;">
-					캘린더 제목 : ${calendar_title } &nbsp;&nbsp;&nbsp;&nbsp;
-					캘린더 진행날짜 : <fmt:formatDate value="${calendar_date }" pattern="yyyy-MM-dd"/><br><br>
-					공개여부 설정 : 
-					<button type="button" id="btnNotOpen" class="btn btn-sm" style="background-color:#827ffe; color: white;">비공개로 변경</button>
-					<button type="button" id="btnOpen" class="btn btn-sm" style="background-color:#827ffe; color: white;">공개로 변경</button>
-					<br><br>
-					! 삭제를 원하시면 일정을 한번 클릭해주세요<br>
-					! 수정을 원하시면 <a href="#" style="border:0px; background-color:white;">여기</a>를 클릭해주세요
+		$("#calclose").click(function() {
+			$(".con").fadeOut();
+			$(".addCalbg").fadeOut();
+		});
+
+		$("#calAdd").click(function() {
+			$("#calendarForm").submit();
+			$(".con").fadeOut();
+			$(".addCalbg").fadeOut();
+			alert("캘린더가 등록되었습니다~!");
+		});
+
+		//캘린더 수정
+		$("#btnUpdate").click(function() {
+			$(".upCon").fadeIn();
+			$(".upCalbg").fadeIn();
+		});
+
+	});
+</script>
+
+<body>
+	<jsp:include page="../common/header.jsp" />
+	
+	<div class="container">
+	<hr style="color:#ccc;">
+			
+		<div class="row row-offcanvas row-offcanvas-right">
+		<jsp:include page="../layout/mypage.jsp"/>
+	
+			<div class="col-xs-12 col-sm-9">
+				<div class="jumbotron" style="padding: 5px; background-color: #eee0; border-bottom: 1px solid #403866; border-radius: 0;" >
+					<h3>ScheduleList<h3>
+		            <p style="font-size: 16px">나만의 일정을 만들어 보세요~!</p>
+		        </div>
+		        
+		        <div>
+					<div style="max-width:650px;">
+						캘린더 제목 : ${calendar_title } &nbsp;&nbsp;&nbsp;&nbsp;
+						캘린더 진행날짜 : <fmt:formatDate value="${calendar_date }" pattern="yyyy-MM-dd"/><br><br>
+						공개여부 설정 : 
+						<button type="button" id="btnNotOpen" class="btn btn-sm" style="background-color:#827ffe; color: white;">비공개로 변경</button>
+						<button type="button" id="btnOpen" class="btn btn-sm" style="background-color:#827ffe; color: white;">공개로 변경</button>
+						<br><br>
+						! 삭제를 원하시면 일정을 한번 클릭해주세요<br>
+						! 수정을 원하시면 <a href="#" style="border:0px; background-color:white;">여기</a>를 클릭해주세요
+					</div>
+					<br>
+			        <div id="calendar" class="fc fc-unthemd" style="max-width:600px;" >
+						<!-- 캘린더 영역 -->
+					</div>
 				</div>
-				<br>
-		        <div id="calendar" class="fc fc-unthemd" style="max-width:600px;" >
-					<!-- 캘린더 영역 -->
-				</div>
+				
 			</div>
 		</div>
 	</div>
-</div>
+
 </body>
