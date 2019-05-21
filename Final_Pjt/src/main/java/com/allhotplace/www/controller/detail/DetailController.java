@@ -5,7 +5,13 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -19,7 +25,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.allhotplace.www.dto.Calendar;
+import com.allhotplace.www.dto.Comments;
 import com.allhotplace.www.dto.DetailCalendar;
 import com.allhotplace.www.dto.DetailResult_common;
 import com.allhotplace.www.dto.DetailResult_image;
@@ -43,7 +49,7 @@ private static final Logger logger = LoggerFactory.getLogger(DetailController.cl
 	@Autowired DetailService detailService;
 	@RequestMapping(value="/detail", method=RequestMethod.GET)
 	
-	public String placeInfoAPI(Model model, String contentId, String contentTypeId) {
+	public String placeInfoAPI(Model model, String contentId, String contentTypeId, HttpServletRequest request, HttpSession session) {
 
 		String result = "";
 		BufferedReader br = null;
@@ -165,6 +171,7 @@ private static final Logger logger = LoggerFactory.getLogger(DetailController.cl
 				JSONObject obj = jsonItemArray2;
 				DetailResult_common data = new DetailResult_common();
 	
+				data.setContentid(String.valueOf(obj.get("contentid")));
 				data.setAddr1(String.valueOf(obj.get("addr1")));
 				data.setAddr2(String.valueOf(obj.get("addr2")));
 				data.setTitle(String.valueOf(obj.get("title")));
@@ -438,6 +445,37 @@ private static final Logger logger = LoggerFactory.getLogger(DetailController.cl
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
+		
+
+		
+//		User별 북마크 정보 가져오기 
+		
+		String user_id = (String) request.getSession().getAttribute("user_id");
+		model.addAttribute("user_id", user_id);
+		if(user_id != null) { 
+			Map map = new HashMap<>();
+			map.put("user_id", user_id);
+			map.put("contentid", contentId);
+	
+			int isBookmark = detailService.isBookmark(map);
+			System.out.println(isBookmark);
+			
+			if(isBookmark > 0 ) {
+				model.addAttribute("isBookmark", true);
+			} else {
+				model.addAttribute("isBookmark", false);
+			}
+		} else {
+			model.addAttribute("isBookmark", false);
+		}
+		
+		
+//		댓글 정보 가져오기
+		
+		List<Comments> commentList = new ArrayList<Comments>();
+		commentList = detailService.getComment(contentId);
+		
+		
 		model.addAttribute("contentTypeId", contentTypeId);
 		model.addAttribute("imgList", imgList);
 		model.addAttribute("commonList", commonList);
@@ -449,21 +487,100 @@ private static final Logger logger = LoggerFactory.getLogger(DetailController.cl
 		model.addAttribute("hotelIntro", hotelIntro);
 		model.addAttribute("shoppingIntro", shoppingIntro);
 		model.addAttribute("restaurantIntro", restaurantIntro);
+		model.addAttribute("commentList", commentList);
 		
 		
 		return "detail/detail";
 	}
 	
-
-	@RequestMapping(value="/getCalendar")
-	@ResponseBody
-	public List<DetailCalendar> getCalendar(Model model, String user_id) {
+	@RequestMapping(value="/detail/getCalendar")
+	public String getCalendar(Model model, String user_id) {
 		
 		System.out.println(user_id);
 		List<DetailCalendar> calList = new ArrayList<DetailCalendar>();
 		calList	= detailService.getCalendar(user_id);
 		model.addAttribute("calList", calList);
-		System.out.println("calList : " + calList);
-		return calList;
+		System.out.println(calList);
+		return "detail/addCalendar";
+	}
+	
+	@RequestMapping(value="/detail/addSchedule")
+	public String addSchedule
+		(Model model, String schedule, String startTime, String endTime, String calNo, String contentid, String date, String contentTypeId) {
+
+		
+		System.out.println("11111111111111111111111111111111111");
+		
+		String startDateTime = date + " " + startTime;
+		String endDateTime = date + " " + endTime;
+		
+		Map map = new HashMap();
+		map.put("schedule_title", schedule);
+		map.put("startTime", startDateTime);
+		map.put("endTime", endDateTime);
+		map.put("calendar_no", calNo);
+		map.put("schedule_id", contentid);
+		
+		detailService.addSchedule(map);
+		System.out.println(map);
+			
+		return "redirect:/detail?contentId=" + contentid + "&contentTypeId=" + contentTypeId ;
+	}
+	
+
+
+	@RequestMapping(value="/detail/bookmark")
+	@ResponseBody
+	public void addBookmark(Model model, String contentid, String contenttypeid, String userid, String image) {
+
+		Map map = new HashMap();
+			
+		map.put("contentid", contentid);
+		map.put("contenttypeid", contenttypeid);
+		map.put("userid", userid);
+		map.put("image", image);
+		
+		
+		detailService.addBookmark(map);
+		
+	}
+	@RequestMapping(value="/detail/bookmarkCancel")
+	@ResponseBody
+	public void deleteBookmark(Model model, String contentid, String user_id) {
+		
+		Map map = new HashMap();
+		map.put("contentid", contentid);
+		map.put("user_id", user_id);
+		
+		detailService.deleteBookmark(map);
+		
+	}
+	
+	@RequestMapping(value="/detail/comment")
+	public String commentSubmit(Model model, String contentid, String user_id, String content, String contentTypeId) {
+		
+		
+		Map map = new HashMap();
+		
+		map.put("contentid", contentid);
+		map.put("user_id", user_id);
+		map.put("content", content);
+		
+		detailService.commentSubmit(map);
+		
+		return "redirect:/detail?contentId=" + contentid + "&contentTypeId=" + contentTypeId + "#commentArea";
+		
+	}
+	
+	@RequestMapping(value="/detail/commentDelete")
+	public String commentDelete(Model model, String comment_no, String contentid, String contentTypeId) {
+		System.out.println("1111111111111111111111111111111111111");
+		System.out.println(comment_no);
+		System.out.println(contentid);
+		System.out.println(contentTypeId);
+		
+		detailService.commentDelete(comment_no);
+		
+		return "redirect:/detail?contentId=" + contentid + "&contentTypeId=" + contentTypeId + "#commentArea";
 	}
 }

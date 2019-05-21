@@ -108,7 +108,6 @@
 							<th style="width: 10%">삭제</th>
 						</tr>
 					</thead>
-					${calendarList }
 					<tbody>
 						<c:forEach items="${calendarList }" var="cal">
 						<tr>

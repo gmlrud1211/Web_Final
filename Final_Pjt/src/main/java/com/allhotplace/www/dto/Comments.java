@@ -8,6 +8,8 @@ public class Comments {
 	private int mapp_sType;
 	private String comment_content;
 	private int user_no;
+	private String user_id;
+	private String contentid;
 	private Date comment_date;
 	
 
@@ -16,11 +18,6 @@ public class Comments {
 	}
 	public void setMapp_sType(int mapp_sType) {
 		this.mapp_sType = mapp_sType;
-	}
-	@Override
-	public String toString() {
-		return "Comments [comment_no=" + comment_no + ", mapp_sType=" + mapp_sType + ", comment_content="
-				+ comment_content + ", user_no=" + user_no + ", comment_date=" + comment_date + "]";
 	}
 	public int getComment_no() {
 		return comment_no;
@@ -47,6 +44,22 @@ public class Comments {
 	public void setComment_date(Date comment_date) {
 		this.comment_date = comment_date;
 	}
-	
-	
+	public String getContentid() {
+		return contentid;
+	}
+	public void setContentid(String contentid) {
+		this.contentid = contentid;
+	}
+	public String getUser_id() {
+		return user_id;
+	}
+	public void setUser_id(String user_id) {
+		this.user_id = user_id;
+	}
+	@Override
+	public String toString() {
+		return "Comments [comment_no=" + comment_no + ", mapp_sType=" + mapp_sType + ", comment_content="
+				+ comment_content + ", user_no=" + user_no + ", user_id=" + user_id + ", contentid=" + contentid
+				+ ", comment_date=" + comment_date + "]";
+	}
 }

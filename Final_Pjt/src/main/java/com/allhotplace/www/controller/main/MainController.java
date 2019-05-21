@@ -61,7 +61,6 @@ public class MainController {
 	@RequestMapping(value="/mainsearch", method=RequestMethod.POST)
 	public List mainSearchPost(String word,Model model) {
 		
-		
 		String result = "";
 		BufferedReader br = null;
 		JSONArray rowData = new JSONArray();
