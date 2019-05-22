@@ -15,7 +15,6 @@ ul.bxslider {
 }
 
 ul.bxslider li {
-	
 }
 
 ul.bxslider li img {
@@ -199,29 +198,15 @@ div.hashtag {
 	left: 0;
 }
 </style>
-
-  <div class="contents">
-		 
-		<div class="banner">
-			<ul>
-			<c:forEach items="${banlist }" var="bannerslist">
+	
+	<ul class="bxslider">
+		<c:forEach items="${banlist }" var="banlist">
 			
-				<li><img src="/upload/${banlist.file_storedname }" ></li>
+			<li><img src="/upload/${banlist.file_storedName }" ></li>
 				
-			</c:forEach>
-			</ul>
-		</div>
-		 
-	</div>
-
-
-<!-- <ul class="bxslider"> -->
-<!-- 	<li><img alt="성규 친구" src="/img/img1.jpg"></li> -->
-<!-- 	<li><img alt="성규 친구" src="/img/img2.jpg"></li> -->
-<!-- 	<li><img alt="성규 친구" src="/img/img3.jpg"></li> -->
-<!-- </ul> -->
-
-
+		</c:forEach>
+	</ul>
+	
 <div class="searchdiv">
 	<form action="/main" method="post">
 		<input type="text" name="search" placeholder="검색어 입력">
@@ -313,7 +298,7 @@ div.hashtag {
 
 		$(".bxslider").bxSlider({
 			mode : "horizontal",
-			slideWidth : 1920,
+			slideWidth : 1950,
 			slideMargin : 0,
 			minSlides : 1,
 			maxSlides : 1,

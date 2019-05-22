@@ -186,12 +186,12 @@ $(document).ready(function(){
 		
 	});
 	
-	/* 엔터키 */
-	$("#btnChatBotSend1").keypress(function(event){
-		if(event.which==13){
-			$("#btnChatBotSend1").click();
-		}
-	});
+// 	/* 엔터키 */
+// 	$("#btnChatBotSend1").keypress(function(event){
+// 		if(event.which==13){
+// 			$("#btnChatBotSend1").click();
+// 		}
+// 	});
 	
 	/* 채팅기록 전체삭제 */
 	$("#refresh1").click(function(){
@@ -213,6 +213,12 @@ $(document).ready(function(){
 	$("#btn1on1Chat1").click(function(){
 		$("#modalChatBot").modal('hide');
 		$("#modal1on1Chat").modal('show');
+		
+		$.ajax({
+			type: "get"
+			, url: "/createChatRoom"
+			, data: {}
+		})
 	})
 	
 	/* 챗봇버튼2 */
@@ -3260,7 +3266,7 @@ function clickS60201(){
 	  <h2 style="color:white;">[Chat Bot]
 	  <div class="btn-group" data-toggle="buttons-radio" style="float:right; position:relative;">
 			  <button type="button" id="btnChatBot1" class="btn btn-warning" data-target="#modalChatBot">챗봇</button>
-			  <button type="button" id="btn1on1Chat1" class="btn btn-success" data-target="#modal1on1Chat">1대1문의</button>
+			  <button type="button" id="btn1on1Chat1" class="btn btn-success" data-target="#modal1on1Chat" onclick="connect()">1대1문의</button>
 	  </div>
 	  </h2>   
 	    <div class="modal-content" style="height:650px; background:#F7F2E0;">

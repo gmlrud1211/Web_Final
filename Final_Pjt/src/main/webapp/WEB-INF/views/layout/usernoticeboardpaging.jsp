@@ -7,7 +7,7 @@
 <ul class="pagination pagination-sm">
 	<%-- 첫페이지가 아니라면 처음 버튼 보이기 --%>
 	<c:if test="${paging.curPage ne 1 }">
-	<li><a href="/admin/noticeboard/list?curPage1=1">&larr;처음</a></li>
+	<li><a href="/noticeboard/list?curPage1=1">&larr;처음</a></li>
 	</c:if>
 	
 	<%-- 이전 페이지그룹 --%>
@@ -15,7 +15,7 @@
 	<li class="disabled"><span>&laquo;</span></li>
 	</c:if>
 	<c:if test="${paging.curPage gt paging.pageCount }">
-	<li><a href="/admin/noticeboard/list?curPage1=${paging.startPage-paging.pageCount}&word=${search}">&laquo;</a></li>
+	<li><a href="/noticeboard/list?curPage1=${paging.startPage-paging.pageCount}&word=${search}">&laquo;</a></li>
 	</c:if>
 	
 	
@@ -24,7 +24,7 @@
 	<li class="disabled"><span>&lt;</span></li>
 	</c:if>
 	<c:if test="${paging.curPage ne 1 }">
-	<li><a href="/admin/noticeboard/list?curPage1=${paging.curPage-1}&word=${search}">&lt;</a></li>
+	<li><a href="/noticeboard/list?curPage1=${paging.curPage-1}&word=${search}">&lt;</a></li>
 	</c:if>
 
 	
@@ -34,10 +34,10 @@
 	 var="i">
 	
 	<c:if test="${paging.curPage eq i}">
-	<li class="active"><a href="/admin/noticeboard/list?curPage1=${i }&word=${search}">${i }</a></li>
+	<li class="active"><a href="/noticeboard/list?curPage1=${i }&word=${search}">${i }</a></li>
 	</c:if>
 	<c:if test="${paging.curPage ne i}">
-	<li><a href="/admin/noticeboard/list?curPage1=${i }&word=${search}">${i }</a></li>
+	<li><a href="/noticeboard/list?curPage1=${i }&word=${search}">${i }</a></li>
 	</c:if>
 	
 	</c:forEach>
@@ -47,7 +47,7 @@
 	<li class="disabled"><span>&gt;</span></li>
 	</c:if>
 	<c:if test="${paging.curPage ne paging.totalPage }">
-	<li><a href="/admin/noticeboard/list?curPage1=${paging.curPage+1}&word=${search}">&gt;</a></li>
+	<li><a href="/noticeboard/list?curPage1=${paging.curPage+1}&word=${search}">&gt;</a></li>
 	</c:if>
 	
 	<%-- 다음 페이지그룹 --%>
@@ -55,8 +55,10 @@
 	<li class="disabled"><span>&raquo;</span></li>
 	</c:if>
 	<c:if test="${paging.endPage ne paging.totalPage }">
-	<li><a href="/admin/noticeboard/list?curPage1=${paging.startPage+paging.pageCount}&word=${search}">&raquo;</a></li>
+	<li><a href="/noticeboard/list?curPage1=${paging.startPage+paging.pageCount}&word=${search}">&raquo;</a></li>
 	</c:if>
 	
 </ul>
 </div>
+
+

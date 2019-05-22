@@ -198,7 +198,7 @@ ul.sub {
 		</li>
 		<li class="group">
 			<div class="title">
-				<a href="/admin/oneandboard/list">1대1 문의관리</a>
+				<a href="/admin/chatone/list">1대1 문의관리</a>
 			</div>
 
 		</li>

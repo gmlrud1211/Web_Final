@@ -9,10 +9,10 @@ import com.allhotplace.www.util.Paging;
 
 public interface BannerDao {
 
-	// 페이징 처리 게시글 반환
+	// 배너리스트  반환
 	public List<Banner> selectBanerlist();
 	
-	// 페이징 처리 게시글 반환
+	// 페이징 처리 배너 반환
 	public List<Banner> selectPaginglist(Paging paging);
 	// 총 배너 수 반환
 	public int selectCntBanner();
