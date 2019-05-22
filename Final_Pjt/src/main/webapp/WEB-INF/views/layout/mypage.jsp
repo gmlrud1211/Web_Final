@@ -3,7 +3,7 @@
 
 <div class="col-xs-5 col-sm-2 sidebar-offcanvas" id="sidebar">
 	<div class="name">
-		<h2>MY PAGE</h2>
+		<h3>MY PAGE</h3>
 		<br>
 	</div>
 	

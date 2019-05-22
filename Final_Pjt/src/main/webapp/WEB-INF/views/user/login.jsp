@@ -18,7 +18,7 @@
 		$(document).ready(function() {
 					
 			$("#btnKakao").click(function(){
-				$(location).attr("href", "https://kauth.kakao.com/oauth/authorize?client_id=b2d0f5ffdef0d889457c5a8978048650&redirect_uri=http://localhost:8088/kakaologin&response_type=code");
+				$(location).attr("href", "https://kauth.kakao.com/oauth/authorize?client_id=b2d0f5ffdef0d889457c5a8978048650&redirect_uri=http://localhost:8089/kakaologin&response_type=code");
 			});
 					
 		});

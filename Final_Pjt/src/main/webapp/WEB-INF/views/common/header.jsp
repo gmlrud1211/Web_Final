@@ -2,6 +2,9 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
+
+<link rel="stylesheet" href="/css/main.css">
+
 <style>
 .header {
 	width: 100%;
@@ -67,8 +70,8 @@ a:visited {
 a:hover {
 	color: #827ffe;
 }
-</style>
 
+</style>
 
 <div class="header">
 
@@ -106,8 +109,6 @@ a:hover {
 	<ul class="righttop">
 		<li><a href="#">일정공유 게시판</a></li>
 		<li>/</li>
-		<li><a href="/searchPlace">검색</a></li>
-		<li>/</li>
-		<li><a href="/mypage/calendar">일정등록하기</a></li>
+		<li><a href="/searchPlace">찾아보기</a></li>
 	</ul>
 </div>
