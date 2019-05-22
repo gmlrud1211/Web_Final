@@ -108,21 +108,21 @@
 				<table class="table table-striped table-hover"> 
 					<thead>
 						<tr>
-							<th style="width: 10%">번호</th>
-							<th style="width: 45%">캘린더 제목</th>
-							<th style="width: 20%">캘린더 진행일</th>
-							<th style="width: 15%">공개여부</th>
-							<th style="width: 10%">삭제</th>
+							<th style="width: 10%"><img src="/img/mypage/event.png"/></th>
+							<th style="width: 45%">TITLE</th>
+							<th style="width: 20%">DAY</th>
+							<th style="width: 15%">VIEW</th>
+							<th style="width: 10%">DROP</th>
 						</tr>
 					</thead>
 					<tbody>
 						<c:forEach items="${calendarList }" var="cal">
 						<tr>
-							<td>${cal.calendar_no }</td>
+							<td style="padding-left:20px;">-</td>
 							<td><a href="/mypage/schedule?calendar_no=${cal.calendar_no }">${cal.calendar_title }</a></td>
 							<td><fmt:formatDate value="${cal.calendar_scheduleDate }" pattern="yyyy-MM-dd"/></td>
-							<td>${cal.calendar_yesno }</td>
-							<td><a onclick="delAlert();" href="/mypage/calRemove?calendar_no=${cal.calendar_no }" >삭제</a></td>
+							<td style="padding-left:20px;">${cal.calendar_yesno }</td>
+							<td style="padding-left:25px;"><a onclick="delAlert();" href="/mypage/calRemove?calendar_no=${cal.calendar_no }" ><b>X</b></a></td>
 						</tr>
 						</c:forEach>
 					</tbody>
