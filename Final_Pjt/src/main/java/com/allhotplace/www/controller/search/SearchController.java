@@ -174,6 +174,7 @@ public class SearchController {
 			urlconnection.setRequestMethod("GET");
 			br = new BufferedReader(new InputStreamReader(urlconnection.getInputStream(), "UTF-8"));
 			
+			System.out.println(url);
 			String line;
 			while ((line = br.readLine()) != null) {
 				result = result + line;
@@ -232,7 +233,6 @@ public class SearchController {
 
 			System.out.println("jsonItem : "+jsonItem);
 			model.addAttribute("totalCnt", String.valueOf(jsonItem.get("totalCnt")));
-			
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
