@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.allhotplace.www.controller.detail.DetailController;
 import com.allhotplace.www.dto.Calendar;
+import com.allhotplace.www.dto.Comments;
 import com.allhotplace.www.dto.Schedule;
 import com.allhotplace.www.service.face.community.CommunityService;
 import com.google.gson.Gson;
@@ -55,11 +56,6 @@ public class CommunityController {
 		String user_id = (String) req.getSession().getAttribute("user_id");
 		
 		if(user_id == null) {
-			System.out.println("00000000000000000");
-			System.out.println(user_id);
-			System.out.println("00000000000000000");
-			model.addAttribute("msg", "메시지"); 
-			model.addAttribute("url", "/user/login");
 			model.addAttribute("login", false);
 		} else {
 
@@ -87,7 +83,6 @@ public class CommunityController {
 				map.put("start", s.getSchedule_startTime());
 				map.put("end", s.getSchedule_endTime());
 				map.put("no", String.valueOf(s.getSchedule_no()));
-	//			map.put("id", );
 				map.put("resourceId", "schedule");
 				
 				s_list.add(map);
@@ -112,6 +107,15 @@ public class CommunityController {
 			isRecommend = communityService.isRecommend(map);
 			
 			model.addAttribute("isRecommend", isRecommend);
+			
+			// 댓글 정보 가져오기
+			
+			List<Comments> commentList = new ArrayList<>(); 
+			commentList = communityService.getComment(calNo);
+
+			model.addAttribute("commentList", commentList);
+			
+			
 			
 		}
 		return "/community/commdetail";
@@ -146,6 +150,30 @@ public class CommunityController {
 		int calRecommCnt = communityService.recommendCancel(map);
 		System.out.println(calRecommCnt);
 		return calRecommCnt;
+	}
+	
+	@RequestMapping(value="/community/comment", method=RequestMethod.POST) 
+	public String commentSubmit(Model model, String user_id, String content, String cal_no) {
+		
+		Map map = new HashMap();
+		
+		map.put("user_id", user_id);
+		map.put("content", content);
+		map.put("cal_no", cal_no);
+		
+		communityService.commentSubmit(map);
+		
+		
+		return "redirect:/community/detail?calNo=" + cal_no;
+	}
+	
+	@RequestMapping(value="/community/commentDelete", method=RequestMethod.GET) 
+	public String commentSubmit(Model model, String comment_no, String cal_no) {
+		
+		communityService.commentDelete(comment_no);
+		
+		return "redirect:/community/detail?calNo=" + cal_no;
+		
 	}
 }
 

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.allhotplace.www.dto.Calendar;
+import com.allhotplace.www.dto.Comments;
 import com.allhotplace.www.dto.Schedule;
 
 public interface CommunityDao {
@@ -31,5 +32,11 @@ public interface CommunityDao {
 	void recommendCancel(Map map);
 
 	void calRecommendCencel(Map map);
+
+	void commentSubmit(Map map);
+
+	List<Comments> getComment(String calNo);
+
+	void commentDelete(String comment_no);
 
 }

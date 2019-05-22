@@ -364,40 +364,35 @@ $(document).ready(function() {
                </c:forEach>
             </ul>
              
-             <c:forEach var="list" items="${commonList }" varStatus="i">
-            <!-- 지도영역 -->
-            	<div id="map" style="width:500px;height:400px;" onclick="callMap('${list.mapx}', '${list.mapy}', '${list.mlevel}' )"></div>
-			</c:forEach>
-			<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7a7635c2d5aad5bc6d20fc52f944f2ef"></script>
-			
-			<script type="text/javascript">
-			
-				function callMap(mapx, mapy, mlevel){
-					
-					console.log("mapx : " + mapx);
-					console.log("mapy : " + mapy);
-					console.log("mlevel : " +  mlevel);
-					
+           <c:forEach var="list" items="${commonList }" varStatus="i">
+	            <!-- 지도영역 -->
+	            	<div id="map" style="width:500px;height:400px;" onclick="callMap('${list.mapx}', '${list.mapy}', '${list.mlevel}' )"></div>
+				
+				<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7a7635c2d5aad5bc6d20fc52f944f2ef"></script>
+				
+				<script>
 					var container = document.getElementById('map');
 					var options = {
-						center: new daum.maps.LatLng(mapx, mapy),
-						level: mlevel
+						center: new daum.maps.LatLng(${list.mapy}, ${list.mapx}),
+						level: 6
 					};
 			
 					var map = new daum.maps.Map(container, options);
-					var markerPosition  = new daum.maps.LatLng(mapx, mapy); 
-
+	
+					// 마커가 표시될 위치입니다 
+					var markerPosition  = new daum.maps.LatLng(${list.mapy}, ${list.mapx});
+	
 					// 마커를 생성합니다
 					var marker = new daum.maps.Marker({
 					    position: markerPosition
 					});
-
+	
 					// 마커가 지도 위에 표시되도록 설정합니다
 					marker.setMap(map);
-				}
-
-				$("#map").click();
-			</script>
+					
+				</script>
+			</c:forEach>
+			            
             
          </div>
          

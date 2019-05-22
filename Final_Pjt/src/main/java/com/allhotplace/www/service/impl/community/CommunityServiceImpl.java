@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.allhotplace.www.dao.face.community.CommunityDao;
 import com.allhotplace.www.dto.Calendar;
+import com.allhotplace.www.dto.Comments;
 import com.allhotplace.www.dto.Schedule;
 import com.allhotplace.www.service.face.community.CommunityService;
 
@@ -44,7 +45,6 @@ public class CommunityServiceImpl implements CommunityService{
 	@Override
 	public boolean isRecommend(Map map) {
 		int count = communitydao.isRecommend(map);
-		System.out.println("serviceimpl111111111111111111111111111111");
 		System.out.println(count);
 		if (count>0) {
 			return true;
@@ -67,4 +67,18 @@ public class CommunityServiceImpl implements CommunityService{
 		return communitydao.getRecommend(map);
 	}
 
+	@Override
+	public void commentSubmit(Map map) {
+		communitydao.commentSubmit(map);
+	}
+
+	@Override
+	public List<Comments> getComment(String calNo) {
+		return communitydao.getComment(calNo);
+	}
+
+	@Override
+	public void commentDelete(String comment_no) {
+		communitydao.commentDelete(comment_no);
+	}
 }

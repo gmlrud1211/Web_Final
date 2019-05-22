@@ -105,5 +105,33 @@
 		WHERE CALENDAR_NO = #{cal_no}
 		
 	</select>
+	
+	<insert id="commentSubmit" parameterType="hashmap">
+		
+		INSERT INTO COMMENTS 
+		(COMMENT_NO, MAPP_STYPE, COMMENT_CONTENT, USER_NO, COMMENT_DATE, CONTENTID) 
+		VALUES 
+		( COMMENTS_SEQ.NEXTVAL, 1001, #{content},
+			( SELECT USER_NO FROM USERS WHERE USER_ID=#{user_id} ), 
+        SYSDATE, #{cal_no} )
+		
+	</insert>
+	
+	<select id="getComment" parameterType="String" resultType="com.allhotplace.www.dto.Comments">
+		
+		SELECT * FROM COMMENTS CMT
+		INNER JOIN USERS U
+		ON CMT.user_no = U.user_no
+		WHERE CMT.CONTENTID = #{calNo} and MAPP_STYPE = 1001
+		ORDER BY COMMENT_DATE
+		
+	</select>
+	
+	<delete id="commentDelete" parameterType="String">
+		DELETE FROM COMMENTS
+		WHERE COMMENT_NO = #{comment_no}
+	</delete>
+	
+	
  	
 </mapper>

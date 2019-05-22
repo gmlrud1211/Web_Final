@@ -142,7 +142,6 @@ private static final Logger logger = LoggerFactory.getLogger(DetailController.cl
 					+ "addrinfoYN=Y"
 					+ "&overviewYN=Y&MobileOS=ETC&MobileApp=KH_Hotplace";
 
-			System.out.println("detailCommon :  " + detailCommon);
 			
 			URL url2 = new URL(detailCommon);
 			HttpURLConnection urlconnection2 = (HttpURLConnection) url2.openConnection();
@@ -164,7 +163,6 @@ private static final Logger logger = LoggerFactory.getLogger(DetailController.cl
 			
 			String resultCode2 = (String) jsonHeader2.get("resultCode");
 			
-			System.out.println("common :: " + jsonItemArray2);
 
 			if ("0000".equals(resultCode2)) {
 				
@@ -199,7 +197,6 @@ private static final Logger logger = LoggerFactory.getLogger(DetailController.cl
 					+ contentTypeId
 					+ "&MobileOS=ETC&MobileApp=KH_Hotplace";
 			
-			System.out.println("detailIntro : " + detailIntro);
 			
 			URL url3 = new URL(detailIntro);
 			HttpURLConnection urlconnection3 = (HttpURLConnection) url3.openConnection();
@@ -211,7 +208,6 @@ private static final Logger logger = LoggerFactory.getLogger(DetailController.cl
 				result3 = result3 + line3;
 			}
 			
-			System.out.println("result3 : " + result3);
 			
 			JSONParser jsonParser3 = new JSONParser();
 			JSONObject jsonObj3 = (JSONObject)jsonParser3.parse(result3);
@@ -221,7 +217,6 @@ private static final Logger logger = LoggerFactory.getLogger(DetailController.cl
 			JSONObject jsonItems3 = (JSONObject)jsonBody3.get("items");
 			JSONObject jsonItemArray3 = (JSONObject)jsonItems3.get("item");
 			
-			System.out.println("jsonItemArray3 : "  + jsonItemArray3);
 			
 			String resultCode3 = (String) jsonHeader3.get("resultCode");
 
@@ -229,7 +224,6 @@ private static final Logger logger = LoggerFactory.getLogger(DetailController.cl
 				
 				if( "12".equals(contentTypeId) ) {
 					// 관광지
-					System.out.println(contentTypeId);
 
 					JSONObject obj = jsonItemArray3;
 					DetailResult_intro_tour data = new DetailResult_intro_tour();
@@ -252,7 +246,6 @@ private static final Logger logger = LoggerFactory.getLogger(DetailController.cl
 					
 				} else if ( "14".equals(contentTypeId) ) {
 					// 문화시설
-					System.out.println(contentTypeId);
 
 					JSONObject obj = jsonItemArray3;
 					DetailResult_intro_culture data = new DetailResult_intro_culture();
@@ -273,11 +266,9 @@ private static final Logger logger = LoggerFactory.getLogger(DetailController.cl
 					
 					cultureIntro.add(data);
 					
-					System.out.println(cultureIntro);
 					
 				} else if ( "15".equals(contentTypeId) ) {
 					// 행사/공연/축제
-					System.out.println(contentTypeId);
 
 					JSONObject obj = jsonItemArray3;
 					DetailResult_intro_festival data = new DetailResult_intro_festival();
@@ -302,11 +293,9 @@ private static final Logger logger = LoggerFactory.getLogger(DetailController.cl
 					data.setUsetimefestival(String.valueOf(obj.get("usetimefestival")));
 					
 					festivalIntro.add(data);
-					System.out.println("festivalIntro :  "  + festivalIntro);
 					
 				} else if ( "25".equals(contentTypeId) ) {
 					// 여행코스
-					System.out.println(contentTypeId);
 
 					JSONObject obj = jsonItemArray3;
 					DetailResult_intro_course data = new DetailResult_intro_course();
@@ -321,12 +310,10 @@ private static final Logger logger = LoggerFactory.getLogger(DetailController.cl
 					
 					
 					courseIntro.add(data);
-					System.out.println("courseIntro :  "  + courseIntro);
 					
 				} else if ( "28".equals(contentTypeId) ) {
 					// 레포츠
 					
-					System.out.println(contentTypeId);
 
 					JSONObject obj = jsonItemArray3;
 					DetailResult_intro_report data = new DetailResult_intro_report();
@@ -348,12 +335,10 @@ private static final Logger logger = LoggerFactory.getLogger(DetailController.cl
 					data.setUsetimeleports(String.valueOf(obj.get("usetimeleports")));
 					
 					reportIntro.add(data);
-					System.out.println("reportIntro :  "  + reportIntro);
 			
 				} else if ( "32".equals(contentTypeId) ) {
 					// 숙박 
 					
-					System.out.println(contentTypeId);
 
 					JSONObject obj = jsonItemArray3;
 					DetailResult_intro_hotel data = new DetailResult_intro_hotel();
@@ -380,13 +365,10 @@ private static final Logger logger = LoggerFactory.getLogger(DetailController.cl
 					data.setSports(String.valueOf(obj.get("sports")));
 					
 					hotelIntro.add(data);
-					System.out.println("hotelIntro :  "  + hotelIntro);
 				
 				} else if ( "38".equals(contentTypeId) ) {
 					// 쇼핑 
 					
-					System.out.println(contentTypeId);
-
 					JSONObject obj = jsonItemArray3;
 					DetailResult_intro_shopping data = new DetailResult_intro_shopping();
 
@@ -407,13 +389,10 @@ private static final Logger logger = LoggerFactory.getLogger(DetailController.cl
 					data.setShopguide(String.valueOf(obj.get("shopguide")));
 					
 					shoppingIntro.add(data);
-					System.out.println("shoppingIntro :  "  + shoppingIntro);
 				
 				}	else if ( "39".equals(contentTypeId) ) {
 					// 음식점 
 					
-					System.out.println(contentTypeId);
-
 					JSONObject obj = jsonItemArray3;
 					DetailResult_intro_restaurant data = new DetailResult_intro_restaurant();
 
@@ -435,7 +414,6 @@ private static final Logger logger = LoggerFactory.getLogger(DetailController.cl
 					data.setTreatmenu(String.valueOf(obj.get("treatmenu")));
 					
 					restaurantIntro.add(data);
-					System.out.println("restaurantIntro :  "  + restaurantIntro);
 				}
 			}
 			
@@ -458,7 +436,6 @@ private static final Logger logger = LoggerFactory.getLogger(DetailController.cl
 			map.put("contentid", contentId);
 	
 			int isBookmark = detailService.isBookmark(map);
-			System.out.println(isBookmark);
 			
 			if(isBookmark > 0 ) {
 				model.addAttribute("isBookmark", true);
@@ -496,21 +473,19 @@ private static final Logger logger = LoggerFactory.getLogger(DetailController.cl
 	@RequestMapping(value="/detail/getCalendar")
 	public String getCalendar(Model model, String user_id) {
 		
-		System.out.println(user_id);
 		List<DetailCalendar> calList = new ArrayList<DetailCalendar>();
 		calList	= detailService.getCalendar(user_id);
 		model.addAttribute("calList", calList);
-		System.out.println(calList);
 		return "detail/addCalendar";
 	}
 	
 	@RequestMapping(value="/detail/addSchedule")
 	public String addSchedule
-		(Model model, String schedule, String startTime, String endTime, String calNo, String contentid, String date, String contentTypeId) {
-
+		(Model model, String schedule, String startTime, String endTime, String calNo, 
+				String contentid, String date, String contentTypeId) {
 		String startDateTime = date + " " + startTime;
 		String endDateTime = date + " " + endTime;
-		
+
 		Map map = new HashMap();
 		map.put("schedule_title", schedule);
 		map.put("startTime", startDateTime);
@@ -535,7 +510,6 @@ private static final Logger logger = LoggerFactory.getLogger(DetailController.cl
 		map.put("contenttypeid", contenttypeid);
 		map.put("userid", userid);
 		map.put("image", image);
-		
 		
 		detailService.addBookmark(map);
 		
@@ -570,10 +544,6 @@ private static final Logger logger = LoggerFactory.getLogger(DetailController.cl
 	
 	@RequestMapping(value="/detail/commentDelete")
 	public String commentDelete(Model model, String comment_no, String contentid, String contentTypeId) {
-		System.out.println("1111111111111111111111111111111111111");
-		System.out.println(comment_no);
-		System.out.println(contentid);
-		System.out.println(contentTypeId);
 		
 		detailService.commentDelete(comment_no);
 		

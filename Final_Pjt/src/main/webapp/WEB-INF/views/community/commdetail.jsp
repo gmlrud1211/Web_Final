@@ -44,21 +44,18 @@ $(document).ready(function() {
 		}
 	}
 	var recommend = ${isRecommend };
-	alert("추천을했나요??" + recommend);
 	
 	if(recommend == true){
-		alert('true');
 		$("#likeafter").show();
 		$("#likebefore").hide();
 	} else {
-		alert('else');
 		$("#likebefore").show();
 		$("#likeafter").hide();
 	}
 
 	
 	
-	/* 즐겨찾기 추가 */
+	/* 추천 */
 	$("#likebefore").click(function() {
 
 		var cal_no = ${calendar.calendar_no}
@@ -74,9 +71,6 @@ $(document).ready(function() {
 			, dataType: "text"
 			, success: function(data){
 				
-				console.log("data");
-				console.log(data);
-
 				$("#likeafter").show();
 				$("#likebefore").hide();
 				
@@ -92,7 +86,7 @@ $(document).ready(function() {
 	});
 	
 	
-	/* 즐겨찾기 삭제  */
+	/* 추천 삭제  */
 	$("#likeafter").click(function() {
 
 		var cal_no = ${calendar.calendar_no}
@@ -121,6 +115,29 @@ $(document).ready(function() {
 			}
 		});
 
+	});
+	
+
+	$(".commentCount").append( $(".comment_row").length );	
+	
+	/* 댓글 등록 */
+	$("#commentsubmit").click(function() {
+		
+		if($("#content").val() == ""){
+			alert("댓글내용을 입력해주세요");
+			return;
+		} else {
+			$("form").submit();
+		}
+	});
+	
+	$(".deleteComment").click(function() {
+
+		var cal_no = ${calendar.calendar_no}
+		var comment_no = $(this).attr('id');
+
+		location.href = "/community/commentDelete?cal_no=" + cal_no + "&comment_no=" + comment_no;
+		
 	});
 	
 });
@@ -184,8 +201,8 @@ $(document).ready(function() {
 
 <div class="container">
 <hr style="color:#ccc;">
-		
-	<div class="row row-offcanvas row-offcanvas-right">
+	<div class="row row-offcanvas row-offcanvas-left" style="width: 1600px;">
+	
 		<div class="col-xs-12 col-sm-9">
 			<div class="jumbotron" style="padding: 5px; background-color: #eee0; border-bottom: 1px solid #403866; border-radius: 0;" >
 				<h3 style="color: #827ffe;"> ${calendar.calendar_title } </h3>
@@ -196,7 +213,7 @@ $(document).ready(function() {
 		            <p style="margin-top:10px; margin-bottom:0px;">
 			            <span style="font-size: 16px">일정 진행일 :  ${calendar.calendar_scheduleDate }</span> 
 			            <span style="font-size: 16px">캘린더 생성일 :  ${calendar.calendar_date }</span>
-			            <span style="font-size: 16px; margin-left: 200px;">조회수 :  ${calendar.view_count }&nbsp;&nbsp;&nbsp;</span>
+			            <span style="font-size: 16px; margin-left: 515px;">조회수 :  ${calendar.view_count }&nbsp;&nbsp;&nbsp;</span>
 			            <span style="font-size: 16px;">추천수 :  <span id="recommendCnt">${calendar.up_count }</span></span>
 			            <span>
 			            	<button id="likebefore" style="border:none; display:none; background-color:white;">
@@ -210,8 +227,49 @@ $(document).ready(function() {
 		        </div>
 	        </div>
 	        <div>
-		        <div id="calendar" class="fc fc-unthemd" style="max-width:450px;" >
+		        <div id="calendar" class="fc fc-unthemd" style="float:left; width:45%" >
 					
+				</div>
+				<div class="row row-offcanvas row-offcanvas-sidebar" style="float:right; width:55%">
+				    <span style="margin-bottom:10px; font-size:16px;">총 댓글 수 <span class="commentCount"> </span></span>
+					<table 	class="table table-striped table-hover" style="font-size:14px"> 
+						<thead>
+							<tr>
+								<th style="width: 8%">번호</th>
+								<th style="width: 16%">작성자 아이디</th>
+								<th style="width: 35%">댓글내용</th>
+								<th style="width: 18%">작성일시</th>
+								<th style="width: 10%"></th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach var="list" items="${commentList }" varStatus="i">
+								<tr class="comment_row">
+									<td><c:out value="${i.count}" /> </td>
+									<td>${list.user_id }</td>
+									<td>${list.comment_content }</td>
+									<td><fmt:formatDate value="${list.comment_date }" pattern="yyyy-MM-dd HH:mm"></fmt:formatDate></td>
+									<td>
+										<c:if test="${user_id eq list.user_id}">
+											<button type="button" id="${list.comment_no }" class="btn btn-danger btn-sm deleteComment">삭제</button>
+										</c:if>
+									</td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+					<form action="/community/comment" method="post" style="margin-left: 30px;">
+						<table class="container" style="margin-top:20px">
+							<tr style="text-align:center;">
+								<td colspan="3"><textarea id="content" class="content" name="content" style="width:515px; font-size:13px;"></textarea></td>
+								<td colspan="4">
+								<input type="hidden" name="cal_no" value="${calendar.calendar_no }" />
+								<input type="hidden" id="user_id" name="user_id" value="${user_id }" />
+								<button type="button" id="commentsubmit" class="btn btn-warning btn-mm" style="margin-left: 5px;">
+								등록</button></td>	
+							</tr>
+						</table>
+					</form>
 				</div>
 			</div>
 		</div>

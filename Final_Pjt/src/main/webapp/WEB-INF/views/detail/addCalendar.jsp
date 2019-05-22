@@ -3,6 +3,24 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
+
+<script type="text/javascript">
+
+	$(document).ready(function() {
+	
+		// 시간 옵션 select box 동적생성
+		for(var i=0; i<=24; i++ ) {
+			if(i<10){
+				i = '0' + i;
+			}
+			 var html;
+	            html += "<option value='" +i + ':00'+ "''>" +i + ':00' + "</option>";
+		}
+		 $("#startTime").append(html);
+		 $("#endTime").append(html);
+	});
+
+</script>
 <script type="text/javascript">
 
 	function getParameterByName(name) {
@@ -72,7 +90,6 @@
 		});
 	}
 	
-	
 	function goCal() {
         var calNo = $("#formSchedule #calNo").val();
         location.href = "/mypage/schedule?calendar_no=" + calNo;
@@ -83,6 +100,10 @@
 	      $(".addCalbg").fadeOut();
 	}
 	
+
+
+
+	
 </script>
 
 <div class="addCalbg">
@@ -90,7 +111,7 @@
 
 <div class="container con" >
 	<p style="text-align:right">
-	<button id="close" style="border:none; margin-left:400px; background-color:white;">
+	<button id="close" onclick='popupClose()' style="border:none; margin-left:400px; background-color:white;">
 		<img src="/../../../img/close.png" class="" style="width:30px; height: 30px; cursor:pointer;"/>
 	</button>
 	</p>
@@ -135,27 +156,22 @@
 			<h4 style="text-align:center; font-weight: 800;"> <span> </span> 에 <br> 추가할 일정정보를 입력해주세요</h4>
 			<table>
 				<tr>
-					<c:forEach var="list" items="${commonList }" varStatus="i">
-						<td>
-							<div class="col-xs-12" style="margin-left:15px; width: 97%; padding: 16px;" >
-								<input class="form-control" type="text" id="schedule" name="schedule"  value="${list.title }" >
-							</div>
-						</td>
-					</c:forEach>
+					<td>
+						<div class="col-xs-7" style="margin-left:15px; width: 97%; padding: 16px;" >
+							<input class="form-control" type="text" id="schedule" name="schedule" placeholder="캘린더에 저장될 일정명을 입력하세요." />
+						</div>
+					</td>
 				</tr>
 				<tr>
 					<td>
 						<div class="col-sm-2 col-sm-offset-3 control-div" style="width: 190px; margin-left:15px">
 							<select id="startTime" name="startTime" class="form-control">
-								<option value="1000">10:00</option>
-								<option value="1100">11:00</option>
-								<option value="1200">12:00</option>
+								<option value="">시작일정선택</option>
 							</select>
 						</div>
 						<div class="col-sm-2 col-sm-offset-3 control-div" style="width: 190px; margin-left:2px">
 							<select class="form-control" name="endTime" id="endTime">
-								<option value="1100">11:00</option>
-								<option value="1200">12:00</option>
+								<option value="">종료일정선택</option>
 							</select>
 						</div>
 					</td>				

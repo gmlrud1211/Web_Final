@@ -33,7 +33,6 @@ public class DetailServiceImpl implements DetailService {
 
 	@Override
 	public int isBookmark(Map map) {
-		System.out.println("map : "+ map);
 		return detailDao.isBookmark(map);
 	}
 
