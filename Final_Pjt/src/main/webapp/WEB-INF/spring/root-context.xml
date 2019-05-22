@@ -35,4 +35,5 @@
 		<property name="basePackage" value="com.allhotplace.www.dao.face"></property>
 	</bean>
 	
+	
 </beans>

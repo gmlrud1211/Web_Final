@@ -213,6 +213,27 @@ $(document).ready(function(){
 	$("#btn1on1Chat1").click(function(){
 		$("#modalChatBot").modal('hide');
 		$("#modal1on1Chat").modal('show');
+		
+		$.ajax({
+			type: "get"
+			, url: "/createChatRoom"
+			, data: {}
+		})
+		
+		//DB에 있는 채팅내역 가져오기
+		$.ajax({
+			
+			type: "get"
+			, url: "/chatList"
+			, data: {}
+			, dataType: "json"
+			, success: function(data){
+				
+				console.log("채팅내역 불러오기 ajax");
+				console.log(data.user_id);
+				console.log(data.chatlist[0]);
+			}
+		})
 	})
 	
 	/* 챗봇버튼2 */
@@ -3260,7 +3281,7 @@ function clickS60201(){
 	  <h2 style="color:white;">[Chat Bot]
 	  <div class="btn-group" data-toggle="buttons-radio" style="float:right; position:relative;">
 			  <button type="button" id="btnChatBot1" class="btn btn-warning" data-target="#modalChatBot">챗봇</button>
-			  <button type="button" id="btn1on1Chat1" class="btn btn-success" data-target="#modal1on1Chat">1대1문의</button>
+			  <button type="button" id="btn1on1Chat1" class="btn btn-success" data-target="#modal1on1Chat" onclick="connect()">1대1문의</button>
 	  </div>
 	  </h2>   
 	    <div class="modal-content" style="height:650px; background:#F7F2E0;">

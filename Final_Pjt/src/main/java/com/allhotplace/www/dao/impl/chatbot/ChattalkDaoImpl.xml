@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 마이바티스 3 Mapper DOCTYPE -->
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<!-- 매퍼 설정 -->
+<mapper namespace="com.allhotplace.www.dao.face.chatbot.ChattalkDao">
+
+	<insert id="insertChatting" parameterType="com.allhotplace.www.dto.Chattalk">
+		INSERT INTO chattalk ( chatroom_idx, receiver_no, sender_no, chat_content, chat_date )
+		VALUES ( #{chatroom_idx}, #{receiver_no}, #{sender_no}, #{chat_content}, sysdate )
+	</insert>
+	
+	<select id="selectChatListByChatroomIdx" parameterType="int" resultType="com.allhotplace.www.dto.Chattalk">
+		SELECT * FROM chattalk
+		WHERE chatroom_idx = #{chatroom_idx}
+	</select>
+</mapper>
