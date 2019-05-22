@@ -13,24 +13,5 @@ import com.allhotplace.www.util.Paging;
 @Service
 public class MainServiceImpl implements MainService{
 
-	@Autowired MainDao maindao;
-	
-	@Override
-	public int totalCount() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public List<Noticeboard> selectAll(Paging paging) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List mainsearch() {
-		List mainsearch = maindao.totalsearch();
-		return mainsearch;
-	}
 
 }
