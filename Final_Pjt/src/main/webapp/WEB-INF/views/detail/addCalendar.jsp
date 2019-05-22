@@ -20,8 +20,6 @@
 		var contentid = getParameterByName('contentId');
 		var contenttypeid = getParameterByName('contentTypeId');
 		
-		alert(contentid);
-		
 		$(".selCal").hide();
 		$(".schedule").show();
 		
@@ -39,9 +37,6 @@
 	};
 	
 	function btnAddCal() {
-		
-		
-		// ajax로 가즈아
 		
 		var schedule = $("#schedule").val();
 		var startTime = $("#startTime").val();
@@ -65,7 +60,7 @@
 				}
 			, dataType: "html"
 			, success: function(data){
-				
+
 				$(".schedule #formSchedule").hide();
 				$(".complete").show();
 				
@@ -88,23 +83,6 @@
 	      $(".addCalbg").fadeOut();
 	}
 	
-	
-	/* 
-	
-    for (var i=0; i<=23; i++) {
-    	for( var j=0; j<=60; j+=15){
-    		console.log(i  + " : " + j);
-    		
-    		if(i<10){
-    			i = "0" + i;
-    		}
-    		if(j<10){
-    			j = "0" + j;
-    		}
-    		
-    	}
-    } */
-   
 </script>
 
 <div class="addCalbg">
@@ -133,7 +111,7 @@
 					
 					<c:forEach var="list" items="${calList }" varStatus="i">
 						<c:choose>
-		                     <c:when test="${empty list or list eq 'null' or list eq ''}">
+		                     <c:when test="${empty calList}">
 			                     <span style="font-size:15px; text-align:center;"> 등록된 캘린더가 없습니다. 캘린더를 먼저 생성해주세요! </span>
 								 <button type="button" id="addCalendar" class="btn btn-primary" style="float:right"> + 새 캘린더 만들기</button>
 		                     </c:when>
@@ -156,7 +134,6 @@
 		<form id="formSchedule" action="/detail/addSchedule"  method="post" onsubmit="return false;">
 			<h4 style="text-align:center; font-weight: 800;"> <span> </span> 에 <br> 추가할 일정정보를 입력해주세요</h4>
 			<table>
-			
 				<tr>
 					<c:forEach var="list" items="${commonList }" varStatus="i">
 						<td>
@@ -170,16 +147,13 @@
 					<td>
 						<div class="col-sm-2 col-sm-offset-3 control-div" style="width: 190px; margin-left:15px">
 							<select id="startTime" name="startTime" class="form-control">
-									<option value="" selected="selected">일정시작시간</option>
-									<option value="1000">10:00</option>
-									<option value="1100">11:00</option>
-									<option value="1200">12:00</option>
+								<option value="1000">10:00</option>
+								<option value="1100">11:00</option>
+								<option value="1200">12:00</option>
 							</select>
 						</div>
 						<div class="col-sm-2 col-sm-offset-3 control-div" style="width: 190px; margin-left:2px">
 							<select class="form-control" name="endTime" id="endTime">
-								<option value="" selected="selected">일정종료시간</option>
-								<option value="1000">10:00</option>
 								<option value="1100">11:00</option>
 								<option value="1200">12:00</option>
 							</select>

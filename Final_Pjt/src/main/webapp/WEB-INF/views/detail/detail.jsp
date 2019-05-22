@@ -243,7 +243,6 @@ $(document).ready(function() {
 		} else {
 		
 		var user_id = "<%=(String)session.getAttribute("user_id")%>"
-		//var oneClick = true; //중복호출 방지용 상태변수
 		
 		   $.ajax({
 			    type: "post"
@@ -254,7 +253,8 @@ $(document).ready(function() {
 			    , dataType: "html"
 				, success: function(html){
 					console.log(html);
-					$("#calTbl tbody").append(html);
+// 					$("#calTbl tbody").append(html);
+					$("#addCalendar").html(html);
 		        	 
 		       /*   var innerHTML = "<tr>";
 		             innerHTML += "<td>" + result[i].calendar_no  + "</td>";
@@ -322,10 +322,6 @@ $(document).ready(function() {
 		var contenttypeid = getParameterByName('contentTypeId');
 		var comment_no = $(this).attr('id');
 
-		alert(comment_no);
-		alert(contentid);
-		alert(contenttypeid);
-		
 		location.href = "/detail/commentDelete?contentid=" + contentid + "&contentTypeId=" + contenttypeid +  
 						"&comment_no=" + comment_no;
 		
@@ -345,15 +341,6 @@ $(document).ready(function() {
 					<button id="likebefore" style="display:none; border:none; background-color:white;">
 	            	   <img src="/../../../img/like_nonclick.png"style="width:30px; height: 30px; cursor:pointer;"/>&nbsp;
 	            	</button>
-               <!--  찜
-               contentId=1556203&contentTypeId=15
-               firstimage
-                -->
-                
-               <!-- 일정
-               contentId=1556203&contentTypeId=15
-               firstimage, title
-                -->
                 	<button id="likeafter" style="display:none; border:none; background-color:white;">
 	               		<img src="/../../../img/like_click.png" class="" style="width:30px; height: 30px; cursor:pointer;"/>&nbsp;
 	               	</button>
@@ -1307,7 +1294,9 @@ $(document).ready(function() {
 	            </c:if>
 				</ul>
  			</div>
+ 			<div id="addCalendar">
 			<jsp:include page="../../views/detail/addCalendar.jsp" />
+			</div>
 		</div>
 	</div>
    

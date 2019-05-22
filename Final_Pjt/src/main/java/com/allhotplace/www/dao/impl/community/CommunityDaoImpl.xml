@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 마이바티스 3 Mapper DOCTYPE -->
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<!-- 매퍼 설정 -->
+<mapper namespace="com.allhotplace.www.dao.face.community.CommunityDao">
+
+	<select id="getCalendarList" resultType="hashmap">
+        
+	SELECT ROWNUM
+	     , CAL.*
+	  FROM ( SELECT * FROM CALENDAR C
+			INNER JOIN USERS U
+			ON C.USER_NO = U.USER_NO
+			WHERE C.CALENDAR_YESNO='YES'
+	        ORDER BY c.calendar_date
+	       ) CAL
+           ORDER BY ROWNUM DESC
+		
+	</select>
+ 	
+	<select id="getbestCalList" resultType="hashmap">
+        
+        SELECT * 
+	    FROM CALENDAR	   
+		INNER JOIN USERS
+		ON CALENDAR.USER_NO = USERS.USER_NO
+		WHERE UP_COUNT = (SELECT MAX(UP_COUNT) AS UP_COUNT FROM CALENDAR)
+	
+	</select>
+	
+	<select id="getSchedule" resultType="com.allhotplace.www.dto.Schedule">
+        
+		SELECT * FROM SCHEDULE
+		WHERE CALENDAR_NO = #{calNo}
+	
+	</select>
+	
+	<select id="getCalendar" resultType="com.allhotplace.www.dto.Calendar">
+        
+		SELECT * 
+	    FROM CALENDAR	   
+		INNER JOIN USERS
+		ON CALENDAR.USER_NO = USERS.USER_NO
+		WHERE CALENDAR_NO = #{calNo}
+	
+	</select>
+	
+	<update id="viewCntadd">
+		
+		UPDATE CALENDAR
+		SET VIEW_COUNT = VIEW_COUNT + 1
+		WHERE CALENDAR_NO = #{calNo}
+	
+	</update>
+	
+	<select id="isRecommend" resultType="int">
+		
+		SELECT COUNT(*) FROM RECOMMEND
+		WHERE CALENDAR_NO = #{calNo}
+		AND USER_ID =
+		(SELECT USER_NO FROM USERS WHERE USER_ID = #{user_id})
+
+	</select>
+	
+	<insert id="recommend">
+	
+		INSERT INTO RECOMMEND
+		VALUES
+		(RECOMMEND_SEQ.NEXTVAL, 
+            (SELECT USER_NO FROM USERS WHERE USER_ID=#{user_id}), 
+         #{cal_no}, SYSDATE)
+	
+	</insert>
+	
+	<update id="calRecommend">
+		
+		UPDATE CALENDAR
+		SET UP_COUNT = UP_COUNT + 1
+		WHERE CALENDAR_NO = #{cal_no}
+	
+	</update>
+	
+	<delete id="recommendCancel">
+	
+		DELETE FROM RECOMMEND
+		WHERE CALENDAR_NO = #{cal_no} AND 
+		USER_ID= (SELECT USER_NO FROM USERS WHERE USER_ID=#{user_id})
+		
+	</delete>
+	
+	<update id="calRecommendCencel">
+		
+		UPDATE CALENDAR
+		SET UP_COUNT = UP_COUNT - 1
+		WHERE CALENDAR_NO = #{cal_no}
+	
+	</update>
+	
+	<select id="getRecommend" resultType="int">
+	
+		SELECT UP_COUNT FROM CALENDAR
+		WHERE CALENDAR_NO = #{cal_no}
+		
+	</select>
+ 	
+</mapper>

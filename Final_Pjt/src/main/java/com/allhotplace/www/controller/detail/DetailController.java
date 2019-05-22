@@ -508,9 +508,6 @@ private static final Logger logger = LoggerFactory.getLogger(DetailController.cl
 	public String addSchedule
 		(Model model, String schedule, String startTime, String endTime, String calNo, String contentid, String date, String contentTypeId) {
 
-		
-		System.out.println("11111111111111111111111111111111111");
-		
 		String startDateTime = date + " " + startTime;
 		String endDateTime = date + " " + endTime;
 		
@@ -522,7 +519,6 @@ private static final Logger logger = LoggerFactory.getLogger(DetailController.cl
 		map.put("schedule_id", contentid);
 		
 		detailService.addSchedule(map);
-		System.out.println(map);
 			
 		return "redirect:/detail?contentId=" + contentid + "&contentTypeId=" + contentTypeId ;
 	}
