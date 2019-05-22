@@ -37,25 +37,25 @@
 		, data: { "chatroom_idx" : $('#chatroom_idx').val() }
 		, dataType: "json"
 		, success: function( data ){
-			
+			console.log(data);
 			
 		}
 	});
+	
+	
 		$('#btnChatBotSend2').on('click', function(evt){
 			
 			evt.preventDefault();
-			
 			console.log("버튼클릭");
 			
 			if(socket.readyState != 1 || socket.readyState == null) return;
-			
 			let content2 = $('input#content2').val();
 			socket.send(content2);
 			
 			//메시지 전송 시 input태그 입력값 초기화
 			$("#content2").val("");
-			
 		});
+		
 		
 		/* 챗봇 나가기2 */
 		/* 자동새로고침 0.2초로 설정 */
@@ -98,9 +98,7 @@
 //						+"<div id=\"chatBottom2\"></div>"
 					
 				$("#resultChatBot2").html(html)
-				
 				scrollMessage2();
-				
 			}
 		};
 
@@ -211,8 +209,7 @@ ul.pagination li {
 	<jsp:include page="/WEB-INF/views/common/header.jsp" />
 </div>
 
-<input type="hidden" name="chatroom_idx" id="chatroom_idx"
-	value="${list.chatroom_idx }" />
+
 
 <div id="menu"
 	style="background-color: #d7d3d447; border-right: #D8D8D8; height: 2260px; width: 20%; float: left;">
@@ -239,6 +236,8 @@ ul.pagination li {
 
 		<tbody>
 			<c:forEach items="${chatonelist }" var="list">
+			<input type="hidden" name="chatroom_idx" id="chatroom_idx" value="${list.chatroom_idx }" />
+			
 				<tr>
 					<td>${list.chatroom_idx }</td>
 					<td>${list.user_name }</td>

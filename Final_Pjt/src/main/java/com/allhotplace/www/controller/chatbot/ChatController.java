@@ -34,7 +34,6 @@ public class ChatController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(ChatController.class);
 	
-
 	//채팅ajax
 	@RequestMapping(value="/chatAjax", method=RequestMethod.POST)
 	public String chatAjax(Model model, String content1, HttpSession session) {
@@ -70,7 +69,7 @@ public class ChatController {
 		}else {
 			return "jsonView";
 		}
-		
+	
 //		model.addAttribute("reply", replyContent);
 //		logger.info(replyContent.getsChat_answer());
 		
