@@ -9,6 +9,28 @@
 <script type="text/javascript">
 $(document).ready(function(){
 	
+	//enter누르면 메시지보내기
+	$('input#content2').keydown(function(key) {
+
+        if (key.keyCode == 13) {// 엔터
+        	
+        	console.log("socket.readyState:"+socket.readyState);
+        	
+        	//소켓이 준비되지 않으면 return
+    		if(socket.readyState !== 1 ||socket.readyState == null) return;
+    		
+    		//보내기창 데이터가져오기
+    		let content2 = $('input#content2').val();
+    		
+    		/* send가 핸들러쪽으로 가게 만드는 것 같음 */
+    		socket.send(content2);
+    		//보내기창 초기화
+    		$('input#content2').val('')
+
+        }
+
+	});
+	
 	$('#btnChatBotSend2').on('click', function(evt){
 		
 		evt.preventDefault();
@@ -24,7 +46,9 @@ $(document).ready(function(){
 		$("#content2").val("");
 	});
 	
-	connect();
+
+	
+// 	connect();
 	
 	
 });
@@ -60,6 +84,7 @@ function connect(){
 				+"</ul>";	
 //					+"<div id=\"chatBottom2\"></div>"
 				
+			
 			$("#resultChatBot2").html(html)
 			
 			scrollMessage2();

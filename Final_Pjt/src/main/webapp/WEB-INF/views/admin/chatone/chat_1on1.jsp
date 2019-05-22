@@ -23,10 +23,7 @@ $(document).ready(function(){
 		//메시지 전송 시 input태그 입력값 초기화
 		$("#content2").val("");
 	});
-	
 	connect();
-	
-	
 });
 
 var socket = null;

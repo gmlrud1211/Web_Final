@@ -15,5 +15,10 @@
 		INSERT INTO users ( user_no, user_id, user_pw, user_name, user_email, user_phone, user_birth, user_regdate)
 		VALUES ( users_seq.nextval, #{user_id }, #{user_pw }, #{user_name }, #{user_email }, #{user_phone }, #{user_birth }, sysdate )
 	</insert>
+	
+	<select id="selectUserInfo" parameterType="String" resultType="com.allhotplace.www.dto.Users">
+      SELECT * FROM users
+      WHERE user_id = #{user_id}
+   </select>
  	
 </mapper>

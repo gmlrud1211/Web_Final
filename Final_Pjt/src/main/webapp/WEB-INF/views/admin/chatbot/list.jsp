@@ -15,6 +15,10 @@
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
 
 <style>
+i{
+font-size : 20px;
+
+}
 #container {
 	width: 1100px;
 	margin: 0 auto;
@@ -141,7 +145,7 @@ tr.question{
 
 #container>div {
 	position: relative;
-	height:600px;
+	height:450px;
 }
 
 #container>div>table {
@@ -163,7 +167,7 @@ tr.question{
 
 td.ss{
 width : 1100px; 
-height: 35px;
+/* height: 35px;*/
 }
 .bt{
 background-color : #827ffe;
@@ -241,9 +245,9 @@ border-radius: 5px;
 										href="/admin/chatbot/delete?sChat_no=${slist.sChat_no }">삭제</a></td>
 								</tr>
 
-								<tr class="answer">
-									<td colspan="3" style="text-align: left; padding-left: 20px">
-									${slist.sChat_answer } <i class="xi-angle-up" style="text-align:right;"></i></td>
+							<tr class="answer">
+								<td colspan="3" style="height: 20px;text-align: left; padding-left: 20px">
+								<i class="xi-angle-up">&nbsp;&nbsp;</i>${slist.sChat_answer }</td>
 								</tr>
 							</c:if>
 						</c:forEach>
@@ -502,7 +506,7 @@ border-radius: 5px;
 		</div>
 	<div>
 		<button id="btnWrite" class="btn btn-primary bt"
-			style="text-align: center; margin-top: 240px; margin-right: 150px;">등록</button>
+			style="text-align: center; margin-right: 150px;">등록</button>
 	</div>
 	</div>
 

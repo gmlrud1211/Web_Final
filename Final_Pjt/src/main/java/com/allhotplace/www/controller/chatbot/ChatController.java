@@ -2,6 +2,7 @@ package com.allhotplace.www.controller.chatbot;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -13,9 +14,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.allhotplace.www.dao.face.chatbot.ChatBotDao;
+import com.allhotplace.www.dao.face.chatbot.ChatroomDao;
+import com.allhotplace.www.dao.face.user.UserDao;
+import com.allhotplace.www.dto.Chatroom;
 import com.allhotplace.www.dto.JChatbot;
 import com.allhotplace.www.dto.MChatbot;
 import com.allhotplace.www.dto.SChatbot;
+import com.allhotplace.www.dto.Users;
 import com.allhotplace.www.dto.XChatbot;
 import com.allhotplace.www.service.face.chatbot.ChatBotService;
 
@@ -24,6 +29,8 @@ public class ChatController {
 	
 	@Autowired ChatBotService chatBotService;
 	@Autowired ChatBotDao chatBotDao;
+	@Autowired UserDao userDao;
+	@Autowired ChatroomDao chatroomDao;
 	
 	private static final Logger logger = LoggerFactory.getLogger(ChatController.class);
 	
@@ -157,6 +164,47 @@ public class ChatController {
 		logger.info("1대1채팅");
 	}
 	
+	@RequestMapping(value="/createChatRoom")
+	public void createChatRoom(HttpSession session, HttpServletRequest request) {
+		
+		String user_id = (String)session.getAttribute("user_id");
+		logger.info("createChatRoom 유저아이디: "+user_id);
+		
+		//세션에서 가져온 유저아이디로 유저정보 조회
+		Users user = userDao.selectUserInfo(user_id);
+		logger.info("조회한 유저정보: "+user.toString());
+		
+		logger.info("접속한 유저 ip: "+request.getRemoteAddr());
+		
+		//dto에 접속유저번호, 유저ip저장
+		Chatroom chatroom = new Chatroom();
+		
+		System.out.println(user.getUser_no());
+		chatroom.setUser_no(user.getUser_no());
+		chatroom.setChatroom_userIp(request.getRemoteAddr());
+		
+		
+		//채팅방이 존재하지 않을 때 해당 유저 전용 새로운 채팅방 생성
+		if(chatroomDao.checkChatroom(user.getUser_no())==false) {
+			logger.info("채팅방 생성");
+			logger.info("채팅방 boolean: " + chatroomDao.checkChatroom(user.getUser_no()));
+			chatroomDao.createChatroom(chatroom);
+			logger.info("chatroom_idx: "+ chatroom.getChatroom_idx());
+			chatroom.setChatroom_idx(chatroom.getChatroom_idx());
+			
+			session.setAttribute("chatroom_idx", chatroom.getChatroom_idx());
+			logger.info("session_chatroom_idx: "+session.getAttribute("chatroom_idx"));
+			
+			logger.info("만들어진 채팅방 조회" + chatroomDao.selectChatroomByUser_no(user.getUser_no()));
+		} else {
+			logger.info("채팅방 이미 존재");
+			chatroom.setChatroom_idx(chatroomDao.selectChatroomByUser_no(user.getUser_no()).getChatroom_idx());
+
+			logger.info("chatroom:"+chatroom);
+			session.setAttribute("chatroom_idx", chatroom.getChatroom_idx());
+			logger.info(""+session.getAttribute("chatroom_idx"));
+		}
+	}
 	
 	
 	

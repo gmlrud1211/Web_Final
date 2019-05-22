@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.allhotplace.www.dao.face.admin.ChatoneDao;
 import com.allhotplace.www.dto.Chatroom;
+import com.allhotplace.www.dto.Chattalk;
 import com.allhotplace.www.service.face.admin.ChatoneService;
 import com.allhotplace.www.util.Paging;
 
@@ -26,6 +27,11 @@ public class ChatoneServiceImpl implements ChatoneService {
 	@Override
 	public List<Chatroom> getPagingList(Paging paging) {
 		return chatoneDao.getPaginglist(paging);
+	}
+
+	@Override
+	public List<Chattalk> getChatlist(int chatroom_idx) {
+		return chatoneDao.getChatlist(chatroom_idx);
 	}
 
 

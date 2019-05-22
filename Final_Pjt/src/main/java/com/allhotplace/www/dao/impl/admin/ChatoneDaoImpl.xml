@@ -35,16 +35,11 @@
 	</select>
 	
   
-   
-<!-- 	<select id="select" parameterType="com.allhotplace.www.dto.Noticeboard" resultType="com.allhotplace.www.dto.Noticeboard"> -->
-<!-- 		SELECT * FROM noticeboard -->
-<!-- 		WHERE notice_no = #{notice_no } -->
-<!-- 	</select> -->
-
-<!-- 	<delete id="deleteNboard" parameterType="com.allhotplace.www.dto.Noticeboard"> -->
-<!-- 		delete from noticeboard -->
-<!-- 		where notice_no = #{notice_no } -->
-<!-- 	</delete> -->
+   <!-- 페이징 처리 게시글 반환 --> 
+	<select id="getChatlist" resultType="com.allhotplace.www.dto.Chattalk" parameterType="int">
+	SELECT * FROM chattalk
+	where chatroom_idx = #{chatroom_idx }
+	</select>
 
 	
 </mapper>
