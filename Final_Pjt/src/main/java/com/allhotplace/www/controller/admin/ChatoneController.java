@@ -14,16 +14,27 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.allhotplace.www.dao.face.chatbot.ChatBotDao;
+import com.allhotplace.www.dao.face.chatbot.ChatroomDao;
+import com.allhotplace.www.dao.face.user.UserDao;
 import com.allhotplace.www.dto.Chatroom;
 import com.allhotplace.www.dto.Chattalk;
 import com.allhotplace.www.dto.Noticeboard;
+import com.allhotplace.www.dto.Users;
 import com.allhotplace.www.service.face.admin.ChatoneService;
+import com.allhotplace.www.service.face.chatbot.ChatBotService;
 import com.allhotplace.www.util.Paging;
 
 @Controller
 public class ChatoneController {
 
 	@Autowired ChatoneService chatoneService;
+
+	@Autowired ChatBotService chatBotService;
+	@Autowired ChatBotDao chatBotDao;
+	@Autowired UserDao userDao;
+	@Autowired ChatroomDao chatroomDao;
+	
 
 	private static final Logger logger = LoggerFactory.getLogger(ChatoneController.class);
 
@@ -60,7 +71,6 @@ public class ChatoneController {
 //		paging.setSearch(param1);
 
 		List<Chatroom> chatonelist = chatoneService.getPagingList(paging);
-		System.out.println("값" + totalCount);
 
 //		model.addAttribute("search", param1);
 
@@ -70,15 +80,50 @@ public class ChatoneController {
 
 	
 	@RequestMapping(value = "/resultChatList", method = RequestMethod.GET)
-	public String resultChatList(HttpSession session, Model model) {
+	public String resultChatList(HttpSession session, Model model , int chatroom_idx, HttpServletRequest request) {
 		
-		int chatroom_idx = (int)session.getAttribute("chatroom_idx");
+		String user_id = (String)session.getAttribute("user_id");
+		logger.info("createChatRoom 유저아이디: "+user_id);
 		
-		List<Chattalk> chatoneList = chatoneService.getChatlist(chatroom_idx);
+		//세션에서 가져온 유저아이디로 유저정보 조회
+		Users user = userDao.selectUserInfo(user_id);
+		logger.info("조회한 유저정보: "+user.toString());
+		
+		logger.info("접속한 유저 ip: "+request.getRemoteAddr());
+		
+		//dto에 접속유저번호, 유저ip저장
+		Chatroom chatroom = new Chatroom();
+		
+		System.out.println(user.getUser_no());
+		chatroom.setUser_no(user.getUser_no());
+		chatroom.setChatroom_userIp(request.getRemoteAddr());
+		
+		logger.info("채팅방 이미 존재");
+		chatroom.setChatroom_idx(chatroomDao.selectChatroomByUser_no(user.getUser_no()).getChatroom_idx());
+
+		logger.info("chatroom:"+chatroom);
+		session.setAttribute("chatroom_idx", chatroom.getChatroom_idx());
+		logger.info(""+session.getAttribute("chatroom_idx"));
+		
+		
+		int chatroom_idx1 = (int)(session.getAttribute("chatroom_idx"));
+		
+		List<Chattalk> chatoneList = chatoneService.getChatlist(chatroom_idx1);
+		logger.info(chatoneList.toString());
+		
+		System.out.println("리스트출력      " + chatoneList);
 		
 	    model.addAttribute("chatoneList",chatoneList);
 		
 		return "jsonView";
 	}
 
+	@RequestMapping(value = "/connectFunc", method = RequestMethod.GET)
+	public String connectFunc(HttpSession session, Model model , String chatroom_idx, HttpServletRequest request) {
+		System.out.println(chatroom_idx);
+		session.setAttribute("chatroom_idx", chatroom_idx);
+		
+		return "jsonView";
+	
+	}
 }

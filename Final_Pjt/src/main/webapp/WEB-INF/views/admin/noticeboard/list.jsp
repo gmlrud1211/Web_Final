@@ -23,10 +23,6 @@
 		});
 	});
 
-	
-
-
-
 		if (confirm("게시글을 삭제하겠습니까?")) {
 			//삭제처리 후 다시 불러올 리스트 url      
 			var url = document.location.href;
