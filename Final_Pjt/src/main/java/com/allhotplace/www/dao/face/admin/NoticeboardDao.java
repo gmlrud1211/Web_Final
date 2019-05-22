@@ -11,6 +11,12 @@ import com.allhotplace.www.util.Paging;
 
 public interface NoticeboardDao {
 
+	// 작은 것중 제일 큰 값
+	public Noticeboard getMinNo (int boardno);
+	
+	// 큰 것중 제일 작은 값 
+	public Noticeboard getMaxNo(int boardno);
+	
 	// 총 게시글 수 반환
 	public int selectCntNboard(String word);
 

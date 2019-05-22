@@ -10,10 +10,43 @@ public class Noticeboard {
 	private Date notice_date;
 	private int notice_count;
 	
+	private String min_title;
+	private int min_no;
+	
+	private String max_title;
+	private int max_no;
+	
+	
 	@Override
 	public String toString() {
 		return "Noticeboard [notice_no=" + notice_no + ", notice_title=" + notice_title + ", notice_content="
-				+ notice_content + ", notice_date=" + notice_date + ", notice_count=" + notice_count + "]";
+				+ notice_content + ", notice_date=" + notice_date + ", notice_count=" + notice_count + ", min_title="
+				+ min_title + ", min_no=" + min_no + ", max_title=" + max_title + ", max_no=" + max_no + "]";
+	}
+	
+	public String getMin_title() {
+		return min_title;
+	}
+	public void setMin_title(String min_title) {
+		this.min_title = min_title;
+	}
+	public int getMin_no() {
+		return min_no;
+	}
+	public void setMin_no(int min_no) {
+		this.min_no = min_no;
+	}
+	public String getMax_title() {
+		return max_title;
+	}
+	public void setMax_title(String max_title) {
+		this.max_title = max_title;
+	}
+	public int getMax_no() {
+		return max_no;
+	}
+	public void setMax_no(int max_no) {
+		this.max_no = max_no;
 	}
 	public int getNotice_no() {
 		return notice_no;

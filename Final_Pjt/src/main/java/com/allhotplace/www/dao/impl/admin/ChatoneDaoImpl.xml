@@ -43,3 +43,4 @@ where chatroom_idx = #{chatroom_idx }
 </select>
 
 </mapper>
+

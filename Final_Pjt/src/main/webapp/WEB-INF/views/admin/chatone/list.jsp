@@ -37,8 +37,7 @@
 		, data: { "chatroom_idx" : $('#chatroom_idx').val() }
 		, dataType: "json"
 		, success: function( data ){
-			
-			
+
 		}
 	});
 		$('#btnChatBotSend2').on('click', function(evt){
@@ -48,7 +47,7 @@
 			console.log("버튼클릭");
 			
 			if(socket.readyState != 1 || socket.readyState == null) return;
-			
+
 			let content2 = $('input#content2').val();
 			socket.send(content2);
 			
@@ -56,7 +55,7 @@
 			$("#content2").val("");
 			
 		});
-		
+    
 		/* 챗봇 나가기2 */
 		/* 자동새로고침 0.2초로 설정 */
 		$("#btnChatBotOver2").click(function(){

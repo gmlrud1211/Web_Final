@@ -8,7 +8,7 @@ public interface ChattalkDao {
 
 	//채팅 insert
 	public void insertChatting(Chattalk chattalk);
-	
-	//채팅방 index로 채팅리스트 불러오기
+
+  //채팅방 index로 채팅리스트 불러오기
 	public List<Chattalk> selectChatListByChatroomIdx(int chatroom_idx);
 }

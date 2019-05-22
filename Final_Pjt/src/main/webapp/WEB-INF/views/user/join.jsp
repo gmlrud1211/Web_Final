@@ -272,23 +272,25 @@
 	
 </style>
 <body>
+	<jsp:include page="../common/header.jsp" />
+	
 	<div class="container">
 			
-			<div style="max-width: 450px; margin: 0 auto;">
+			<div style="max-width: 600px; margin: 0 auto;">
 			<h4 style="text-align:center;">JOIN</h4>
 			<br><br>
 			
 			<form class="form-horizontal myForm123" id="myForm" action="/join" method="post">
 					
 				<div class="form-group has-feedback">
-					<label class="col-sm-5 col-sm-offset-1 control-label" for="user_id">아이디</label>
+					<label class="col-sm-5 col-sm-offset-1 control-label" for="user_id"><img src="/img/mypage/user.png"/> &nbsp;&nbsp;아이디</label>
 					<div class="col-sm-13">
 						<input class="form-control" type="text" name ="user_id" id="user_id" size="10" placeholder="Id" />
 					</div>
 				</div>
 
 				<div class="form-group has-feedback">
-					<label class="col-sm-5 col-sm-offset-1 control-label" for="user_pw">비밀번호</label>
+					<label class="col-sm-5 col-sm-offset-1 control-label" for="user_pw"><img src="/img/mypage/lock.png"/> &nbsp;&nbsp;비밀번호</label>
 					<div class="col-sm-13">
 						<input class="form-control" type="password" id ="user_pw" name="user_pw" placeholder="Password" />
 						<span class="glyphicon glyphicon-ok form-control-feedback"></span>
@@ -297,7 +299,7 @@
 				<br>
 
 				<div class="form-group has-feedback">
-					<label class="col-sm-5 col-sm-offset-1 control-label" for="re_user_pw">비밀번호 재확인</label>
+					<label class="col-sm-5 col-sm-offset-1 control-label" for="re_user_pw"><img src="/img/mypage/lock.png"/> &nbsp;&nbsp;비밀번호 재확인</label>
 					<div class="col-sm-13">
 						<input class="form-control" type="password" id ="re_user_pw" name="re_user_pw" placeholder="Password" />
 						<span id="rePwdErr" class="help-block">비밀번호와 일치하지 않습니다. 다시 입력해 주세요.</span>
@@ -306,14 +308,14 @@
 				</div>	
 				
 				<div class="form-group has-feedback">
-					<label class="col-sm-5 col-sm-offset-1 control-label" for="user_name">이름</label>
+					<label class="col-sm-5 col-sm-offset-1 control-label" for="user_name"><img src="/img/mypage/card.png"/> &nbsp;&nbsp;이름</label>
 					<div class="col-sm-13">
 						<input class="form-control" type="text" id ="user_name" name="user_name" placeholder="Name" />
 					</div>
 				</div>	
 				
 				<div class="form-group has-feedback">
-					<label class="col-sm-5 col-sm-offset-1 control-label" for="user_email">이메일</label>
+					<label class="col-sm-5 col-sm-offset-1 control-label" for="user_email"><img src="/img/mypage/email.png"/> &nbsp;&nbsp;이메일</label>
 					<div class="col-sm-13">
 						<input class="form-control" type="text" id ="user_email" name="user_email" placeholder="Email" />
 						<span id="emailErr" class="help-block">올바른 이메일 형식이 아닙니다. 다시 입력해 주세요.</span>
@@ -322,14 +324,14 @@
 				</div>	
 
 				<div class="form-group has-feedback">	
-					<label class="col-sm-5 col-sm-offset-1 control-label" for="user_phone">휴대폰 번호</label>			
+					<label class="col-sm-5 col-sm-offset-1 control-label" for="user_phone"><img src="/img/mypage/telephone.png"/> &nbsp;&nbsp;휴대폰 번호</label>			
 					<div class="col-sm-13">
 						<input class="form-control" type="text" id ="user_phone" name="user_phone" placeholder="Phone_Number" />
 					</div>
 				</div>	
 				
 				<div class="form-group has-feedback">
-					<label class="col-sm-5 col-sm-offset-1 control-label" for="user_birth">생년월일</label>
+					<label class="col-sm-5 col-sm-offset-1 control-label" for="user_birth"><img src="/img/mypage/birthday.png"/> &nbsp;&nbsp;생년월일</label>
 						<div class="col-sm-3 control-div" style="width:200px">
 					      <select class="form-control" name="birth_year" id="birth_year"></select>
 					   </div>

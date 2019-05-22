@@ -64,4 +64,40 @@ public class MypageSeviceImpl implements MypageService{
 		return mypageDao.selectSchedule(calendar_no);
 	}
 
+	@Override
+	public int deleteSchedule(int schedule_no) {
+		return mypageDao.deleteSchedule(schedule_no);
+	}
+
+	@Override
+	public int isOpenCheck(int calendar_no) {
+		return mypageDao.isOpenCheck(calendar_no);
+	}
+
+	@Override
+	public void calChangeYes(int calendar_no) {
+		mypageDao.calendarYes(calendar_no);
+	}
+
+	@Override
+	public void calChangeNo(int calendar_no) {
+		mypageDao.calendarNo(calendar_no);
+	}
+
+	@Override
+	public void scheduleUpdate(int schedule_no, String schedule_startTime, String schedule_endTime) {
+		
+		HashMap map = new HashMap();
+		map.put("schedule_no", schedule_no);
+		map.put("schedule_startTime", schedule_startTime);
+		map.put("schedule_endTime", schedule_endTime);
+		
+		System.out.println("service");
+		System.out.println("sch_no"+schedule_no);
+		System.out.println("start"+schedule_startTime);
+		System.out.println("end"+schedule_endTime);
+			
+		mypageDao.updateSchedule(map);
+	}
+
 }

@@ -38,15 +38,8 @@
 	</select>
 
 	<insert  id="InsertSchat" parameterType="com.allhotplace.www.dto.SChatbot">
-
-<!-- selectKey keyProperty="notice_no" resultType="int" --> 
-<!-- 		order="BEFORE"> --> 
-<!-- 			SELECT noticeboard_seq.nextval FROM dual --> 
-<!-- 		</selectKey> --> 
-
 		INSERT INTO schatbot (xchat_no, mchat_no, schat_no, schat_name, schat_answer)
 		VALUES ( #{xChat_no } ,#{mChat_no }, #{sChat_no }, #{sChat_name}, #{sChat_answer} )
-
 	</insert>
 
 

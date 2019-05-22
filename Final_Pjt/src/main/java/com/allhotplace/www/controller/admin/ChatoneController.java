@@ -78,7 +78,7 @@ public class ChatoneController {
 		model.addAttribute("chatonelist", chatonelist);
 		
 		logger.info(chatonelist.toString());
-		
+
 	}
 
 	

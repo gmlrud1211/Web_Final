@@ -19,6 +19,7 @@ import com.allhotplace.www.dao.face.chatbot.ChattalkDao;
 import com.allhotplace.www.dao.face.user.UserDao;
 import com.allhotplace.www.dto.Chatroom;
 import com.allhotplace.www.dto.Chattalk;
+
 import com.allhotplace.www.dto.JChatbot;
 import com.allhotplace.www.dto.MChatbot;
 import com.allhotplace.www.dto.SChatbot;
@@ -37,7 +38,6 @@ public class ChatController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(ChatController.class);
 	
-
 	//채팅ajax
 	@RequestMapping(value="/chatAjax", method=RequestMethod.POST)
 	public String chatAjax(Model model, String content1, HttpSession session) {
@@ -73,7 +73,7 @@ public class ChatController {
 		}else {
 			return "jsonView";
 		}
-		
+	
 //		model.addAttribute("reply", replyContent);
 //		logger.info(replyContent.getsChat_answer());
 		
@@ -203,12 +203,12 @@ public class ChatController {
 			logger.info("채팅방 이미 존재");
 			
 			chatroom.setChatroom_idx(chatroomDao.selectChatroomByUser_no(user.getUser_no()).getChatroom_idx());
+
 			logger.info("chatroom:"+chatroom);
 			session.setAttribute("chatroom_idx", chatroom.getChatroom_idx());
 			logger.info(""+session.getAttribute("chatroom_idx"));
 		}
-		
-		
+    
 	}
 	
 	@RequestMapping(value="/chatList")
