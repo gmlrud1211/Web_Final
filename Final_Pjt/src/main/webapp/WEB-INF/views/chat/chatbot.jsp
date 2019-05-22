@@ -219,6 +219,21 @@ $(document).ready(function(){
 			, url: "/createChatRoom"
 			, data: {}
 		})
+		
+		//DB에 있는 채팅내역 가져오기
+		$.ajax({
+			
+			type: "get"
+			, url: "/chatList"
+			, data: {}
+			, dataType: "json"
+			, success: function(data){
+				
+				console.log("채팅내역 불러오기 ajax");
+				console.log(data.user_id);
+				console.log(data.chatlist[0]);
+			}
+		})
 	})
 	
 	/* 챗봇버튼2 */

@@ -76,6 +76,9 @@ public class ChatoneController {
 
 		model.addAttribute("paging", paging);
 		model.addAttribute("chatonelist", chatonelist);
+		
+		logger.info(chatonelist.toString());
+
 	}
 
 	

@@ -17,8 +17,8 @@
 	</insert>
 	
 	<select id="selectUserInfo" parameterType="String" resultType="com.allhotplace.www.dto.Users">
-      SELECT * FROM users
-      WHERE user_id = #{user_id}
-   </select>
- 	
+		SELECT * FROM users
+		WHERE user_id = #{user_id}
+	</select>
+  
 </mapper>

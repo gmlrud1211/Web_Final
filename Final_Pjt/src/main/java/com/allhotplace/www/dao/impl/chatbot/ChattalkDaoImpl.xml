@@ -11,4 +11,10 @@
 		INSERT INTO chattalk ( chatroom_idx, receiver_no, sender_no, chat_content, chat_date )
 		VALUES ( #{chatroom_idx}, #{receiver_no}, #{sender_no}, #{chat_content}, sysdate )
 	</insert>
+
+  <select id="selectChatListByChatroomIdx" parameterType="int" resultType="com.allhotplace.www.dto.Chattalk">
+		SELECT * FROM chattalk
+		WHERE chatroom_idx = #{chatroom_idx}
+	</select>
+  
 </mapper>

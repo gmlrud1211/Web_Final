@@ -15,8 +15,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.allhotplace.www.dao.face.chatbot.ChatBotDao;
 import com.allhotplace.www.dao.face.chatbot.ChatroomDao;
+import com.allhotplace.www.dao.face.chatbot.ChattalkDao;
 import com.allhotplace.www.dao.face.user.UserDao;
 import com.allhotplace.www.dto.Chatroom;
+import com.allhotplace.www.dto.Chattalk;
+
 import com.allhotplace.www.dto.JChatbot;
 import com.allhotplace.www.dto.MChatbot;
 import com.allhotplace.www.dto.SChatbot;
@@ -31,6 +34,7 @@ public class ChatController {
 	@Autowired ChatBotDao chatBotDao;
 	@Autowired UserDao userDao;
 	@Autowired ChatroomDao chatroomDao;
+	@Autowired ChattalkDao chattalkDao;
 	
 	private static final Logger logger = LoggerFactory.getLogger(ChatController.class);
 	
@@ -197,15 +201,27 @@ public class ChatController {
 			logger.info("만들어진 채팅방 조회" + chatroomDao.selectChatroomByUser_no(user.getUser_no()));
 		} else {
 			logger.info("채팅방 이미 존재");
+			
 			chatroom.setChatroom_idx(chatroomDao.selectChatroomByUser_no(user.getUser_no()).getChatroom_idx());
 
 			logger.info("chatroom:"+chatroom);
 			session.setAttribute("chatroom_idx", chatroom.getChatroom_idx());
 			logger.info(""+session.getAttribute("chatroom_idx"));
 		}
+    
 	}
 	
-	
+	@RequestMapping(value="/chatList")
+	public String chatList(Model model, HttpSession session) {
+		
+		List<Chattalk> chatlist = chattalkDao.selectChatListByChatroomIdx((int)session.getAttribute("chatroom_idx"));
+		logger.info("chatlist: "+chatlist.toString());
+		
+		model.addAttribute("user_id", session.getAttribute("user_id"));
+		model.addAttribute("chatlist", chatlist);
+		
+		return "jsonView";
+	}
 	
 	
 	
