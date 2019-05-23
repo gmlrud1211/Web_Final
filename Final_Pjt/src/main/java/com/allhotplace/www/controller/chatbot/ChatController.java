@@ -19,7 +19,6 @@ import com.allhotplace.www.dao.face.chatbot.ChattalkDao;
 import com.allhotplace.www.dao.face.user.UserDao;
 import com.allhotplace.www.dto.Chatroom;
 import com.allhotplace.www.dto.Chattalk;
-
 import com.allhotplace.www.dto.JChatbot;
 import com.allhotplace.www.dto.MChatbot;
 import com.allhotplace.www.dto.SChatbot;
@@ -38,6 +37,7 @@ public class ChatController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(ChatController.class);
 	
+
 	//채팅ajax
 	@RequestMapping(value="/chatAjax", method=RequestMethod.POST)
 	public String chatAjax(Model model, String content1, HttpSession session) {
@@ -73,7 +73,7 @@ public class ChatController {
 		}else {
 			return "jsonView";
 		}
-	
+		
 //		model.addAttribute("reply", replyContent);
 //		logger.info(replyContent.getsChat_answer());
 		
@@ -168,7 +168,7 @@ public class ChatController {
 	}
 	
 	@RequestMapping(value="/createChatRoom")
-	public void createChatRoom(HttpSession session, HttpServletRequest request) {
+	public String createChatRoom(HttpSession session, HttpServletRequest request) {
 		
 		String user_id = (String)session.getAttribute("user_id");
 		logger.info("createChatRoom 유저아이디: "+user_id);
@@ -195,20 +195,21 @@ public class ChatController {
 			logger.info("chatroom_idx: "+ chatroom.getChatroom_idx());
 			chatroom.setChatroom_idx(chatroom.getChatroom_idx());
 			
-			session.setAttribute("chatroom_idx", chatroom.getChatroom_idx());
+			session.setAttribute("chatroom_idx", Integer.toString(chatroom.getChatroom_idx()));
 			logger.info("session_chatroom_idx: "+session.getAttribute("chatroom_idx"));
+			logger.info("세션채팅방확인:"+session.getAttribute("chatroom_idx"));
 			
 			logger.info("만들어진 채팅방 조회" + chatroomDao.selectChatroomByUser_no(user.getUser_no()));
 		} else {
 			logger.info("채팅방 이미 존재");
 			
 			chatroom.setChatroom_idx(chatroomDao.selectChatroomByUser_no(user.getUser_no()).getChatroom_idx());
-
 			logger.info("chatroom:"+chatroom);
-			session.setAttribute("chatroom_idx", chatroom.getChatroom_idx());
-			logger.info(""+session.getAttribute("chatroom_idx"));
+			session.setAttribute("chatroom_idx", Integer.toString(chatroom.getChatroom_idx()));
+			logger.info("세션채팅방확인:"+session.getAttribute("chatroom_idx"));
 		}
-    
+		
+		return "jsonView";
 	}
 	
 	@RequestMapping(value="/chatList")

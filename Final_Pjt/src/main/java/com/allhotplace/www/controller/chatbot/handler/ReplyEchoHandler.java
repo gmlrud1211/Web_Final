@@ -52,12 +52,11 @@ public class ReplyEchoHandler extends TextWebSocketHandler{
 		 
 //		chatroom.setChatroom_userIp(session.getRemoteAddress().getHostName());
 		Map<String, Object> httpSession = session.getAttributes();
-
-    int roomNo = Integer.parseInt((String)httpSession.get("chatroom_idx"));
+		 System.out.println("확인!!!:"+(String)httpSession.get("chatroom_idx"));
+		int roomNo = Integer.parseInt((String)httpSession.get("chatroom_idx"));
 		System.out.println("[TEST]roomno:"+roomNo);
 		
 		RoomSessions.put(session, roomNo);
-
 		System.out.println("[TEST]RoomSessions:"+RoomSessions);
 	};
 	
@@ -131,6 +130,7 @@ public class ReplyEchoHandler extends TextWebSocketHandler{
 		System.out.println("[TEST]userSessions에서 session정보 지웠는지 확인:"+userSessions);
 		RoomSessions.remove(session);
 		System.out.println("[TEST]RoomSessions에서 session정보 지웠는지 확인:"+RoomSessions);
+		
 		
 	};
 	

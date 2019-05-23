@@ -68,7 +68,7 @@
 	var socket = null;
 
 	function connect(){
-		var ws = new WebSocket("ws://localhost:8089/replyEcho");
+		var ws = new WebSocket("ws://192.168.20.17:8089/replyEcho");
 		socket = ws;
 
 		//event handler Connection, 소켓 연결 됬을 때

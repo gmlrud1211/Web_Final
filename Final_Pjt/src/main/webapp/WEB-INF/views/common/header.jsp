@@ -97,7 +97,7 @@ a:hover {
 
 		<c:otherwise>
 			<ul>
-				<li><a href="/mypage/myInfo">마이페이지&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+				<li><a href="/mypage/calendar">마이페이지&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
 				<li>${user_id}님환영합니다&nbsp;&nbsp;&nbsp;&nbsp;</li>
 				<li><a href="/logout"><button>로그아웃</button></a></li>
 			</ul>

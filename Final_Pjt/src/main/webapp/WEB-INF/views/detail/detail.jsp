@@ -340,15 +340,15 @@ $(document).ready(function() {
 		<div class="infoHeader">
 			<c:forEach var="list" items="${commonList }" varStatus="i">
            		<span id="title" style="color:#827ffe; font-size:27px;">${list.title }</span>
-            	<span style="text-align:right; margin-left: 690px;">
+            	<span style="text-align:right; margin-left: 800px;">
 					<button id="likebefore" style="display:none; border:none; background-color:white;">
-	            	   <img src="/../../../img/like_nonclick.png"style="width:30px; height: 30px; cursor:pointer;"/>&nbsp;
+	            	   <img src="/../../../img/like_nonclick.png"style="width:30px; height: 30px; cursor:pointer;"/>&nbsp;&nbsp;&nbsp;&nbsp;
 	            	</button>
                 	<button id="likeafter" style="display:none; border:none; background-color:white;">
-	               		<img src="/../../../img/like_click.png" class="" style="width:30px; height: 30px; cursor:pointer;"/>&nbsp;
+	               		<img src="/../../../img/like_click.png" class="" style="width:30px; height: 30px; cursor:pointer;"/>&nbsp;&nbsp;&nbsp;&nbsp;
 	               	</button>
 	               	<button id="addCalBtn" style="border:none; background-color:white;">
-	               		<img src="/../../../img/add_event.png" class="" style="width:30px; height: 30px; cursor:pointer;"/>&nbsp;	
+	               		<img src="/../../../img/add_event.png" class="" style="width:30px; height: 30px; cursor:pointer;"/>&nbsp;&nbsp;&nbsp;&nbsp;
 	               </button>&nbsp;
 	               <a href="#commentArea"><img src="/../../../img/comment.png" class="" style="width:30px; height: 30px; cursor:pointer;"/>
 	               <span class="commentCount" style="font-weight: 1000; color: #827ffe;"></span><span style="font-weight: 1000; color: #827ffe;">개의 댓글</span></a>

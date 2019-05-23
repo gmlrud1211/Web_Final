@@ -6,13 +6,11 @@ public class Chatroom {
 
 	private int chatroom_idx;
 	private int user_no;
-	private String user_name;
-	
-
 	private String chatroom_userIp;
 	private Date chatroom_date;
 	private String chatroom_flag;
-
+	
+	private String user_name;
 	
 	public String getUser_name() {
 		return user_name;
@@ -20,7 +18,6 @@ public class Chatroom {
 	public void setUser_name(String user_name) {
 		this.user_name = user_name;
 	}
-	
 	public int getChatroom_idx() {
 		return chatroom_idx;
 	}
@@ -55,9 +52,9 @@ public class Chatroom {
 	
 	@Override
 	public String toString() {
-		return "Chatroom [chatroom_idx=" + chatroom_idx + ", user_no=" + user_no + ", user_name=" + user_name
-				+ ", chatroom_userIp=" + chatroom_userIp + ", chatroom_date=" + chatroom_date + ", chatroom_flag="
-				+ chatroom_flag + "]";
+		return "Chatroom [chatroom_idx=" + chatroom_idx + ", user_no=" + user_no + ", chatroom_userIp="
+				+ chatroom_userIp + ", chatroom_date=" + chatroom_date + ", chatroom_flag=" + chatroom_flag
+				+ ", user_name=" + user_name + "]";
 	}
 
 	

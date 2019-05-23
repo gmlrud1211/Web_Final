@@ -214,6 +214,8 @@ public class SearchController {
 	public String searchPlaceView(Model model, String keyword, String searchtype) {
 
 		logger.info("im here!");
+		System.out.println(keyword);
+		System.out.println(searchtype);
 		List contentTypeList = new ArrayList();
 		contentTypeList = searchService.getContentType();
 		

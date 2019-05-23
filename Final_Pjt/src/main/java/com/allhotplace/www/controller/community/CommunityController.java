@@ -55,9 +55,9 @@ public class CommunityController {
 		
 		String user_id = (String) req.getSession().getAttribute("user_id");
 		
-		if(user_id == null) {
-			model.addAttribute("login", false);
-		} else {
+	     if(user_id == null) {
+	         return "/community/alert";
+	      } else {
 
 			model.addAttribute("login", true);
 			// 조회수 증가 
