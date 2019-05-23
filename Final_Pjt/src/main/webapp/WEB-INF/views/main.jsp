@@ -133,10 +133,9 @@ div.hashtag {
 	</ul>
 	
 <div class="searchdiv">
-  <!-- /searchhPlace-->
-	<form action="/mainsearch" method="POST">
-		<input type="text" name="word" id="word" placeholder="검색어 입력">
-		<input type="hidden" name="page" id="page" value="1">
+	<form action="/searchPlace" method="POST">
+		<input type="text" name="keyword" id="keyword" placeholder="검색어 입력">
+		<input type="hidden" name="searchtype" value="keyword">
 		<button type="submit" id="btnSearch"><i class=xi-search></i></button>
 
 	</form>

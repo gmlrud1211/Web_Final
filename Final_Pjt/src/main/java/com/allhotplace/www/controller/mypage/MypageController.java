@@ -143,6 +143,8 @@ public class MypageController {
 		List<Bookmark> bookmark_list = mypageService.getBookmarkList(user_id);
 		
 		model.addAttribute("bookmark_list", bookmark_list);
+		
+		System.out.println(bookmark_list);
 	}
 	
 	@RequestMapping(value="/mypage/bookmark/delete", method=RequestMethod.GET)

@@ -36,13 +36,7 @@
 	<listener>
 	     <listener-class>com.allhotplace.www.listener.SessionListener</listener-class>   
 	</listener>
-		
-	<!-- 방문사 카운트 세션리스너 등록 -->
-	<!-- 	  <listener> -->
-	<!--         <listener-class>com.allhotplace.www.controller.admin.VisitSessionListener</listener-class> -->
-	<!--     </listener> -->
-	
-	
+
 	<!-- Processes application requests -->
 	<servlet>
 		<servlet-name>appServlet</servlet-name>

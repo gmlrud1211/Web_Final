@@ -366,7 +366,7 @@ $(document).ready(function() {
              
            <c:forEach var="list" items="${commonList }" varStatus="i">
 	            <!-- 지도영역 -->
-	            	<div id="map" style="width:500px;height:400px;" onclick="callMap('${list.mapx}', '${list.mapy}', '${list.mlevel}' )"></div>
+	            	<div id="map" style="width:500px;height:400px;z-index:0;" onclick="callMap('${list.mapx}', '${list.mapy}', '${list.mlevel}' )"></div>
 				
 				<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7a7635c2d5aad5bc6d20fc52f944f2ef"></script>
 				

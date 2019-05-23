@@ -107,7 +107,7 @@ a:hover {
 
 
 	<ul class="righttop">
-		<li><a href="#">일정공유 게시판</a></li>
+		<li><a href="/community">일정공유 게시판</a></li>
 		<li>/</li>
 		<li><a href="/searchPlace">찾아보기</a></li>
 	</ul>

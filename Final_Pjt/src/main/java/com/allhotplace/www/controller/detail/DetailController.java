@@ -51,6 +51,8 @@ private static final Logger logger = LoggerFactory.getLogger(DetailController.cl
 	
 	public String placeInfoAPI(Model model, String contentId, String contentTypeId, HttpServletRequest request, HttpSession session) {
 
+		System.out.println("=================contentId");
+		System.out.println(contentId);
 		String result = "";
 		BufferedReader br = null;
 		String result2 = "";
