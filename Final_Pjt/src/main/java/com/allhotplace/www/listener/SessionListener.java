@@ -35,6 +35,10 @@ public class SessionListener implements HttpSessionListener {
 	        // 세션 속성에 담아준다.
 	        session.setAttribute("totalCount", totalCount); // 전체 방문자 수
 	        session.setAttribute("todayCount", todayCount); // 오늘 방문자 수
+	        
+	        System.out.println(totalCount);
+	        System.out.println(todayCount);
+	        
 	    }
 	 
 	     @Override

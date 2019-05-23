@@ -72,7 +72,7 @@ ul.pagination li {
 .jb-wrap {
 border : 1px solid #c2b7c6;
     width: 75%;
-    height: 220px;
+    height: 240px;
     margin : 15px auto;
     padding : 15px;
 }

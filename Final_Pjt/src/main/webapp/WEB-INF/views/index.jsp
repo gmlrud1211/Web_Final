@@ -60,7 +60,7 @@
 <area shape="rect" alt="128" href="http://localhost:8088/mainsearch1?word=코스모스&page=1" coords="356,164,484,192" target="wordcloud">
 <area shape="rect" alt="72" href="http://localhost:8088/mainsearch1?word=건대&page=1" coords="576,180,648,220" target="wordcloud">
 <area shape="rect" alt="72" href="http://localhost:8088/mainsearch1?word=홍대&page=1" coords="620,504,692,544" target="wordcloud">
-<area shape="rect" alt="76" href="http://localhost:8088/mainsearch1?word=강남&page=1" coords="484,160,560,200" target="wordcloud">
+<area shape="rect" alt="76" href="http://localhost:8089/mainsearch1?word=강남&page=1" coords="484,160,560,200" target="wordcloud">
 <area shape="rect" alt="76" href="http://localhost:8088/mainsearch1?word=카트&page=1" coords="380,524,456,564" target="wordcloud">
 <area shape="rect" alt="72" href="http://localhost:8088/mainsearch1?word=벚꽃&page=1" coords="376,252,448,312" target="wordcloud">
 <area shape="rect" alt="52" href="http://localhost:8088/mainsearch1?word=구월&page=1" coords="656,280,708,356" target="wordcloud">
