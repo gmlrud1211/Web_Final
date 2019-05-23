@@ -74,12 +74,12 @@ border-radius: 5px;
 <body>
 
 <div style="border-bottom: 1px solid grey; height: 95px; padding-top: 5px;">
-<jsp:include page="/WEB-INF/views/common/header.jsp" /> 
+	<jsp:include page="/WEB-INF/views/common/header.jsp" /> 
 </div>
 
-	<div id="menu" style="background-color: #d7d3d447; border-right:#D8D8D8; height: 2260px; width: 20%; float: left;">
-		<jsp:include page="/WEB-INF/views/layout/sidebar.jsp" />
-	</div>
+<div id="menu" style="background-color: #d7d3d447; border-right:#D8D8D8; height: 2260px; width: 20%; float: left;">
+	<jsp:include page="/WEB-INF/views/layout/sidebar.jsp" />
+</div>
 
 <div id="content" style="height:100%;width:78%;float:left;">
 
@@ -88,11 +88,11 @@ border-radius: 5px;
 </div>
 
 <div style="margin:30px; ">
-<h2 style="font-size:25px">배너관리</h2>
+<h2 style="font-size:25px; padding:20px;">배너관리</h2>
 </div>
 
 
-<div class="container" style="max-width:1063px; padding:10px;">
+<div class="container" style="max-width:1063px; padding:10px; padding-left:50px;">
 
 <div>
 <table class="table table-bordered">

@@ -52,6 +52,8 @@ public class VisitCountDao {
 	   public int getVisitTodayCount() {
 	      String sql = "";
 	      sql += "select count(*) from visitors";
+	      sql +=   " where substr(to_char(visit_date), 1, 9) = to_date(sysdate, 'yy/MM/dd')";
+	     
 
 	      //DB 객체
 	      PreparedStatement ps = null; 
@@ -88,7 +90,6 @@ public class VisitCountDao {
 	   public int getVisitTotalCount() {
 	      String sql = "";
 	      sql += "select count(*) from visitors";
-	      sql +=   " where substr(to_char(visit_date), 1, 9) = to_date(sysdate, 'yy/MM/dd')";
 
 	      //DB 객체
 	      PreparedStatement ps = null; 

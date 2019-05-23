@@ -31,7 +31,6 @@
 	ORDER BY rnum desc
 	) R
 	WHERE rnum BETWEEN #{startNo } AND #{endNo }
-		
 	</select>
 	
   

@@ -86,13 +86,12 @@ ul.pagination li {
 	</div>
 
 <div id="content"
-	style="padding: 10px; width: 1000px; margin: 0 auto; border-left: 1px solid #D8D8D8; height: 100%; float: left;">
+	style="padding: 10px; padding-left:50px; width: 1000px; margin: 0 auto; border-left: 1px solid #D8D8D8; height: 100%; float: left;">
 
-	<h3 style="font-size:25px">공지사항 목록</h3>
-
+	<h3 style="font-size:25px; padding: 20px; ">공지사항 목록</h3>
+<br><br>
 
 	<table class="table table-hover table-striped table-condensed">
-
 		<thead>
 			<tr style="border-top: 2px solid grey;">
 				<th style="width: 10%; border-top: 2px solid grey;">번호</th>
@@ -106,8 +105,7 @@ ul.pagination li {
 			<c:forEach items="${nboardlist }" var="list">
 				<tr>
 					<td>${list.notice_no }</td>
-					<td><a
-						href="/admin/noticeboard/view?notice_no=${list.notice_no }">${list.notice_title }</a></td>
+					<td><a href="/admin/noticeboard/view?notice_no=${list.notice_no }">${list.notice_title }</a></td>
 					<td>${list.notice_count }</td>
 					<td><fmt:formatDate value="${list.notice_date }"
 							pattern="yyyy-MM-dd" /></td>

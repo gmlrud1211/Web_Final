@@ -11,12 +11,15 @@ public class SessionListener implements HttpSessionListener {
 	   @Override
 	   public void sessionCreated(HttpSessionEvent se) {
 	      VisitCountDao visitCountDAO = new VisitCountDao();
+	      HttpSession session = se.getSession();
 	        
 	        int todayCount = 0;
 	        int totalCount = 0;
 	        
 	        // 전체 방문자 수 +1
 	        try {
+	        	if(session!=null)
+	        		
 	            visitCountDAO.setVisitTotalCount();
 	             // 오늘 방문자 수
 	             todayCount = visitCountDAO.getVisitTodayCount();
@@ -28,7 +31,6 @@ public class SessionListener implements HttpSessionListener {
 	               e.printStackTrace();
 	          }
 	        
-	        HttpSession session = se.getSession();
 	        
 	        // 세션 속성에 담아준다.
 	        session.setAttribute("totalCount", totalCount); // 전체 방문자 수

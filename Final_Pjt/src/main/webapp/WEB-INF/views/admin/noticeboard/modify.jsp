@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<jsp:include page="/WEB-INF/views/common/header.jsp" />
+
 
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
@@ -58,20 +58,21 @@ td.info {
 }
 </style>
 
-<div class="container">
+<div style="border-bottom: 1px solid grey; height: 95px; padding-top: 5px;">
+<jsp:include page="/WEB-INF/views/common/header.jsp" /> 
+</div>
 
-	<div id="leftside" style="height: 100%; width: 30%; float: left;">
+	<div id="leftside" style="height: 100%; background-color: #d7d3d447; width: 20%; float: left;">
 		<jsp:include page="/WEB-INF/views/layout/sidebar.jsp" />
 	</div>
 
-		<h5 style="font-size: 25px;">공지사항 수정</h5>
+	
 
- <br><br>
-         <br><br>
-	<div style="width: 70%; float: left;">
+<h3 style="font-size:25px; padding: 30px; ">공지사항 목록</h3> 
+<br>
 
-
-		<div>
+	<div style="width: 70%; float: left; margin-left: 125px;">
+		<div> 
 			<form action="/admin/noticeboard/modify" method="post">
 				<table class="table table-bordered" style="width: 80%">
 					<tr>

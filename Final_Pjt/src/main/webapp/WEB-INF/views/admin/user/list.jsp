@@ -96,9 +96,10 @@ ul.pagination li {
 	</div>
 
 	<div id="content"
-		style="padding: 10px; width: 1000px; margin: 0 auto; border-left: 1px solid #D8D8D8; height: 100%; float: left;">
+		style="padding:10px; padding-left:50px;width: 1000px; margin: 0 auto; border-left: 1px solid #D8D8D8; height: 100%; float: left;">
 
-		<h5 style="font-size:25px">회원관리</h5>
+		<h5 style="font-size:25px; padding:20px;">회원관리</h5>
+		<br><br>
 
 		<table class="table table-hover table-striped table-condensed">
 			<thead>

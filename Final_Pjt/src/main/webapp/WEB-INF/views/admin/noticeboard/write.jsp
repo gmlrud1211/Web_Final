@@ -53,25 +53,26 @@ td.info {
 	border-style: none;
 	border-radius: 5px;
 }
+
+
 </style>
 
 <div style="border-bottom: 1px solid grey; height: 95px; padding-top: 5px;">
 <jsp:include page="/WEB-INF/views/common/header.jsp" /> 
 </div>
-	<div id="menu" style="background-color: #d7d3d447; border-right:#D8D8D8; height: 2260px; width: 20%; float: left;">
-		<jsp:include page="/WEB-INF/views/layout/sidebar.jsp" />
-	</div>
-<div class="container">
+
+<div id="menu" style="background-color: #d7d3d447; border-right:#D8D8D8; height: 2260px; width: 20%; float: left;">
+	<jsp:include page="/WEB-INF/views/layout/sidebar.jsp" />
+</div>
+	
 
 
-
-		<h5 style="font-size: 25px;">공지사항 등록</h5>
-	<div style="width: 70%; float: left;">
+		<h5 style="font-size: 25px; padding: 30px;">공지사항 등록</h5>
+	<div style="width: 70%; float: left; margin : 0 auto;">
 		
-        
          <br><br>
          <br><br>
-         		<div>
+         		
 			<form action="/admin/noticeboard/write" method="post">
 				<table class="table table-bordered" style="width: 80%">
                    <tbody>
@@ -103,10 +104,10 @@ td.info {
 		</div>
 
 	</div>
-		</div>
+		
 	</div>
 
-</div>
+
 
 
 

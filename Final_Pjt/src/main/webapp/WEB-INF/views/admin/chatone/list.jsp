@@ -3,8 +3,7 @@
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<script type="text/javascript"
-	src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
+
 
 <!-- jQuery 2.2.4 -->
 <script type="text/javascript"
@@ -31,14 +30,38 @@
 
 <script type="text/javascript">
 	$(document).ready(function(){
-	$.ajax({
+	
+		$.ajax({
 		type: "get"
 		, url: "/resultChatList"
 		, data: { "chatroom_idx" : $('#chatroom_idx').val() }
 		, dataType: "json"
 		, success: function( data ){
-			console.log(data);
 			
+			cosole.log(data.chatoneList);
+			
+			var html = "";
+			var beforeChat = $("#resultChatBot2").html();
+			
+			if(true){
+				
+				html =
+					beforeChat
+					+"<ul class=\"nav nav-pills\">"
+					+"<li role=\"presentation\" class=\"panel panel-default\" style=\"float:right; margin:5px; max-width:530px;\">"
+					+"<div style=\"text-align:right; margin:5px; width:auto;\">"
+					+event.data
+					+"</div>"
+					+"</li>"
+					+"</ul>";	
+//						+"<div id=\"chatBottom2\"></div>"
+					
+				$("#resultChatBot2").html(html);
+		 
+			}
+		}
+		, error : function(e){
+			console.log("실패");
 		}
 	});
 	
@@ -141,8 +164,6 @@ function connectFunc(chatroom_idx){
 
 
 </script>
-
-
 
 
 <style type="text/css">
@@ -266,7 +287,9 @@ ul.pagination li {
 										<!-- 채팅기록 보여주기 -->
 										<div id="resultChatBot2" data-spy="scroll"
 											data-target="#navbar-example2" data-offset="0"
-											class="scrollspy-example"></div>
+											class="scrollspy-example">
+											
+											</div>
 
 										<!-- 채팅내역 사라지게 하기 -->
 										<div id="refresh2"
