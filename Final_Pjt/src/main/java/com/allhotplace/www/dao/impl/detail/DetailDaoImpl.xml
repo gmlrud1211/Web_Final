@@ -12,7 +12,6 @@
 <!-- 매퍼 설정 -->
 <mapper namespace="com.allhotplace.www.dao.face.detail.DetailDao">
 
-
 	<select id="getCalendar" parameterType="String" resultType="com.allhotplace.www.dto.DetailCalendar">
 		select * from calendar
 		where user_no = (
@@ -21,7 +20,70 @@
         order by calendar_scheduleDate
 	</select>
 
-
+	<insert id="addBookmark" parameterType="hashmap">
+		
+		INSERT INTO BOOKMARK 
+		(BOOKMARK_NO, SCHEDULE_ID, USER_NO, BOOKMARK_DATE, CONTENTYPEID, ORIGINIMGURL) 
+		VALUES 
+		( BOOKMARK_SEQ.NEXTVAL, #{contentid},
+			( SELECT USER_NO FROM USERS WHERE USER_ID=#{userid} ), 
+        SYSDATE, #{contenttypeid}, #{image} )
+		
+	</insert>
+	
+	<select id="isBookmark" parameterType="hashmap" resultType="int">
+		SELECT COUNT(*) FROM BOOKMARK
+		WHERE USER_NO = (
+        				SELECT USER_NO FROM USERS WHERE USER_ID = #{user_id} ) 
+        		AND SCHEDULE_ID = #{contentid}
+	</select>
+	
+	<delete id="deleteBookmark" parameterType="hashmap">
+	
+		DELETE FROM BOOKMARK
+		WHERE USER_NO = (
+       				SELECT USER_NO FROM USERS
+       				WHERE USER_ID=#{user_id} ) AND ( SCHEDULE_ID = #{contentid} )
+	</delete>
+	
+	<select id="getComment" parameterType="String" resultType="com.allhotplace.www.dto.Comments">
+		
+		SELECT * FROM COMMENTS CMT
+		INNER JOIN USERS U
+		ON CMT.user_no = U.user_no
+		WHERE CMT.CONTENTID = #{contentId} and MAPP_STYPE = 1002
+		ORDER BY COMMENT_DATE
+		
+	</select>
+	
+	<insert id="commentSubmit" parameterType="hashmap">
+		
+		INSERT INTO COMMENTS 
+		(COMMENT_NO, MAPP_STYPE, COMMENT_CONTENT, USER_NO, COMMENT_DATE, CONTENTID) 
+		VALUES 
+		( COMMENTS_SEQ.NEXTVAL, 1002, #{content},
+			( SELECT USER_NO FROM USERS WHERE USER_ID=#{user_id} ), 
+        SYSDATE, #{contentid} )
+		
+	</insert>
+	
+	
+	<insert id="addSchedule" parameterType="hashmap">
+		
+		INSERT INTO SCHEDULE
+		( CALENDAR_NO, SCHEDULE_NO, SCHEDULE_ID, SCHEDULE_TITLE, SCHEDULE_STARTTIME, SCHEDULE_ENDTIME ) 
+		VALUES 
+		( #{calendar_no}, SCHEDULE_SEQ.NEXTVAL, #{schedule_id}, #{schedule_title}, 
+		to_date(#{startTime}, 'YYYY-MM-DD HH24:MI'), to_date(#{endTime}, 'YYYY-MM-DD HH24:MI') )
+		
+	</insert>
+	
+	<delete id="commentDelete" parameterType="String">
+		DELETE FROM COMMENTS
+		WHERE COMMENT_NO = #{comment_no}
+	</delete>
+	
+	
 </mapper>
 
 

@@ -252,7 +252,4 @@ public class MypageController {
 		return "jsonView";
 	}
 	
-	
-	
-	
 }

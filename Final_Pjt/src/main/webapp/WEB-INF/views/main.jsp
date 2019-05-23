@@ -133,6 +133,7 @@ div.hashtag {
 	</ul>
 	
 <div class="searchdiv">
+  <!-- /searchhPlace-->
 	<form action="/mainsearch" method="POST">
 		<input type="text" name="word" id="word" placeholder="검색어 입력">
 		<input type="hidden" name="page" id="page" value="1">
@@ -140,6 +141,7 @@ div.hashtag {
 
 	</form>
 </div>
+
 <div style="overflow: hidden;">
 	<div class="searchairplane">
 <!-- 	<div class="searchairplane" style="float:left; width:50%;"> -->
@@ -375,5 +377,4 @@ div.hashtag {
 		})
 	})
 </script>
-
 </html>

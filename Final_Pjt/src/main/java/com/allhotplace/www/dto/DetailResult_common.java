@@ -17,6 +17,7 @@ public class DetailResult_common {
 	private String mapx;
 	private String mapy;
 	private String mlevel;
+	private String contentid;
 
 	
 	public String getAddr1() {
@@ -89,7 +90,13 @@ public class DetailResult_common {
 	public String toString() {
 		return "DetailResult_common [addr1=" + addr1 + ", addr2=" + addr2 + ", title=" + title + ", tel=" + tel
 				+ ", telname=" + telname + ", zipcode=" + zipcode + ", homepage=" + homepage + ", overview=" + overview
-				+ ", mapx=" + mapx + ", mapy=" + mapy + ", mlevel=" + mlevel + "]";
+				+ ", mapx=" + mapx + ", mapy=" + mapy + ", mlevel=" + mlevel + ", contentid=" + contentid + "]";
+	}
+	public String getContentid() {
+		return contentid;
+	}
+	public void setContentid(String contentid) {
+		this.contentid = contentid;
 	}
 	
 

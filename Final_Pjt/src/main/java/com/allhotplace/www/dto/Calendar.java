@@ -9,7 +9,10 @@ public class Calendar {
 	private Date calendar_scheduleDate;
 	private Date calendar_date;
 	private int user_no;
+	private String user_id;
 	private String calendar_yesno;
+	private int up_count;
+	private int view_count;
 	
 	public int getCalendar_no() {
 		return calendar_no;
@@ -47,11 +50,30 @@ public class Calendar {
 	public void setCalendar_yesno(String calendar_yesno) {
 		this.calendar_yesno = calendar_yesno;
 	}
+	public String getUser_id() {
+		return user_id;
+	}
+	public void setUser_id(String user_id) {
+		this.user_id = user_id;
+	}
+	public int getUp_count() {
+		return up_count;
+	}
+	public int getView_count() {
+		return view_count;
+	}
+	public void setUp_count(int up_count) {
+		this.up_count = up_count;
+	}
+	public void setView_count(int view_count) {
+		this.view_count = view_count;
+	}
 	@Override
 	public String toString() {
 		return "Calendar [calendar_no=" + calendar_no + ", calendar_title=" + calendar_title
 				+ ", calendar_scheduleDate=" + calendar_scheduleDate + ", calendar_date=" + calendar_date + ", user_no="
-				+ user_no + ", calendar_yesno=" + calendar_yesno + "]";
+				+ user_no + ", user_id=" + user_id + ", calendar_yesno=" + calendar_yesno + ", up_count=" + up_count
+				+ ", view_count=" + view_count + "]";
 	}
 
 	

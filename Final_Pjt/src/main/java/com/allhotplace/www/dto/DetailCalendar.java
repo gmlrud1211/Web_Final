@@ -6,8 +6,8 @@ public class DetailCalendar {
 
 	private int calendar_no;
 	private String calendar_title;
-	private String calendar_scheduleDate;
-	private String calendar_date;
+	private Date calendar_scheduleDate;
+	private Date calendar_date;
 	private int user_no;
 	private String calendar_yesno;
 	public int getCalendar_no() {
@@ -16,12 +16,7 @@ public class DetailCalendar {
 	public String getCalendar_title() {
 		return calendar_title;
 	}
-	public String getCalendar_scheduleDate() {
-		return calendar_scheduleDate;
-	}
-	public String getCalendar_date() {
-		return calendar_date;
-	}
+	
 	public int getUser_no() {
 		return user_no;
 	}
@@ -34,17 +29,25 @@ public class DetailCalendar {
 	public void setCalendar_title(String calendar_title) {
 		this.calendar_title = calendar_title;
 	}
-	public void setCalendar_scheduleDate(String calendar_scheduleDate) {
-		this.calendar_scheduleDate = calendar_scheduleDate;
-	}
-	public void setCalendar_date(String calendar_date) {
-		this.calendar_date = calendar_date;
-	}
+	
 	public void setUser_no(int user_no) {
 		this.user_no = user_no;
 	}
 	public void setCalendar_yesno(String calendar_yesno) {
 		this.calendar_yesno = calendar_yesno;
+	}
+	
+	public Date getCalendar_scheduleDate() {
+		return calendar_scheduleDate;
+	}
+	public Date getCalendar_date() {
+		return calendar_date;
+	}
+	public void setCalendar_scheduleDate(Date calendar_scheduleDate) {
+		this.calendar_scheduleDate = calendar_scheduleDate;
+	}
+	public void setCalendar_date(Date calendar_date) {
+		this.calendar_date = calendar_date;
 	}
 	@Override
 	public String toString() {
