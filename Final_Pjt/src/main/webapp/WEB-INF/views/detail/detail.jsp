@@ -152,6 +152,7 @@ $(document).ready(function() {
 			}
 		} else {
 			
+			var title = "${commonList[0].title}";
 			var contentid = getParameterByName('contentId');
 			var contenttypeid = getParameterByName('contentTypeId');
 		    var userid = "<%=(String)session.getAttribute("user_id")%>"
@@ -163,10 +164,12 @@ $(document).ready(function() {
 			console.log(image);
 			console.log(type);
 			
+			
 			$.ajax({
 				type: "post"
 				, url: "/detail/bookmark"
 				, data: {
+					"title":title,
 					"contentid":contentid,
 					"userid":userid,
 					"image":image,

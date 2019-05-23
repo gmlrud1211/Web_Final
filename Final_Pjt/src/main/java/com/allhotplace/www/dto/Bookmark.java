@@ -10,8 +10,14 @@ public class Bookmark {
 	private Date bookmark_date;
 	private int contentypeid;
 	private String originimgurl;
+	private String title;
 	
-	
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
 	public int getContentypeid() {
 		return contentypeid;
 	}
@@ -52,8 +58,9 @@ public class Bookmark {
 	public String toString() {
 		return "Bookmark [bookmark_no=" + bookmark_no + ", schedule_id=" + schedule_id + ", user_no=" + user_no
 				+ ", bookmark_date=" + bookmark_date + ", contentypeid=" + contentypeid + ", originimgurl="
-				+ originimgurl + "]";
+				+ originimgurl + ", title=" + title + "]";
 	}
+
 
 	
 }

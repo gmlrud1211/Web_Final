@@ -52,6 +52,7 @@
 				<div class="col-xs-6 col-lg-4">
 					<div style="width:25px; height:25px; float:right; "><img src="/../img/cancel.png" onclick="bookmark_del(${bookmark_list.get(i).bookmark_no});"></div>
 					<div><a href="/detail?contentId=${bookmark_list.get(i).schedule_id}&contentTypeId=${bookmark_list.get(i).contentypeid}"><img src="${bookmark_list.get(i).originimgurl}"onerror="'/../img/noimage.png';" style="width:250px; height:200px; border:0px"></a></div>
+					<div><br><p style="text-align:right;">${bookmark_list.get(i).title}</p></div>
 				</div>
 			</c:forEach>
 			</c:if>

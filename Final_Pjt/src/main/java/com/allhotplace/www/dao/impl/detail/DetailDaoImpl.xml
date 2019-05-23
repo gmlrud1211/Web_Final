@@ -23,11 +23,11 @@
 	<insert id="addBookmark" parameterType="hashmap">
 		
 		INSERT INTO BOOKMARK 
-		(BOOKMARK_NO, SCHEDULE_ID, USER_NO, BOOKMARK_DATE, CONTENTYPEID, ORIGINIMGURL) 
+		(BOOKMARK_NO, SCHEDULE_ID, USER_NO, BOOKMARK_DATE, CONTENTYPEID, ORIGINIMGURL, title) 
 		VALUES 
 		( BOOKMARK_SEQ.NEXTVAL, #{contentid},
 			( SELECT USER_NO FROM USERS WHERE USER_ID=#{userid} ), 
-        SYSDATE, #{contenttypeid}, #{image} )
+        SYSDATE, #{contenttypeid}, #{image}, #{title} )
 		
 	</insert>
 	

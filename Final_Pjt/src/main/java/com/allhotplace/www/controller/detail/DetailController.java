@@ -504,7 +504,7 @@ private static final Logger logger = LoggerFactory.getLogger(DetailController.cl
 
 	@RequestMapping(value="/detail/bookmark")
 	@ResponseBody
-	public void addBookmark(Model model, String contentid, String contenttypeid, String userid, String image) {
+	public void addBookmark(Model model, String contentid, String contenttypeid, String userid, String image, String title) {
 
 		Map map = new HashMap();
 			
@@ -512,6 +512,7 @@ private static final Logger logger = LoggerFactory.getLogger(DetailController.cl
 		map.put("contenttypeid", contenttypeid);
 		map.put("userid", userid);
 		map.put("image", image);
+		map.put("title", title);
 		
 		detailService.addBookmark(map);
 		
