@@ -10,13 +10,35 @@ public class Schedule {
 	private String schedule_title;
 	private String schedule_startTime;
 	private String schedule_endTime;
+	private String calendar_title;
+	private String calendar_yesno;
+	private Date calendar_date;
 	
 	
 	@Override
 	public String toString() {
 		return "Schedule [calendar_no=" + calendar_no + ", schedule_no=" + schedule_no + ", schedule_id=" + schedule_id
 				+ ", schedule_title=" + schedule_title + ", schedule_startTime=" + schedule_startTime
-				+ ", schedule_endTime=" + schedule_endTime + "]";
+				+ ", schedule_endTime=" + schedule_endTime + ", calendar_title=" + calendar_title + ", calendar_yesno="
+				+ calendar_yesno + ", calendar_date=" + calendar_date + "]";
+	}
+	public String getCalendar_title() {
+		return calendar_title;
+	}
+	public void setCalendar_title(String calendar_title) {
+		this.calendar_title = calendar_title;
+	}
+	public String getCalendar_yesno() {
+		return calendar_yesno;
+	}
+	public void setCalendar_yesno(String calendar_yesno) {
+		this.calendar_yesno = calendar_yesno;
+	}
+	public Date getCalendar_date() {
+		return calendar_date;
+	}
+	public void setCalendar_date(Date calendar_date) {
+		this.calendar_date = calendar_date;
 	}
 	public int getCalendar_no() {
 		return calendar_no;

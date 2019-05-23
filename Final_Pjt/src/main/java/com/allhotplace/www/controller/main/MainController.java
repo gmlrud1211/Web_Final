@@ -121,6 +121,3 @@ public class MainController {
 		return placeList;
 	}
 }
-	
-	
-

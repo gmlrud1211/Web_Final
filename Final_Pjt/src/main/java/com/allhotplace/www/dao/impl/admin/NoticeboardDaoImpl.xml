@@ -38,7 +38,26 @@
 		WHERE rnum BETWEEN #{paging.startNo } AND #{paging.endNo }
 	</select>
 
+	<select id="getMinNo" parameterType="int" resultType="com.allhotplace.www.dto.Noticeboard">
+		<![CDATA[
+		select
+		max(notice_title) keep(dense_rank first order by notice_no desc) as max_title,
+		max(notice_no) keep(dense_rank first order by notice_no desc) as max_no
+		from noticeboard
+		where notice_no < #{notice_no}
+		]]>
+	</select>
 
+	<select id="getMaxNo" parameterType="int" resultType="com.allhotplace.www.dto.Noticeboard">
+		<![CDATA[
+		select
+		min(notice_title) keep(dense_rank last order by notice_no desc) as min_title,
+		min(notice_no) keep(dense_rank last order by notice_no desc) as min_no
+		from noticeboard
+		where notice_no > #{notice_no}
+		]]>
+	</select>
+   
 	<select id="selectNboard" parameterType="com.allhotplace.www.dto.Noticeboard" resultType="com.allhotplace.www.dto.Noticeboard">
 		SELECT * FROM noticeboard
 		WHERE notice_no = #{notice_no }
@@ -61,7 +80,6 @@
 
 		INSERT INTO noticeboard (notice_no, notice_title, notice_content, notice_date, notice_count)
 		VALUES ( #{notice_no } ,#{notice_title }, #{notice_content }, sysdate, 0  )
-
 	</insert>
 
 

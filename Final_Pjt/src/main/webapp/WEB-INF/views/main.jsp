@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <jsp:include page="../views/common/meta.jsp" />
 <jsp:include page="../views/common/header.jsp" />
+
 <style>
 * {
 	margin: 0;
@@ -15,7 +16,6 @@ ul.bxslider {
 }
 
 ul.bxslider li {
-	
 }
 
 ul.bxslider li img {
@@ -85,181 +85,116 @@ div.hashtag {
 	margin: 50px auto;
 }
 
-.keyword1 {
-	position: absolute;
-	top: 0;
-	left: 0;
-}
+.titleeeee{width:200px; height:50px; text-align:center; line-height:50px; font-size:14px; color:#f00; }
 
-.keyword2 {
-	position: absolute;
-	top: 0;
-	left: 0;
-}
+.mapimg1{position: absolute; top: 68px; left: 117px; cursor: pointer;  text-indent:-9999px;   width: 46px;    height: 46px;      border-radius: 50%;    text-align: center;  line-height: 28px;}
+.mapimg2{position:absolute; top:120px; left:147px;; cursor:pointer;  text-indent:-9999px;   width: 46px;    height: 46px;      border-radius: 50%;    text-align: center;  line-height: 28px;} 
+.mapimg3{position:absolute; top:68px; left:237px; cursor:pointer;  text-indent:-9999px  ; width: 46px;    height: 46px;      border-radius: 50%;    text-align: center;  line-height: 28px;} 
+.mapimg4{position:absolute; top:166px; left:143px; cursor:pointer;  text-indent:-9999px ;  width: 46px;    height: 46px;      border-radius: 50%;    text-align: center;  line-height: 28px;} 
+.mapimg5{position:absolute; top:163px; left:199px; cursor:pointer;  text-indent:-9999px ;  width: 46px;    height: 46px;      border-radius: 50%;    text-align: center;  line-height: 28px;} 
+.mapimg6{position:absolute; top:204px; left:89px; cursor:pointer;  text-indent:-9999px  ; width: 46px;    height: 46px;      border-radius: 50%;    text-align: center;  line-height: 28px;} 
+.mapimg7{position:absolute; top:220px; left:173px; cursor:pointer;  text-indent:-9999px ;  width: 46px;    height: 46px;      border-radius: 50%;    text-align: center;  line-height: 28px;} 
+.mapimg8{position:absolute; top:205px; left:273px; cursor:pointer;  text-indent:-9999px ;  width: 46px;    height: 46px;      border-radius: 50%;    text-align: center;  line-height: 28px;} 
+.mapimg9{position:absolute; top:339px; left:214px; cursor:pointer;  text-indent:-9999px ;  width: 46px;    height: 46px;      border-radius: 50%;    text-align: center;  line-height: 28px;} 
+.mapimg10{position:absolute; top:274px; left:257px; cursor:pointer;  text-indent:-9999px;   width: 46px;    height: 46px;      border-radius: 50%;    text-align: center;  line-height: 28px;} 
+.mapimg11{position:absolute; top:310px; left:331px; cursor:pointer;  text-indent:-9999px;   width: 46px;    height: 46px;      border-radius: 50%;    text-align: center;  line-height: 28px;} 
+.mapimg12{position:absolute; top:354px; left:290px; cursor:pointer;  text-indent:-9999px;   width: 46px;    height: 46px;      border-radius: 50%;    text-align: center;  line-height: 28px;} 
+.mapimg13{position:absolute; top:291px; left:126px; cursor:pointer;  text-indent:-9999px;   width: 46px;    height: 46px;      border-radius: 50%;    text-align: center;  line-height: 28px;} 
+.mapimg14{position:absolute; top:408px; left:68px; cursor:pointer;  text-indent:-9999px ;  width: 46px;    height: 46px;      border-radius: 50%;    text-align: center;  line-height: 28px;} 
+.mapimg15{position:absolute; top:359px; left:105px; cursor:pointer;  text-indent:-9999px;   width: 46px;    height: 46px;      border-radius: 50%;    text-align: center;  line-height: 28px;} 
+.mapimg16{position:absolute; top:468px; left:91px; cursor:pointer;  text-indent:-9999px ;  width: 46px;    height: 46px;      border-radius: 50%;    text-align: center;  line-height: 28px;} 
+.mapimg17{position:absolute; top:95px; left:72px; cursor:pointer;  text-indent:-9999px  ; width: 46px;    height: 46px;      border-radius: 50%;    text-align: center;  line-height: 28px;} 
+.mapimg1_text{position: absolute; top:12px; left:41px; width:200px; height:50px; line-height:50px; text-align:center; font-size:12px; border:1px solid #ff5252; color:#ff5252; padding:0 20px; background: #fff; display:none;}
+.mapimg2_text{position: absolute; top:70px; left:77px; width:200px; height:50px; line-height:50px; text-align:center; font-size:12px; border:1px solid #ff5252; color:#ff5252; padding:0 20px; background: #fff; display:none;}
+.mapimg3_text{position: absolute; top:12px; left:167px; width:200px; height:50px; line-height:50px; text-align:center; font-size:12px; border:1px solid #ff5252; color:#ff5252; padding:0 20px; background: #fff; display:none;}
+.mapimg4_text{position: absolute; top:116px; left:73px; width:200px; height:50px; line-height:50px; text-align:center; font-size:12px; border:1px solid #ff5252; color:#ff5252; padding:0 20px; background: #fff; display:none;}
+.mapimg5_text{position: absolute; top:113px; left:120px; width:200px; height:50px; line-height:50px; text-align:center; font-size:12px; border:1px solid #ff5252; color:#ff5252; padding:0 20px; background: #fff; display:none;}
+.mapimg6_text{position: absolute; top:154px; left:29px; width:200px; height:50px; line-height:50px; text-align:center; font-size:12px; border:1px solid #ff5252; color:#ff5252; padding:0 20px; background: #fff; display:none;}
+.mapimg7_text{position: absolute; top:170px; left:100px; width:200px; height:50px; line-height:50px; text-align:center; font-size:12px; border:1px solid #ff5252; color:#ff5252; padding:0 20px; background: #fff; display:none;}
+.mapimg8_text{position: absolute; top:155px; left:203px; width:200px; height:50px; line-height:50px; text-align:center; font-size:12px; border:1px solid #ff5252; color:#ff5252; padding:0 20px; background: #fff; display:none;}
+.mapimg9_text{position: absolute; top:290px; left:163px; width:200px; height:50px; line-height:50px; text-align:center; font-size:12px; border:1px solid #ff5252; color:#ff5252; padding:0 20px; background: #fff; display:none;}
+.mapimg10_text{position: absolute; top:204px; left:160px; width:200px; height:50px; line-height:50px; text-align:center; font-size:12px; border:1px solid #ff5252; color:#ff5252; padding:0 20px; background: #fff; display:none;}
+.mapimg11_text{position: absolute; top:260px; left:260px; width:200px; height:50px; line-height:50px; text-align:center; font-size:12px; border:1px solid #ff5252; color:#ff5252; padding:0 20px; background: #fff; display:none;}
+.mapimg12_text{position: absolute; top:304px; left:220px; width:200px; height:50px; line-height:50px; text-align:center; font-size:12px; border:1px solid #ff5252; color:#ff5252; padding:0 20px; background: #fff; display:none;}
+.mapimg13_text{position: absolute; top:241px; left:56px; width:200px; height:50px; line-height:50px; text-align:center; font-size:12px; border:1px solid #ff5252; color:#ff5252; padding:0 20px; background: #fff; display:none;}
+.mapimg14_text{position: absolute; top:358px; left:0px; width:200px; height:50px; line-height:50px; text-align:center; font-size:12px; border:1px solid #ff5252; color:#ff5252; padding:0 20px; background: #fff; display:none;}
+.mapimg15_text{position: absolute; top:309px; left:35px; width:200px; height:50px; line-height:50px; text-align:center; font-size:12px; border:1px solid #ff5252; color:#ff5252; padding:0 20px; background: #fff; display:none;}
+.mapimg16_text{position: absolute; top:418px; left:20px; width:200px; height:50px; line-height:50px; text-align:center; font-size:12px; border:1px solid #ff5252; color:#ff5252; padding:0 20px; background: #fff; display:none;}
+.mapimg17_text{position: absolute; top:45px; left:2px; width:200px; height:50px; line-height:50px; text-align:center; font-size:12px; border:1px solid #ff5252; color:#ff5252; padding:0 20px; background: #fff; display:none;}
 
-.keyword3 {
-	position: absolute;
-	top: 0;
-	left: 0;
-}
-
-.keyword4 {
-	position: absolute;
-	top: 0;
-	left: 0;
-}
-
-.keyword5 {
-	position: absolute;
-	top: 0;
-	left: 0;
-}
-
-.keyword6 {
-	position: absolute;
-	top: 0;
-	left: 0;
-}
-
-.keyword7 {
-	position: absolute;
-	top: 0;
-	left: 0;
-}
-
-.keyword8 {
-	position: absolute;
-	top: 0;
-	left: 0;
-}
-
-.keyword9 {
-	position: absolute;
-	top: 0;
-	left: 0;
-}
-
-.keyword10 {
-	position: absolute;
-	top: 0;
-	left: 0;
-}
-
-.keyword11 {
-	position: absolute;
-	top: 0;
-	left: 0;
-}
-
-.keyword12 {
-	position: absolute;
-	top: 0;
-	left: 0;
-}
-
-.keyword13 {
-	position: absolute;
-	top: 0;
-	left: 0;
-}
-
-.keyword14 {
-	position: absolute;
-	top: 0;
-	left: 0;
-}
-
-.keyword15 {
-	position: absolute;
-	top: 0;
-	left: 0;
-}
-
-.keyword16 {
-	position: absolute;
-	top: 0;
-	left: 0;
-}
-
-.keyword17 {
-	position: absolute;
-	top: 0;
-	left: 0;
-}
-
-.keyword18 {
-	position: absolute;
-	top: 0;
-	left: 0;
-}
-
-.keyword19 {
-	position: absolute;
-	top: 0;
-	left: 0;
-}
 </style>
-
-  <div class="contents">
-		 
-		<div class="banner">
-			<ul>
-			<c:forEach items="${banlist }" var="bannerslist">
+	
+	<ul class="bxslider">
+		<c:forEach items="${banlist }" var="banlist">
 			
-				<li><img src="/upload/${banlist.file_storedname }" ></li>
+			<li><img src="/upload/${banlist.file_storedName }" ></li>
 				
-			</c:forEach>
-			</ul>
-		</div>
-		 
-	</div>
-
-
-<!-- <ul class="bxslider"> -->
-<!-- 	<li><img alt="성규 친구" src="/img/img1.jpg"></li> -->
-<!-- 	<li><img alt="성규 친구" src="/img/img2.jpg"></li> -->
-<!-- 	<li><img alt="성규 친구" src="/img/img3.jpg"></li> -->
-<!-- </ul> -->
-
-
+		</c:forEach>
+	</ul>
+	
 <div class="searchdiv">
-	<form action="/searchPlace" method="POST">
-		<input type="text" name="keyword" placeholder="검색어 입력">
-		<input type="hidden" name="searchtype" value="keyword">
-		<button type="submit"><i class=xi-search></i></button>
+  <!-- /searchhPlace-->
+	<form action="/mainsearch" method="POST">
+		<input type="text" name="word" id="word" placeholder="검색어 입력">
+		<input type="hidden" name="page" id="page" value="1">
+		<button type="submit" id="btnSearch"><i class=xi-search></i></button>
 
 	</form>
 </div>
 
-<div class="searchairplane">
-	<div>
-		<img alt="" src="/img/airplane.png"> 
-		<a class="keyword1" href="#">전체</a> <a class="keyword2" href="#">벚꽃</a> 
-		<a class="keyword3" href="#">봄</a> <a class="keyword4" href="#">벚꽃축제</a>
-		<a class="keyword5" href="#">야외공연</a> <a class="keyword6" href="#">봄봄봄</a>
-		<a class="keyword7" href="#">내일로</a> <a class="keyword8" href="#">야외음악회</a>
-		<a class="keyword9" href="#">전시회</a> <a class="keyword10" href="#">한강공원</a>
-		<a class="keyword11" href="#">피크닉</a> <a class="keyword12" href="#">봄</a>
-		<a class="keyword13" href="#">여름</a> <a class="keyword14" href="#">밤도깨비야시장</a>
-		<a class="keyword15" href="#">6월</a> <a class="keyword16" href="#">7월</a>
-		<a class="keyword17" href="#">8월</a> <a class="keyword18" href="#">10월</a>
-		<a class="keyword19" href="#">가을</a>
+<div style="overflow: hidden;">
+	<div class="searchairplane">
+<!-- 	<div class="searchairplane" style="float:left; width:50%;"> -->
+		<jsp:include page="../views/index.jsp" />
 	</div>
-</div>
+	
+	
+	
+	
+	
+	<!-- 지도를 표시할 div 입니다 -->
+	<p style="font-size:22px; font-weight:bold; text-align:center;">지역별 관광지 현황</p>
+	<div>
+<!-- 	<div  style="float:left; margin-top:80px; margin-left:251px;"> -->
+		<div id="map" style="position: relative; width:403px; margin:0 auto;">
+			<img alt="" src="../img/map.png">
+			<span class="mapimg1 mapimg">서울</span>
+			<span class="mapimg1_text mapimg_text">서울 관광지 : 448 건</span>
+			<span class="mapimg2 mapimg">경기</span>
+			<span class="mapimg2_text mapimg_text">경기 관광지 : 147 건</span>
+			<span class="mapimg3 mapimg">강원</span>
+			<span class="mapimg3_text mapimg_text">강원 관광지 : 61 건</span>
+			<span class="mapimg4 mapimg">세종</span>
+			<span class="mapimg4_text mapimg_text">세종 관광지 : 42 건</span>
+			<span class="mapimg5 mapimg">충북</span>
+			<span class="mapimg5_text mapimg_text">충북 관광지 : 22건</span>
+			<span class="mapimg6 mapimg">충남</span>
+			<span class="mapimg6_text mapimg_text">충남 관광지 : 22 건</span>
+			<span class="mapimg7 mapimg">대전</span>
+			<span class="mapimg7_text mapimg_text">대전 관광지 : 103 건</span>
+			<span class="mapimg8 mapimg">경북</span>
+			<span class="mapimg8_text mapimg_text">경북 관광지 : 34 건</span>
+			<span class="mapimg9 mapimg">경남</span>
+			<span class="mapimg9_text mapimg_text">경남 관광지 : 27 건</span>
+			<span class="mapimg10 mapimg">대구</span>
+			<span class="mapimg10_text mapimg_text">대구 관광지 : 167 건</span>
+			<span class="mapimg11 mapimg">울산</span>
+			<span class="mapimg11_text mapimg_text">울산 관광지 : 105 건</span>
+			<span class="mapimg12 mapimg">부산</span>
+			<span class="mapimg12_text mapimg_text">부산 관광지 : 268 건</span>
+			<span class="mapimg13 mapimg">전북</span>
+			<span class="mapimg13_text mapimg_text">전북 관광지 : 26 건</span>
+			<span class="mapimg14 mapimg">전남</span>
+			<span class="mapimg14_text mapimg_text">전남 관광지 : 20 건</span>
+			<span class="mapimg15 mapimg">광주</span>
+			<span class="mapimg15_text mapimg_text">광주 관광지 : 105 건</span>
+			<span class="mapimg16 mapimg">제주</span>
+			<span class="mapimg16_text mapimg_text">제주 관광지 : 318 건</span>
+			<span class="mapimg17 mapimg">인천</span>
+			<span class="mapimg17_text mapimg_text">인천 관광지 : 125 건</span>
+		</div>
+	</div>
 
-<div class="hashtag">
-	<a href="#">#1월</a> 
-	<a href="#">#2월</a> 
-	<a href="#">#3월</a> 
-	<a href="#">#4월</a>
-	<a href="#">#5월</a> 
-	<a href="#">#6월</a> 
-	<a href="#">#7월</a> 
-	<a href="#">#8월</a>
-	<a href="#">#9월</a> 
-	<a href="#">#10월</a> 
-	<a href="#">#11월</a> 
-	<a href="#">#12월</a>
 </div>
 
 
@@ -293,7 +228,9 @@ div.hashtag {
 
 
 	</table>
+	
 </div>
+
 
 <jsp:include page="../views/common/footer.jsp" />
 <jsp:include page="/WEB-INF/views/chat/chatbot.jsp" />
@@ -301,6 +238,11 @@ div.hashtag {
 
 <script>
 	$(document).ready(function() {
+		
+		
+		
+		
+		
 		/*메인슬라이더 px*/
 		$(".bxslider li img").css({
 			height : $(window).height() + "px"
@@ -314,7 +256,7 @@ div.hashtag {
 
 		$(".bxslider").bxSlider({
 			mode : "horizontal",
-			slideWidth : 1920,
+			slideWidth : 1950,
 			slideMargin : 0,
 			minSlides : 1,
 			maxSlides : 1,
@@ -331,6 +273,108 @@ div.hashtag {
 			controls : true,
 		});
 
+	})
+	
+/* 		function movePage(page){
+		areaPage = page;
+		
+		$("#btnSearch").click();
+	};
+	 */
+	
+	
+</script>
+<script>
+	$(document).ready(function(){
+		$(".mapimg").mouseleave(function(){
+			$(".mapimg_text").hide();
+		})
+		
+		
+		$(".mapimg1").mouseover(function(){
+			$(".mapimg_text").hide();
+			$(".mapimg1_text").fadeIn();
+		})
+		
+		$(".mapimg2").mouseover(function(){
+			$(".mapimg_text").hide();
+			$(".mapimg2_text").fadeIn();
+		})
+		
+		$(".mapimg3").mouseover(function(){
+			$(".mapimg_text").hide();
+			$(".mapimg3_text").fadeIn();
+		})
+		
+		$(".mapimg4").mouseover(function(){
+			$(".mapimg_text").hide();
+			$(".mapimg4_text").fadeIn();
+		})
+		
+		$(".mapimg5").mouseover(function(){
+			$(".mapimg_text").hide();
+			$(".mapimg5_text").fadeIn();
+		})
+		
+		$(".mapimg6").mouseover(function(){
+			$(".mapimg_text").hide();
+			$(".mapimg6_text").fadeIn();
+		})
+		
+		$(".mapimg7").mouseover(function(){
+			$(".mapimg_text").hide();
+			$(".mapimg7_text").fadeIn();
+		})
+		
+		$(".mapimg8").mouseover(function(){
+			$(".mapimg_text").hide();
+			$(".mapimg8_text").fadeIn();
+		})
+		
+		$(".mapimg9").mouseover(function(){
+			$(".mapimg_text").hide();
+			$(".mapimg9_text").fadeIn();
+		})
+		
+		$(".mapimg10").mouseover(function(){
+			$(".mapimg_text").hide();
+			$(".mapimg10_text").fadeIn();
+		})
+		
+		$(".mapimg11").mouseover(function(){
+			$(".mapimg_text").hide();
+			$(".mapimg11_text").fadeIn();
+		})
+		
+		$(".mapimg12").mouseover(function(){
+			$(".mapimg_text").hide();
+			$(".mapimg12_text").fadeIn();
+		})
+		
+		$(".mapimg13").mouseover(function(){
+			$(".mapimg_text").hide();
+			$(".mapimg13_text").fadeIn();
+		})
+		
+		$(".mapimg14").mouseover(function(){
+			$(".mapimg_text").hide();
+			$(".mapimg14_text").fadeIn();
+		})
+		
+		$(".mapimg15").mouseover(function(){
+			$(".mapimg_text").hide();
+			$(".mapimg15_text").fadeIn();
+		})
+		
+		$(".mapimg16").mouseover(function(){
+			$(".mapimg_text").hide();
+			$(".mapimg16_text").fadeIn();
+		})
+		
+		$(".mapimg17").mouseover(function(){
+			$(".mapimg_text").hide();
+			$(".mapimg17_text").fadeIn();
+		})
 	})
 </script>
 </html>

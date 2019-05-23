@@ -35,8 +35,8 @@
 	</select>
 	
 	<insert id="insertCalendar" parameterType="hashmap" >
-		insert into CALENDAR(calendar_no, calendar_title, calendar_scheduleDate, calendar_date, user_no, calendar_yesno)
-		values (CALENDAR_SEQ.NEXTVAL, #{cal.calendar_title}, #{cal.calendar_scheduleDate}, SYSDATE, #{user_no}, #{cal.calendar_yesno})
+		insert into CALENDAR(calendar_no, calendar_title, calendar_scheduleDate, calendar_date, user_no, calendar_yesno, up_count, view_count)
+		values (CALENDAR_SEQ.NEXTVAL, #{cal.calendar_title}, #{cal.calendar_scheduleDate}, SYSDATE, #{user_no}, #{cal.calendar_yesno}, 0, 0)
 	</insert>
 	
 	<delete id="deleteCalendar" parameterType="int">
@@ -51,16 +51,43 @@
         				where user_id=#{user_id})
 	</select>
 	
-	
 	<delete id="deleteBookmark" parameterType="int">
 		delete from bookmark
 		where bookmark_no = #{bookmark_no}
 	</delete>
 	
 	<select id="selectSchedule" resultType="com.allhotplace.www.dto.Schedule">
-		select * from schedule
-		where calendar_no= #{calendar_no}
+		select c.calendar_title as "calendar_title", c.calendar_date as "calendar_date", c.calendar_yesno as "calendar_yesno", s.calendar_no as "calendar_no", s.schedule_no as "schedule_no", s.schedule_id as "schedule_id", s.schedule_title as "schedule_title", s.schedule_startTime as "schedule_startTime", s.schedule_endTime as "schedule_endTime"
+		from calendar c
+		join schedule s on c.calendar_no = s.calendar_no
+		where c.calendar_no = #{calendar_no}
+		<!-- select * from schedule
+		where calendar_no = #{calendar_no} -->
 	</select>
 	
+	<delete id="deleteSchedule" parameterType="int">
+		delete from Schedule
+		where schedule_no = #{schedule_no}
+	</delete>
+	
+	<select id="isOpenCheck" resultType="int">
+		select count(*) from calendar
+		where calendar_no = #{calendar_no} and calendar_yesno ='YES'
+	</select>
+	
+	<update id="calendarYes">
+		update calendar set calendar_yesno = 'YES'
+		where calendar_no = #{calendar_no}
+	</update>
+	
+	<update id="calendarNo">
+		update calendar set calendar_yesno = 'NO'
+		where calendar_no = #{calendar_no}
+	</update>
+	
+	<update id="updateSchedule" parameterType="hashmap">
+		update schedule set schedule_startTime=to_Date(#{schedule_startTime},'yyyy-MM-dd HH24:MI:SS'), schedule_endTime=to_Date(#{schedule_endTime},'yyyy-MM-dd HH24:MI:SS')
+		where schedule_no=#{schedule_no}
+	</update>
 	
 </mapper>

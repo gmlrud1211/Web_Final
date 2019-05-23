@@ -23,33 +23,6 @@
 		});
 	});
 
-	$(document).ready(function() {
-		//최상단 체크박스 클릭
-		$("#checkall").click(function() {
-			//클릭되었으면
-			if ($("#checkall").prop("checked")) {
-				//input태그의 name이 chk인 태그들을 찾아서 checked옵션을 true로 정의
-				$("input[name=chk]").prop("checked", true);
-				//클릭이 안되있으면
-			} else {
-				//input태그의 name이 chk인 태그들을 찾아서 checked옵션을 false로 정의
-				$("input[name=chk]").prop("checked", false);
-			}
-		})
-	});
-
-	function AlldeleteAction() {
-		var checkRow = "";
-		$("input[name='chk']:checked").each(function() {
-			checkRow = checkRow + $(this).val() + ",";
-		});
-		checkRow = checkRow.substring(0, checkRow.lastIndexOf(",")); //맨끝 콤마 지우기
-
-		if (checkRow == '') {
-			alert("삭제할 게시글을 선택하세요.");
-			return false;
-		}
-
 		if (confirm("게시글을 삭제하겠습니까?")) {
 			//삭제처리 후 다시 불러올 리스트 url      
 			var url = document.location.href;

@@ -9,11 +9,18 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>tab example</title>
+<title>챗봇관리</title>
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+
 <style>
+i{
+font-size : 20px;
+
+}
 #container {
-	width: 960px;
+	width: 1100px;
 	margin: 0 auto;
 	text-align: center;
 }
@@ -82,9 +89,9 @@ ul.tab li.current a{
 
 ul.tab li {
 	border : 1px solid grey;
-	    width: 170px;
-	    height: 40px;
-	    padding: 5px;
+	width: 140px;
+	height: 40px;
+	padding-bottom : 10px;
 	    
 }
 
@@ -124,6 +131,7 @@ width : 100%
 }
 </style>
 <style>
+.header ul{width:302px}
 ul{
 width : 900px; 
 }
@@ -137,6 +145,7 @@ tr.question{
 
 #container>div {
 	position: relative;
+	height:450px;
 }
 
 #container>div>table {
@@ -146,9 +155,10 @@ tr.question{
 }
 
 .cb {
-   border-top : 2px solid gray;
+   border-top : 1px solid gray;
    position : absolute;
    top : 70px;
+   width: 810px;
 }
 
 .cd{
@@ -156,8 +166,8 @@ tr.question{
 }
 
 td.ss{
-width : 1500px; 
-height: 35px;
+width : 1100px; 
+/* height: 35px;*/
 }
 .bt{
 background-color : #827ffe;
@@ -171,16 +181,17 @@ border-radius: 5px;
 </head>
 <body>
 
-<div style="border-bottom: 1px solid grey; height: 95px; padding-top: 5px;">
-<jsp:include page="/WEB-INF/views/common/header.jsp" /> 
-</div>
-
-	<div id="menu" style="background-color: #d7d3d447; border-right:#D8D8D8; height: 2260px; width: 20%; float: left;">
-		<jsp:include page="/WEB-INF/views/layout/sidebar.jsp" />
+	<div style="border-bottom: 1px solid grey; height: 95px; padding-top: 5px;">
+		<jsp:include page="/WEB-INF/views/common/header.jsp" />
 	</div>
 	
+
+	<div id="menu" style="background-color: #d7d3d447; border-right: #D8D8D8; height: 2260px; width: 20%; float: left;">
+		<jsp:include page="/WEB-INF/views/layout/sidebar.jsp" />
+	</div>
+
 	<div id="container" style="
-	padding:10px; width:1000%; margin: 40px; height:100%; max-width: 1110px; float:left; ">
+	padding:10px; width:1100px; margin: 40px; height:100%; max-width: 1110px; float:left; ">
  
 	<h5 style="font-size: 25px; text-align: start;">챗봇관리</h5>	
  
@@ -225,15 +236,18 @@ border-radius: 5px;
 								</colgroup>
 
 								<tr class="question">
-									<td class="ss" style="height: 20px;text-align: left; padding-left: 20px">${slist.sChat_name }</td>
+									<td class="ss" style="height: 20px;text-align: left; padding-left: 20px">
+									<i class="xi-lightbulb-o">&nbsp;&nbsp;</i>${slist.sChat_name }</td>
+									
 									<td id="modify"><a
 										href="/admin/chatbot/modify?sChat_no=${slist.sChat_no } ">수정</a></td>
 									<td id="delete"><a
 										href="/admin/chatbot/delete?sChat_no=${slist.sChat_no }">삭제</a></td>
 								</tr>
 
-								<tr class="answer">
-									<td colspan="3" style="text-align: left; padding-left: 20px">  ${slist.sChat_answer }</td>
+							<tr class="answer">
+								<td colspan="3" style="height: 20px;text-align: left; padding-left: 20px">
+								<i class="xi-angle-up">&nbsp;&nbsp;</i>${slist.sChat_answer }</td>
 								</tr>
 							</c:if>
 						</c:forEach>
@@ -492,12 +506,12 @@ border-radius: 5px;
 		</div>
 	<div>
 		<button id="btnWrite" class="btn btn-primary bt"
-			style="text-align: center; margin-top: 240px; margin-right: 150px;">등록</button>
+			style="text-align: center; margin-right: 150px;">등록</button>
 	</div>
 	</div>
-
 
 	<script>
+	
 		$(function() {
 			$(".mmmtab1").addClass('current');
 
@@ -516,29 +530,28 @@ border-radius: 5px;
 				$(this).addClass('current');
 				$(this).parent().siblings('#' + activeTab).addClass('current');
 			});
+			
+		});
 
 			//모든 답변 가림 
 			$(".answer").css({
 				display : "none"
 			});
 
-			$(".question").click(function(){
+			$(".question").click(function() {
 				$(this).next().toggle();
 				$(this).parent().siblings("tbody").find(".answer").hide();
-			})
+			});
 
 			//글쓰기 버튼 이벤트
 			$("#btnWrite").click(function() {
-				location.href = "/admin/chatbot/write";
+				location.href = "/admin/chatbot/write"
 			});
 
-			$("#delete").click(
-					function() {
-						$(location).attr("href",
-								"/admin/chatbot/delete?sChat_no=" + sChat_no);
+			$("#delete").click(function() {
+			$(location).attr("href","/admin/chatbot/delete?sChat_no=" + sChat_no);
 					});
-
-		});
+		
 	</script>
 
 </body>

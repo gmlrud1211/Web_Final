@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 마이바티스 3 Mapper DOCTYPE -->
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<!-- 매퍼 설정 -->
+<mapper namespace="com.allhotplace.www.dao.face.chatbot.ChatroomDao">
+
+	<select id="checkChatroom" parameterType="int" resultType="boolean">
+		SELECT count(*) FROM chatroom
+		WHERE user_no = #{ user_no }
+	</select>
+
+	<insert id="createChatroom" parameterType="com.allhotplace.www.dto.Chatroom">
+	
+		<selectKey keyProperty="chatroom_idx" resultType="int" order="BEFORE">
+			SELECT chatroom_seq.nextval FROM dual
+		</selectKey>
+		INSERT INTO chatroom ( chatroom_idx, user_no, chatroom_userIp, chatroom_date, chatroom_flag )
+		VALUES ( #{chatroom_idx}, #{user_no}, #{chatroom_userIp}, sysdate, 0 )
+	</insert>
+	
+	<select id="selectChatroomByUser_no" parameterType="int" resultType="com.allhotplace.www.dto.Chatroom">
+		SELECT * FROM chatroom
+		WHERE user_no = #{ user_no }
+	</select>
+
+</mapper>
