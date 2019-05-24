@@ -6,6 +6,14 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
+<!-- <!-- jQuery 2.2.4 --> -->
+<!-- <script type="text/javascript" src="http://code.jquery.com/jquery-2.2.4.min.js"></script> -->
+
+<!-- <!-- 부트스트랩 3.3.2 --> -->
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"> -->
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css"> -->
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script> -->
+
 <style type="text/css">
 
 #resultChatBot1.ul.li{
@@ -218,7 +226,7 @@ $(document).ready(function(){
 		
 		
 		
-				//DB에 있는 채팅내역 가져오기
+		//DB에 있는 채팅내역 가져오기
 		$.ajax({
 			
 			type: "get"
@@ -229,7 +237,29 @@ $(document).ready(function(){
 				
 				console.log("채팅내역 불러오기 ajax");
 				console.log(data.user_id);
-				console.log(data.chatlist[0]);
+				console.log(data.chatlist);
+				console.log(data.chatlist.length);
+				
+				var html = "";
+// 				var beforeChat = $("#resultChatBot2").html();
+				
+				$("#resultChatBot2").html(
+
+// 						beforeChat
+						
+// 						for(i=0; i<data.chatlist.length; i++){
+							
+// 							+"<ul class=\"nav nav-pills\">"
+// 							+"<li role=\"presentation\" class=\"panel panel-default\" style=\"float:right; margin:5px; max-width:530px;\">"
+// 							+"<div style=\"text-align:right; margin:5px; width:auto;\">"
+// 							+data.chatlist[i].user_id+" : "
+// 							+data.chatlist[i].chat_content
+// 							+"</div>"
+// 							+"</li>"
+// 							+"</ul>"
+// 						}
+
+				);
 			}
 		})
 	})
@@ -3272,7 +3302,7 @@ function clickS60201(){
 
 
 	<!------------------- 챗봇 구현부분 ------------------->
-	<div id="floatChat" style="float:right; margin:5%; top:700px; right:50px; position:absolute;" data-toggle="tooltip" data-placement="left" title="클릭하면 챗봇이 열립니다">
+	<div id="floatChat" style="float:right; margin:5%; top:600px; right:50px; position:absolute;" data-toggle="tooltip" data-placement="left" title="클릭하면 챗봇이 열립니다">
 		<form style="zoom:5; cursor:pointer;" data-toggle="modal" data-target="#modalChatBot">
 			<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
 		</form>

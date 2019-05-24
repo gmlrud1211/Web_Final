@@ -37,7 +37,8 @@
 		, data: { "chatroom_idx" : $('#chatroom_idx').val() }
 		, dataType: "json"
 		, success: function( data ){
-
+			
+			
 		}
 	});
 		$('#btnChatBotSend2').on('click', function(evt){
@@ -47,7 +48,7 @@
 			console.log("버튼클릭");
 			
 			if(socket.readyState != 1 || socket.readyState == null) return;
-
+			
 			let content2 = $('input#content2').val();
 			socket.send(content2);
 			
@@ -55,7 +56,7 @@
 			$("#content2").val("");
 			
 		});
-    
+		
 		/* 챗봇 나가기2 */
 		/* 자동새로고침 0.2초로 설정 */
 		$("#btnChatBotOver2").click(function(){
@@ -68,7 +69,7 @@
 	var socket = null;
 
 	function connect(){
-		var ws = new WebSocket("ws://192.168.20.17:8089/replyEcho");
+		var ws = new WebSocket("ws://localhost:8089/replyEcho");
 		socket = ws;
 
 		//event handler Connection, 소켓 연결 됬을 때
@@ -77,28 +78,56 @@
 			
 		};
 
-		ws.onmessage = function(event){
-			console.log("ReceiveMessage: ", event.data+'\n');
+		ws.onmessage = function(receive){
+			console.log("receive: " + receive);
+			console.log("receive.data: "+receive.data+'\n');
+			
+			var noFlag = receive.data.split('#')[0];
+			var senderId = receive.data.split('#')[1];
+			var result = receive.data.split('#')[2];
+			console.log("noFlag: "+noFlag);
+			console.log("senderId: "+senderId);
+			console.log("result: "+result);
 			
 			var html = "";
 			var beforeChat = $("#resultChatBot2").html();
 			
-			if(true){
+			if('${user_id}' == senderId){
 				
 				html =
 					beforeChat
 					+"<ul class=\"nav nav-pills\">"
 					+"<li role=\"presentation\" class=\"panel panel-default\" style=\"float:right; margin:5px; max-width:530px;\">"
 					+"<div style=\"text-align:right; margin:5px; width:auto;\">"
-					+event.data
+					+senderId+":"+result
 					+"</div>"
 					+"</li>"
 					+"</ul>";	
 //						+"<div id=\"chatBottom2\"></div>"
 					
+				
 				$("#resultChatBot2").html(html)
-				scrollMessage2();
+				
+				
+				
+			} else{
+				html =
+					beforeChat
+					+"<ul class=\"nav nav-pills\">"
+					+"<li role=\"presentation\" class=\"panel panel-default\" style=\"float:left; margin:5px; max-width:530px;\">"
+					+"<div style=\"text-align:right; margin:5px; width:auto;\">"
+					+senderId+":"+result
+					+"</div>"
+					+"</li>"
+					+"</ul>";	
+//						+"<div id=\"chatBottom2\"></div>"
+					
+				
+				$("#resultChatBot2").html(html)
 			}
+			
+			
+			scrollMessage2();
 		};
 
 		ws.onclose = function (event) {

@@ -69,20 +69,28 @@ function connect(){
 		
 	};
 	
-	ws.onmessage = function(event){
-		console.log("ReceiveMessage: ", event.data+'\n');
+	ws.onmessage = function(receive){
+		console.log("receive: " + receive);
+		console.log("receive.data: "+receive.data+'\n');
+		
+		var noFlag = receive.data.split('#')[0];
+		var senderId = receive.data.split('#')[1];
+		var result = receive.data.split('#')[2];
+		console.log("noFlag: "+noFlag);
+		console.log("senderId: "+senderId);
+		console.log("result: "+result);
 		
 		var html = "";
 		var beforeChat = $("#resultChatBot2").html();
 		
-		if(true){
+		if('${user_id}' == senderId){
 			
 			html =
 				beforeChat
 				+"<ul class=\"nav nav-pills\">"
 				+"<li role=\"presentation\" class=\"panel panel-default\" style=\"float:right; margin:5px; max-width:530px;\">"
 				+"<div style=\"text-align:right; margin:5px; width:auto;\">"
-				+event.data
+				+senderId+":"+result
 				+"</div>"
 				+"</li>"
 				+"</ul>";	
@@ -91,9 +99,26 @@ function connect(){
 			
 			$("#resultChatBot2").html(html)
 			
-			scrollMessage2();
 			
+			
+		} else{
+			html =
+				beforeChat
+				+"<ul class=\"nav nav-pills\">"
+				+"<li role=\"presentation\" class=\"panel panel-default\" style=\"float:left; margin:5px; max-width:530px;\">"
+				+"<div style=\"text-align:right; margin:5px; width:auto;\">"
+				+senderId+":"+result
+				+"</div>"
+				+"</li>"
+				+"</ul>";	
+//					+"<div id=\"chatBottom2\"></div>"
+				
+			
+			$("#resultChatBot2").html(html)
 		}
+		
+		
+		scrollMessage2();
 	};
 
 	socket.onclose = function (event) {

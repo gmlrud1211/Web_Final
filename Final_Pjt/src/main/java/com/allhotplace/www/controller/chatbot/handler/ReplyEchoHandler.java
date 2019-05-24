@@ -97,7 +97,8 @@ public class ReplyEchoHandler extends TextWebSocketHandler{
 		for(WebSocketSession sess: userSessions.values()) {
 			
 			if(roomNo==RoomSessions.get(sess)) {
-				sess.sendMessage(new TextMessage(senderId + ": " + message.getPayload()));
+//				sess.sendMessage(new TextMessage(senderId + ": " + message.getPayload()));
+				sess.sendMessage(new TextMessage(""+RoomSessions.get(session)+"#"+senderId+"#"+message.getPayload()));
 			}
 		}
 	};
