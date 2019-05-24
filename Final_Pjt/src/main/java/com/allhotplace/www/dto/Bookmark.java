@@ -8,7 +8,28 @@ public class Bookmark {
 	private int schedule_id;
 	private int user_no;
 	private Date bookmark_date;
+	private int contentypeid;
+	private String originimgurl;
+	private String title;
 	
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public int getContentypeid() {
+		return contentypeid;
+	}
+	public void setContentypeid(int contentypeid) {
+		this.contentypeid = contentypeid;
+	}
+	public String getOriginimgurl() {
+		return originimgurl;
+	}
+	public void setOriginimgurl(String originimgurl) {
+		this.originimgurl = originimgurl;
+	}
 	public int getBookmark_no() {
 		return bookmark_no;
 	}
@@ -36,9 +57,10 @@ public class Bookmark {
 	@Override
 	public String toString() {
 		return "Bookmark [bookmark_no=" + bookmark_no + ", schedule_id=" + schedule_id + ", user_no=" + user_no
-				+ ", bookmark_date=" + bookmark_date + "]";
+				+ ", bookmark_date=" + bookmark_date + ", contentypeid=" + contentypeid + ", originimgurl="
+				+ originimgurl + ", title=" + title + "]";
 	}
-	
-	
+
+
 	
 }

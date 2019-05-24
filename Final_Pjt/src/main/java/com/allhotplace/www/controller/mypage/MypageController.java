@@ -1,8 +1,11 @@
 package com.allhotplace.www.controller.mypage;
 
 
-import java.sql.Date;
+import java.io.Writer;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -140,6 +143,8 @@ public class MypageController {
 		List<Bookmark> bookmark_list = mypageService.getBookmarkList(user_id);
 		
 		model.addAttribute("bookmark_list", bookmark_list);
+		
+		System.out.println(bookmark_list);
 	}
 	
 	@RequestMapping(value="/mypage/bookmark/delete", method=RequestMethod.GET)
@@ -156,26 +161,32 @@ public class MypageController {
 	public void ScheduleList(HttpServletRequest req, Model model,
 							@RequestParam("calendar_no") int calendar_no) {
 		
+		
 		logger.info("마이페이지-[캘린더 > 일정조회]");
 		logger.info("선택한 캘린더의 calendar_no="+calendar_no);
 
 		List<Schedule> schedule_list = mypageService.viewSchedule(calendar_no);
+		model.addAttribute("calendar_no", calendar_no);
 		model.addAttribute("schedule_list",schedule_list);
-		System.out.println(schedule_list);
 		
+		if(schedule_list.isEmpty()) {
+			model.addAttribute("calendar_title", "일정을추가해주세요!!");
+		} else {
+			model.addAttribute("calendar_title", schedule_list.get(0).getCalendar_title()); //캘린더 제목
+			model.addAttribute("calendar_date", schedule_list.get(0).getCalendar_date()); //캘린더 진행 날짜
+		}
+
 		List s_list = new ArrayList();
 		
 		for(Schedule s : schedule_list) {
 			Map map = new HashMap();
 			
-			
 			map.put("title", s.getSchedule_title());
 			map.put("start", s.getSchedule_startTime());
 			map.put("end", s.getSchedule_endTime());
 			map.put("no", String.valueOf(s.getSchedule_no()));
-//			map.put("id", );
 			map.put("resourceId", "schedule");
-			
+						
 			s_list.add(map);
 			
 			System.out.println(s.getSchedule_startTime());
@@ -185,9 +196,62 @@ public class MypageController {
 		req.setAttribute("s_list", gson.toJson(s_list));
 		System.out.println(s_list);
 		
+		//캘린더 공개여부 체크 
+		int isOpen = mypageService.isOpenCheck(calendar_no);
+		System.out.println(isOpen); //1이면 공개 2면 비공개
+		req.setAttribute("isOpen", isOpen);
+		
+	}
+	
+	@RequestMapping(value="/mypage/schedule/delete", method=RequestMethod.POST)
+	public String ScheduleDelete(HttpServletRequest req,
+								@RequestParam("schedule_no") int schedule_no) {
+		
+		logger.info("마이페이지-[캘린더 > 일정조회 > 일정삭제]");
+		logger.info("삭제할 schedule_no="+schedule_no);
 		
 		
+		int result = mypageService.deleteSchedule(schedule_no);
 		
+		Gson gson = new Gson();
+		req.setAttribute("result",1);
+		System.out.println(result);
+		
+		return "jsonView";
+	}
+	
+	@RequestMapping(value="/mypage/calendarChange", method=RequestMethod.POST)
+	public String CalendarOpen(HttpServletRequest req,
+							@RequestParam("calendar_no") int calendar_no,
+							@RequestParam("type") String type) {
+		
+		logger.info("마이페이지-[캘린더 > 일정조회 > 일정-공개로변경]");
+		logger.info("공개할 calendar_no="+calendar_no);
+		logger.info("타입? "+ type);
+		
+		if(type.equals("YES")) { //공개로 변경하는 버튼 클릭
+			mypageService.calChangeYes(calendar_no);
+		} else if(type.equals("NO")) { //비공개로 변경하는 버튼 클릭
+			mypageService.calChangeNo(calendar_no);
+		}
+
+		return "jsonView";
+	}
+	
+	@RequestMapping(value="/mypage/schedule/update", method=RequestMethod.POST)
+	public String ScheduleUpdate(HttpServletRequest req,
+							@RequestParam("schedule_no") int schedule_no,
+							@RequestParam("schedule_startTime") String schedule_startTime,
+							@RequestParam("schedule_endTime") String schedule_endTime) {
+		
+		logger.info("마이페이지-[캘린더 > 일정조회 > 일정 시간수정]");
+		logger.info(schedule_startTime);
+		logger.info(schedule_endTime);
+		
+		
+		mypageService.scheduleUpdate(schedule_no,schedule_startTime,schedule_endTime);
+
+		return "jsonView";
 	}
 	
 }

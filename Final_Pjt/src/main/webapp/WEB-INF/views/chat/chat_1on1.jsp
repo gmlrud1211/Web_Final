@@ -8,7 +8,8 @@
 <title>Insert title here</title>
 <script type="text/javascript">
 $(document).ready(function(){
-	
+	console.log("시작");
+
 	//enter누르면 메시지보내기
 	$('input#content2').keydown(function(key) {
 
@@ -64,7 +65,7 @@ function connect(){
 		console.log('Info: connection opened.');
 		
 	};
-
+	
 	ws.onmessage = function(event){
 		console.log("ReceiveMessage: ", event.data+'\n');
 		
@@ -92,12 +93,17 @@ function connect(){
 		}
 	};
 
-	ws.onclose = function (event) {
+	socket.onclose = function (event) {
 		console.log('Info: connection closed.');
 		setTimeout( function(){ connect();}, 1000); // retry connection!!
 	
 	};
 	ws.onerror = function (err) { console.log('error: ', err);};
+}
+
+function closeSocket(){
+	console.log("close동작");
+	socket.close();
 }
 
 /* -----------------------------메시지 추가 시 자동scrollMessage기능-------------------------- */
@@ -125,7 +131,7 @@ function scrollMessage2(){
 	  <h2 style="color:white;">[Chat Bot]
 	  <div class="btn-group" data-toggle="buttons-radio" style="float:right; position:relative;">
 			  <button type="button" id="btnChatBot2" class="btn btn-warning" data-target="#modalChatBot">챗봇</button>
-			  <button type="button" id="btn1on1Chat2" class="btn btn-success" data-target="#modal1on1Chat">1대1문의</button>
+			  <button type="button" id="btn1on1Chat2" class="btn btn-success" data-target="#modal1on1Chat" >1대1문의</button>
 	  </div>
 	  </h2>   
 	    <div class="modal-content" style="height:650px; background:#E0F8E0;">

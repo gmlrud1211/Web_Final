@@ -13,11 +13,39 @@
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 
 <script type="text/javascript">
+
+	var searchType = "${searchtype}";
+	if(searchType == "keyword"){
+		var keyword = "${keyword}"
+		var page = "1"
+		
+		$.ajax({
+			type: "post"
+			, url: "/searchPlaceResult"
+			, data: {
+				"keyword":keyword,
+				"page":page
+				}
+			, dataType: "html"
+			, success: function(html){
+				$("#keyword").val(keyword);
+				$("#resultPlace").html(html);
+			}
+			, error: function(e) {
+				console.log('error!');
+				console.log(e);
+			}
+		});
+	}
 	
 	var areaPage = 1;
 
 	/* 관광지타입 SELECT BOX 변경 시 값에 맞는 서비스 대분류 호출 Ajax */
 	function typeChange(obj) {
+		// 키워드 초기화
+		clearSearch("select");
+		// 페이징 초기화
+		areaPage = 1;
 		
 		$("#category1").empty();
 		$("#category1").append("<option value='' selected='selected'>대분류</option>")
@@ -52,6 +80,10 @@
 	
 	/* 서비스 대분류 SELECT BOX 변경 시 값에 맞는 중분류 호출 Ajax */
 	function cate1Change(obj) {
+		// 키워드 초기화
+		clearSearch("select");
+		// 페이징 초기화
+		areaPage = 1;
 		
 		$("#category2").empty();
 		$("#category2").append("<option value='' selected='selected'>중분류</option>")
@@ -84,6 +116,10 @@
 	
 	/* 서비스 중분류 SELECT BOX 변경 시 값에 맞는 소분류 호출 Ajax */
 	function cate2Change(obj) {
+		// 키워드 초기화
+		clearSearch("select");
+		// 페이징 초기화
+		areaPage = 1;
 		
 		$("#category3").empty();
 		$("#category3").append("<option value='' selected='selected'>소분류</option>")
@@ -112,6 +148,10 @@
 	
 	/* 지역선택 SELECT BOX 변경 시 값에 맞는 시군구 호출 Ajax */
 	function areaChange(obj) {
+		// 키워드 초기화
+		clearSearch("select");
+		// 페이징 초기화
+		areaPage = 1;
 		
 		$("#Municipality").empty();
 		$("#Municipality").append("<option value='' selected='selected'>시군구선택</option>")
@@ -148,6 +188,7 @@
 			var category3 = $("#category3 option:selected").val();
 			var areaSelect = $("#areaSelect option:selected").val();
 			var municipality = $("#Municipality option:selected").val();
+			var keyword = $("#keyword").val();
 			var page = areaPage;
 			
 			$.ajax({
@@ -160,6 +201,7 @@
 					"category3":category3, 
 					"areaSelect":areaSelect, 
 					"municipality":municipality, 
+					"keyword":keyword,
 					"page":page
 					}
 				, dataType: "html"
@@ -173,7 +215,9 @@
 			});
 		});
 		
-		$("#btnSearch").click();
+		if(searchType != "keyword") { 
+			$("#btnSearch").click();
+		}
 		
 		$("#category1").click(function() {
 			
@@ -206,6 +250,31 @@
 		$("#btnSearch").click();
 	};
 	
+	function prevPage(){
+		if(areaPage != 1){
+			areaPage--;
+		}
+		$("#btnSearch").click();
+	}
+	
+	function nextPage(){
+		areaPage++;
+		$("#btnSearch").click();
+	}
+	
+	function clearSearch(type){
+		if(type == "keyword"){
+			$("#contentType option:first").prop("selected", "selected");
+			$("#category1 option:first").prop("selected", "selected");
+			$("#category2 option:first").prop("selected", "selected");
+			$("#category3 option:first").prop("selected", "selected");
+			$("#areaSelect option:first").prop("selected", "selected");
+			$("#Municipality option:first").prop("selected", "selected");
+		} else{
+			$("#keyword").val("");
+		}
+	}
+	
 </script>
 
 <!-- 부트스트랩 3.3.2 -->
@@ -221,9 +290,10 @@
 
 </head>
 <body>
+	<jsp:include page="../common/header.jsp" />
 	<div id="filter" style="padding: 40px 300px 0px 300px">
 	<h2 style="font-weight: 700; line-height: 2.5;">지역별 관광정보</h2>
-		<form name="searchPlace" id="search" method="get" action="/searchPlace">
+		<form name="searchPlace" id="search" method="get" action="/searchPlace" onsubmit="return false;">
 			<div class="form-group">
 			<table class="table">
 				<tbody>
@@ -261,7 +331,7 @@
 
 					<tr>
 						<th scope="row">서비스분류</th>
-						<td >
+						<td>
 							<div class="col-sm-2 col-sm-offset-3 control-div" style="width: 190px; margin-left:0px">
 								<select class="form-control" name="category1" id="category1" onchange="cate1Change(this)">
 									<option value="" selected="selected">대분류</option>
@@ -279,24 +349,33 @@
 							</div>
 						</td>				
 					</tr>
+					<tr>
+						<th scope="row">키워드 검색</th>
+						<td> <span style="line-height: 36px;">※ 키워드 검색 시 선택하신 조건은 초기화됩니다! </span> 
+							<div class="col-xs-4">
+								<input class="form-control" type="text" id="keyword" name="keyword" onchange="clearSearch('keyword');" ※ 키워드 검색 시 선택하신 조건은 초기화됩니다! />
+							</div>
+						</td>
+					</tr>
 					
 				</tbody>
 			</table>
 			</div>
 			
-			<div id="btnArea" style="text-align:center;">
+			<div id="btnArea" style="text-align:center; margin-top:50px">
 				<button type="button" id="btnSearch" class="btn btn-primary btn-mm">검색하기</button>
 				<button type="button" id="btnClear" class="btn btn-warning btn-mm">필터 초기화</button>
 			</div>
 		</form>
 	</div>
 	
-	<div id="content" style="padding: 40px 300px 0px 300px">
+	<div id="content" style="padding: 60px 300px 0px 300px">
 		<div class="box_leftType1">
 			
 			<div id="resultPlace">
 			</div>
 		</div>
 	</div>
+	<jsp:include page="../common/footer.jsp" />
 </body>
 </html>

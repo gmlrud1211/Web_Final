@@ -2,32 +2,17 @@
 
 <!-- 마이바티스 3 Mapper DOCTYPE -->
 
-<!-- <!DOCTYPE mapper "http://mybatis.org/dtd/mybatis-3-mapper.dtd" PUBLIC 
-	"-//mybatis.org//DTD Mapper 3.0//EN"> -->
+<!-- <!DOCTYPE mapper "http://mybatis.org/dtd/mybatis-3-mapper.dtd" PUBLIC"-//mybatis.org//DTD Mapper 3.0//EN"> -->
 
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- 매퍼 설정 -->
+
 <mapper namespace="com.allhotplace.www.dao.face.admin.ChatoneDao">
-	<!-- 총 게시글 수 반환 -->
-	<select id="selectCntChatroom" resultType="int">
-		SELECT count(*) FROM chatroom
-	</select>
 
-	<!-- 페이징 처리 게시글 반환 -->
-	<select id="getPaginglist" parameterType="com.allhotplace.www.util.Paging"
-		resultType="com.allhotplace.www.dto.Chatroom">
-	SELECT * FROM (
-	SELECT rownum rnum, B.* , u.user_name FROM (
-	SELECT * FROM chatroom
-	ORDER BY chatroom_idx
-	) B
-
-	INNER JOIN users u
-	ON B.user_no = u.user_no
-
+<<<<<<< HEAD
 	ORDER BY rnum desc
 	) R
 	WHERE rnum BETWEEN #{startNo } AND #{endNo }
@@ -39,29 +24,31 @@
 	SELECT * FROM chattalk
 	where chatroom_idx = #{chatroom_idx }
 	</select>
+=======
+<!-- 총 게시글 수 반환 -->
 
-	
+<select resultType="int" id="selectCntChatroom">SELECT count(*) FROM chatroom </select>
+<!-- 페이징 처리 게시글 반환 -->
+<select resultType="com.allhotplace.www.dto.Chatroom" id="getPaginglist" parameterType="com.allhotplace.www.util.Paging">
+SELECT * FROM (
+SELECT rownum rnum, B.* , u.user_name FROM
+ (
+ SELECT * FROM chatroom 
+ ORDER BY chatroom_idx
+ ) B
+ INNER JOIN users u 
+ ON B.user_no = u.user_no
+ ORDER BY rnum desc
+ ) R
+ WHERE rnum BETWEEN #{startNo } AND #{endNo }
+  </select>
+
+
+<select resultType="com.allhotplace.www.dto.Chattalk" id="getChatlist" parameterType="int">
+SELECT * FROM chattalk
+where chatroom_idx = #{chatroom_idx } 
+</select>
+>>>>>>> master
+
 </mapper>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

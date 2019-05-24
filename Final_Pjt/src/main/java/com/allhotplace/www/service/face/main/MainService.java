@@ -7,10 +7,4 @@ import com.allhotplace.www.util.Paging;
 
 public interface MainService {
 
-	int totalCount();
-
-	List<Noticeboard> selectAll(Paging paging);
-
-	List mainsearch();
-
 }

@@ -12,12 +12,9 @@
 		$("table").on("click", "tr", function() {
 			//클릭이벤트가 발생한 <tr>의 첫번째 <td>자식의 텍스트
 			var boardno = $(this).children("td").eq(0).text();
-
 			$(location).attr("href", "/noticeboard/view?notice_no=" + notice_no);
-
 		});
 	});
-
 </script>
 
 <style type="text/css">
@@ -69,18 +66,16 @@ ul.pagination li {
 <jsp:include page="/WEB-INF/views/common/header.jsp" /> 
 </div>
 
-	<div id="menu" style="background-color: #d7d3d447; border-right:#D8D8D8; height: 2260px; width: 20%; float: left;">
-		<jsp:include page="/WEB-INF/views/layout/sidebar.jsp" />
-	</div>
 
 <div id="content"
-	style="padding: 10px; width: 1000px; margin: 0 auto; border-left: 1px solid #D8D8D8; height: 100%; float: left;">
-
-	<h3 style="font-size:25px">공지사항 </h3>
-
+	style="width: 1000px; margin-right: auto; 
+	
+        margin-left: 250px; height: 100%; float: left;">
+    
+    <p style="text-align:left; color:#827ffe; font-size:25px"> 공지사항 </p>
+		<p style="text-align:left; margin-top:15px; margin-bottom: 40px;"> 공지사항입니다 :) </p>
 
 	<table class="table table-hover table-striped table-condensed">
-
 		<thead>
 			<tr style="border-top: 2px solid grey;">
 				<th style="width: 10%; border-top: 2px solid grey;">번호</th>
@@ -99,7 +94,6 @@ ul.pagination li {
 			<c:forEach items="${nboardlist }" var="list">
 				<tr>
 					<td><%=pa-- %></td>
-					
 					<td><a href="/noticeboard/view?notice_no=${list.notice_no }">${list.notice_title }</a></td>
 					<td>${list.notice_count }</td>
 					<td><fmt:formatDate value="${list.notice_date }" pattern="yyyy-MM-dd" /></td>
@@ -115,18 +109,16 @@ ul.pagination li {
 
 
 
-	<div style="height: 20px; width: 100%; padding: 10px 350px; claer: both;">
+	<div style="height: 20px;  padding: 10px 350px; claer: both;">
 		<div class='text-center'
-			style="height: 20px; width: 100%; margin: 0 atuo;">
-			<FORM method='get' action='/admin/noticeboard/list'>
-			
-			
+			style="height: 20px; width: 100%;width: 300px;  margin: 0 atuo;">
+			<FORM method='get' action='/noticeboard/list'>
 				<SELECT name='search'>
 					<!-- 검색 컬럼 -->
 					<OPTION id="notice_title" value='notice_title'>제목</OPTION>
 					<OPTION id="notice_content" value='notice_content'>본문 내용</OPTION>
 
-				</SELECT> <input type='text' name='word' placeholder="특수문자는 사용할수 없습니다.">
+				</SELECT> <input type='text' name='word' style="border:1px solid grey;"placeholder="특수문자는 사용할수 없습니다.">
 				<button class="search" id="searchBtn ">검색</button>
 
 			</FORM>

@@ -15,6 +15,11 @@
 	<select id="selectCntNboard" parameterType="string" resultType="int">
 		SELECT count(*) FROM noticeboard
 	</select>
+	
+	<!-- 총  메인게시글 수 반환 -->
+	<select id="selectCntMainNboard" resultType="int">
+		SELECT count(*) FROM noticeboard
+	</select>
 
 	<!-- 페이징 처리 게시글 반환 -->
 	<select id="selectPaginglist" parameterType="com.allhotplace.www.util.Paging"
@@ -36,6 +41,20 @@
 		ORDER BY rnum
 		) R
 		WHERE rnum BETWEEN #{paging.startNo } AND #{paging.endNo }
+	</select>
+	
+	<!-- 페이징 처리 게시글 반환 -->
+	<select id="selectList" parameterType="com.allhotplace.www.util.Paging" 
+	   resultType="com.allhotplace.www.dto.Noticeboard">
+
+		SELECT * FROM (
+		SELECT rownum rnum, B.* FROM (
+		SELECT * FROM noticeboard
+		ORDER BY notice_no desc
+		) B
+		ORDER BY rnum
+		) R
+		WHERE rnum BETWEEN #{startNo } AND #{endNo }
 	</select>
 
 	<select id="getMinNo" parameterType="int" resultType="com.allhotplace.www.dto.Noticeboard">

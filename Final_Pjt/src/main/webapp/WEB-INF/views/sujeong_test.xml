@@ -1,44 +1,229 @@
-<!-- 
-{{"response":{
-"header":{"resultCode":"0000","resultMsg":"OK"},
-
-"body":{"items":{
-"item":[{
-"addr1":"서울특별시 강남구 압구정로 161",
-"addr2":"(강남관광정보센터)",
-"areacode":1,
-"cat1":"A02",
-"cat2":"A0203",
-"cat3":"A02030400",
-"contentid":1949905,
-"contenttypeid":12,
-"createdtime":20140922180533,
-"firstimage":"http:\/\/tong.visitkorea.or.kr\/cms\/resource\/75\/1258175_image2_1.jpg",
-"firstimage2":"http:\/\/tong.visitkorea.or.kr\/cms\/resource\/75\/1258175_image3_1.jpg",
-"mapx":127.0264344408,
-"mapy":37.5269874797,
-"mlevel":6,
-"modifiedtime":20180703105731,
-"readcount":17790,
-"sigungucode":1,
-"tel":"02-777-6090",
-"title":"강남 시티투어 - 트롤리버스",
-"zipcode":"06001"},}}}}
-
-
-http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList
-?ServiceKey=APP_KEY
-&_type=json&contentTypeId=12
-&areaCode=1
-&sigunguCode=1
-&cat1=A02
-&cat2=A0203
-&cat3=A02030400
-&listYN=Y
-&MobileOS=ETC
-&MobileApp=TourAPI3.0_Guide
-&arrange=A
-&numOfRows=12
-&pageNo=1
-
- -->
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<response>
+	<header>
+		<resultCode>0000</resultCode>
+		<resultMsg>OK</resultMsg>
+	</header>
+	<body>
+		<items>
+			<item>
+				<areacode>1</areacode>
+				<cat1>C01</cat1>
+				<cat2>C0115</cat2>
+				<cat3>C01150001</cat3>
+				<contentid>2044565</contentid>
+				<contenttypeid>25</contenttypeid>
+				<createdtime>20151201164850</createdtime>
+				<firstimage>http://tong.visitkorea.or.kr/cms/resource/57/1808157_image2_1.jpg
+				</firstimage>
+				<firstimage2>http://tong.visitkorea.or.kr/cms/resource/57/1808157_image3_1.jpg
+				</firstimage2>
+				<mapx>126.9732511193</mapx>
+				<mapy>37.5013561691</mapy>
+				<mlevel>6</mlevel>
+				<modifiedtime>20160927181017</modifiedtime>
+				<readcount>6089</readcount>
+				<sigungucode>12</sigungucode>
+				<title>‘충혼’의 수양벚꽃 마중하는 호젓한 꽃길</title>
+			</item>
+			<item>
+				<addr1>경기도 가평군 청평면 에덴벚꽃길 189</addr1>
+				<areacode>31</areacode>
+				<cat1>A02</cat1>
+				<cat2>A0207</cat2>
+				<cat3>A02070200</cat3>
+				<contentid>2484272</contentid>
+				<contenttypeid>15</contenttypeid>
+				<createdtime>20170308142844</createdtime>
+				<firstimage>http://tong.visitkorea.or.kr/cms/resource/04/2540804_image2_1.jpg
+				</firstimage>
+				<firstimage2>http://tong.visitkorea.or.kr/cms/resource/04/2540804_image2_1.jpg
+				</firstimage2>
+				<mapx>127.4864296700</mapx>
+				<mapy>37.7815968116</mapy>
+				<mlevel>6</mlevel>
+				<modifiedtime>20190415124917</modifiedtime>
+				<readcount>15442</readcount>
+				<sigungucode>1</sigungucode>
+				<tel>031-585-0025, 031-581-1300</tel>
+				<title>가평 에덴벚꽃길 벚꽃축제 2019</title>
+			</item>
+			<item>
+				<addr1>강원도 강릉시 경포로 365</addr1>
+				<addr2>(저동)</addr2>
+				<areacode>32</areacode>
+				<cat1>A02</cat1>
+				<cat2>A0207</cat2>
+				<cat3>A02070200</cat3>
+				<contentid>695592</contentid>
+				<contenttypeid>15</contenttypeid>
+				<createdtime>20090218154738</createdtime>
+				<mapx>128.8955294025</mapx>
+				<mapy>37.7943165070</mapy>
+				<mlevel>6</mlevel>
+				<modifiedtime>20190326150422</modifiedtime>
+				<readcount>185205</readcount>
+				<sigungucode>1</sigungucode>
+				<tel>관광과 033-640-5913</tel>
+				<title>강릉 경포벚꽃잔치 2019</title>
+			</item>
+			<item>
+				<addr1>부산 강서구 대저1동 2513-2</addr1>
+				<areacode>6</areacode>
+				<cat1>A02</cat1>
+				<cat2>A0207</cat2>
+				<cat3>A02070200</cat3>
+				<contentid>2536122</contentid>
+				<contenttypeid>15</contenttypeid>
+				<createdtime>20180213141356</createdtime>
+				<firstimage>http://tong.visitkorea.or.kr/cms/resource/20/2536120_image2_1.jpg
+				</firstimage>
+				<firstimage2>http://tong.visitkorea.or.kr/cms/resource/20/2536120_image2_1.jpg
+				</firstimage2>
+				<mapx>128.9864799778</mapx>
+				<mapy>35.2095627071</mapy>
+				<mlevel>6</mlevel>
+				<modifiedtime>20190305145655</modifiedtime>
+				<readcount>14483</readcount>
+				<sigungucode>1</sigungucode>
+				<tel>051-970-4062</tel>
+				<title>강서낙동강30리 벚꽃축제 2019</title>
+			</item>
+			<item>
+				<addr1>전라북도 부안군 상서면 개암로 197</addr1>
+				<areacode>37</areacode>
+				<cat1>A02</cat1>
+				<cat2>A0207</cat2>
+				<cat3>A02070200</cat3>
+				<contentid>2588930</contentid>
+				<contenttypeid>15</contenttypeid>
+				<createdtime>20190121094455</createdtime>
+				<firstimage>http://tong.visitkorea.or.kr/cms/resource/26/2588926_image2_1.jpg
+				</firstimage>
+				<firstimage2>http://tong.visitkorea.or.kr/cms/resource/26/2588926_image2_1.jpg
+				</firstimage2>
+				<mapx>126.6549957639</mapx>
+				<mapy>35.6605122244</mapy>
+				<mlevel>6</mlevel>
+				<modifiedtime>20190121094455</modifiedtime>
+				<readcount>12</readcount>
+				<sigungucode>6</sigungucode>
+				<tel>063-582-5031</tel>
+				<title>개암동 벚꽃축제 2019</title>
+			</item>
+			<item>
+				<addr1>경기도 수원시 팔달구 효원로 1</addr1>
+				<areacode>31</areacode>
+				<cat1>A02</cat1>
+				<cat2>A0207</cat2>
+				<cat3>A02070200</cat3>
+				<contentid>1592929</contentid>
+				<contenttypeid>15</contenttypeid>
+				<createdtime>20120404164147</createdtime>
+				<mapx>127.0086653692</mapx>
+				<mapy>37.2749219521</mapy>
+				<mlevel>6</mlevel>
+				<modifiedtime>20190419131649</modifiedtime>
+				<readcount>44456</readcount>
+				<sigungucode>13</sigungucode>
+				<tel>경기도 콜센터 031-120&lt;br /&gt;경기도청 총무과 301-8008-4991</tel>
+				<title>경기도청 벚꽃낭만산책 2018</title>
+			</item>
+			<item>
+				<addr1>경상북도 경주시 첨성로 140-25</addr1>
+				<addr2>(황남동)</addr2>
+				<areacode>35</areacode>
+				<cat1>A02</cat1>
+				<cat2>A0207</cat2>
+				<cat3>A02070200</cat3>
+				<contentid>2485128</contentid>
+				<contenttypeid>15</contenttypeid>
+				<createdtime>20170313150426</createdtime>
+				<firstimage>http://tong.visitkorea.or.kr/cms/resource/15/2539215_image2_1.jpg
+				</firstimage>
+				<firstimage2>http://tong.visitkorea.or.kr/cms/resource/15/2539215_image2_1.jpg
+				</firstimage2>
+				<mapx>129.2185644826</mapx>
+				<mapy>35.8343745291</mapy>
+				<mlevel>6</mlevel>
+				<modifiedtime>20190305111047</modifiedtime>
+				<readcount>61763</readcount>
+				<sigungucode>2</sigungucode>
+				<tel>054-748-7721</tel>
+				<title>경주 벚꽃축제 2019</title>
+			</item>
+			<item>
+				<addr1>경상남도 창원시 진해구 진해대로 649</addr1>
+				<addr2>(경화동)</addr2>
+				<areacode>36</areacode>
+				<booktour>0</booktour>
+				<cat1>A02</cat1>
+				<cat2>A0203</cat2>
+				<cat3>A02030600</cat3>
+				<contentid>716272</contentid>
+				<contenttypeid>12</contenttypeid>
+				<createdtime>20090403160110</createdtime>
+				<firstimage>http://tong.visitkorea.or.kr/cms/resource/92/1272292_image2_1.jpg
+				</firstimage>
+				<firstimage2>http://tong.visitkorea.or.kr/cms/resource/92/1272292_image3_1.jpg
+				</firstimage2>
+				<mapx>128.6869407974</mapx>
+				<mapy>35.1591184342</mapy>
+				<mlevel>6</mlevel>
+				<modifiedtime>20180316105446</modifiedtime>
+				<readcount>36287</readcount>
+				<sigungucode>16</sigungucode>
+				<title>경화역 벚꽃길</title>
+			</item>
+			<item>
+				<addr1>서울특별시 구로구 공원로 71</addr1>
+				<addr2>(구로동)</addr2>
+				<areacode>1</areacode>
+				<cat1>A02</cat1>
+				<cat2>A0207</cat2>
+				<cat3>A02070200</cat3>
+				<contentid>2592100</contentid>
+				<contenttypeid>15</contenttypeid>
+				<createdtime>20190315104146</createdtime>
+				<firstimage>http://tong.visitkorea.or.kr/cms/resource/03/2592103_image2_1.JPG
+				</firstimage>
+				<firstimage2>http://tong.visitkorea.or.kr/cms/resource/03/2592103_image2_1.JPG
+				</firstimage2>
+				<mapx>126.8882921511</mapx>
+				<mapy>37.5027933722</mapy>
+				<mlevel>6</mlevel>
+				<modifiedtime>20190319111731</modifiedtime>
+				<readcount>39</readcount>
+				<sigungucode>7</sigungucode>
+				<tel>구로5동 주민센터 (02-2620-7603)</tel>
+				<title>구로거리공원 벚꽃축제 2019</title>
+			</item>
+			<item>
+				<addr1>서울특별시 금천구 시흥대로73길 70</addr1>
+				<addr2>(시흥동)</addr2>
+				<areacode>1</areacode>
+				<cat1>A02</cat1>
+				<cat2>A0207</cat2>
+				<cat3>A02070200</cat3>
+				<contentid>1567429</contentid>
+				<contenttypeid>15</contenttypeid>
+				<createdtime>20120314100819</createdtime>
+				<firstimage>http://tong.visitkorea.or.kr/cms/resource/65/2592065_image2_1.jpg
+				</firstimage>
+				<firstimage2>http://tong.visitkorea.or.kr/cms/resource/65/2592065_image2_1.jpg
+				</firstimage2>
+				<mapx>126.8946873249</mapx>
+				<mapy>37.4560739122</mapy>
+				<mlevel>6</mlevel>
+				<modifiedtime>20190314174330</modifiedtime>
+				<readcount>41073</readcount>
+				<sigungucode>8</sigungucode>
+				<tel>02-2627-1445, 2999</tel>
+				<title>금천 하모니 벚꽃축제 2019</title>
+			</item>
+		</items>
+		<numOfRows>10</numOfRows>
+		<pageNo>1</pageNo>
+		<totalCount>46</totalCount>
+	</body>
+</response>

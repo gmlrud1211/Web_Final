@@ -42,7 +42,7 @@
 	<div class="col-xs-12 col-sm-9">
 			
 		<div class="jumbotron" style="padding: 5px; background-color: #eee0; border-bottom: 1px solid #403866; border-radius: 0;" >
-			<h3>마이페이지-즐겨찾기</h3>
+			<h3>Bookmark</h3>
 	        <p style="font-size: 16px">찜한일정 조회</p>
 	    </div>
 	    
@@ -51,7 +51,8 @@
 			<c:forEach var="i" begin="0" end="${bookmark_list.size()-1}">
 				<div class="col-xs-6 col-lg-4">
 					<div style="width:25px; height:25px; float:right; "><img src="/../img/cancel.png" onclick="bookmark_del(${bookmark_list.get(i).bookmark_no});"></div>
-					<div><a href="#"><img src="/../img/image.png" onerror="'/../img/noimage.png';" style="width:250px; height:200px; border:0px"></a></div>
+					<div><a href="/detail?contentId=${bookmark_list.get(i).schedule_id}&contentTypeId=${bookmark_list.get(i).contentypeid}"><img src="${bookmark_list.get(i).originimgurl}"onerror="'/../img/noimage.png';" style="width:250px; height:200px; border:0px"></a></div>
+					<div><br><p style="text-align:right;">${bookmark_list.get(i).title}</p></div>
 				</div>
 			</c:forEach>
 			</c:if>

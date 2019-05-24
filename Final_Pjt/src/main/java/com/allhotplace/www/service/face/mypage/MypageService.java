@@ -34,4 +34,19 @@ public interface MypageService {
 	//선택한 캘린더-일정조회하기  
 	public List<Schedule> viewSchedule(int calendar_no);
 
+	//선택한 일정 삭제
+	public int deleteSchedule(int schedule_no);
+
+	//캘린더 공개여부 체크
+	public int isOpenCheck(int calendar_no);
+
+	//캘린더 공개여부 설정 - 공개로 변경
+	public void calChangeYes(int calendar_no);
+
+	//캘린더 공개여부 설정 - 비공개로 변경
+	public void calChangeNo(int calendar_no);
+
+	//캘린더 시간수정 업데이트
+	public void scheduleUpdate(int schedule_no, String schedule_startTime, String schedule_endTime);
+
 }
