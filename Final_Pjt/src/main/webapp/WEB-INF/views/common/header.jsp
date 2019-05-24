@@ -75,8 +75,7 @@ a:hover {
 
 <div class="header">
 
-	<a href="/main"><img alt="logo" src="/img/dance.png" id="img">&nbsp; <span style="color: #403866; font-size: 1.4em;"> <b>All That Hot Place ^__^</b></span></a>
-
+	<a href="/main"><img alt="logo" src="/img/dance.png" id="img">&nbsp; <span style="color: #403866; font-size: 16px;"> <b style="font-size:23px">All That Hot Place ^__^</b></span></a>
 	<c:choose>
 
 		<c:when test="${ not login }">
