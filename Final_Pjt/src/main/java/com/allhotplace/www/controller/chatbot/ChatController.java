@@ -215,7 +215,11 @@ public class ChatController {
 	@RequestMapping(value="/chatList")
 	public String chatList(Model model, HttpSession session) {
 		
-		List<Chattalk> chatlist = chattalkDao.selectChatListByChatroomIdx((int)session.getAttribute("chatroom_idx"));
+		String idxxx= (String)session.getAttribute("chatroom_idx");
+		int chatroom_idx1 = Integer.parseInt(idxxx);
+		
+		List<Chattalk> chatlist = 
+				chattalkDao.selectChatListByChatroomIdx(chatroom_idx1);
 		logger.info("chatlist: "+chatlist.toString());
 		
 		model.addAttribute("user_id", session.getAttribute("user_id"));

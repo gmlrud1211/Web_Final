@@ -80,26 +80,9 @@ public class NoticeboardController {
 		Noticeboard boardInfo = nboardService.boardInfo(notice_no);
 
 		String loginId = String.valueOf(session.getAttribute("id"));
-//		String boardId = boardInfo.getWriter_id();
 
-//		nboard.setBoard_no(board_no);
-//		nboard.setWriter_id(loginId);
-
-//		boolean check = nboardService.selectgood(board);
-
-//		System.out.println("로그인 아이디" + loginId);
-//		System.out.println("로그인 아이디" + boardId);
-
-//		if(loginId.equals(boardId)) {
-//			session.setAttribute("myboard", true);
-//		} else {
-//			session.setAttribute("myboard", false);
-//		}
-
-//		model.addAttribute("check" , check);
 
 		model.addAttribute("loginId", loginId);
-//		model.addAttribute("boardId" , boardId);
 		model.addAttribute("view", nboardService.selectNboard(nboard));
 	}
 
@@ -113,19 +96,10 @@ public class NoticeboardController {
 		String loginId = String.valueOf(session.getAttribute("id"));
 		System.out.println(board_no);
 
-		// loginId를 이용해 댓글 등록할 때 필요한 닉네임 아이디 넣기
-//		Member member = memberService.getMemberByid(loginId);
-
-//		comment.setBoard_no(board_no);
-//		comment.setWriter_id(member.getId());
-//		comment.setWriter_nick(member.getNick());
-//		
-		// 댓글 등록 
-//		boardService.commentInsert(comment);
-
 		return "redirect:/admin/noticeboard/view?board_no=" + board_no;
 	}
 
+	
 	@RequestMapping(value = "/admin/noticeboard/write", method = RequestMethod.GET)
 	public String write(Model model, HttpSession session) {
 

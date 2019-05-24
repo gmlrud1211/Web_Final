@@ -90,7 +90,7 @@ ul.tab li.current a{
 ul.tab li {
 	border : 1px solid grey;
 	width: 140px;
-	height: 40px;
+	height: 58px;
 	padding-bottom : 10px;
 	    
 }
@@ -101,6 +101,7 @@ ul.subtab li.current {
 
 ul.subtab li {
 	color : gray;
+	    margin-left: 100px;
 }
 
 .tabcontent.current {
@@ -110,6 +111,7 @@ ul.subtab li {
 
 .tabcon {
 	display: none;
+	    margin-left: 100px;
 }
 
 .tabcon.current {
@@ -193,10 +195,10 @@ border-radius: 5px;
 	<div id="container" style="
 	padding:10px; width:1100px; margin: 40px; height:100%; max-width: 1110px; float:left; ">
  
-	<h5 style="font-size: 25px; text-align: start;">챗봇관리</h5>	
+	<h5 style="font-size: 25px; text-align: start; padding: 20px;">챗봇관리</h5>	
  
        <br>
-		<ul class="tab" style="width:100%;">
+		<ul class="tab" style="width:100%; margin-left: 100px;">
 			<li class="current" data-tab="tab1"><a href="#">회원관련</a></li>
 			<li data-tab="tab2"><a href="#">사이트관련</a></li>
 			<li data-tab="tab3"><a href="#">캘린더관련</a></li>

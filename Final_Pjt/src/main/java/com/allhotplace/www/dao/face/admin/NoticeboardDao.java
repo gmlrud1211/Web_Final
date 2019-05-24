@@ -23,6 +23,12 @@ public interface NoticeboardDao {
 	// 페이징 처리 게시글 반환
 	public List<Noticeboard> selectPaginglist(@Param("paging")Paging paging, @Param("search") String search,  @Param("word") String word);
 	
+	// 페이징 처리 게시글 반환
+	public List<Noticeboard> selectList(Paging paging);
+	
+	// 메인 공지사항 개수 반환
+	public int  selectCntMainNboard();
+	
 	// 게시글 상세보기 
 	public Noticeboard selectNboard(Noticeboard board);
 	

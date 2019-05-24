@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <jsp:include page="../views/common/meta.jsp" />
 <jsp:include page="../views/common/header.jsp" />
 
@@ -204,30 +205,38 @@ div.hashtag {
 	<table class="noticelist">
 		<colgroup>
 			<col width="10%">
+			<col width="25%">
 			<col width="10%">
-			<col width="*">
 			<col width="10%">
 		</colgroup>
 		<thead>
 			<tr>
-				<td>넘버</td>
+				<td>번호</td>
 				<td>제목</td>
-				<td>작성일</td>
 				<td>조회수</td>
+				<td>작성일</td>
 			</tr>
 		</thead>
 		<tbody>
-			<tr>
-				<td>넘버</td>
-				<td>제목</td>
-				<td>작성일</td>
-				<td>조회수</td>
-			</tr>
+		  <c:set var="pageCnt" value="${pageCnt }"/>
+		    <%
+			    String p = pageContext.getAttribute("pageCnt").toString(); 
+			    int pa = Integer.parseInt(p); 
+	   		 %>
+			<c:forEach items="${mainnboardlist }" var="list">
+				<tr>
+					<td><%=pa-- %></td>
+					
+					<td><a href="/noticeboard/view?notice_no=${list.notice_no }">${list.notice_title }</a></td>
+					<td>${list.notice_count }</td>
+					<td><fmt:formatDate value="${list.notice_date }" pattern="yyyy-MM-dd" /></td>
+				</tr>
+			</c:forEach>
 		</tbody>
-
-
 	</table>
-	
+	<div style="margin: 20px;">
+		<jsp:include page="/WEB-INF/views/layout/mainnoticeboardpaging.jsp" />
+	</div>
 </div>
 
 

@@ -68,24 +68,26 @@ ul#navi, ul#navi ul {
 	list-style: none;
 }
 
-li.group {
+li.group1 {
 	margin-bottom: 10px;
+	padding: 5px;
+	
 }
 
-li.group div.title a {
+li.group1 div.title a {
 font-size : 20px;
 	color: black;
 	text-decoration: none;
 }
 
-li.group div.title a:hover {
+li.group1 div.title a:hover {
 	text-decoration: none;
 	color: #F67280;
 }
 
-li.group div.title {
+li.group1 div.title {
 	text-align: center !important;
-	font-size: 1.55em;
+	font-size: 2em;
 	height: 55px;
 	line-height: 50px;
 	color: grey;
@@ -164,39 +166,39 @@ ul.sub {
 
 	<div style="">
 	<ul id="navi" style="">
-		<li class="group">
+		<li class="group1">
 			<div class="title">
 				<a href="/admin/dashboard/list" role="button" aria-expanded="false">대시보드</a>
 			</div>
 
 		</li>
 
-		<li class="group">
+		<li class="group1">
 			<div class="title">
 				<a href="/admin/user/list" role="button" aria-expanded="false">회원관리</a>
 			</div>
 
 		</li>
 
-		<li class="group">
+		<li class="group1">
 			<div class="title">
 				<a href="/admin/noticeboard/list" aria-expanded="false">공지사항</a>
 			</div>
 
 		</li>
-		<li class="group">
+		<li class="group1">
 			<div class="title">
 				<a href="/admin/banner/list">배너관리</a>
 			</div>
 
 		</li>
-		<li class="group">
+		<li class="group1">
 			<div class="title">
 				<a href="/admin/chatbot/list">챗봇관리</a>
 			</div>
 
 		</li>
-		<li class="group">
+		<li class="group1">
 			<div class="title">
 				<a href="/admin/chatone/list">1대1 문의관리</a>
 			</div>

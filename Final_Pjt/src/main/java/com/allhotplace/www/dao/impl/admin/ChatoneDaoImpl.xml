@@ -14,12 +14,8 @@
 
 <!-- 총 게시글 수 반환 -->
 
-
 <select resultType="int" id="selectCntChatroom">SELECT count(*) FROM chatroom </select>
-
 <!-- 페이징 처리 게시글 반환 -->
-
-
 <select resultType="com.allhotplace.www.dto.Chatroom" id="getPaginglist" parameterType="com.allhotplace.www.util.Paging">
 SELECT * FROM (
 SELECT rownum rnum, B.* , u.user_name FROM
@@ -33,8 +29,6 @@ SELECT rownum rnum, B.* , u.user_name FROM
  ) R
  WHERE rnum BETWEEN #{startNo } AND #{endNo }
   </select>
-
-<!-- 페이징 처리 게시글 반환 -->
 
 
 <select resultType="com.allhotplace.www.dto.Chattalk" id="getChatlist" parameterType="int">

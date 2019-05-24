@@ -39,9 +39,7 @@ $(document).ready(function(){
 		
 // 		$("#floatChat").css('top',newPosition);
 		
-		$("#floatChat").stop().animate({
-			"top" : newPosition
-		}, 500);
+		
 		
 	}).scroll();
 });
@@ -215,24 +213,21 @@ $(document).ready(function(){
 				connect();
 			}
 		})
-		
-		
-		
 				//DB에 있는 채팅내역 가져오기
 		$.ajax({
-			
 			type: "get"
 			, url: "/chatList"
 			, data: {}
 			, dataType: "json"
 			, success: function(data){
 				
+				$("#resultChatBot2").html(data.chatoneList);
 				console.log("채팅내역 불러오기 ajax");
 				console.log(data.user_id);
 				console.log(data.chatlist[0]);
 			}
 		})
-	})
+	});
 	
 	/* 챗봇버튼2 */
 	$("#btnChatBot2").click(function(){
@@ -3263,8 +3258,6 @@ function clickS60201(){
 		}
 	})
 }
-
-
 </script>
 
 </head>
@@ -3272,7 +3265,7 @@ function clickS60201(){
 
 
 	<!------------------- 챗봇 구현부분 ------------------->
-	<div id="floatChat" style="float:right; margin:5%; top:700px; right:50px; position:absolute;" data-toggle="tooltip" data-placement="left" title="클릭하면 챗봇이 열립니다">
+	<div id="floatChat" style="float:right;  bottom:20px; right:50px; position: fixed;" data-toggle="tooltip" data-placement="left" title="클릭하면 챗봇이 열립니다">
 		<form style="zoom:5; cursor:pointer;" data-toggle="modal" data-target="#modalChatBot">
 			<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
 		</form>
@@ -3286,7 +3279,7 @@ function clickS60201(){
 			  <button type="button" id="btn1on1Chat1" class="btn btn-success" data-target="#modal1on1Chat">1대1문의</button>
 	  </div>
 	  </h2>   
-	    <div class="modal-content" style="height:650px; background:#F7F2E0;">
+	    <div class="modal-content" style="height:650px; background:#F7F2E0; ">
 	    	
 	    	
 		    <div id="scrollMessagetest1" style="position:relative; overflow:auto; height:600px; margin:10px;">

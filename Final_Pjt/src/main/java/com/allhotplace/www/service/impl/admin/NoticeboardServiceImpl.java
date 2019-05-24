@@ -17,6 +17,11 @@ public class NoticeboardServiceImpl implements NoticeboardService {
 	@Autowired
 	NoticeboardDao boardDao;
 
+	@Override
+	public List<Noticeboard> selectList(Paging paging) {
+		return boardDao.selectList(paging);
+	}
+	
 	// 작은 것중 제일 큰 값
 	public Noticeboard getMinNo(int boardno) {
 		return boardDao.getMinNo(boardno);
@@ -32,6 +37,12 @@ public class NoticeboardServiceImpl implements NoticeboardService {
 	public int selectCntNboard(String word) {
 		return boardDao.selectCntNboard(word);
 	}
+	
+	// 총 메인게시글 수 얻기
+		@Override
+		public int selectCntMainNboard() {
+			return boardDao.selectCntMainNboard();
+		}
 
 	// 게시글 페이징 리스트 처리 반환
 	@Override
@@ -67,5 +78,7 @@ public class NoticeboardServiceImpl implements NoticeboardService {
 	public Noticeboard boardInfo(int boardno) {
 		return null;
 	}
+
+	
 
 }
