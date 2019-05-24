@@ -331,7 +331,8 @@ $(document).ready(function() {
 	});
 	
 });
-</script>
+</script>        
+
 
 </head>
 <body style="margin-bottom: 300px;">
@@ -340,7 +341,7 @@ $(document).ready(function() {
 		<div class="infoHeader">
 			<c:forEach var="list" items="${commonList }" varStatus="i">
            		<span id="title" style="color:#827ffe; font-size:27px;">${list.title }</span>
-            	<span style="text-align:right; margin-left: 800px;">
+            	<span style="text-align:right; margin-left: 690px;">
 					<button id="likebefore" style="display:none; border:none; background-color:white;">
 	            	   <img src="/../../../img/like_nonclick.png"style="width:30px; height: 30px; cursor:pointer;"/>&nbsp;&nbsp;&nbsp;&nbsp;
 	            	</button>
