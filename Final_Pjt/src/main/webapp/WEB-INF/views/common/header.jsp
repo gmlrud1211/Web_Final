@@ -109,5 +109,7 @@ a:hover {
 		<li><a href="/community">일정공유 게시판</a></li>
 		<li>/</li>
 		<li><a href="/searchPlace">찾아보기</a></li>
+		<li>/</li>
+		<li><a href="/noticeboard/list">공지사항</a></li>
 	</ul>
 </div>

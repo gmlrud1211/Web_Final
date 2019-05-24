@@ -69,7 +69,7 @@
 	var socket = null;
 
 	function connect(){
-		var ws = new WebSocket("ws://localhost:8089/replyEcho");
+		var ws = new WebSocket("ws://192.168.20.17:8089/replyEcho");
 		socket = ws;
 
 		//event handler Connection, 소켓 연결 됬을 때
@@ -267,7 +267,7 @@ ul.pagination li {
 			<c:forEach items="${chatonelist }" var="list">
 				<tr>
 					<td>${list.chatroom_idx }</td>
-					<td>${list.user_no }</td>
+					<td>${list.user_name }</td>
 					<td>${list.chatroom_userIp }</td>
 					<td><fmt:formatDate value="${list.chatroom_date }"
 							pattern="yyyy-MM-dd" /></td>

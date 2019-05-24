@@ -81,10 +81,6 @@ ul.pagination li {
 <jsp:include page="/WEB-INF/views/common/header.jsp" /> 
 </div>
 
-	<div id="menu" style="background-color: #d7d3d447; border-right:#D8D8D8; height: 2260px; width: 20%; float: left;">
-		<jsp:include page="/WEB-INF/views/layout/sidebar.jsp" />
-	</div>
-
 <div id="content"
 	style="padding: 10px; width: 1000px; margin: 0 auto; border-left: 1px solid #D8D8D8; height: 100%; float: left;">
 

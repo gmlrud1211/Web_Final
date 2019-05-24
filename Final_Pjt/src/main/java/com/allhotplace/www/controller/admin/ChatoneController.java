@@ -108,8 +108,8 @@ public class ChatoneController {
 		session.setAttribute("chatroom_idx", chatroom.getChatroom_idx());
 		logger.info(""+session.getAttribute("chatroom_idx"));
 		
-		
-		int chatroom_idx1 = (int)(session.getAttribute("chatroom_idx"));
+		String idx= (String)(session.getAttribute("chatroom_idx"));
+		int chatroom_idx1 = Integer.parseInt(idx);
 		
 		List<Chattalk> chatoneList = chatoneService.getChatlist(chatroom_idx1);
 		logger.info(chatoneList.toString());
