@@ -29,49 +29,33 @@
 
 
 <script type="text/javascript">
-<<<<<<< HEAD
-	$(document).ready(function(){
-	
-		$.ajax({
-		type: "get"
-		, url: "/resultChatList"
-		, data: { "chatroom_idx" : $('#chatroom_idx').val() }
-		, dataType: "json"
-		, success: function( data ){
-			
-			cosole.log(data.chatoneList);
-			
-			var html = "";
-			var beforeChat = $("#resultChatBot2").html();
-			
-			if(true){
-				
-				html =
-					beforeChat
-					+"<ul class=\"nav nav-pills\">"
-					+"<li role=\"presentation\" class=\"panel panel-default\" style=\"float:right; margin:5px; max-width:530px;\">"
-					+"<div style=\"text-align:right; margin:5px; width:auto;\">"
-					+event.data
-					+"</div>"
-					+"</li>"
-					+"</ul>";	
-//						+"<div id=\"chatBottom2\"></div>"
-					
-				$("#resultChatBot2").html(html);
-		 
-			}
-		}
-		, error : function(e){
-			console.log("실패");
-		}
-	});
-	
-	
-=======
-
 $(document).ready(function(){
+	console.log("시작");
+	
+//enter누르면 메시지보내기
+$('input#content2').keydown(function(key) {
+
+    if (key.keyCode == 13) {// 엔터
+    	
+    	console.log("socket.readyState:"+socket.readyState);
+    	
+    	//소켓이 준비되지 않으면 return
+		if(socket.readyState !== 1 ||socket.readyState == null) return;
 		
->>>>>>> master
+		//보내기창 데이터가져오기
+		let content2 = $('input#content2').val();
+		
+		/* send가 핸들러쪽으로 가게 만드는 것 같음 */
+		socket.send(content2);
+		//보내기창 초기화
+		$('input#content2').val('')
+
+    }
+
+});
+
+
+
 		$('#btnChatBotSend2').on('click', function(evt){
 			
 			evt.preventDefault();
@@ -97,6 +81,9 @@ $(document).ready(function(){
 			}, 100);
 		});
 	});
+	
+	
+	
 	var socket = null;
 
 	function connect(){
@@ -220,9 +207,24 @@ th {
 	border-top: 2px solid grey;
 }
 
-th,td:not(:nth-child(2))
-{text-align:center;}
+th
+,
+td
+:not
+ 
+(
+:nth-child(2)
+ 
+)
+{
+text-align
+:
+ 
+center
+;
 
+
+}
 td {
 	text-align: center;
 	height: 40px;
@@ -266,45 +268,21 @@ ul.pagination li {
 <div id="content"
 	style="padding: 10px; width: 1000px; margin: 0 auto; border-left: 1px solid #D8D8D8; height: 100%; float: left;">
 
-	<h3 style="font-size: 25px; padding: 30px;">1:1 문의 관리</h3>
+	<h3 style="font-size: 25px">1:1 문의 관리</h3>
 
 
-	<div style="margin-left: 200px; margin-top: 80px;">
-		<table class="table table-hover table-striped table-condensed">
+	<table class="table table-hover table-striped table-condensed">
 
-			<thead>
-				<tr style="border-top: 2px solid grey;">
-					<th style="width: 10%; border-top: 2px solid grey;">번호</th>
-					<th style="width: 25%; border-top: 2px solid grey;">회원명</th>
-					<th style="width: 25%; border-top: 2px solid grey;">IP</th>
-					<th style="width: 10%; border-top: 2px solid grey;">채팅방 개설 시각</th>
-					<th style="width: 10%; border-top: 2px solid grey;">채팅하기</th>
-				</tr>
-			</thead>
+		<thead>
+			<tr style="border-top: 2px solid grey;">
+				<th style="width: 10%; border-top: 2px solid grey;">번호</th>
+				<th style="width: 25%; border-top: 2px solid grey;">회원명</th>
+				<th style="width: 25%; border-top: 2px solid grey;">IP</th>
+				<th style="width: 10%; border-top: 2px solid grey;">채팅방 개설 시각</th>
+				<th style="width: 10%; border-top: 2px solid grey;">채팅하기</th>
+			</tr>
+		</thead>
 
-			<tbody>
-				<c:forEach items="${chatonelist }" var="list">
-					<tr>
-						<td>${list.chatroom_idx }</td>
-						<td>${list.user_name }</td>
-						<td>${list.chatroom_userIp }</td>
-						<td><fmt:formatDate value="${list.chatroom_date }"
-								pattern="yyyy-MM-dd" /></td>
-						<td>
-							<div id="floatChat" data-toggle="tooltip" data-placement="left"
-								title="클릭하면 챗봇이 열립니다"
-								onclick="connectFunc(${list.chatroom_idx })">
-								<form style="cursor: pointer;" data-toggle="modal"
-									data-target="#modal1on1Chat">
-									
-<!-- 									<input type="hidden" name="chatroom_idx" id="chatroom_idx" -->
-<%-- 	                                     value="${list.chatroom_idx }" /> --%>
-	                                     
-									<span>채팅방 열기</span>
-								</form>
-							</div>
-
-<<<<<<< HEAD
 		<tbody>
 			<c:forEach items="${chatonelist }" var="list">
 			<input type="hidden" name="chatroom_idx" id="chatroom_idx" value="${list.chatroom_idx }" />
@@ -337,106 +315,59 @@ ul.pagination li {
 										<!-- 채팅기록 보여주기 -->
 										<div id="resultChatBot2" data-spy="scroll"
 											data-target="#navbar-example2" data-offset="0"
-											class="scrollspy-example">
-											
-											</div>
+											class="scrollspy-example"></div>
 
 										<!-- 채팅내역 사라지게 하기 -->
 										<div id="refresh2"
 											style="position: relative; float: right; bottom: 0px; cursor: pointer">
 											<span class="glyphicon glyphicon-remove" aria-hidden="true">전체삭제</span>
 										</div>
-=======
-							<div class="modal fade" id="modal1on1Chat" tabindex="-1"
-								role="dialog" aria-labelledby="myLargeModalLabel">
-								<div class="modal-dialog modal-lg">
-									<div class="modal-content"
-										style="height: 650px; background: #E0F8E0;">
->>>>>>> master
 
-										<div id="scrollMessagetest2"
-											style="position: relative; overflow: auto; height: 600px; margin: 10px;">
-
-											<!-- 채팅기록 보여주기 -->
-											<div id="resultChatBot2" data-spy="scroll"
-												data-target="#navbar-example2" data-offset="0"
-												class="scrollspy-example"></div>
-
-											<!-- 채팅내역 사라지게 하기 -->
-											<div id="refresh2"
-												style="position: relative; float: right; bottom: 0px; cursor: pointer">
-												<span class="glyphicon glyphicon-remove" aria-hidden="true">전체삭제</span>
-											</div>
-
-											<!-- 채팅전송 시마다 가장 밑에있는 채팅 보여주기 위해 div 추가 -->
-											<div id="chatBottom2"></div>
-										</div>
+										<!-- 채팅전송 시마다 가장 밑에있는 채팅 보여주기 위해 div 추가 -->
+										<div id="chatBottom2"></div>
 									</div>
-									<hr>
-
-									<form id="chatBot2" name="chatBot2" style="width: 1828px;">
-										<div class="row">
-											<div class="col-lg-6">
-												<div class="input-group">
-													<span class="input-group-addon">
-														<h2>#</h2>
-													</span> <input type="text" id="content2" name="content2"
-														class="form-control" style="height: 100px;"
-														placeholder="보낼 메세지를 입력하세요" />
-
-												</div>
-												<!-- /input-group -->
-											</div>
-											<!-- /.col-lg-6 -->
-										</div>
-										<!-- /.row -->
-									</form>
-									<button id="btnChatBotSend2" class="btn btn-default"
-										style="float: right">전송</button>
-									<button id="btnChatBotOver2" class="btn btn-warning"
-										style="float: right">나가기</button>
-
 								</div>
-							</div>
-						</td>
-					</tr>
-				</c:forEach>
-			</tbody>
+								<hr>
 
-		</table>
-	</div>
+								<form id="chatBot2" name="chatBot2" style="width: 1828px;">
+									<div class="row">
+										<div class="col-lg-6">
+											<div class="input-group">
+												<span class="input-group-addon">
+													<h2>#</h2>
+												</span> <input type="text" id="content2" name="content2"
+													class="form-control" style="height: 100px;"
+													placeholder="보낼 메세지를 입력하세요" />
+
+											</div>
+											<!-- /input-group -->
+										</div>
+										<!-- /.col-lg-6 -->
+									</div>
+									<!-- /.row -->
+								</form>
+								<button id="btnChatBotSend2" class="btn btn-default"
+									style="float: right">전송</button>
+								<button id="btnChatBotOver2" class="btn btn-warning"
+									style="float: right">나가기</button>
+
+							</div>
+						</div>
+					</td>
+				</tr>
+			</c:forEach>
+		</tbody>
+
+	</table>
+
 	<div style="margin: 20px;">
 		<jsp:include page="/WEB-INF/views/layout/chatonepaging.jsp" />
 	</div>
 
 
-
 </div>
 
 chatroom_idx:${chatroom_idx }
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 
 
 

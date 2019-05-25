@@ -16,27 +16,22 @@
 	height: 80px;
 	line-height: 55px;
 }
-
 .header h1 {
 	float: left;
 	font-size: 25px;
 }
-
 .header ul {
 	float: right;
 	text-align: right;
 	margin-right: 20px;
 }
-
 .header ul li {
 	display: inline-block;
 	margin-left: -4px;
 }
-
 .header ul li a {
 	
 }
-
 .header ul li a button {
 	background: #fff;
 	border: none;
@@ -44,12 +39,10 @@
 	color: #333;
 	line-height: 50px;
 }
-
 ul.righttop li a {
 	font-size: 15px;
 	margin: 0 5px auto;
 }
-
 #img {
 	vertical-align: middle;
 	border-style: none;
@@ -61,22 +54,18 @@ a:link {
 	color: black;
 	text-decoration: none;
 }
-
 a:visited {
 	color: black;
 	text-decoration: none;
 }
-
 a:hover {
 	color: #827ffe;
 }
-
 </style>
 
 <div class="header">
 
-	<a href="/main"><img alt="logo" src="/img/dance.png" id="img">&nbsp; <span style="color: #403866; font-size: 1.4em;"> <b>All That Hot Place ^__^</b></span></a>
-
+	<a href="/main"><img alt="logo" src="/img/dance.png" id="img">&nbsp; <span style="color: #403866; font-size: 16px;"> <b style="font-size:23px">All That Hot Place ^__^</b></span></a>
 	<c:choose>
 
 		<c:when test="${ not login }">
@@ -110,5 +99,7 @@ a:hover {
 		<li><a href="/community">일정공유 게시판</a></li>
 		<li>/</li>
 		<li><a href="/searchPlace">찾아보기</a></li>
+		<li>/</li>
+		<li><a href="/noticeboard/list">공지사항</a></li>
 	</ul>
 </div>

@@ -90,12 +90,7 @@ public class VisitCountDao {
 	   public int getVisitTotalCount() {
 	      String sql = "";
 	      sql += "select count(*) from visitors";
-<<<<<<< HEAD
 
-=======
-	      
-	      
->>>>>>> master
 	      //DB 객체
 	      PreparedStatement ps = null; 
 	      ResultSet rs = null;

@@ -21,9 +21,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.allhotplace.www.dao.face.admin.NoticeboardDao;
 import com.allhotplace.www.dto.Banner;
+import com.allhotplace.www.dto.Noticeboard;
 import com.allhotplace.www.service.face.admin.BannerService;
+import com.allhotplace.www.service.face.admin.NoticeboardService;
 import com.allhotplace.www.service.face.main.MainService;
+import com.allhotplace.www.util.Paging;
 
 
 
@@ -36,12 +40,41 @@ public class MainController {
 	@Autowired MainService mainservice;
 	@Autowired BannerService banservice;
 	
+	@Autowired
+	NoticeboardDao nboardDao;
+	@Autowired
+	NoticeboardService nboardService;
+	
 	@RequestMapping(value = "/main", method = RequestMethod.GET)
-	public void Main(Model model) {
+	public void Main(Model model, String curPage1) {
 		
 		List<Banner> banlist =  banservice.selectBanerlist();
 		
 		model.addAttribute("banlist", banlist);
+		
+		// 요청파라미터 curPage 받기
+				String param = curPage1;
+				int curPage = 0;
+
+				// null이나 ""이 아니면 int로 리턴
+				if (param != null && !"".equals(param)) {
+					curPage = Integer.parseInt(param);
+				}
+			
+				// 총 게시글 수 얻기
+				int totalCount = nboardService.selectCntMainNboard();
+
+				// 페이지 객체 생성
+				Paging paging = new Paging(totalCount, curPage);
+
+				List<Noticeboard> nboardlist = nboardService.selectList(paging);
+				
+				int pageCnt = totalCount - (curPage-1)*10 ;
+				model.addAttribute("pageCnt", pageCnt);
+
+				model.addAttribute("paging", paging);
+				model.addAttribute("mainnboardlist", nboardlist);
+		
 		
 	}
 	@RequestMapping(value="/main", method=RequestMethod.POST)

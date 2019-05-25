@@ -1,7 +1,5 @@
 package com.allhotplace.www.dao.face.admin;
 
-
-
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;

@@ -70,7 +70,7 @@ ul.pagination li {
 <div id="content"
 	style="width: 1000px; margin-right: auto; 
 	
-        margin-left: 250px; height: 100%; float: left;">
+        margin-left: auto; height: 100%;">
     
     <p style="text-align:left; color:#827ffe; font-size:25px"> 공지사항 </p>
 		<p style="text-align:left; margin-top:15px; margin-bottom: 40px;"> 공지사항입니다 :) </p>

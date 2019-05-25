@@ -36,14 +36,7 @@
 	<listener>
 	     <listener-class>com.allhotplace.www.listener.SessionListener</listener-class>   
 	</listener>
-<<<<<<< HEAD
-		
 
-	
-	
-=======
-
->>>>>>> master
 	<!-- Processes application requests -->
 	<servlet>
 		<servlet-name>appServlet</servlet-name>

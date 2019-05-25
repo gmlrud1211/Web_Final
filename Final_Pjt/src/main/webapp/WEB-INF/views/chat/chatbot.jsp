@@ -6,6 +6,14 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
+<!-- <!-- jQuery 2.2.4 --> -->
+<!-- <script type="text/javascript" src="http://code.jquery.com/jquery-2.2.4.min.js"></script> -->
+
+<!-- <!-- 부트스트랩 3.3.2 --> -->
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"> -->
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css"> -->
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script> -->
+
 <style type="text/css">
 
 #resultChatBot1.ul.li{
@@ -39,7 +47,9 @@ $(document).ready(function(){
 		
 // 		$("#floatChat").css('top',newPosition);
 		
-		
+		$("#floatChat").stop().animate({
+			"top" : newPosition
+		}, 500);
 		
 	}).scroll();
 });
@@ -208,31 +218,8 @@ $(document).ready(function(){
 			type: "get"
 			, url: "/createChatRoom"
 			, data: {}
-			, success: function(data){
-				console.log("여기서 연결!!!!");
-				connect();
-			}
 		})
-<<<<<<< HEAD
-		connect();
 	})
-=======
-				//DB에 있는 채팅내역 가져오기
-		$.ajax({
-			type: "get"
-			, url: "/chatList"
-			, data: {}
-			, dataType: "json"
-			, success: function(data){
-				
-				$("#resultChatBot2").html(data.chatoneList);
-				console.log("채팅내역 불러오기 ajax");
-				console.log(data.user_id);
-				console.log(data.chatlist[0]);
-			}
-		})
-	});
->>>>>>> master
 	
 	/* 챗봇버튼2 */
 	$("#btnChatBot2").click(function(){
@@ -384,10 +371,6 @@ function scrollMessage(){
 		scrollTop: scrollPosition
 	}, 2500);
 	i+=10000;
-}
-
-function connectFunc(){
-	
 }
 
 /* ------------------INNER AJAX 함수 구현부분(대분류 클릭 시 발동)------------------ */
@@ -3263,6 +3246,8 @@ function clickS60201(){
 		}
 	})
 }
+
+
 </script>
 
 </head>
@@ -3270,7 +3255,7 @@ function clickS60201(){
 
 
 	<!------------------- 챗봇 구현부분 ------------------->
-	<div id="floatChat" style="float:right;  bottom:20px; right:50px; position: fixed;" data-toggle="tooltip" data-placement="left" title="클릭하면 챗봇이 열립니다">
+	<div id="floatChat" style="float:right; margin:5%; top:700px; right:50px; position:absolute;" data-toggle="tooltip" data-placement="left" title="클릭하면 챗봇이 열립니다">
 		<form style="zoom:5; cursor:pointer;" data-toggle="modal" data-target="#modalChatBot">
 			<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
 		</form>
@@ -3281,10 +3266,10 @@ function clickS60201(){
 	  <h2 style="color:white;">[Chat Bot]
 	  <div class="btn-group" data-toggle="buttons-radio" style="float:right; position:relative;">
 			  <button type="button" id="btnChatBot1" class="btn btn-warning" data-target="#modalChatBot">챗봇</button>
-			  <button type="button" id="btn1on1Chat1" class="btn btn-success" data-target="#modal1on1Chat">1대1문의</button>
+			  <button type="button" id="btn1on1Chat1" class="btn btn-success" data-target="#modal1on1Chat" onclick="connect()">1대1문의</button>
 	  </div>
 	  </h2>   
-	    <div class="modal-content" style="height:650px; background:#F7F2E0; ">
+	    <div class="modal-content" style="height:650px; background:#F7F2E0;">
 	    	
 	    	
 		    <div id="scrollMessagetest1" style="position:relative; overflow:auto; height:600px; margin:10px;">

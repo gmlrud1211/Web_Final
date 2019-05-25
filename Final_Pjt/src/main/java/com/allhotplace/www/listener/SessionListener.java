@@ -19,13 +19,13 @@ public class SessionListener implements HttpSessionListener {
 	        // 전체 방문자 수 +1
 	        try {
 	        	if(session!=null)
-<<<<<<< HEAD
+
 	        		
 	            visitCountDAO.setVisitTotalCount();
-=======
+
 	        		 visitCountDAO.setVisitTotalCount(); // session not null일때만 방문자수 증가
 	        	
->>>>>>> master
+
 	             // 오늘 방문자 수
 	             todayCount = visitCountDAO.getVisitTodayCount();
 	          
