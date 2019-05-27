@@ -16,11 +16,15 @@ public interface NoticeboardService {
 	// 요청파라미터에서 curPage 반환
 //	public int getCurPage(HttpServletRequest req);
 
+		// 총 메인 게시글 수 얻기
+		public int selectCntMainNboard();
+		
 	// 총 게시글 수 얻기
 	public int selectCntNboard(String word);
 
 	// 페이징 리스트 얻기
 	public List<Noticeboard> getPagingList(Paging paging, String search, String word);
+	public List<Noticeboard> selectList(Paging paging);
 	
 	// 게시글 상세보기 
 	// 조회수 함께 업데이트

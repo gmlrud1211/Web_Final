@@ -68,4 +68,14 @@ public class NoticeboardServiceImpl implements NoticeboardService {
 		return null;
 	}
 
+	@Override
+	public int selectCntMainNboard() {
+		return boardDao.selectCntMainNboard();
+	}
+
+	@Override
+	public List<Noticeboard> selectList(Paging paging) {
+		return boardDao.selectList(paging);
+	}
+
 }

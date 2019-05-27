@@ -65,22 +65,11 @@
 				location.reload();
 			}, 100);
 		});
-		
-		// 챗봇 전체삭제   
-	      $("#refresh2").click(function(){
-	         
-	         $("#resultChatBot2").empty().animate(0,500);
-	         $("#resultChatBot2").append("<div class=\"text-center \"style=\"margin:0 auto;\"><h1>삭제완료</h1></div>");
-	         setTimeout(function(){$("#resultChatBot2").empty();},1000);
-	      });
-	   });
-	   
-		
 	});
 	var socket = null;
 
 	function connect(){
-		var ws = new WebSocket("ws://192.168.20.17:8089/replyEcho");
+		var ws = new WebSocket("ws://localhost:8089/replyEcho");
 		socket = ws;
 
 		//event handler Connection, 소켓 연결 됬을 때
@@ -109,8 +98,9 @@
 					beforeChat
 					+"<ul class=\"nav nav-pills\">"
 					+"<li role=\"presentation\" class=\"panel panel-default\" style=\"float:right; margin:5px; max-width:530px;\">"
-					+"<div style=\"text-align:right; margin:5px; width:auto;\">"
-					+senderId+":"+result
+					+"<div style=\"text-align:left; margin:5px; width:auto;\">"
+					+"<span class=\"glyphicon glyphicon-user\" aria-hidden=\"true\"></span>"
+					+"&nbsp;&nbsp;<strong>"+senderId+"</strong><br>"+result
 					+"</div>"
 					+"</li>"
 					+"</ul>";	
@@ -126,8 +116,9 @@
 					beforeChat
 					+"<ul class=\"nav nav-pills\">"
 					+"<li role=\"presentation\" class=\"panel panel-default\" style=\"float:left; margin:5px; max-width:530px;\">"
-					+"<div style=\"text-align:right; margin:5px; width:auto;\">"
-					+senderId+":"+result
+					+"<div style=\"text-align:left; margin:5px; width:auto;\">"
+					+"<span class=\"glyphicon glyphicon-user\" aria-hidden=\"true\"></span>"
+					+"&nbsp;&nbsp;<strong>"+senderId+"</strong><br>"+result
 					+"</div>"
 					+"</li>"
 					+"</ul>";	
@@ -173,9 +164,12 @@ function connectFunc(chatroom_idx){
 		, url: "/connectFunc"
 		, data: { "chatroom_idx" : chatroom_idx }
 		, dataType: "json"
-		, success: function( data ){}
+		, success: function( data ){
+			
+			connect();
+		}
 	});
-	connect();
+	
 }
 
 

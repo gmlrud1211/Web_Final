@@ -15,6 +15,19 @@
 	<select id="selectCntNboard" parameterType="string" resultType="int">
 		SELECT count(*) FROM noticeboard
 	</select>
+	
+	<select resultType="com.allhotplace.www.dto.Noticeboard" parameterType="com.allhotplace.www.util.Paging" id="selectList"> 
+	SELECT * FROM ( SELECT rownum rnum, B.* FROM (
+	 SELECT * FROM noticeboard ORDER BY notice_no desc ) B
+	  ORDER BY rnum ) R
+	 WHERE rnum BETWEEN #{startNo } AND #{endNo } 
+	 </select>
+	
+	<!-- 총 메인게시글 수 반환 -->
+	<select resultType="int" id="selectCntMainNboard"> SELECT count(*) FROM noticeboard
+	</select>
+
+ 
 
 	<!-- 페이징 처리 게시글 반환 -->
 	<select id="selectPaginglist" parameterType="com.allhotplace.www.util.Paging"

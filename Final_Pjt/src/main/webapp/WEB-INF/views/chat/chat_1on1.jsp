@@ -88,9 +88,10 @@ function connect(){
 			html =
 				beforeChat
 				+"<ul class=\"nav nav-pills\">"
-				+"<li role=\"presentation\" class=\"panel panel-default\" style=\"float:right; margin:5px; max-width:530px;\">"
-				+"<div style=\"text-align:right; margin:5px; width:auto;\">"
-				+senderId+":"+result
+				+"<li role=\"presentation\" class=\"panel panel-default text-left\" style=\"float:right; margin:5px; max-width:530px;\">"
+				+"<div style=\"text-align:left; margin:5px; width:auto;\">"
+				+"<span class=\"glyphicon glyphicon-user\" aria-hidden=\"true\"></span>"
+				+"&nbsp;&nbsp;<strong>"+senderId+"</strong><br>"+result
 				+"</div>"
 				+"</li>"
 				+"</ul>";	
@@ -106,8 +107,9 @@ function connect(){
 				beforeChat
 				+"<ul class=\"nav nav-pills\">"
 				+"<li role=\"presentation\" class=\"panel panel-default\" style=\"float:left; margin:5px; max-width:530px;\">"
-				+"<div style=\"text-align:right; margin:5px; width:auto;\">"
-				+senderId+":"+result
+				+"<div style=\"text-align:left; margin:5px; width:auto;\">"
+				+"<span class=\"glyphicon glyphicon-user\" aria-hidden=\"true\"></span>"
+				+"&nbsp;&nbsp;<strong>"+senderId+"</strong><br>"+result
 				+"</div>"
 				+"</li>"
 				+"</ul>";	
@@ -156,7 +158,7 @@ function scrollMessage2(){
  
 <div class="modal fade" id="modal1on1Chat" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
 	  <div class="modal-dialog modal-lg">
-	  <h2 style="color:white;">[Chat Bot]
+	  <h2 style="color:white;">[1대1 문의]
 	  <div class="btn-group" data-toggle="buttons-radio" style="float:right; position:relative;">
 			  <button type="button" id="btnChatBot2" class="btn btn-warning" data-target="#modalChatBot">챗봇</button>
 			  <button type="button" id="btn1on1Chat2" class="btn btn-success" data-target="#modal1on1Chat" >1대1문의</button>

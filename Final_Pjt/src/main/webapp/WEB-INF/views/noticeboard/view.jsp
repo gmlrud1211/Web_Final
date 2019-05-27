@@ -29,7 +29,6 @@
 <style type="text/css">
 ul{
 list-style: none;
-
 }
 table {
 	border-collapse: collapse;
@@ -37,9 +36,10 @@ table {
 }
 
 td.info {
-	border-bottom: 2px dotted grey;
+	border-bottom: 2px solid  grey;
 	height: 50px;
 }
+
 
 .bt {
 	background-color: #827ffe;
@@ -48,6 +48,22 @@ td.info {
 	border-style: none;
 	border-radius: 5px;
 }
+li{
+padding: 5px;
+}
+
+
+.asdfasdf li{border: 1px solid #e1e1e1;
+    padding: 5px 20px;
+    border-left: 0;
+    border-right: 0;
+    height: 50px;
+    line-height: 40px;
+    box-sizing: border-box;
+    transition:all,1.5s;}
+    
+    
+.asdfasdf li:hover{background: #f5f6f7; transition:all,1.5s;}
 </style>
 
 <div id="leftside" style="height: 100%; width: 20%; float: left;"></div>
@@ -59,7 +75,11 @@ td.info {
     </form> 
       
       
-	<h3>공지사항</h3>
+	<h3 style="    font-size: 40px;
+    text-align: center;
+    margin: 20px auto 50px;
+    color: #827ffe;
+    font-weight: normal;">공지사항</h3>
 
 	<table class="table table-bordered"
 		style="border-bottom: 2px solid grey; border-top: 2px solid grey;">
@@ -74,14 +94,15 @@ td.info {
 			</tr>
 
 			<tr>
-				<td colspan="4" style="height: 300px;">
+				<td colspan="4" style="height: 300px;vertical-align: top;
+    padding: 20px;">
 					<div>${view.notice_content }</div>
 				</td>
 			</tr>
 		</tbody>
 	</table>
 
-	<ul class="prev-next">
+	<ul class="prev-next asdfasdf">
 		<li onclick="javascript:counsel.NoticeDetail.goDetail(this);">
 		<strong><i class="xi-angle-up" style="text-align: right;"></i>&nbsp;&nbsp;
 		다음글&nbsp;</strong>
@@ -109,26 +130,18 @@ td.info {
 		</li>
 	</ul>
 
-	<div style="height: 20px; width: 100%; padding: 30px 40%;">
+	<div style="height: 20px; width: 100%; margin-top:20px;">
 		<div class="text" style="height: 20px; width: 100%; margin: 0 atuo;">
-			<button class="btn bt" id="btnList">목록</button>
+			<button class="btn bt" id="btnList" style=" margin: 0 auto;
+    display: block;
+    text-align: center;
+    padding: 10px 40px;
+    box-sizing: border-box">목록</button>
 		</div>
 	</div>
 </div>
 
 <div id="rightside" style="height: 100%; width: 20%; float: left;"></div>
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
