@@ -80,8 +80,24 @@ $('input#content2').keydown(function(key) {
 				location.reload();
 			}, 100);
 		});
+		
+		// 챗봇 전체삭제	
+		$("#refresh2").click(function(){
+			
+			$("#resultChatBot2").empty().animate(0,500);
+			$("#resultChatBot2").append("<div class=\"text-center \"style=\"margin:0 auto;\"><h1>삭제완료</h1></div>");
+			setTimeout(function(){$("#resultChatBot2").empty();},1000);
+		});
 	});
 	
+	
+// 챗봇 전체삭제	
+$("#refresh2").click(function(){
+	
+	$("#resultChatBot2").empty().animate(0,500);
+	$("#resultChatBot2").append("<div class=\"text-center \"style=\"margin:0 auto;\"><h1>삭제완료</h1></div>");
+	setTimeout(function(){$("#resultChatBot2").empty();},1000);
+});
 	
 	
 	var socket = null;

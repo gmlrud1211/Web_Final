@@ -127,9 +127,7 @@ div.hashtag {
 	
 	<ul class="bxslider">
 		<c:forEach items="${banlist }" var="banlist">
-			
 			<li><img src="/upload/${banlist.file_storedName }" ></li>
-				
 		</c:forEach>
 	</ul>
 	
@@ -246,11 +244,7 @@ div.hashtag {
 
 <script>
 	$(document).ready(function() {
-		
-		
-		
-		
-		
+	
 		/*메인슬라이더 px*/
 		$(".bxslider li img").css({
 			height : $(window).height() + "px"
@@ -279,6 +273,7 @@ div.hashtag {
 			speed : 500,
 			easing : "easeInOutCirc",
 			controls : true,
+			border : false,
 		});
 
 	})

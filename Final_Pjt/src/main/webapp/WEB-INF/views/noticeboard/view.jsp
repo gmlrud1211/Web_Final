@@ -78,7 +78,7 @@ padding: 5px;
 	<h3 style="    font-size: 40px;
     text-align: center;
     margin: 20px auto 50px;
-    color: #ff5252;
+    color: #827ffe;
     font-weight: normal;">공지사항</h3>
 
 	<table class="table table-bordered"
