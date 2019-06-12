@@ -86,7 +86,9 @@
 	</update>
 	
 	<update id="updateSchedule" parameterType="hashmap">
-		update schedule set schedule_startTime=to_Date(#{schedule_startTime},'yyyy-MM-dd HH24:MI:SS'), schedule_endTime=to_Date(#{schedule_endTime},'yyyy-MM-dd HH24:MI:SS')
+		update schedule 
+		set schedule_startTime=to_Date(#{schedule_startTime},'yyyy-MM-dd HH24:MI:SS'), 
+		    schedule_endTime=to_Date(#{schedule_endTime},'yyyy-MM-dd HH24:MI:SS')
 		where schedule_no=#{schedule_no}
 	</update>
 	
